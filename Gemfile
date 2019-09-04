@@ -14,10 +14,11 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 #Analisar Necessidade
+gem 'simple_form'
+
 # gem 'geocoder'
 # gem 'httparty'
 # gem 'via_cep'
-# gem 'simple_form'
 # gem 'kaminari'
 # gem 'devise_invitable', '~> 1.7.5'
 # gem 'paranoia', '~> 2.2'
