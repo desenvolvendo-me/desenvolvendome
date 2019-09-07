@@ -1039,8 +1039,9 @@
             </div>
           </div>
           <div class="col text-center">
-            <a href="./examples/register-page.html" class="btn btn-outline-neutral btn-round btn-lg" target="_blank">View
-              Register Page</a>
+            <%= link_to paperkit_register_path, class: "btn btn-outline-neutral btn-round btn-lg", target: "_blank" do %>
+              View Register Page
+            <% end %>
           </div>
         </div>
       </div>
@@ -1050,18 +1051,20 @@
     <div class="container">
       <div class="row example-page">
         <div class="col-md-6 text-center">
-          <a href="examples/landing.html" target="_blank">
+          <%= link_to paperkit_landing_path, target: "_blank" do %>
             <%= image_tag "examples/landing-page.png", class: "img-rounded img-responsive" %>
-            <a href="./examples/landing-page.html" class="btn btn-outline-neutral btn-round" target="_blank">Landing
-              Page</a>
-          </a>
+            <%= link_to paperkit_landing_path, class: "btn btn-outline-neutral btn-round ", target: "_blank" do %>
+              Landing Page
+            <% end %>
+          <% end %>
         </div>
         <div class="col-md-6 text-center">
-          <a href="examples/profile.html" target="_blank">
+          <%= link_to paperkit_profile_path, target: "_blank" do %>
             <%= image_tag "examples/profile-page.png", class: "img-rounded img-responsive" %>
-            <a href="./examples/profile-page.html" class="btn btn-outline-neutral btn-round" target="_blank">Profile
-              Page</a>
-          </a>
+            <%= link_to paperkit_profile_path, class: "btn btn-outline-neutral btn-round ", target: "_blank" do %>
+              Profile Page
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
