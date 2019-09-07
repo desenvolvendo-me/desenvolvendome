@@ -12,5 +12,6 @@
  *
  *= require bootstrap.min.css
  *= require paper-kit.scss
+ *= require demo
  *= require_self
  */
