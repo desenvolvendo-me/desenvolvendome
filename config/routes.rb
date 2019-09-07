@@ -36,7 +36,8 @@
 Rails.application.routes.draw do
 
   resources :reclamacoes
-  get 'visit/index'
+  get 'paperkit/index'
+  #TODO: Adicionar as outras páginas do tema
   get 'vuejs/index'
 
   root 'reclamacoes#index'

@@ -8,9 +8,40 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-// Uncomment to copy all static images under ../images to the output folder and reference
-// them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
-// or the `imagePath` JavaScript helper below.
-//
-// const images = require.context('../images', true)
-// const imagePath = (name) => images(name, true)
+import "jquery"
+import "popper.js"
+import "bootstrap"
+import "bootstrap-switch"
+import "nouislider"
+import "moment"
+
+require("./bootstrap-datepicker")
+require("./paper-kit")
+
+$(document).ready(function() {
+
+    if ($("#datetimepicker").length != 0) {
+        $('#datetimepicker').datetimepicker({
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-chevron-up",
+                down: "fa fa-chevron-down",
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-screenshot',
+                clear: 'fa fa-trash',
+                close: 'fa fa-remove'
+            }
+        });
+    }
+
+    function scrollToDownload() {
+
+        if ($('.section-download').length != 0) {
+            $("html, body").animate({
+                scrollTop: $('.section-download').offset().top
+            }, 1000);
+        }
+    }
+});
