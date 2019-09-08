@@ -1,0 +1,133 @@
+<div class="landing-page">
+  <div class="page-header" data-parallax="true" style="background-image: url('daniel-olahh.jpg');">
+    <div class="container">
+      <div class="motto text-center">
+        <h1>Reclamações</h1>
+        <h3>As últimas reclamações da sua cidade</h3>
+        <br/>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Porque
+          Reclamar?</a>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="title">Tipos de Reclações de Sua Cidade</h2>
+            <h5 class="description">Encontre os setores de sua cidade que quer reclamar, resolver e
+              comentar.</h5>
+            <br>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+          <div class="col-md-2">
+            <div class="info">
+              <div class="icon icon-danger">
+                <i class="nc-icon nc-ambulance"></i>
+              </div>
+              <div class="description">
+                <h4 class="info-title">Saúde</h4>
+                <p class="description">Mal atendimento, falta de médico, falta de material e etc.</p>
+                <a href="javascript:;" class="btn btn-link btn-danger">Reclamações</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="info">
+              <div class="icon icon-danger">
+                <i class="nc-icon nc-book-bookmark"></i>
+              </div>
+              <div class="description">
+                <h4 class="info-title">Educação</h4>
+                <p class="description">Mal ensino, falta de professor, falta de material e etc.</p>
+                <a href="javascript:;" class="btn btn-link btn-danger">Reclamações</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="info">
+              <div class="icon icon-danger">
+                <i class="nc-icon nc-lock-circle-open"></i>
+              </div>
+              <div class="description">
+                <h4 class="info-title">Segurança</h4>
+                <p class="description">Mal serviço, falta de policiais, falta de viaturas e etc.</p>
+                <a href="javascript:;" class="btn btn-link btn-danger">Reclamações</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="info">
+              <div class="icon icon-danger">
+                <i class="nc-icon nc-istanbul"></i>
+              </div>
+              <div class="description">
+                <h4 class="info-title">Cultura</h4>
+                <p class="description">Mal cuidado, falta de lazer, falta de eventos e etc.</p>
+                <a href="javascript:;" class="btn btn-link btn-danger">Reclamações</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="info">
+              <div class="icon icon-danger">
+                <i class="nc-icon nc-bus-front-12"></i>
+              </div>
+              <div class="description">
+                <h4 class="info-title">Transporte</h4>
+                <p class="description">Má condição, falta de ônibus, falta de motorista e etc.</p>
+                <a href="javascript:;" class="btn btn-link btn-danger">Reclamações</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="info">
+              <div class="icon icon-danger">
+                <i class="nc-icon nc-settings"></i>
+              </div>
+              <div class="description">
+                <h4 class="info-title">Infraestrutura</h4>
+                <p class="description">Má estrada, falta de sinalização, sujeira na rua e etc.</p>
+                <a href="javascript:;" class="btn btn-link btn-danger">Reclamações</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="text-center">Últimas Reclamações</h2>
+            <div id="typography">
+              <div class="row">
+                <div class="col-md-12 ml-auto mr-auto">
+                  <% @reclamacoes.last(3).each do |reclamacao| %>
+                    <blockquote class="blockquote">
+                      <p class="mb-0"><%= reclamacao.descricao %></p>
+                      <br/>
+                      <footer class="blockquote-footer"><%= reclamacao.titulo %>
+                      </footer>
+                    </blockquote>
+                  <% end %>
+                </div>
+                <div class="col-centered">
+                  <%= link_to new_reclamacao_path, class: "btn btn-danger btn-lg btn-round" do %>
+                    <i class="nc-icon nc-chat-33"></i> Reclame Também
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
