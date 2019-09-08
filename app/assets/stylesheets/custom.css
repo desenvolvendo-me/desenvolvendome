@@ -1,3 +1,8 @@
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
 .tim-row {
   margin-bottom: 20px;
 }
