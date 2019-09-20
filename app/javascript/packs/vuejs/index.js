@@ -8,7 +8,7 @@ document.addEventListener('turbolinks:load', () => {
     const app = new Vue({
         el: '#vuejs',
         data: {
-            message: "Instância Vuejs"
+            message: "Uma instância, funcionando!"
         },
         components: {Vuejs}
     })
