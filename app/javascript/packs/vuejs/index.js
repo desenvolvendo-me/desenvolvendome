@@ -1,17 +1,15 @@
 import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
-import App from '../../app.vue'
+import Vuejs from '../../components/Vuejs.vue'
 
 Vue.use(TurbolinksAdapter)
 
 document.addEventListener('turbolinks:load', () => {
     const app = new Vue({
-        el: '#hello',
-        data: () => {
-            return {
-                message: "Com Vuejs"
-            }
+        el: '#vuejs',
+        data: {
+            message: "Instância Vuejs"
         },
-        components: { App }
+        components: {Vuejs}
     })
 })
