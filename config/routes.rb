@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   get 'paperkit/landing'
   get 'paperkit/profile'
   get 'paperkit/register'
-  get 'paperkit/icons'
 
   resources :reclamacoes
 
