@@ -13,5 +13,6 @@
  *= require bootstrap.min.css
  *= require paper-kit.scss
  *= require custom
+ *= require vuejs
  *= require_self
  */
