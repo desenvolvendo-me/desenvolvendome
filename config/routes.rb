@@ -35,14 +35,15 @@
 
 Rails.application.routes.draw do
 
+  get 'vuejs/index'
+
+  root 'vuejs#index'
+
   get 'paperkit/index'
   get 'paperkit/landing'
   get 'paperkit/profile'
   get 'paperkit/register'
 
 
-  get 'vuejs/index'
-
-  root 'reclamacoes#index'
 
 end
