@@ -5,7 +5,7 @@ default: &default
 
 development:
   <<: *default
-  database: portal_cidadao_development
+  database: desenvolvendo_me_development
   username: postgres
   password: postgres
   host: localhost
@@ -25,7 +25,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: portal_cidadao_test
+  database: desenvolvendo_me_test
   username: postgres
   password: postgres
   host: localhost
@@ -34,6 +34,6 @@ test:
 
 production:
   <<: *default
-  database: portal_cidadao_production
-  username: portal_cidadao
-  password: <%= ENV['PORTAL_CIDADAO_DATABASE_PASSWORD'] %>
+  database: desenvolvendo_me_production
+  username: desenvolvendo_me
+  password: <%= ENV['DESENVOLVENDO_ME_DATABASE_PASSWORD'] %>
