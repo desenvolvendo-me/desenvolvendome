@@ -40,7 +40,6 @@ Rails.application.routes.draw do
   get 'paperkit/profile'
   get 'paperkit/register'
 
-  resources :reclamacoes
 
   get 'vuejs/index'
 
