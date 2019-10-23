@@ -35,15 +35,19 @@
 
 Rails.application.routes.draw do
 
+
+  root 'perfis#new'
+
+  resources :perfis, only: [:new, :show]
+
+  # Exemplo
+  # Rodando Vuejs
   get 'vuejs/index'
-
-  root 'vuejs#index'
-
+  # Rodando Elemento Bootstraps
   get 'paperkit/index'
   get 'paperkit/landing'
   get 'paperkit/profile'
   get 'paperkit/register'
-
 
 
 end
