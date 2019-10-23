@@ -21,6 +21,7 @@
 #
 
 class Conhecimento < ApplicationRecord
+  default_scope { order(experiencia: :desc) }
   belongs_to :perfil, optional: true
   belongs_to :tecnologia, optional: true
 end

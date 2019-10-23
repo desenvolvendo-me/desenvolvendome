@@ -20,9 +20,9 @@ FactoryBot.define do
 
     trait :com_conhecimentos do
       after(:create) do |perfil|
-        create(:conhecimento, perfil: perfil, experiencia: 0.5, tecnologia: create(:tecnologia, descricao: "Ruby"))
-        create(:conhecimento, perfil: perfil, experiencia: 0.3, tecnologia: create(:tecnologia, descricao: "Java"))
-        create(:conhecimento, perfil: perfil, experiencia: 0.2, tecnologia: create(:tecnologia, descricao: "Shell"))
+        create(:conhecimento, perfil: perfil, experiencia: 30, tecnologia: create(:tecnologia, descricao: "Java"))
+        create(:conhecimento, perfil: perfil, experiencia: 50, tecnologia: create(:tecnologia, descricao: "Ruby"))
+        create(:conhecimento, perfil: perfil, experiencia: 20, tecnologia: create(:tecnologia, descricao: "Shell"))
       end
     end
 

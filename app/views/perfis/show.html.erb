@@ -3,28 +3,25 @@
   <form method="post">
     <div class="row">
       <div class="col-md-4">
-        <div class="profile-img">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-        </div>
+        <%= image_tag @perfil.avatar, size: "200x200" %>
       </div>
       <div class="col-md-6">
-        <div class="profile-head">
-          <h5>
-            Kshiti Ghelani
-          </h5>
-          <p class="proile-rating">RANKINGS : <span>8/10</span></p>
-        </div>
+        <h3>Linguagens</h3>
+        <ul class="list-group">
+          <% @perfil.conhecimentos.each do |conhecimento| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center"><%= conhecimento.tecnologia.descricao %>
+              <span class="badge badge-primary badge-pill"><%= number_to_percentage conhecimento.experiencia, precision: 1 %></span>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </div>
     <div class="row">
       <div class="col-md-4">
-        <div class="profile-work">
-          <h2>Linguagens</h2>
-          <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center">Ruby <span class="badge badge-primary badge-pill">12%</span></li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">Javascript <span class="badge badge-primary badge-pill">5%</span></li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">Shell <span class="badge badge-primary badge-pill">3%</span></li>
-          </ul>
+        <div class="profile-head">
+          <p>Nome: <span><%= @perfil.nome %></span></p>
+          <p>Github: <span><%= @perfil.github %></span></p>
+          <p>Bio: <span><%= @perfil.descricao %></span></p>
         </div>
       </div>
     </div>
