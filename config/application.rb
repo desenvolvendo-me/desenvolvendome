@@ -25,6 +25,6 @@ module DesenvolvendoMe
 
     config.enforce_available_locales = true
     config.i18n.default_locale = "pt-BR"
-    config.autoload_paths << "#{Rails.root}/lib"
+    config.autoload_paths << Rails.root.join('lib', 'app/businesses')
   end
 end
