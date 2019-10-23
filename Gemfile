@@ -16,13 +16,16 @@ gem 'bootsnap', '>= 1.4.2', require: false
 #Analisar Necessidade
 gem 'simple_form'
 
+# gem 'friendly_id', '~> 5.2.4'
+gem 'faraday'
+gem 'dotenv'
+
 # gem 'geocoder'
 # gem 'httparty'
 # gem 'via_cep'
 # gem 'kaminari'
 # gem 'devise_invitable', '~> 1.7.5'
 # gem 'paranoia', '~> 2.2'
-# gem 'friendly_id', '~> 5.2.4'
 # gem 'cocoon'
 # gem 'aasm'
 # gem 'merit', '~> 3.0.2'
