@@ -4,6 +4,7 @@ class CreatePerfis < ActiveRecord::Migration[6.0]
       t.string :nome
       t.string :descricao
       t.string :github
+      t.string :avatar
 
       t.timestamps
     end
