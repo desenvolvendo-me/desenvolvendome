@@ -32,13 +32,6 @@ ActiveRecord::Schema.define(version: 2019_10_23_115446) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "reclamacoes", force: :cascade do |t|
-    t.string "titulo"
-    t.text "descricao"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "tecnologias", force: :cascade do |t|
     t.string "descricao"
     t.datetime "created_at", precision: 6, null: false
