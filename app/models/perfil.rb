@@ -13,4 +13,16 @@
 
 class Perfil < ApplicationRecord
   has_many :conhecimentos
+
+  before_validation :check_perfil
+
+  private
+
+  def check_perfil
+    github = Github.new
+    user = github.getUser(self.github)
+    self.nome = user['name']
+    self.avatar = user['avatar_url']
+    self.descricao = user['bio']
+  end
 end

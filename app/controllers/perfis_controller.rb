@@ -22,13 +22,21 @@ class PerfisController < ApplicationController
   end
 
   def create
-    @perfil = Perfil.new(perfil_params)
+    @perfil = Perfil.find_by_github(perfil_params["github"]) || Perfil.new(perfil_params)
 
     respond_to do |format|
-      if @perfil.save
-        format.html {redirect_to @perfil}
+      if @perfil.new_record?
+        if @perfil.save
+          format.html {redirect_to @perfil}
+        else
+          format.html {render :new}
+        end
       else
-        format.html {render :new}
+        if @perfil.update(perfil_params)
+          format.html {redirect_to perfil_path(@perfil)}
+        else
+          format.html {render :new}
+        end
       end
     end
   end
@@ -38,4 +46,5 @@ class PerfisController < ApplicationController
   def perfil_params
     params.require(:perfil).permit(:github)
   end
+
 end
