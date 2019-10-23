@@ -7,6 +7,8 @@ class CreateRepositories < ActiveRecord::Migration[6.0]
       t.integer :size
       t.integer :forks_count
       t.integer :stargazers_count
+      t.references :user
+
 
       t.timestamps
     end

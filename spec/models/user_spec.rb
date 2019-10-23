@@ -19,12 +19,15 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   before(:all) do
-    @user = create(:user)
+    @user = create(:user, :with_repository)
   end
 
   it "create" do
     expect(@user.name).to eq("Marco Castro")
     expect(@user.login).to eq("marcodotcastro")
+    expect(@user.repositories.first.name).to eq("study-rails-vs-phoenix-vs-laravel")
+    expect(@user.repositories.first.knowledges.first.experience).to eq(30)
+    expect(@user.repositories.first.knowledges.first.language.description).to eq("Java")
   end
 
 end

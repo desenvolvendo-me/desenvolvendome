@@ -23,10 +23,11 @@ class User < ApplicationRecord
   private
 
   def update_user
-    github = Github.new
-    user = github.getUser(self.login)
-    self.name = user['name']
-    self.avatar = user['avatar_url']
-    self.bio = user['bio']
+    #FIXME: Github api deve atualizar: user, repository, language e knowledge
+    # github = Github.new
+    # user = github.getUser(self.login)
+    # self.name = user['name']
+    # self.avatar = user['avatar_url']
+    # self.bio = user['bio']
   end
 end

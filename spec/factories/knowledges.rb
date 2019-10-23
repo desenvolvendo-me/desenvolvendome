@@ -16,7 +16,7 @@
 #
 
 FactoryBot.define do
-  factory :knowledges do
+  factory :knowledge do
     experience {0.7}
   end
 end

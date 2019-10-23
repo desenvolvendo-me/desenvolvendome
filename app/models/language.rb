@@ -10,5 +10,4 @@
 
 class Language < ApplicationRecord
   has_many :knowledges
-  has_many :repositories, through: :knowledges
 end

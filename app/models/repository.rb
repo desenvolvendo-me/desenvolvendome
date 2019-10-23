@@ -11,10 +11,14 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  github_id        :integer
+#  user_id          :bigint
+#
+# Indexes
+#
+#  index_repositories_on_user_id  (user_id)
 #
 
 class Repository < ApplicationRecord
   belongs_to :user, optional: true
   has_many :knowledges
-  has_many :languages, through: :knowledges
 end
