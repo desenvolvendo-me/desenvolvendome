@@ -10,36 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_23_115446) do
+ActiveRecord::Schema.define(version: 2019_10_23_214200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "conhecimentos", force: :cascade do |t|
-    t.float "experiencia"
-    t.bigint "tecnologia_id", null: false
-    t.bigint "perfil_id", null: false
+  create_table "knowledges", force: :cascade do |t|
+    t.float "experience"
+    t.bigint "language_id"
+    t.bigint "repository_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["perfil_id"], name: "index_conhecimentos_on_perfil_id"
-    t.index ["tecnologia_id"], name: "index_conhecimentos_on_tecnologia_id"
+    t.index ["language_id"], name: "index_knowledges_on_language_id"
+    t.index ["repository_id"], name: "index_knowledges_on_repository_id"
   end
 
-  create_table "perfis", force: :cascade do |t|
-    t.string "nome"
-    t.string "descricao"
-    t.string "github"
+  create_table "languages", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.float "score"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "repositories", force: :cascade do |t|
+    t.integer "github_id"
+    t.string "name"
+    t.boolean "fork"
+    t.integer "size"
+    t.integer "forks_count"
+    t.integer "stargazers_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.integer "github_id"
+    t.string "login"
+    t.string "bio"
+    t.string "name"
     t.string "avatar"
+    t.integer "followers"
+    t.integer "following"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tecnologias", force: :cascade do |t|
-    t.string "descricao"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  add_foreign_key "conhecimentos", "perfis"
-  add_foreign_key "conhecimentos", "tecnologias"
 end

@@ -1,13 +1,18 @@
 # == Schema Information
 #
-# Table name: tecnologias
+# Table name: profiles
 #
 #  id         :bigint           not null, primary key
-#  descricao  :string
+#  score      :float
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :bigint
+#
+# Indexes
+#
+#  index_profiles_on_user_id  (user_id)
 #
 
-class Tecnologia < ApplicationRecord
-  has_many :conhecimentos
+class Profile < ApplicationRecord
+  has_one :user
 end
