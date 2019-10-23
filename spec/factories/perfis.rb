@@ -13,5 +13,7 @@ FactoryBot.define do
   factory :perfil do
     nome {"Marco Castro"}
     descricao {"Programador com 15 anos de experiência"}
+    github {"marcodotcastro"}
+    avatar {"https://avatars2.githubusercontent.com/u/15907252?s=460&v=4"}
   end
 end
