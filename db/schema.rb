@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2019_10_23_115446) do
   create_table "perfis", force: :cascade do |t|
     t.string "nome"
     t.string "descricao"
+    t.string "github"
+    t.string "avatar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
