@@ -1,2 +1,2 @@
-puts "Perfil"
-FactoryBot.create(:perfil, :com_conhecimentos)
+puts "User"
+FactoryBot.create(:user, :with_repository)

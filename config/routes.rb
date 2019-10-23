@@ -33,9 +33,9 @@
 Rails.application.routes.draw do
 
 
-  root 'perfis#new'
+  root 'users#new'
 
-  resources :perfis, only: [:show, :new, :create]
+  resources :users, only: [:show, :new, :create]
 
   # Exemplo
   # Rodando Vuejs

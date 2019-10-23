@@ -11,29 +11,29 @@
 #  updated_at :datetime         not null
 #
 
-class PerfisController < ApplicationController
+class UsersController < ApplicationController
 
   def new
-    @perfil = Perfil.new
+    @user = User.new
   end
 
   def show
-    @perfil = Perfil.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def create
-    @perfil = Perfil.find_by_github(perfil_params["github"]) || Perfil.new(perfil_params)
+    @user = User.find_by_login(user_params["github"]) || User.new(user_params)
 
     respond_to do |format|
-      if @perfil.new_record?
-        if @perfil.save
-          format.html {redirect_to @perfil}
+      if @user.new_record?
+        if @user.save
+          format.html {redirect_to @user}
         else
           format.html {render :new}
         end
       else
-        if @perfil.update(perfil_params)
-          format.html {redirect_to perfil_path(@perfil)}
+        if @user.update(user_params)
+          format.html {redirect_to user_path(@user)}
         else
           format.html {render :new}
         end
@@ -43,8 +43,8 @@ class PerfisController < ApplicationController
 
   private
 
-  def perfil_params
-    params.require(:perfil).permit(:github)
+  def user_params
+    params.require(:user).permit(:github)
   end
 
 end
