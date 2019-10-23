@@ -1,2 +1,2 @@
-puts "Reclamações"
-FactoryBot.create_list(:reclamacao, 10)
+puts "Perfil"
+FactoryBot.create(:perfil, :com_conhecimentos)
