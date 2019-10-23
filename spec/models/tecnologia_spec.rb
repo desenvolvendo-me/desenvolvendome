@@ -16,7 +16,7 @@ RSpec.describe Tecnologia, type: :model do
     @tecnologia = create(:tecnologia)
   end
 
-  it "create" do
+  it "criar" do
     expect(@tecnologia.descricao).to eq("Java")
   end
 

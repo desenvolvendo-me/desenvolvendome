@@ -6,7 +6,7 @@ RSpec.describe Conhecimento, type: :model do
     @conhecimento = create(:conhecimento, :com_perfil_e_tecnologia)
   end
 
-  it "create" do
+  it "criar" do
     expect(@conhecimento.perfil.nome).to eq("Marco Castro")
     expect(@conhecimento.tecnologia.descricao).to eq("Java")
     expect(@conhecimento.experiencia).to eq(0.7)

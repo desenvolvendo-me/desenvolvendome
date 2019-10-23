@@ -16,7 +16,7 @@ RSpec.describe Perfil, type: :model do
     @perfil = create(:perfil)
   end
 
-  it "create" do
+  it "criar" do
     expect(@perfil.nome).to eq("Marco Castro")
     expect(@perfil.descricao).to eq("Programador com 15 anos de experiência")
   end
