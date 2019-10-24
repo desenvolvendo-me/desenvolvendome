@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: knowledges
+# Table name: technologies
 #
 #  id            :bigint           not null, primary key
 #  exercise      :float
@@ -11,8 +11,8 @@
 #
 # Indexes
 #
-#  index_knowledges_on_language_id    (language_id)
-#  index_knowledges_on_repository_id  (repository_id)
+#  index_technologies_on_language_id    (language_id)
+#  index_technologies_on_repository_id  (repository_id)
 #
 
 FactoryBot.define do

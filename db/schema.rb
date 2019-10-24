@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_23_214200) do
+ActiveRecord::Schema.define(version: 2019_10_23_115446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "knowledges", force: :cascade do |t|
-    t.float "exercise"
+    t.float "experience"
     t.bigint "language_id"
-    t.bigint "repository_id"
+    t.bigint "profile_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["language_id"], name: "index_knowledges_on_language_id"
-    t.index ["repository_id"], name: "index_knowledges_on_repository_id"
+    t.index ["profile_id"], name: "index_knowledges_on_profile_id"
   end
 
   create_table "languages", force: :cascade do |t|
