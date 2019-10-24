@@ -8,9 +8,19 @@ class Github
     @connect = Faraday.new(:url => 'https://api.github.com')
   end
 
-  def getUser(login)
+  def user(login)
     response = @connect.get "/users/#{login}"
-    return JSON.parse(response.body) || nil
+    JSON.parse(response.body)
+  end
+
+  def repos(login)
+    response = @connect.get "/users/#{login}/repos"
+    JSON.parse(response.body)
+  end
+
+  def repo(login, repo)
+    response = @connect.get "/repos/#{login}/#{repo}"
+    JSON.parse(response.body)
   end
 
 end
