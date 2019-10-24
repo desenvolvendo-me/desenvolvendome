@@ -21,7 +21,7 @@
 FactoryBot.define do
   factory :repository do
     github_id {1}
-    name {"study-rails-vs-phoenix-vs-laravel"}
+    name {"hello_world"}
     fork {false}
     size {330}
     forks_count {1}
