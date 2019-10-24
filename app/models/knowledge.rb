@@ -16,6 +16,6 @@
 #
 
 class Knowledge < ApplicationRecord
-  belongs_to :repository, optional: true
+  belongs_to :profile, optional: true
   belongs_to :language, optional: true
 end

@@ -3,7 +3,7 @@
 # Table name: knowledges
 #
 #  id            :bigint           not null, primary key
-#  exercise      :float
+#  experience      :float
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  language_id   :bigint
@@ -17,6 +17,6 @@
 
 FactoryBot.define do
   factory :knowledge do
-    exercise {1000}
+    experience {1000}
   end
 end

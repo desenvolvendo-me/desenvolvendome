@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 2019_10_23_214200) do
     t.index ["user_id"], name: "index_repositories_on_user_id"
   end
 
+  create_table "technologies", force: :cascade do |t|
+    t.float "exercise"
+    t.bigint "language_id"
+    t.bigint "repository_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["language_id"], name: "index_technologies_on_language_id"
+    t.index ["repository_id"], name: "index_technologies_on_repository_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.integer "github_id"
     t.string "login"

@@ -3,6 +3,7 @@
 # Table name: repositories
 #
 #  id               :bigint           not null, primary key
+#  commits_count    :integer
 #  fork             :boolean
 #  forks_count      :integer
 #  name             :string
@@ -29,9 +30,9 @@ FactoryBot.define do
 
     trait :with_knowledges do
       after(:create) do |repository|
-        create(:knowledge, repository: repository, exercise: 30000, language: create(:language, description: "Portugol"))
-        create(:knowledge, repository: repository, exercise: 50000, language: create(:language, description: "Abap"))
-        create(:knowledge, repository: repository, exercise: 20000, language: create(:language, description: "COBOL"))
+        create(:technology, repository: repository, exercise: 30000, language: create(:language, description: "Portugol"))
+        create(:technology, repository: repository, exercise: 50000, language: create(:language, description: "Abap"))
+        create(:technology, repository: repository, exercise: 20000, language: create(:language, description: "COBOL"))
       end
     end
   end

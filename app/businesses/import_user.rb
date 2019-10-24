@@ -39,7 +39,7 @@ class ImportUser
   def languages(repo, repository)
     @github.languages(@user.login, repo['name']).each do |language|
       lang = Language.find_or_create_by(description: language[0])
-      repository.knowledges << Knowledge.create(exercise: language[1], language: lang)
+      repository.technologies << Technology.create(exercise: language[1], language: lang)
     end
   end
 
