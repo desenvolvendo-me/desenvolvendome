@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2019_10_23_214200) do
     t.integer "size"
     t.integer "forks_count"
     t.integer "stargazers_count"
+    t.integer "commits_count"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
