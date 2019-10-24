@@ -29,9 +29,9 @@ FactoryBot.define do
 
     trait :with_knowledges do
       after(:create) do |repository|
-        create(:knowledge, repository: repository, experience: 30, language: create(:language, description: "Java"))
-        create(:knowledge, repository: repository, experience: 50, language: create(:language, description: "Ruby"))
-        create(:knowledge, repository: repository, experience: 20, language: create(:language, description: "Shell"))
+        create(:knowledge, repository: repository, exercise: 30000, language: create(:language, description: "Portugol"))
+        create(:knowledge, repository: repository, exercise: 50000, language: create(:language, description: "Abap"))
+        create(:knowledge, repository: repository, exercise: 20000, language: create(:language, description: "COBOL"))
       end
     end
   end
