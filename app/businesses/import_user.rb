@@ -2,8 +2,11 @@ class ImportUser
   def initialize(user)
     @github = Github.new
     @user = user
-    basic_info
-    repositories
+
+    unless Rails.env.test?
+      basic_info
+      repositories
+    end
   end
 
   def basic_info
