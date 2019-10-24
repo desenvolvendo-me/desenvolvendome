@@ -18,16 +18,12 @@ class User < ApplicationRecord
   belongs_to :profile, optional: true
   has_many :repositories
 
-  before_validation :update_user
+  before_create :update_user
+  before_update :update_user
 
   private
 
   def update_user
-    #FIXME: Github api deve atualizar: user, repository, language e knowledge
-    # github = Github.new
-    # user = github.getUser(self.login)
-    # self.name = user['name']
-    # self.avatar = user['avatar_url']
-    # self.bio = user['bio']
+    ImportUser.new(self)
   end
 end

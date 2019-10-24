@@ -25,6 +25,8 @@ RSpec.describe User, type: :model do
   it "create" do
     expect(@user.name).to eq("Marco Castro")
     expect(@user.login).to eq("marcodotcastro")
+    expect(@user.followers).to eq(11)
+    expect(@user.following).to eq(9)
     expect(@user.repositories.first.name).to eq("study-rails-vs-phoenix-vs-laravel")
     expect(@user.repositories.first.knowledges.first.experience).to eq(30)
     expect(@user.repositories.first.knowledges.first.language.description).to eq("Java")
