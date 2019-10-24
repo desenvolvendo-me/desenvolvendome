@@ -3,7 +3,7 @@
 # Table name: knowledges
 #
 #  id            :bigint           not null, primary key
-#  experience    :float
+#  exercise      :float
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  language_id   :bigint

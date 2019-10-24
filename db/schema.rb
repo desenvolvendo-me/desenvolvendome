@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2019_10_23_214200) do
   enable_extension "plpgsql"
 
   create_table "knowledges", force: :cascade do |t|
-    t.float "experience"
+    t.float "exercise"
     t.bigint "language_id"
     t.bigint "repository_id"
     t.datetime "created_at", precision: 6, null: false

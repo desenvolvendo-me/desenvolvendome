@@ -10,6 +10,6 @@
 
 FactoryBot.define do
   factory :language do
-    description {"Java"}
+    description {"Portugol"}
   end
 end
