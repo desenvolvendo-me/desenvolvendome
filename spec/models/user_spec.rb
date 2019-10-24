@@ -27,9 +27,14 @@ RSpec.describe User, type: :model do
     expect(@user.login).to eq("marcodotcastro")
     expect(@user.followers).to eq(11)
     expect(@user.following).to eq(9)
-    expect(@user.repositories.first.name).to eq("study-rails-vs-phoenix-vs-laravel")
-    expect(@user.repositories.first.knowledges.first.experience).to eq(30)
-    expect(@user.repositories.first.knowledges.first.language.description).to eq("Java")
+
+    expect(@user.repositories.count).to eq(17)
+    repository = @user.repositories.last
+    expect(repository.name).to eq("study-rails-vs-phoenix-vs-laravel")
+
+    # knowledge = repository.knowledges.first
+    # expect(knowledge.experience).to eq(30)
+    # expect(knowledge.language.description).to eq("Java")
   end
 
 end
