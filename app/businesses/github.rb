@@ -23,4 +23,9 @@ class Github
     JSON.parse(response.body)
   end
 
+  def commits(login, repo)
+    response = @connect.get "/repos/#{login}/#{repo}/contributors?access_token=d2df4752c119c368fababddabaf963f05c07f015"
+    JSON.parse(response.body)
+  end
+
 end
