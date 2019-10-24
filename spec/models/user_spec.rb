@@ -23,14 +23,14 @@ RSpec.describe User, type: :model do
   end
 
   it "create" do
-    expect(@user.name).to eq("Marco Castro")
+    expect(@user.name).to eq("Marco")
     expect(@user.login).to eq("marcodotcastro")
-    expect(@user.followers).to eq(11)
-    expect(@user.following).to eq(9)
+    expect(@user.followers).to eq(1)
+    expect(@user.following).to eq(1)
 
-    expect(@user.repositories.count).to eq(17)
+    expect(@user.repositories.count).to eq(1)
     repository = @user.repositories.last
-    expect(repository.name).to eq("study-rails-vs-phoenix-vs-laravel")
+    expect(repository.name).to eq("hello_world")
 
     # knowledge = repository.knowledges.first
     # expect(knowledge.experience).to eq(30)
