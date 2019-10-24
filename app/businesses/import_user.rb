@@ -18,8 +18,19 @@ class ImportUser
   def repositories
     @github.repos(@user.login).each do |repo|
       repository = @github.repo(@user.login, repo['name'])
-
-      @user.repositories << Repository.create(github_id: repository['id'], name: repository['name'], size: repository['size'])
+      commits = nil
+      @github.commits(@user.login, repo['name']).each do |contribuidor|
+        if contribuidor['login'] == @user.login
+          commits = contribuidor
+        end
+      end
+      @user.repositories << Repository.create(github_id: repository['id'],
+                                              name: repository['name'],
+                                              fork: repository['fork'],
+                                              forks_count: repository['forks_count'],
+                                              stargazers_count: repository['stargazers_count'],
+                                              commits_count: commits ? commits['contributions'] : 0,
+                                              size: repository['size'])
     end
   end
 
