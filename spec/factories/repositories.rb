@@ -28,12 +28,13 @@ FactoryBot.define do
     forks_count {1}
     stargazers_count {9}
 
-    trait :with_knowledges do
+    trait :with_technologies do
       after(:create) do |repository|
         create(:technology, repository: repository, exercise: 30000, language: create(:language, description: "Portugol"))
         create(:technology, repository: repository, exercise: 50000, language: create(:language, description: "Abap"))
         create(:technology, repository: repository, exercise: 20000, language: create(:language, description: "COBOL"))
       end
     end
+
   end
 end

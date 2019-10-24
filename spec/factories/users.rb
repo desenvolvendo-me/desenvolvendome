@@ -26,7 +26,8 @@ FactoryBot.define do
 
     trait :with_repository do
       after(:create) do |user|
-        create(:repository, :with_knowledges, user: user)
+        create(:profile, :with_knowledges, user: user)
+        create(:repository, :with_technologies, user: user)
       end
     end
 

@@ -15,7 +15,7 @@
 #
 
 class User < ApplicationRecord
-  belongs_to :profile, optional: true
+  has_one :profile
   has_many :repositories
 
   before_create :update_user
@@ -26,4 +26,5 @@ class User < ApplicationRecord
   def update_user
     ImportUser.new(self)
   end
+
 end

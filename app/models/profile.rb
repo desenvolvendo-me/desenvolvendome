@@ -14,5 +14,6 @@
 #
 
 class Profile < ApplicationRecord
-  has_one :user
+  belongs_to :user, optional: true
+  has_many :knowledges
 end
