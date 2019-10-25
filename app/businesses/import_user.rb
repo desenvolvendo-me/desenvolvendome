@@ -3,10 +3,8 @@ class ImportUser
     @github = Github.new
     @user = user
 
-    unless Rails.env.test?
-      basic_info
-      repositories
-    end
+    basic_info
+    repositories
   end
 
   def basic_info
@@ -24,6 +22,7 @@ class ImportUser
       commits = commits(repo)
       repository = Repository.create(github_id: repo['id'],
                                      name: repo['name'],
+                                     principal_technology: repo['language'],
                                      fork: repo['fork'],
                                      forks_count: repo['forks_count'],
                                      stargazers_count: repo['stargazers_count'],
