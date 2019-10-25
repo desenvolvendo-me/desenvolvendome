@@ -1,4 +1,4 @@
-class GenerateScore
+class Profile::Score
 
   def initialize
     @score = 0
