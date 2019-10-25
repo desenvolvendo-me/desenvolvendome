@@ -18,14 +18,4 @@
 class User < ApplicationRecord
   has_one :profile
   has_many :repositories
-
-  before_create :update_user
-  before_update :update_user
-
-  private
-
-  def update_user
-    ImportUser.new(self)
-  end
-
 end
