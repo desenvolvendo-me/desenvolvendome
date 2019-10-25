@@ -11,7 +11,7 @@ RSpec.describe "GenerateProfile" do
 
     knowledge = @user.profile.knowledges.first
     expect(@user.profile.score).to eq(0)
-    expect(knowledge.experience).to eq(5)
+    expect(knowledge.experience).to eq(50.0)
     expect(knowledge.language.description).to eq("Portugol")
   end
 

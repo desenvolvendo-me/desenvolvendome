@@ -30,8 +30,10 @@ FactoryBot.define do
 
     trait :with_technologies do
       after(:create) do |repository|
-        create(:technology, repository: repository, exercise: 3, language: create(:language, description: "Portugol"))
-        create(:technology, repository: repository, exercise: 5, language: create(:language, description: "Abap"))
+        portugol = create(:language, description: "Portugol")
+        create(:technology, repository: repository, exercise: 3, language: portugol)
+        create(:technology, repository: repository, exercise: 2, language: portugol)
+        create(:technology, repository: repository, exercise: 3, language: create(:language, description: "Abap"))
         create(:technology, repository: repository, exercise: 2, language: create(:language, description: "COBOL"))
       end
     end
