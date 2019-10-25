@@ -1,6 +1,6 @@
 class ImportUser
   def initialize(user)
-    @github = Github.new
+    @github = Api::Github.new
     @user = user
 
     basic_info
