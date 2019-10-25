@@ -1,15 +1,15 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show]
+  before_action :find_user, only: [:create]
 
   def new
     @user = User.new
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def create
-    @user = User.find_by_login(user_params["login"]) || User.new(user_params)
 
     respond_to do |format|
       if @user.new_record?
@@ -29,6 +29,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def find_user
+    @user = User.find_by_login(user_params["login"]) || User.new(user_params)
+  end
 
   def user_params
     params.require(:user).permit(:login, :email)
