@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
     expect(repository.name).to eq("hello_world")
 
     technology = repository.technologies.first
-    expect(technology.exercise).to eq(30000)
+    expect(technology.exercise).to eq(5.5)
     expect(technology.language.description).to eq("Portugol")
   end
 

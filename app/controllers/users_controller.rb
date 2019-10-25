@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
       if @user.valid?
 
-        ImportUser.new @user
+        Import::Github.new.run @user
         Profile::Know.new.run @user
         Profile::Score.new.run @user
 

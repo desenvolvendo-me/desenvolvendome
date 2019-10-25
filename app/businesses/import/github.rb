@@ -1,11 +1,14 @@
-class ImportUser
-  def initialize(user)
+class Import::Github
+
+  def initialize
     @github = Api::Github.new
+  end
+
+  def run(user)
     @user = user
 
     basic_info
     repositories
-    @user.save
   end
 
   def basic_info
