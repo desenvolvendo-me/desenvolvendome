@@ -16,6 +16,8 @@
 #
 
 class Knowledge < ApplicationRecord
+  default_scope {order(experience: :desc)}
+
   belongs_to :profile, optional: true
   belongs_to :language, optional: true
 end
