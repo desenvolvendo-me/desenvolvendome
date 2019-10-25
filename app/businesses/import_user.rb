@@ -5,6 +5,7 @@ class ImportUser
 
     basic_info
     repositories
+    @user.save
   end
 
   def basic_info
