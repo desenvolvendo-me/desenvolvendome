@@ -5,6 +5,7 @@
 #  id         :bigint           not null, primary key
 #  avatar     :string
 #  bio        :string
+#  email      :string
 #  followers  :integer
 #  following  :integer
 #  login      :string

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.find_by_login(user_params["github"]) || User.new(user_params)
+    @user = User.find_by_login(user_params["login"]) || User.new(user_params)
 
     respond_to do |format|
       if @user.new_record?
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:github)
+    params.require(:user).permit(:login, :email)
   end
 
 end
