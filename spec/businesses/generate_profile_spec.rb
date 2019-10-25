@@ -6,7 +6,7 @@ RSpec.describe "GenerateProfile" do
     @user = create(:user, :with_repository)
   end
 
-  it "user" do
+  it "run" do
     GenerateProfile.new.run(@user)
 
     knowledge = @user.profile.knowledges.first
