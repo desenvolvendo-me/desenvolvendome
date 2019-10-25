@@ -21,7 +21,8 @@ class UsersController < ApplicationController
       if @user.valid?
 
         ImportUser.new @user
-        GenerateProfile.new.run @user
+        UpdateProfile.new.run @user
+        GenerateScore.new.run @user
 
         format.html {redirect_to user_path(@user)}
       else

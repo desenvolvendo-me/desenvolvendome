@@ -1,4 +1,4 @@
-class GenerateProfile
+class UpdateProfile
 
   def initialize
     @experience_per_language = {}
