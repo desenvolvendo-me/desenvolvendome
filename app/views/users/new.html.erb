@@ -1,8 +1,16 @@
-<div class="center-block">
-  <h1>User</h1>
-  <%= simple_form_for @user do |f| %>
-    <%= f.input :login %>
-    <%= f.button :submit, "Avaliar" %>
-  <% end %>
-
+<div class="row justify-content-md-center">
+  <div class="text-center">
+    <div class="card card-register">
+      <h3 class="title mx-auto">Avaliação</h3>
+      <br>
+      <%= simple_form_for @user, defaults: {input_html: {class: 'register-form'}} do |f| %>
+        <%= f.input :login, label: false, placeholder: "github", input_html: {class: 'form-control'} %>
+        <br>
+        <%= f.input :email, label: false, placeholder: "email", input_html: {class: 'form-control'} %>
+        <%= f.button :submit, "Avaliar", class: "btn btn-danger btn-block btn-round" %>
+      <% end %>
+      <br>
+      <p>Enviaremos sua avaliação no emails informado.</p>
+    </div>
+  </div>
 </div>
