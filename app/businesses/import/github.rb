@@ -13,11 +13,11 @@ class Import::Github
 
   def basic_info
     user = @github.user(@user.login)
-    @user.name = user['name']
-    @user.avatar = user['avatar_url']
-    @user.bio = user['bio']
-    @user.followers = user['followers']
-    @user.following = user['following']
+    @user.update(name: user['name'],
+                 avatar: user['avatar_url'],
+                 bio: user['bio'],
+                 followers: user['followers'],
+                 following: user['following'])
   end
 
   def repositories
