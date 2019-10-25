@@ -7,7 +7,7 @@ RSpec.describe "GenerateProfile" do
   end
 
   it "user" do
-    GenerateProfile.new(@user)
+    GenerateProfile.new.run(@user)
 
     knowledge = @user.profile.knowledges.first
     expect(@user.profile.score).to eq(0)
