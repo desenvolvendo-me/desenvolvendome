@@ -2,17 +2,18 @@
 #
 # Table name: repositories
 #
-#  id               :bigint           not null, primary key
-#  commits_count    :integer
-#  fork             :boolean
-#  forks_count      :integer
-#  name             :string
-#  size             :integer
-#  stargazers_count :integer
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  github_id        :integer
-#  user_id          :bigint
+#  id                   :bigint           not null, primary key
+#  commits_count        :integer
+#  fork                 :boolean
+#  forks_count          :integer
+#  name                 :string
+#  principal_technology :string
+#  size                 :integer
+#  stargazers_count     :integer
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  github_id            :integer
+#  user_id              :bigint
 #
 # Indexes
 #
@@ -27,6 +28,7 @@ FactoryBot.define do
     size {330}
     forks_count {1}
     stargazers_count {9}
+    principal_technology {"C"}
 
     trait :with_technologies do
       after(:create) do |repository|
