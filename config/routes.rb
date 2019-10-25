@@ -35,9 +35,10 @@ Rails.application.routes.draw do
 
   root 'visits#index'
 
-  resources :users, only: [:show, :create]
-
   get 'visits/index'
+
+  resources :users, only: [:show, :create]
+  get "avaliacao", to: "users#new", as: "new_user"
 
   # Exemplo
   # Rodando Vuejs
