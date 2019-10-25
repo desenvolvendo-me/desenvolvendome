@@ -13,18 +13,21 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.new_record?
-        if @user.save
-          format.html {redirect_to @user}
-        else
-          format.html {render :new}
-        end
+        @user.save
       else
-        if @user.update(user_params)
-          format.html {redirect_to user_path(@user)}
-        else
-          format.html {render :new}
-        end
+        @user.update(user_params)
       end
+
+      if @user.valid?
+
+        ImportUser.new @user
+        GenerateProfile.new.run @user
+
+        format.html {redirect_to user_path(@user)}
+      else
+        format.html {render :new}
+      end
+
     end
   end
 
