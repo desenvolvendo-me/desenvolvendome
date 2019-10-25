@@ -7,29 +7,29 @@ RSpec.describe "Github" do
   end
 
   it "user" do
-    login = "marcodotcastro"
+    login = "desenvolvendome"
 
     user = @api_github.user(login)
 
-    expect(user['name']).to eq("Marco Castro")
+    expect(user['name']).to eq("Desenvolvendo Me")
   end
 
 
   it "reppositories" do
-    login = "marcodotcastro"
+    login = "desenvolvendome"
 
     repositories = @api_github.repos(login)
 
-    expect(repositories[0]['name']).to eq("application-lifecycle-management")
+    expect(repositories[0]['name']).to eq("projeto-ruby")
   end
 
   it "reppository" do
-    login = "marcodotcastro"
-    repo = "study-rails-vs-phoenix-vs-laravel"
+    login = "desenvolvendome"
+    repo = "projeto-ruby"
 
     repository = @api_github.repo(login, repo)
 
-    expect(repository['size']).to eq(330)
+    expect(repository['size']).to eq(0)
   end
 
 end
