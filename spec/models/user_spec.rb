@@ -33,9 +33,9 @@ RSpec.describe User, type: :model do
     repository = @user.repositories.last
     expect(repository.name).to eq("hello_world")
 
-    knowledge = repository.technologies.first
-    expect(knowledge.exercise).to eq(30000)
-    expect(knowledge.language.description).to eq("Portugol")
+    technology = repository.technologies.first
+    expect(technology.exercise).to eq(30000)
+    expect(technology.language.description).to eq("Portugol")
   end
 
 end
