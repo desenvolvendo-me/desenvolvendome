@@ -1,11 +1,11 @@
 require_relative 'boot'
-
+require 'dotenv'
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+Dotenv.load
 module DesenvolvendoMe
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
