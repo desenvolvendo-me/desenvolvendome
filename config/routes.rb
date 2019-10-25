@@ -33,9 +33,11 @@
 Rails.application.routes.draw do
 
 
-  root 'users#new'
+  root 'visits#index'
 
-  resources :users, only: [:show, :new, :create]
+  resources :users, only: [:show, :create]
+
+  get 'visits/index'
 
   # Exemplo
   # Rodando Vuejs
