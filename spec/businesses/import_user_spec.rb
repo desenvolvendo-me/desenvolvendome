@@ -11,8 +11,8 @@ RSpec.describe "ImportUser" do
 
     expect(@user.name).to eq("Desenvolvendo Me")
     expect(@user.login).to eq("desenvolvendome")
-    expect(@user.followers).to eq(0)
-    expect(@user.following).to eq(0)
+    expect(@user.followers).to eq(1)
+    expect(@user.following).to eq(1)
 
     expect(@user.repositories.count).to eq(1)
     repository = @user.repositories.last
