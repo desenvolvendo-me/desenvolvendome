@@ -21,8 +21,8 @@ class UsersController < ApplicationController
       if @user.valid?
 
         ImportUser.new @user
-        UpdateProfile.new.run @user
-        GenerateScore.new.run @user
+        Profile::Know.new.run @user
+        Profile::Score.new.run @user
 
         format.html {redirect_to user_path(@user)}
       else
@@ -35,11 +35,11 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.includes(profile: [knowledges: :language]).find(params[:id])
   end
 
   def find_user
-    @user = User.find_by_login(user_params["login"]) || User.new(user_params)
+    @user = User.includes(profile: [knowledges: :language]).find_by_login(user_params["login"]) || User.new(user_params)
   end
 
   def user_params
