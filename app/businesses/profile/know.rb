@@ -1,4 +1,4 @@
-class UpdateProfile
+class Profile::Know
 
   def initialize
     @experience_per_language = {}
