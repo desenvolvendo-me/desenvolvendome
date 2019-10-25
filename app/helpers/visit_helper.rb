@@ -1,2 +1,0 @@
-module VisitHelper
-end
