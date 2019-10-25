@@ -16,6 +16,6 @@
 #
 
 class User < ApplicationRecord
-  has_one :profile
-  has_many :repositories
+  has_one :profile, dependent: :destroy
+  has_many :repositories, dependent: :destroy
 end
