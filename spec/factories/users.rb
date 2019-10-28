@@ -10,6 +10,7 @@
 #  following  :integer
 #  login      :string
 #  name       :string
+#  office     :integer
 #  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -24,6 +25,8 @@ FactoryBot.define do
   factory :user do
     github_id {15907252}
     login {"marcodotcastro"}
+    office {:fullstack}
+    email {"marco.castro@desenvolvendo.me"}
     name {"Marco"}
     bio {"Pai da Luísa, Empreendedor e Engenheiro de Software. Fã do ecossistema do Ruby e Rails, mas trabalho também com PHP, Java e Javascript."}
     avatar {"https://avatars2.githubusercontent.com/u/15907252?s=460&v=4"}

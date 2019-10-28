@@ -10,6 +10,7 @@
 #  following  :integer
 #  login      :string
 #  name       :string
+#  office     :integer
 #  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -31,6 +32,7 @@ RSpec.describe User, type: :model do
   it "create" do
     expect(@user.name).to eq("Marco")
     expect(@user.login).to eq("marcodotcastro")
+    expect(@user.office).to eq("fullstack")
     expect(@user.followers).to eq(1)
     expect(@user.following).to eq(1)
 

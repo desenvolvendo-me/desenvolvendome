@@ -10,6 +10,7 @@
 #  following  :integer
 #  login      :string
 #  name       :string
+#  office     :integer
 #  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -24,6 +25,10 @@ class User < ApplicationRecord
   extend FriendlyId
   has_one :profile, dependent: :destroy
   has_many :repositories, dependent: :destroy
+
+  enum office: [:fullstack, :frontend, :backend, :devops]
+
+  validates_presence_of :login, :email, :office
 
   friendly_id :slug_name, use: :slugged
 
