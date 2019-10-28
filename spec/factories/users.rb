@@ -10,9 +10,14 @@
 #  following  :integer
 #  login      :string
 #  name       :string
+#  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  github_id  :integer
+#
+# Indexes
+#
+#  index_users_on_slug  (slug) UNIQUE
 #
 
 FactoryBot.define do
