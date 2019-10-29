@@ -37,7 +37,8 @@ Rails.application.routes.draw do
 
   get 'visits/index'
 
-  resources :users, only: [:create]
+  #User
+  post "avaliacao", to: "users#create", as: "users"
   get "perfil/:id", to: "users#show", as: "user"
   get "avaliacao", to: "users#new", as: "new_user"
 
