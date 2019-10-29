@@ -1,24 +1,51 @@
-# README
+#Variaveis de Ambiente
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Email Server
+- ENV["DOMAIN_NAME"]
+- ENV["SENDGRID_USERNAME"]
+- ENV["SENDGRID_PASSWORD"]
 
-Things you may want to cover:
+## Errbit Server
+- ENV["ERRBIT_DOMAIN"]
+- ENV["ERRBIT_PROJECT_ID"]
+- ENV["ERRBIT_PROJECT_KEY"]
 
-* Ruby version
+# TESTE
+## Email Preview
+http://localhost:3000/rails/mailers/usuario_mailer
 
-* System dependencies
+# INFORMAÇÕES
 
-* Configuration
+## Deploy
 
-* Database creation
+### Heroku
 
-* Database initialization
+```
+heroku run bash
+rails db:migrate 
+rails c
+Rails.application.load_seed
+```
+PS: Por algum muito motivo rodar o `rails db:seed` via `heroku run rails db:seed` não funciona
 
-* How to run the test suite
+## Infraestrutura
 
-* Services (job queues, cache servers, search engines, etc.)
+- [Errbit (Digital Ocean)](https://github.com/errbit/errbit)
+- [Email Server (Sendgrind)](https://app.sendgrid.com/guide/integrate/langs/smtp)
 
-* Deployment instructions
+#QUALIDADE
 
-* ...
+## Qualidade de Código
+```
+shell> rubycritic app
+```
+Acesse: http://localhost:63342/desenvolvendome/tmp/rubycritic/overview.html
+
+
+## Cobertura de Código
+
+```
+shell> rspec spec
+```
+
+Acesse: http://localhost:63342/desenvolvendome/coverage/index.html

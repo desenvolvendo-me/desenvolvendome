@@ -31,7 +31,7 @@
 #                  rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
-
+  mount LetterOpenerWeb::Engine, at: "/mail/inbox" if Rails.env.development?
 
   root 'visits#index'
 
