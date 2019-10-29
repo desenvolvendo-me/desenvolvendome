@@ -20,11 +20,7 @@ class UsersController < ApplicationController
 
       if @user.valid?
 
-        Import::Github.new.run @user
-        Profile::Know.new.run @user
-        Profile::Score.new.run @user
-
-        ProfileMailer.with(user: @user).evaluation_completed.deliver_later
+        GenerateProfileJob.perform_later @user
 
         format.html {redirect_to root_path}
       else
