@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         Profile::Know.new.run @user
         Profile::Score.new.run @user
 
-        ProfileMailer.with(user: @user).created.deliver_later
+        ProfileMailer.with(user: @user).evaluation_completed.deliver_later
 
         format.html {redirect_to user_path(@user)}
       else
