@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
         ProfileMailer.with(user: @user).evaluation_completed.deliver_later
 
-        format.html {redirect_to user_path(@user)}
+        format.html {redirect_to root_path}
       else
         format.html {render :new}
       end
