@@ -15,7 +15,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 #Analisar Necessidade
 gem 'simple_form'
-
+gem 'sidekiq'
 gem 'friendly_id', '~> 5.2.4'
 gem 'faraday'
 gem 'dotenv'
