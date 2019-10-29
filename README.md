@@ -12,7 +12,7 @@
 
 # TESTE
 ## Email Preview
-http://localhost:3000/rails/mailers/usuario_mailer
+http://localhost:3000/rails/mailers
 
 # INFORMAÇÕES
 
