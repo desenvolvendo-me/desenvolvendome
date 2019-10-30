@@ -4,8 +4,7 @@ class Profile::Followers
   end
 
   def run(user)
-    user.profile.evaluations << Evaluation.create(level: level(user), evaluation_type: :influence_digital)
-    user.profile.save
+    set_influencer(user)
   end
 
   def level(user)
@@ -22,6 +21,15 @@ class Profile::Followers
       level = 5
     end
     level
+  end
+
+  def set_influencer(user)
+    evaludation = user.profile.evaluations.where(evaluation_type: :influencer).take
+    if evaludation
+      evaludation.update(level: level(user))
+    else
+      Evaluation.create(level: level(user), evaluation_type: :influencer, profile: user.profile)
+    end
   end
 
 end
