@@ -23,14 +23,19 @@ class Profile::Score
   def how_many_followers(user)
     case user.followers
     when 0..50
+      user.profile.evaluations << Evaluation.create(level: 1, evaluation_type: :influence_digital)
       @score += 0.2
     when 51..100
+      user.profile.evaluations << Evaluation.create(level: 2, evaluation_type: :influence_digital)
       @score += 0.4
     when 101..150
+      user.profile.evaluations << Evaluation.create(level: 3, evaluation_type: :influence_digital)
       @score += 0.6
     when 151..200
+      user.profile.evaluations << Evaluation.create(level: 4, evaluation_type: :influence_digital)
       @score += 0.6
     else
+      user.profile.evaluations << Evaluation.create(level: 5, evaluation_type: :influence_digital)
       @score += 1
     end
   end
