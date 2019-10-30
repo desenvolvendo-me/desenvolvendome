@@ -1,14 +1,15 @@
 class Evaluation::Influencer
 
-  def initialize(args = {})
+  def initialize(user)
+    @user = user
   end
 
-  def run(user)
-    create_evaluation(user)
+  def run
+    create_evaluation
   end
 
-  def level(user)
-    case user.followers
+  def level
+    case @user.followers
     when 0..50
       level = 1
     when 51..100
@@ -23,14 +24,18 @@ class Evaluation::Influencer
     level
   end
 
+  def score
+    0.2 * level
+  end
+
   private
 
-  def create_evaluation(user)
-    evaludation = user.profile.evaluations.where(evaluation_type: :influencer).take
+  def create_evaluation
+    evaludation = @user.profile.evaluations.where(evaluation_type: :influencer).take
     if evaludation
-      evaludation.update(level: level(user))
+      evaludation.update(level: level)
     else
-      Evaluation.create(level: level(user), evaluation_type: :influencer, profile: user.profile)
+      Evaluation.create(level: level, evaluation_type: :influencer, profile: @user.profile)
     end
   end
 
