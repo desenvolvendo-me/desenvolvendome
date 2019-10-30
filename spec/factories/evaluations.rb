@@ -21,6 +21,6 @@
 FactoryBot.define do
   factory :evaluation do
     level {1}
-    evaluation_type {:influence_digital}
+    evaluation_type {:influencer}
   end
 end
