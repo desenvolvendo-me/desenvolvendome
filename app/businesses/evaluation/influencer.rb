@@ -10,7 +10,9 @@ class Evaluation::Influencer
 
   def level
     case @user.followers
-    when 0..50
+    when 0
+      level = 0
+    when 1..50
       level = 1
     when 51..100
       level = 2
