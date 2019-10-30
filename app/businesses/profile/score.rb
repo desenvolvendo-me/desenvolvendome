@@ -6,6 +6,7 @@ class Profile::Score
 
   def run(user)
     have_experience_greater_than_75(user)
+    how_many_followers(user)
     update_score(user)
   end
 
@@ -17,6 +18,10 @@ class Profile::Score
 
   def have_experience_greater_than_75(user)
     @score += 2 * user.profile.knowledges.where("experience >= 75").count
+  end
+
+  def how_many_followers(user)
+    @score += (0.2 * Profile::Followers.new.level(user))
   end
 
 end

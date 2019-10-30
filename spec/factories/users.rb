@@ -39,5 +39,11 @@ FactoryBot.define do
       end
     end
 
+    trait :with_profile do
+      after(:create) do |user|
+        create(:profile, :with_evalutions, user: user)
+      end
+    end
+
   end
 end
