@@ -37,13 +37,19 @@ Rails.application.routes.draw do
 
   root 'visits#index'
 
+  #Visits
   get 'visits/index'
 
-  #User
-  post "avaliacao", to: "users#create", as: "users"
-  get "perfil/:id", to: "users#show", as: "user"
+  #Interests
+  get 'interesse', to: 'interests#new', as: "new_interest"
+  post "interesse", to: "interests#create", as: "interests"
+  get 'interesse/confirmacao', to: 'interests#show', as: "interest"
+
+  #Users
   get "avaliacao", to: "users#new", as: "new_user"
-  get "confirmacao", to: "users#confirmation", as: "confirmation_user"
+  post "avaliacao", to: "users#create", as: "users"
+  get "avaliacao/confirmacao", to: "users#confirmation", as: "confirmation_user"
+  get "perfil/:id", to: "users#show", as: "user"
 
   # Exemplo
   # Rodando Vuejs
