@@ -1,6 +1,7 @@
 pt-BR:
   enum:
     evaluation_type:
+      programmer: "Programador"
       influencer: "Influenciador"
       polyglot: "Poliglota"
     office:
