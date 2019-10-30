@@ -13,6 +13,7 @@ class Profile::Generate
   end
 
   def evaluation
+    Evaluation::Programmer.new(@user).run
     Evaluation::Influencer.new(@user).run
   end
 end
