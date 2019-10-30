@@ -1,6 +1,3 @@
-require_relative '../../app/businesses/import/github'
-require_relative '../../app/businesses/profile/generate'
-
 class GenerateProfileJob < ApplicationJob
   queue_as :default
 
