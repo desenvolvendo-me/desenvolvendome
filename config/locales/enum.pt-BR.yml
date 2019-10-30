@@ -1,0 +1,10 @@
+pt-BR:
+  enum:
+    evaluation_type:
+      influencer: "Influenciador"
+      polyglot: "Poliglota"
+    office:
+      fullstack: "Full Stack"
+      frontend: "Front End"
+      backend: "Back End"
+      devops: "Devops"

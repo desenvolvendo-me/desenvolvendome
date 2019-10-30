@@ -22,7 +22,7 @@
         <h3>Avaliações</h3>
         <ul class="list-group">
           <% @user.profile.evaluations.each do |evaluation| %>
-            <li class="list-group-item d-flex justify-content-between align-items-center"><%= evaluation.evaluation_type %>
+            <li class="list-group-item d-flex justify-content-between align-items-center"><%= t("enum.evaluation_type.#{evaluation.evaluation_type}") %>
               <span class="label label-<%= label_level(evaluation.level) %>"><%= evaluation.level %></span>
             </li>
           <% end %>
@@ -32,9 +32,9 @@
     <div class="row">
       <div class="col-md-4">
         <div class="profile-head">
-          <p>Nome: <span><%= @user.name %></span></p>
-          <p>Cargo: <span><%= @user.office %></span></p>
           <p>Github: <span><%= @user.login %></span></p>
+          <p>Nome: <span><%= @user.name %></span></p>
+          <p>Cargo: <span><%= t("enum.office.#{@user.office}") %></span></p>
           <p>Bio: <span><%= @user.bio %></span></p>
         </div>
       </div>
