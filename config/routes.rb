@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   post "avaliacao", to: "users#create", as: "users"
   get "perfil/:id", to: "users#show", as: "user"
   get "avaliacao", to: "users#new", as: "new_user"
+  get "confirmacao", to: "users#confirmation", as: "confirmation_user"
 
   # Exemplo
   # Rodando Vuejs
