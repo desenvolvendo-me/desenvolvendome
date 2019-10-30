@@ -22,12 +22,16 @@ class UsersController < ApplicationController
 
         GenerateProfileJob.perform_later @user
 
-        format.html {redirect_to root_path}
+        format.html {redirect_to confirmation_user_path}
       else
         format.html {render :new}
       end
 
     end
+  end
+
+  def confirmation
+
   end
 
   private
