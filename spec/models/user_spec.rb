@@ -26,7 +26,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   before(:all) do
-    @user = create(:user, :with_repository)
+    @user = create(:user, :with_repository, :with_profile)
   end
 
   it "create" do
@@ -43,6 +43,12 @@ RSpec.describe User, type: :model do
     technology = repository.technologies.first
     expect(technology.exercise).to eq(5.5)
     expect(technology.language.description).to eq("Portugol")
+
+    expect(@user.profile.score).to eq(5.5)
+    evaluation = @user.profile.evaluations.first
+    expect(evaluation.level).to eq(1)
+    expect(evaluation.evaluation_type).to eq("influence_digital")
+
   end
 
 end
