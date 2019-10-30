@@ -10,7 +10,15 @@ RSpec.describe "GenerateScore" do
   it "score" do
     Profile::Score.new.run(@user)
 
-    expect(@user.profile.score).to eq(2)
+    expect(@user.profile.score).to eq(2.2)
+  end
+
+  it "score with followers" do
+    @user.update(followers: 150)
+
+    Profile::Score.new.run(@user)
+
+    expect(@user.profile.score).to eq(2.6)
   end
 
 end
