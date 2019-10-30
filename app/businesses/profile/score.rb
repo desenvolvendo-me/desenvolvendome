@@ -21,7 +21,7 @@ class Profile::Score
   end
 
   def how_many_followers(user)
-    @score += (0.2 * Profile::Followers.new.level(user))
+    @score += (0.2 * Evaluation::Influencer.new.level(user))
   end
 
 end

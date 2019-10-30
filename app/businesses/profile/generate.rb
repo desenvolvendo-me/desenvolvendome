@@ -13,6 +13,6 @@ class Profile::Generate
   end
 
   def evaluation
-    Profile::Followers.new.run @user
+    Evaluation::Influencer.new.run @user
   end
 end

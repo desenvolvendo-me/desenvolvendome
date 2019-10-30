@@ -1,10 +1,10 @@
-class Profile::Followers
+class Evaluation::Influencer
 
   def initialize(args = {})
   end
 
   def run(user)
-    set_influencer(user)
+    create_evaluation(user)
   end
 
   def level(user)
@@ -23,7 +23,9 @@ class Profile::Followers
     level
   end
 
-  def set_influencer(user)
+  private
+
+  def create_evaluation(user)
     evaludation = user.profile.evaluations.where(evaluation_type: :influencer).take
     if evaludation
       evaludation.update(level: level(user))
