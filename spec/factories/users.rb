@@ -41,7 +41,7 @@ FactoryBot.define do
 
     trait :with_profile do
       after(:create) do |user|
-        create(:profile, :with_evalutions, user: user)
+        create(:profile, :with_knowledges, :with_evalutions, user: user)
       end
     end
 

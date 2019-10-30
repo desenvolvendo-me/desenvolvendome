@@ -1,27 +1,28 @@
 class Profile::Score
 
-  def initialize
+  def initialize(user)
+    @user = user
     @score = 0
   end
 
-  def run(user)
-    have_experience_greater_than_75(user)
-    how_many_followers(user)
-    update_score(user)
+  def run
+    programmer
+    influencer
+    update_score
   end
 
   private
 
-  def update_score(user)
-    user.profile.update(score: @score)
+  def programmer
+    @score += Evaluation::Programmer.new(@user).score
   end
 
-  def have_experience_greater_than_75(user)
-    @score += 2 * user.profile.knowledges.where("experience >= 75").count
+  def influencer
+    @score += Evaluation::Influencer.new(@user).score
   end
 
-  def how_many_followers(user)
-    @score += (0.2 * Profile::Followers.new.level(user))
+  def update_score
+    @user.profile.update(score: @score)
   end
 
 end

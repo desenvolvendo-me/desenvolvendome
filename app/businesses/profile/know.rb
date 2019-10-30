@@ -1,18 +1,19 @@
 class Profile::Know
 
-  def initialize
+  def initialize(user)
+    @user = user
     @experience_per_language = {}
   end
 
-  def run(user)
-    update_knowledges(user)
+  def run
+    update_knowledges
   end
 
-  def update_knowledges(user)
-    set_profile(user)
-    exercise_total = technologies(user).sum(:exercise)
-    technologies(user).each do |technology|
-      merge_knowledge(exercise_total, technology, user)
+  def update_knowledges
+    set_profile
+    exercise_total = technologies.sum(:exercise)
+    technologies.each do |technology|
+      merge_knowledge(exercise_total, technology)
     end
   end
 
@@ -22,21 +23,21 @@ class Profile::Know
 
   private
 
-  def merge_knowledge(exercise_total, technology, user)
-    language_exist = user.profile.knowledges.joins(:language).where("languages.id = ?", technology.language.id).last
+  def merge_knowledge(exercise_total, technology)
+    language_exist = @user.profile.knowledges.joins(:language).where("languages.id = ?", technology.language.id).last
     if language_exist
       language_exist.update(experience: calc_experience_per_technology(exercise_total, technology))
     else
-      user.profile.knowledges << Knowledge.create(experience: calc_experience_per_technology(exercise_total, technology), language: technology.language)
+      @user.profile.knowledges << Knowledge.create(experience: calc_experience_per_technology(exercise_total, technology), language: technology.language)
     end
   end
 
-  def set_profile(user)
-    user.profile = Profile.create(score: 0) unless user.profile
+  def set_profile
+    @user.profile = Profile.create(score: 0) unless @user.profile
   end
 
-  def technologies(user)
-    Technology.joins(repository: [:user]).where("users.id = ?", user.id)
+  def technologies
+    Technology.joins(repository: [:user]).where("users.id = ?", @user.id)
   end
 
   def experience(technology)

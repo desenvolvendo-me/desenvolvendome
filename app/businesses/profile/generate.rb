@@ -5,14 +5,15 @@ class Profile::Generate
   end
 
   def kown
-    Profile::Know.new.run @user
+    Profile::Know.new(@user).run
   end
 
   def score
-    Profile::Score.new.run @user
+    Profile::Score.new(@user).run
   end
 
   def evaluation
-    Profile::Followers.new.run @user
+    Evaluation::Programmer.new(@user).run
+    Evaluation::Influencer.new(@user).run
   end
 end

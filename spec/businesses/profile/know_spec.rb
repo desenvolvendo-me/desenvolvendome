@@ -4,7 +4,7 @@ RSpec.describe "Know" do
 
   before(:all) do
     @user = create(:user, :with_repository)
-    Profile::Know.new.run(@user)
+    Profile::Know.new(@user).run
   end
 
   it "knowledge" do
