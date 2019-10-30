@@ -21,7 +21,7 @@
 class Evaluation < ApplicationRecord
   belongs_to :profile
 
-  enum evaluation_type: [:programmer, :influencer, :polyglot]
+  enum evaluation_type: [:not_evaluation, :programmer, :influencer, :polyglot]
 
   validates_presence_of :evaluation_type, :level
 

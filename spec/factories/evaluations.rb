@@ -21,6 +21,6 @@
 FactoryBot.define do
   factory :evaluation do
     level {1}
-    evaluation_type {:influencer}
+    evaluation_type {:not_evaluation}
   end
 end
