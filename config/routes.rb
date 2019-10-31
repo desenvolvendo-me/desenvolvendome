@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
   mount LetterOpenerWeb::Engine, at: "/mail/inbox" if Rails.env.development?
 
-  root 'home#index'
+  root 'visits#index'
 
   #Visits
   get 'visits/index'
