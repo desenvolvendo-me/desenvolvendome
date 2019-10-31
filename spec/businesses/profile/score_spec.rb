@@ -20,7 +20,7 @@ RSpec.describe "GenerateScore" do
     Profile::Generate.new(@user).score
 
     expect(@user.profile.score).to eq(1.6)
-    evaluation = @user.profile.evaluations.first
+    evaluation = @user.profile.evaluations.where(evaluation_type: "influencer").take
     expect(evaluation.level).to eq(3)
     expect(evaluation.evaluation_type).to eq("influencer")
   end
