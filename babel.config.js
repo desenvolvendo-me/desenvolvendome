@@ -34,9 +34,22 @@ module.exports = function(api) {
           modules: false,
           exclude: ['transform-typeof-symbol']
         }
+      ],
+      [
+        require('@babel/preset-react').default,
+        {
+          development: isDevelopmentEnv || isTestEnv,
+          useBuiltIns: true
+        }
       ]
     ].filter(Boolean),
     plugins: [
+      [
+        "import",
+        {
+          "libraryName": "antd", "style": true
+        }
+      ],
       require('babel-plugin-macros'),
       require('@babel/plugin-syntax-dynamic-import').default,
       isTestEnv && require('babel-plugin-dynamic-import-node'),
@@ -65,6 +78,12 @@ module.exports = function(api) {
         require('@babel/plugin-transform-regenerator').default,
         {
           async: false
+        }
+      ],
+      isProductionEnv && [
+        require('babel-plugin-transform-react-remove-prop-types').default,
+        {
+          removeImport: true
         }
       ]
     ].filter(Boolean)

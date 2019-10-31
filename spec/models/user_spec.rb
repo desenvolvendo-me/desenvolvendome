@@ -47,7 +47,7 @@ RSpec.describe User, type: :model do
     expect(@user.profile.score).to eq(5.5)
     evaluation = @user.profile.evaluations.first
     expect(evaluation.level).to eq(1)
-    expect(evaluation.evaluation_type).to eq("influencer")
+    expect(evaluation.evaluation_type).to eq("not_evaluation")
 
   end
 

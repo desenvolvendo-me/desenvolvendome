@@ -5,11 +5,6 @@
 #                                perfis POST   /perfis(.:format)                                                                        perfis#create
 #                            new_perfil GET    /perfis/new(.:format)                                                                    perfis#new
 #                                perfil GET    /perfis/:id(.:format)                                                                    perfis#show
-#                           vuejs_index GET    /vuejs/index(.:format)                                                                   vuejs#index
-#                        paperkit_index GET    /paperkit/index(.:format)                                                                paperkit#index
-#                      paperkit_landing GET    /paperkit/landing(.:format)                                                              paperkit#landing
-#                      paperkit_profile GET    /paperkit/profile(.:format)                                                              paperkit#profile
-#                     paperkit_register GET    /paperkit/register(.:format)                                                             paperkit#register
 #         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
@@ -50,15 +45,6 @@ Rails.application.routes.draw do
   post "avaliacao", to: "users#create", as: "users"
   get "avaliacao/confirmacao", to: "users#confirmation", as: "confirmation_user"
   get "perfil/:id", to: "users#show", as: "user"
-
-  # Exemplo
-  # Rodando Vuejs
-  get 'vuejs/index'
-  # Rodando Elemento Bootstraps
-  get 'paperkit/index'
-  get 'paperkit/landing'
-  get 'paperkit/profile'
-  get 'paperkit/register'
 
 
 end
