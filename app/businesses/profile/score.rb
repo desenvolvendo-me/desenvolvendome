@@ -8,10 +8,15 @@ class Profile::Score
   def run
     programmer
     influencer
+    collaborator
     update_score
   end
 
   private
+
+  def collaborator
+    @score += Evaluation::Collaborator.new(@user).score
+  end
 
   def programmer
     @score += Evaluation::Programmer.new(@user).score
