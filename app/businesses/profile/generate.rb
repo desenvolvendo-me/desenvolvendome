@@ -15,5 +15,6 @@ class Profile::Generate
   def evaluation
     Evaluation::Programmer.new(@user).run
     Evaluation::Influencer.new(@user).run
+    Evaluation::Collaborator.new(@user).run
   end
 end

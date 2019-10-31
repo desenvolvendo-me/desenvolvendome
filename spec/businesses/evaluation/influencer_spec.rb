@@ -12,5 +12,12 @@ RSpec.describe "Influencer" do
     expect(evaluation.level).to eq(1)
   end
 
+  it "score" do
+    @user.update(followers: 133)
+
+    Profile::Score.new(@user).run
+
+    expect(@user.profile.score).to eq(2.8)
+  end
 
 end
