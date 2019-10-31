@@ -6,9 +6,9 @@ class Profile::Score
   end
 
   def run
+    collaborator
     programmer
     influencer
-    collaborator
     update_score
   end
 
