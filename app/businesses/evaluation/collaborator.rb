@@ -36,23 +36,32 @@ class Evaluation::Collaborator
     index = 0
     repositories = @user.repositories
 
-    stargazers_50 = repositories.where("stargazers_count >= 50").count
-    stargazers_100 = repositories.where("stargazers_count >= 100").count
-    stargazers_500 = repositories.where("stargazers_count >= 500").count
-    stargazers_1000 = repositories.where("stargazers_count >= 1000").count
+    stargazers_50 = repositories.where("stargazers_count >= 50 and stargazers_count < 100").count
+    stargazers_100 = repositories.where("stargazers_count >= 100 and stargazers_count < 500").count
+    stargazers_500 = repositories.where("stargazers_count >= 500 and stargazers_count < 1000").count
+    stargazers_1000 = repositories.where("stargazers_count >= 1000 and stargazers_count < 5000").count
     stargazers_5000 = repositories.where("stargazers_count >= 5000").count
 
     if stargazers_50 > 0
-      index = 1 + (0.1 * stargazers_50)
-    elsif stargazers_100 > 0
-      index = 2 + (0.2 * stargazers_100)
-    elsif stargazers_500 > 0
-      index = 3 + (0.3 * stargazers_500)
-    elsif stargazers_1000 > 0
-      index = 4 + (0.4 * stargazers_1000)
-    elsif stargazers_5000 > 0
-      index = 5 + (0.5 * stargazers_5000)
+      index += 1 + (0.1 * stargazers_50)
     end
+
+    if stargazers_100 > 0
+      index += 2 + (0.2 * stargazers_100)
+    end
+
+    if stargazers_500 > 0
+      index += 3 + (0.3 * stargazers_500)
+    end
+
+    if stargazers_1000 > 0
+      index += 4 + (0.4 * stargazers_1000)
+    end
+
+    if stargazers_5000 > 0
+      index += 5 + (0.5 * stargazers_5000)
+    end
+
     index
   end
 
