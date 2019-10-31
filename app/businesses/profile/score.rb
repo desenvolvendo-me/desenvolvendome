@@ -27,7 +27,7 @@ class Profile::Score
   end
 
   def update_score
-    @user.profile.update(score: @score)
+    @user.profile.update(score: @score.round(2))
   end
 
 end
