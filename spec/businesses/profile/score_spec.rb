@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "GenerateScore" do
 
-  before(:all) do
+  before(:each) do
     @user = create(:user, :with_repositories)
     Profile::Generate.new(@user).kown
   end
@@ -10,7 +10,7 @@ RSpec.describe "GenerateScore" do
   it "score" do
     Profile::Generate.new(@user).score
 
-    expect(@user.profile.score).to eq(1.2)
+    expect(@user.profile.score).to eq(2)
   end
 
 end

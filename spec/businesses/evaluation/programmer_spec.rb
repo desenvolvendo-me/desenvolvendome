@@ -7,18 +7,72 @@ RSpec.describe "Programmer" do
     Evaluation::Programmer.new(@user).run
   end
 
-  it "run" do
-    evaluation =  @user.profile.evaluations.where(evaluation_type: :programmer).take
-    expect(evaluation.level).to eq(2)
+  context "level" do
+
+    it "0" do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
+    it '1' do
+      evaluation = @user.profile.evaluations.where(evaluation_type: :programmer).take
+      expect(evaluation.level).to eq(1)
+    end
+
+    it '2' do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
+    it '3' do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
+    it '4' do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
+    it '5' do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
   end
 
-  it "score" do
-    @user.profile.knowledges.first.update(experience: 10)
+  context "score" do
 
-    Profile::Score.new(@user).run
+    it "+ 0" do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
 
-    expect(@user.profile.score).to eq(1.4)
+    it "+ 1" do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
+    it "+ 2" do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
+    it "+ 3" do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
+    it "+ 4" do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
+    it "+ 5" do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
   end
-
 
 end

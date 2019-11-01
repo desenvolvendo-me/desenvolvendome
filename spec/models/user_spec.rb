@@ -141,6 +141,35 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context "user programmer" do
+
+    it "level 1 and score" do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
+    it "level 2 and score" do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
+    it "level 3 and score" do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
+    it "level 4 and score" do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
+    it "level 5 and score" do
+      pending "pendente #{__FILE__}"
+      this_should_not_get_executed
+    end
+
+  end
+
   context "user collaborator" do
 
     it "level 0 and score" do
