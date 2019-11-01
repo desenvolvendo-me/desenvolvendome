@@ -10,7 +10,7 @@ class Evaluation::Programmer
 
   def level
     without_basic_knowledges = @user.profile.knowledges.joins(:language).where("languages.description NOT IN (?)", %w(CSS HTML))
-    case without_basic_knowledges.where("experience >= 25").count
+    case without_basic_knowledges.where("experience >= 33").count
     when 0
       level = 0
     when 1
