@@ -3,7 +3,6 @@ pt-BR:
     evaluation_type:
       programmer: "Programador"
       influencer: "Influenciador"
-      polyglot: "Poliglota"
       collaborator: "Colaborador"
     office:
       fullstack: "Full Stack"
