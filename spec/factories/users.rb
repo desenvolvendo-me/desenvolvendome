@@ -30,8 +30,8 @@ FactoryBot.define do
     name {"Marco"}
     bio {"Pai da Luísa, Empreendedor e Engenheiro de Software. Fã do ecossistema do Ruby e Rails, mas trabalho também com PHP, Java e Javascript."}
     avatar {"https://avatars2.githubusercontent.com/u/15907252?s=460&v=4"}
-    followers {1}
-    following {1}
+    followers {0}
+    following {0}
 
     trait :with_repositories do
       after(:create) do |user|
