@@ -11,11 +11,14 @@
       <div class="col-md-4">
         <h3>Linguagens</h3>
         <ul class="list-group">
-          <% @user.profile.knowledges.each do |knowledge| %>
+          <% knowledge_greater_than_1(@user).each do |knowledge| %>
             <li class="list-group-item d-flex justify-content-between align-items-center"><%= knowledge.language.description %>
               <span class="label label-<%= label_experience(knowledge.experience) %>"><%= number_to_percentage knowledge.experience, precision: 1 %></span>
             </li>
           <% end %>
+          <li class="list-group-item d-flex justify-content-between align-items-center"><%= "Outras" %>
+            <span class="label label-<%= label_experience(knowledge_less_than_1(@user).sum(:experience)) %>"><%= number_to_percentage knowledge_less_than_1(@user).sum(:experience), precision: 1 %></span>
+          </li>
         </ul>
       </div>
       <div class="col-md-4">
