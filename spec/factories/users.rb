@@ -36,7 +36,7 @@ FactoryBot.define do
     trait :with_repositories do
       after(:create) do |user|
         create(:repository, :with_technologies, user: user)
-        create(:repository, :with_technologies, stargazers_count: 50, user: user)
+        create(:repository, :with_technologies, user: user)
       end
     end
 
