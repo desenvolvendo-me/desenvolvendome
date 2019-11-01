@@ -33,8 +33,8 @@ RSpec.describe User, type: :model do
     expect(@user.name).to eq("Marco")
     expect(@user.login).to eq("marcodotcastro")
     expect(@user.office).to eq("fullstack")
-    expect(@user.followers).to eq(1)
-    expect(@user.following).to eq(1)
+    expect(@user.followers).to eq(0)
+    expect(@user.following).to eq(0)
 
     expect(@user.repositories.count).to eq(2)
     repository = @user.repositories.last
@@ -52,7 +52,21 @@ RSpec.describe User, type: :model do
 
   context "user influencer" do
 
-    it "level 1 and score and score" do
+    it "level 0 and score and score" do
+      #DADO
+
+      #QUANDO
+      Evaluation::Influencer.new(@user).run
+      Profile::Score.new(@user).run
+
+      #ENTÃO
+      evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
+      expect(@user.profile.score).to eq(1.0)
+      expect(evaluation.level).to eq(0)
+      expect(evaluation.evaluation_type).to eq("influencer")
+    end
+
+    it "level 1 and score" do
       #DADO
 
       #QUANDO
