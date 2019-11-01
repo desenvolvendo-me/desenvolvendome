@@ -26,29 +26,105 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   before(:all) do
-    @user = create(:user, :with_repository, :with_profile)
+    @user = create(:user, :with_repositories, :with_profile)
   end
 
-  it "create" do
+  it "user evaluation not_evaluation" do
     expect(@user.name).to eq("Marco")
     expect(@user.login).to eq("marcodotcastro")
     expect(@user.office).to eq("fullstack")
     expect(@user.followers).to eq(1)
     expect(@user.following).to eq(1)
 
-    expect(@user.repositories.count).to eq(1)
+    expect(@user.repositories.count).to eq(2)
     repository = @user.repositories.last
     expect(repository.name).to eq("hello_world")
 
     technology = repository.technologies.first
-    expect(technology.exercise).to eq(5.5)
+    expect(technology.exercise).to eq(5500)
     expect(technology.language.description).to eq("Portugol")
 
     expect(@user.profile.score).to eq(5.5)
     evaluation = @user.profile.evaluations.first
     expect(evaluation.level).to eq(1)
     expect(evaluation.evaluation_type).to eq("not_evaluation")
+  end
 
+  context "user influencer" do
+
+    it "level 1 and score and score" do
+      #DADO
+
+      #QUANDO
+      Evaluation::Influencer.new(@user).run
+      Profile::Score.new(@user).run
+
+      #ENTÃO
+      evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
+      expect(@user.profile.score).to eq(1.4)
+      expect(evaluation.level).to eq(1)
+      expect(evaluation.evaluation_type).to eq("influencer")
+    end
+
+    it "level 2 and score" do
+      #DADO
+      @user.update(followers: 51)
+
+      #QUANDO
+      Evaluation::Influencer.new(@user).run
+      Profile::Score.new(@user).run
+
+      #ENTÃO
+      evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
+      expect(@user.profile.score).to eq(1.6)
+      expect(evaluation.level).to eq(2)
+      expect(evaluation.evaluation_type).to eq("influencer")
+    end
+
+    it "level 3 and score" do
+      #DADO
+      @user.update(followers: 101)
+
+      #QUANDO
+      Evaluation::Influencer.new(@user).run
+      Profile::Score.new(@user).run
+
+      #ENTÃO
+      evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
+      expect(@user.profile.score).to eq(1.8)
+      expect(evaluation.level).to eq(3)
+      expect(evaluation.evaluation_type).to eq("influencer")
+    end
+
+    it "level 4 and score" do
+      #DADO
+      @user.update(followers: 151)
+
+      #QUANDO
+      Evaluation::Influencer.new(@user).run
+      Profile::Score.new(@user).run
+
+      #ENTÃO
+      evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
+      expect(@user.profile.score).to eq(2.0)
+      expect(evaluation.level).to eq(4)
+      expect(evaluation.evaluation_type).to eq("influencer")
+    end
+
+    it "level 5 and score" do
+      #DADO
+      @user.update(followers: 201)
+
+      #QUANDO
+      Evaluation::Influencer.new(@user).run
+      Profile::Score.new(@user).run
+
+      #ENTÃO
+      evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
+      expect(@user.profile.score).to eq(2.2)
+      expect(evaluation.level).to eq(5)
+      expect(evaluation.evaluation_type).to eq("influencer")
+    end
   end
 
 end
