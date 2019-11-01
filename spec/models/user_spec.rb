@@ -127,4 +127,96 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context "user collaborator" do
+
+    it "level 0 and score" do
+      #DADO
+
+      #QUANDO
+      Evaluation::Collaborator.new(@user).run
+      Profile::Score.new(@user).run
+
+      #ENTÃO
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(@user.profile.score).to eq(1.2)
+      expect(evaluation.level).to eq(0)
+      expect(evaluation.evaluation_type).to eq("collaborator")
+    end
+
+    it "level 1 and score" do
+      #DADO
+      @user.repositories.first.update(stargazers_count: 50)
+
+      #QUANDO
+      Evaluation::Collaborator.new(@user).run
+      Profile::Score.new(@user).run
+
+      #ENTÃO
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(@user.profile.score).to eq(1.4)
+      expect(evaluation.level).to eq(1)
+      expect(evaluation.evaluation_type).to eq("collaborator")
+    end
+
+    it "level 2 and score" do
+      #DADO
+      @user.repositories.first.update(stargazers_count: 100)
+
+      #QUANDO
+      Evaluation::Collaborator.new(@user).run
+      Profile::Score.new(@user).run
+
+      #ENTÃO
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(@user.profile.score).to eq(1.6)
+      expect(evaluation.level).to eq(2)
+      expect(evaluation.evaluation_type).to eq("collaborator")
+    end
+
+    it "level 3 and score" do
+      #DADO
+      @user.repositories.first.update(stargazers_count: 500)
+
+      #QUANDO
+      Evaluation::Collaborator.new(@user).run
+      Profile::Score.new(@user).run
+
+      #ENTÃO
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(@user.profile.score).to eq(1.8)
+      expect(evaluation.level).to eq(3)
+      expect(evaluation.evaluation_type).to eq("collaborator")
+    end
+
+    it "level 4 and score" do
+      #DADO
+      @user.repositories.first.update(stargazers_count: 1000)
+
+      #QUANDO
+      Evaluation::Collaborator.new(@user).run
+      Profile::Score.new(@user).run
+
+      #ENTÃO
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(@user.profile.score).to eq(2)
+      expect(evaluation.level).to eq(4)
+      expect(evaluation.evaluation_type).to eq("collaborator")
+    end
+
+    it "level 5 and score" do
+      #DADO
+      @user.repositories.first.update(stargazers_count: 5000)
+
+      #QUANDO
+      Evaluation::Collaborator.new(@user).run
+      Profile::Score.new(@user).run
+
+      #ENTÃO
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(@user.profile.score).to eq(2.2)
+      expect(evaluation.level).to eq(5)
+      expect(evaluation.evaluation_type).to eq("collaborator")
+    end
+  end
+
 end
