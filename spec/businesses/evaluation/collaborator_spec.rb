@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Collaborator" do
 
   before(:all) do
-    @user = create(:user, :with_repository, :with_profile)
+    @user = create(:user, :with_repositories, :with_profile)
     Evaluation::Collaborator.new(@user).run
   end
 

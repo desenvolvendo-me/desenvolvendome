@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Influencer" do
 
   before(:all) do
-    @user = create(:user, :with_repository, :with_profile)
+    @user = create(:user, :with_repositories, :with_profile)
     Evaluation::Influencer.new(@user).run
   end
 

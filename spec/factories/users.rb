@@ -33,7 +33,7 @@ FactoryBot.define do
     followers {1}
     following {1}
 
-    trait :with_repository do
+    trait :with_repositories do
       after(:create) do |user|
         create(:repository, :with_technologies, user: user)
         create(:repository, :with_technologies, stargazers_count: 50, user: user)

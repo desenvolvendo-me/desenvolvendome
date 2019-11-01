@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "GenerateScore" do
 
   before(:all) do
-    @user = create(:user, :with_repository)
+    @user = create(:user, :with_repositories)
     Profile::Generate.new(@user).kown
   end
 

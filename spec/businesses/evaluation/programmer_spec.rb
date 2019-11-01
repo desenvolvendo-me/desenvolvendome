@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Programmer" do
 
   before(:all) do
-    @user = create(:user, :with_repository, :with_profile)
+    @user = create(:user, :with_repositories, :with_profile)
     Evaluation::Programmer.new(@user).run
   end
 

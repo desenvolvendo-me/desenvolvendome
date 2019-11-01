@@ -1,2 +1,2 @@
 puts "User"
-FactoryBot.create(:user, :with_repository)
+FactoryBot.create(:user, :with_repositories)
