@@ -25,7 +25,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  before(:all) do
+  before(:each) do
     @user = create(:user, :with_repositories, :with_profile)
   end
 
@@ -75,8 +75,8 @@ RSpec.describe User, type: :model do
 
       #ENTÃO
       evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
-      expect(@user.profile.score).to eq(1.4)
-      expect(evaluation.level).to eq(1)
+      expect(@user.profile.score).to eq(1.0)
+      expect(evaluation.level).to eq(0)
       expect(evaluation.evaluation_type).to eq("influencer")
     end
 
@@ -90,7 +90,7 @@ RSpec.describe User, type: :model do
 
       #ENTÃO
       evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
-      expect(@user.profile.score).to eq(1.6)
+      expect(@user.profile.score).to eq(1.4)
       expect(evaluation.level).to eq(2)
       expect(evaluation.evaluation_type).to eq("influencer")
     end
@@ -105,7 +105,7 @@ RSpec.describe User, type: :model do
 
       #ENTÃO
       evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
-      expect(@user.profile.score).to eq(1.8)
+      expect(@user.profile.score).to eq(1.6)
       expect(evaluation.level).to eq(3)
       expect(evaluation.evaluation_type).to eq("influencer")
     end
@@ -120,7 +120,7 @@ RSpec.describe User, type: :model do
 
       #ENTÃO
       evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
-      expect(@user.profile.score).to eq(2.0)
+      expect(@user.profile.score).to eq(1.8)
       expect(evaluation.level).to eq(4)
       expect(evaluation.evaluation_type).to eq("influencer")
     end
@@ -135,7 +135,7 @@ RSpec.describe User, type: :model do
 
       #ENTÃO
       evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
-      expect(@user.profile.score).to eq(2.2)
+      expect(@user.profile.score).to eq(2)
       expect(evaluation.level).to eq(5)
       expect(evaluation.evaluation_type).to eq("influencer")
     end
@@ -152,7 +152,7 @@ RSpec.describe User, type: :model do
 
       #ENTÃO
       evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
-      expect(@user.profile.score).to eq(1.2)
+      expect(@user.profile.score).to eq(1.0)
       expect(evaluation.level).to eq(0)
       expect(evaluation.evaluation_type).to eq("collaborator")
     end
@@ -167,7 +167,7 @@ RSpec.describe User, type: :model do
 
       #ENTÃO
       evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
-      expect(@user.profile.score).to eq(1.4)
+      expect(@user.profile.score).to eq(1.2)
       expect(evaluation.level).to eq(1)
       expect(evaluation.evaluation_type).to eq("collaborator")
     end
@@ -182,7 +182,7 @@ RSpec.describe User, type: :model do
 
       #ENTÃO
       evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
-      expect(@user.profile.score).to eq(1.6)
+      expect(@user.profile.score).to eq(1.4)
       expect(evaluation.level).to eq(2)
       expect(evaluation.evaluation_type).to eq("collaborator")
     end
@@ -197,7 +197,7 @@ RSpec.describe User, type: :model do
 
       #ENTÃO
       evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
-      expect(@user.profile.score).to eq(1.8)
+      expect(@user.profile.score).to eq(1.6)
       expect(evaluation.level).to eq(3)
       expect(evaluation.evaluation_type).to eq("collaborator")
     end
@@ -212,7 +212,7 @@ RSpec.describe User, type: :model do
 
       #ENTÃO
       evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
-      expect(@user.profile.score).to eq(2)
+      expect(@user.profile.score).to eq(1.8)
       expect(evaluation.level).to eq(4)
       expect(evaluation.evaluation_type).to eq("collaborator")
     end
@@ -227,7 +227,7 @@ RSpec.describe User, type: :model do
 
       #ENTÃO
       evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
-      expect(@user.profile.score).to eq(2.2)
+      expect(@user.profile.score).to eq(2)
       expect(evaluation.level).to eq(5)
       expect(evaluation.evaluation_type).to eq("collaborator")
     end
