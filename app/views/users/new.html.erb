@@ -7,7 +7,7 @@
       <%= simple_form_for @user, defaults: {input_html: {class: 'avaliacao-form'}} do |f| %>
         <%= f.input :login, label: "GitHub", input_html: {class: 'form-control'} %>
         <%= f.input :email, label: "Email", input_html: { autocomplete: 'email' } %>
-        <%= f.input :office, label: "Tecnologia", collection: User.offices.keys, input_html: {class: 'form-control'} %>
+        <%= f.input :office, label: "Cargo", collection: User.offices.keys, input_html: {class: 'form-control'} %>
         <%= f.button :submit, "Avaliar", class: "btn btn-info btn-block btn-round" %>
       <% end %>
       <br />
