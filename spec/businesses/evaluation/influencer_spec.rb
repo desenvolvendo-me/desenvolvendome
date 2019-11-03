@@ -4,39 +4,60 @@ RSpec.describe "Influencer" do
 
   before(:all) do
     @user = create(:user, :with_repositories, :with_profile)
-    Evaluation::Influencer.new(@user).run
   end
 
   context "level" do
 
     it "0" do
+      Evaluation::Influencer.new(@user).run
+
       evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
       expect(evaluation.level).to eq(0)
     end
 
     it '1' do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.update(followers: 1)
+
+      Evaluation::Influencer.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
+      expect(evaluation.level).to eq(1)
     end
 
     it '2' do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.update(followers: 51)
+
+      Evaluation::Influencer.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
+      expect(evaluation.level).to eq(2)
     end
 
     it '3' do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.update(followers: 101)
+
+      Evaluation::Influencer.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
+      expect(evaluation.level).to eq(3)
     end
 
     it '4' do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.update(followers: 151)
+
+      Evaluation::Influencer.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
+      expect(evaluation.level).to eq(4)
     end
 
     it '5' do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.update(followers: 201)
+
+      Evaluation::Influencer.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :influencer).take
+      expect(evaluation.level).to eq(5)
     end
 
   end
