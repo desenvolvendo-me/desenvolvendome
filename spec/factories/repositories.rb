@@ -29,7 +29,6 @@ FactoryBot.define do
     size {330}
     forks_count {1}
     stargazers_count {9}
-    principal_technology {"C"}
 
     trait :with_technologies do
       after(:create) do |repository|
