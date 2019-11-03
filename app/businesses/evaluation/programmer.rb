@@ -9,8 +9,7 @@ class Evaluation::Programmer
   end
 
   def level
-    without_basic_knowledges = @user.profile.knowledges.joins(:language).where("languages.description NOT IN (?)", %w(CSS HTML))
-    case without_basic_knowledges.where("experience >= 25").count
+    case count_languages
     when 0
       level = 0
     when 1
@@ -40,6 +39,12 @@ class Evaluation::Programmer
     else
       Evaluation.create(level: level, evaluation_type: :programmer, profile: @user.profile)
     end
+  end
+
+  def count_languages
+    repositories_valids = @user.repositories.joins(technologies: :language).where("commits_count >= 250")
+    without_basic_knowledges = repositories_valids.where("languages.description NOT IN (?)", %w(CSS HTML))
+    without_basic_knowledges.select(:principal_technology).distinct.count
   end
 
 end

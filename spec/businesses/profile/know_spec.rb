@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Know" do
 
   before(:all) do
-    @user = create(:user, :with_repository)
+    @user = create(:user, :with_repositories)
     Profile::Know.new(@user).run
   end
 

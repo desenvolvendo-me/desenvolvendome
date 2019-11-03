@@ -30,13 +30,16 @@ FactoryBot.define do
     name {"Marco"}
     bio {"Pai da Luísa, Empreendedor e Engenheiro de Software. Fã do ecossistema do Ruby e Rails, mas trabalho também com PHP, Java e Javascript."}
     avatar {"https://avatars2.githubusercontent.com/u/15907252?s=460&v=4"}
-    followers {1}
-    following {1}
+    followers {0}
+    following {0}
 
-    trait :with_repository do
-      after(:create) do |user|
-        create(:repository, :with_technologies, user: user)
-        create(:repository, :with_technologies, stargazers_count: 50, user: user)
+    trait :with_repositories do
+      transient do
+        principal_technology {"Z"}
+      end
+      after(:create) do |user, evaluator|
+        create(:repository, :with_technologies, principal_technology: evaluator.principal_technology, commits_count: 250, user: user)
+        create(:repository, :with_technologies, principal_technology: evaluator.principal_technology, user: user)
       end
     end
 

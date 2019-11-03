@@ -20,16 +20,17 @@ RSpec.describe "Github" do
 
     repositories = @api_github.repos(login)
 
-    expect(repositories[0]['name']).to eq("projeto-ruby")
+    expect(repositories[0]['name']).to eq("php-blog")
+    expect(repositories[1]['name']).to eq("ruby-blog")
   end
 
   it "reppository" do
     login = "desenvolvendome"
-    repo = "projeto-ruby"
+    repo = "ruby-blog"
 
     repository = @api_github.repo(login, repo)
 
-    expect(repository['size']).to eq(141)
+    expect(repository['size']).to eq(142)
   end
 
 end
