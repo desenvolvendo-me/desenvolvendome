@@ -8,7 +8,7 @@ development:
   database: desenvolvendo_me_development
   username: postgres
   password: postgres
-  host: localhost
+  host: db
   port: 5432
 
   # Schema search path. The server defaults to $user,public
@@ -28,7 +28,7 @@ test:
   database: desenvolvendo_me_test
   username: postgres
   password: postgres
-  host: localhost
+  host: db
   port: 5432
 
 

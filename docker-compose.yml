@@ -1,8 +1,19 @@
 version: '3'
 
 services:
-  desenvolvendome-postgres:
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    container_name: "desenvolvendome-web"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  db:
     image: postgres
+    container_name: "desenvolvendome-db"
     environment:
       POSTGRES_PASSWORD: "postgres"
     ports:
