@@ -15,7 +15,7 @@ RSpec.describe "Github" do
   end
 
 
-  it "reppositories" do
+  it "repositories" do
     login = "desenvolvendome"
 
     repositories = @api_github.repos(login)
@@ -24,7 +24,7 @@ RSpec.describe "Github" do
     expect(repositories[1]['name']).to eq("ruby-blog")
   end
 
-  it "reppository" do
+  it "repository" do
     login = "desenvolvendome"
     repo = "ruby-blog"
 
