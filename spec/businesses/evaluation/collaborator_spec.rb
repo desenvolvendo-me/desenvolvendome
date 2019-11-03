@@ -64,16 +64,8 @@ RSpec.describe "Collaborator" do
 
   context "score" do
 
-    it "+ 1" do
-      @user.repositories.first.update(stargazers_count: 1)
-
-       Profile::Score.new(@user).run
-
-      expect(@user.profile.score).to eq(1)
-    end
-
     it "+ 1.2" do
-      @user.repositories.first.update(stargazers_count: 50)
+      @user.repositories.first.update(stargazers_count: 1)
 
        Profile::Score.new(@user).run
 
@@ -81,7 +73,7 @@ RSpec.describe "Collaborator" do
     end
 
     it "+ 1.4" do
-      @user.repositories.first.update(stargazers_count: 100)
+      @user.repositories.first.update(stargazers_count: 50)
 
        Profile::Score.new(@user).run
 
@@ -89,27 +81,35 @@ RSpec.describe "Collaborator" do
     end
 
     it "+ 1.6" do
-      @user.repositories.first.update(stargazers_count: 500)
+      @user.repositories.first.update(stargazers_count: 100)
 
-      Profile::Score.new(@user).run
+       Profile::Score.new(@user).run
 
       expect(@user.profile.score).to eq(1.6)
     end
 
     it "+ 1.8" do
-      @user.repositories.first.update(stargazers_count: 1000)
+      @user.repositories.first.update(stargazers_count: 500)
 
-       Profile::Score.new(@user).run
+      Profile::Score.new(@user).run
 
       expect(@user.profile.score).to eq(1.8)
     end
 
-    it "+ 2" do
+    it "+ 2.0" do
+      @user.repositories.first.update(stargazers_count: 1000)
+
+       Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(2.0)
+    end
+
+    it "+ 2.2" do
       @user.repositories.first.update(stargazers_count: 5000)
 
        Profile::Score.new(@user).run
 
-      expect(@user.profile.score).to eq(2)
+      expect(@user.profile.score).to eq(2.2)
     end
 
   end

@@ -24,7 +24,6 @@ FactoryBot.define do
   factory :repository do
     github_id {1}
     name {"hello_world"}
-    commits_count {1}
     fork {false}
     size {330}
     forks_count {1}

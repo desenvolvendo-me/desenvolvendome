@@ -35,10 +35,11 @@ FactoryBot.define do
 
     trait :with_repositories do
       transient do
+        commits_count {100}
         principal_technology {"Z"}
       end
       after(:create) do |user, evaluator|
-        create(:repository, :with_technologies, principal_technology: evaluator.principal_technology, commits_count: 250, user: user)
+        create(:repository, :with_technologies, principal_technology: evaluator.principal_technology, commits_count: evaluator.commits_count, user: user)
         create(:repository, :with_technologies, principal_technology: evaluator.principal_technology, user: user)
       end
     end
