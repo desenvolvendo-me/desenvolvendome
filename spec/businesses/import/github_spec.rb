@@ -33,8 +33,17 @@ RSpec.describe "Github" do
     end
 
     it "php-blog" do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      repository = @user.repositories.first
+      expect(repository.name).to eq("php-blog")
+      expect(repository.principal_technology).to eq("PHP")
+
+      technology = repository.technologies.first
+      expect(technology.exercise).to eq(86149)
+      expect(technology.language.description).to eq("PHP")
+
+      technology = repository.technologies.last
+      expect(technology.exercise).to eq(3)
+      expect(technology.language.description).to eq("CSS")
     end
 
   end
