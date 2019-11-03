@@ -72,33 +72,55 @@ RSpec.describe "Programmer" do
   context "score" do
 
     it "+ 0" do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.repositories.destroy_all
+
+      Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(0)
     end
 
     it "+ 1" do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(1)
     end
 
     it "+ 2" do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
+
+      Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(2)
     end
 
     it "+ 3" do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "B", user: @user)
+
+      Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(3)
     end
 
     it "+ 4" do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "B", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "C", user: @user)
+
+      Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(4)
     end
 
     it "+ 5" do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "B", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "C", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "D", user: @user)
+
+      Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(5)
     end
 
   end
