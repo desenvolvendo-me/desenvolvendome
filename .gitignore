@@ -31,4 +31,5 @@ yarn-debug.log*
 .yarn-integrity
 .idea
 .env
-.data
+/.data/*
+!/.data/.keep

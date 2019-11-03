@@ -1,0 +1,136 @@
+@import 'bootstrap-custom';
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #5a5a5a;
+}
+
+/* Header */
+header > nav.navbar{
+background-color: #7965CC;
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel-container{
+  background-color: #7965cc;
+  background-attachment: fixed;
+  background-position: center;
+  // height: calc(100vh - 48px);
+  display: flex;
+}
+.carousel-container .btn-primary{
+  background-color: rgb(114, 96, 189);
+  border-color: rgb(94, 79, 156);
+}
+
+.carousel-container canvas{
+  position: absolute;
+}
+.carousel {
+  margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 32rem;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 32rem;
+}
+
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+.marketing{
+  margin-top: 50px;
+}
+.marketing .icone{
+  color: #7965cc;
+  font-size: 112px;
+}
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.marketing h2 {
+  font-weight: 400;
+  line-height: 32px;
+  font-size: 24px;
+}
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+
+
+/* Featurettes
+------------------------- */
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.05rem;
+}
+
+/* Rodape */
+.footer-divider {
+  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+
+.justify-content-md-center{
+  min-height: calc(100vh - 143px);
+  align-content: center;
+}
+.card{
+  padding: 20px;
+}
+
+// Avaliação New
+.simple_form.new_user{
+  text-align: left;
+}

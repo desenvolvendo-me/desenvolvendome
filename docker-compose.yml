@@ -1,16 +1,44 @@
 version: '3'
 
+#TODO: Rails adicionar bunble em volume
 services:
-  desenvolvendome-postgres:
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid  && yarn install --check-files && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    container_name: "desenvolvendome-web"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    networks:
+      - app
+  db:
     image: postgres
+    container_name: "desenvolvendome-db"
     environment:
       POSTGRES_PASSWORD: "postgres"
-    ports:
-      - "5432:5432"
     volumes:
       - ./.data/postgres:/var/lib/postgresql/data
+    networks:
+      - app
   redis:
     image: redis
     container_name: "desenvolvendome-redis"
-    ports:
-      - "6379:6379"
+    networks:
+      - app
+  sidekiq:
+    build: .
+    container_name: "desenvolvendome-sidekiq"
+    volumes:
+      - .:/app
+    links:
+      - db
+      - redis
+    command: bundle exec sidekiq -q default
+    networks:
+      - app
+networks:
+  app:
+    driver: bridge

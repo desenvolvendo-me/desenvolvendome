@@ -5,9 +5,12 @@ Acesse: http://localhost:3000/mail/inbox
 ### Preview
 Acesse: http://localhost:3000/rails/mailers
 
-## Redis
+
+## Desenvolvendo local
 ```
-docker-compose up
+    docker-compose run web rake db:create
+    docker-compose run web rake db:migrate
+    docker-compose up -d
 ```
 
 ## Sidekiq

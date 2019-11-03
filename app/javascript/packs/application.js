@@ -8,6 +8,14 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+import "jquery"
+import "popper.js"
+import "bootstrap"
+
+document.addEventListener("turbolinks:load", () => {
+  
+})
+
 var componentRequireContext = require.context("pages", true);
 var ReactRailsUJS = require("react_ujs");
 ReactRailsUJS.useContext(componentRequireContext);
