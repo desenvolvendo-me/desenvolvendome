@@ -121,3 +121,16 @@ background-color: #7965CC;
     margin-top: 7rem;
   }
 }
+
+.justify-content-md-center{
+  min-height: calc(100vh - 143px);
+  align-content: center;
+}
+.card{
+  padding: 20px;
+}
+
+// Avaliação New
+.simple_form.new_user{
+  text-align: left;
+}

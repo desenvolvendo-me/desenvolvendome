@@ -8,7 +8,6 @@ Acesse: http://localhost:3000/rails/mailers
 
 ## Desenvolvendo local
 ```
-    docker-compose up --build
     docker-compose run web rake db:create
     docker-compose run web rake db:migrate
     docker-compose up -d
