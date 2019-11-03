@@ -6,9 +6,10 @@ class Import::Github
 
   def run(user)
     @user = user
-
-    basic_info
-    repositories
+    ActiveRecord::Base.transaction do
+      basic_info
+      repositories
+    end
   end
 
   def basic_info

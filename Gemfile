@@ -79,6 +79,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'chromedriver-helper'
+  gem 'rspec-benchmark'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
