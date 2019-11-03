@@ -13,7 +13,11 @@ class Profile::Generate
   end
 
   def evaluation
+    #Exact
     Evaluation::Programmer.new(@user).run
+    Evaluation::Disciplinarian.new(@user).run
+
+    #Human
     Evaluation::Influencer.new(@user).run
     Evaluation::Collaborator.new(@user).run
   end
