@@ -64,22 +64,31 @@ RSpec.describe "Collaborator" do
 
   context "score" do
 
-    it "+ 0" do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+    it "+ 1" do
+      @user.repositories.first.update(stargazers_count: 1)
+
+       Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(1)
     end
 
-    it "+ 0.2" do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+    it "+ 1.2" do
+      @user.repositories.first.update(stargazers_count: 50)
+
+       Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(1.2)
     end
 
-    it "+ 0.4" do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+    it "+ 1.4" do
+      @user.repositories.first.update(stargazers_count: 100)
+
+       Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(1.4)
     end
 
-    it "+ 0.6" do
+    it "+ 1.6" do
       @user.repositories.first.update(stargazers_count: 500)
 
       Profile::Score.new(@user).run
@@ -87,14 +96,20 @@ RSpec.describe "Collaborator" do
       expect(@user.profile.score).to eq(1.6)
     end
 
-    it "+ 0.8" do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+    it "+ 1.8" do
+      @user.repositories.first.update(stargazers_count: 1000)
+
+       Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(1.8)
     end
 
-    it "+ 1" do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+    it "+ 2" do
+      @user.repositories.first.update(stargazers_count: 5000)
+
+       Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(2)
     end
 
   end
