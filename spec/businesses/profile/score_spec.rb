@@ -10,7 +10,7 @@ RSpec.describe "GenerateScore" do
   it "score" do
     Profile::Generate.new(@user).score
 
-    expect(@user.profile.score).to eq(2)
+    expect(@user.profile.score).to eq(1)
   end
 
 end
