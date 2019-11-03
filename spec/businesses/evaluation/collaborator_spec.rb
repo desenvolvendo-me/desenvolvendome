@@ -4,44 +4,62 @@ RSpec.describe "Collaborator" do
 
   before(:each) do
     @user = create(:user, :with_repositories, :with_profile)
-    Evaluation::Collaborator.new(@user).run
   end
 
   context "level" do
 
     it "0" do
+      Evaluation::Collaborator.new(@user).run
+
       evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
       expect(evaluation.level).to eq(0)
     end
 
     it '1' do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.repositories.first.update(stargazers_count: 50)
+
+      Evaluation::Collaborator.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(evaluation.level).to eq(1)
     end
 
     it '2' do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.repositories.first.update(stargazers_count: 100)
+
+      Evaluation::Collaborator.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(evaluation.level).to eq(2)
     end
 
     it '3' do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.repositories.first.update(stargazers_count: 500)
+
+      Evaluation::Collaborator.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(evaluation.level).to eq(3)
     end
 
     it '4' do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.repositories.first.update(stargazers_count: 1000)
+
+      Evaluation::Collaborator.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(evaluation.level).to eq(4)
     end
 
     it '5' do
-      pending "pendente #{__FILE__}"
-      this_should_not_get_executed
+      @user.repositories.first.update(stargazers_count: 5000)
+
+      Evaluation::Collaborator.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(evaluation.level).to eq(5)
     end
 
-  end
-
-  it "run" do
   end
 
   context "score" do
