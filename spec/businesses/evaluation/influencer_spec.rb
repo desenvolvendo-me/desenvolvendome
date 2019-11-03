@@ -16,7 +16,7 @@ RSpec.describe "Influencer" do
     end
 
     it '1' do
-      @user.update(followers: 1)
+      @user.update(followers: 101)
 
       Evaluation::Influencer.new(@user).run
 
@@ -25,7 +25,7 @@ RSpec.describe "Influencer" do
     end
 
     it '2' do
-      @user.update(followers: 51)
+      @user.update(followers: 201)
 
       Evaluation::Influencer.new(@user).run
 
@@ -34,7 +34,7 @@ RSpec.describe "Influencer" do
     end
 
     it '3' do
-      @user.update(followers: 101)
+      @user.update(followers: 301)
 
       Evaluation::Influencer.new(@user).run
 
@@ -43,7 +43,7 @@ RSpec.describe "Influencer" do
     end
 
     it '4' do
-      @user.update(followers: 151)
+      @user.update(followers: 401)
 
       Evaluation::Influencer.new(@user).run
 
@@ -52,7 +52,7 @@ RSpec.describe "Influencer" do
     end
 
     it '5' do
-      @user.update(followers: 201)
+      @user.update(followers: 501)
 
       Evaluation::Influencer.new(@user).run
 
@@ -64,22 +64,14 @@ RSpec.describe "Influencer" do
 
   context "score" do
 
-    it "+ 1" do
-      Profile::Score.new(@user).run
-
-      expect(@user.profile.score).to eq(1)
-    end
-
     it "+ 1.2" do
-      @user.update(followers: 1)
-
       Profile::Score.new(@user).run
 
       expect(@user.profile.score).to eq(1.2)
     end
 
     it "+ 1.4" do
-      @user.update(followers: 51)
+      @user.update(followers: 101)
 
       Profile::Score.new(@user).run
 
@@ -87,7 +79,7 @@ RSpec.describe "Influencer" do
     end
 
     it "+ 1.6" do
-      @user.update(followers: 101)
+      @user.update(followers: 201)
 
       Profile::Score.new(@user).run
 
@@ -95,19 +87,27 @@ RSpec.describe "Influencer" do
     end
 
     it "+ 1.8" do
-      @user.update(followers: 151)
+      @user.update(followers: 301)
 
       Profile::Score.new(@user).run
 
       expect(@user.profile.score).to eq(1.8)
     end
 
-    it "+ 2" do
-      @user.update(followers: 201)
+    it "+ 2.0" do
+      @user.update(followers: 401)
 
       Profile::Score.new(@user).run
 
-      expect(@user.profile.score).to eq(2)
+      expect(@user.profile.score).to eq(2.0)
+    end
+
+    it "+ 2.2" do
+      @user.update(followers: 501)
+
+      Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(2.2)
     end
 
   end

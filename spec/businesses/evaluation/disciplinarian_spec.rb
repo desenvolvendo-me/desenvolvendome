@@ -26,7 +26,7 @@ RSpec.describe "Disciplinarian" do
 
     it '2' do
       @user.repositories.destroy_all
-      @user.repositories << create(:repository, :with_technologies, commits_count: 500, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
 
       Evaluation::Disciplinarian.new(@user).run
 
@@ -36,7 +36,7 @@ RSpec.describe "Disciplinarian" do
 
     it '3' do
       @user.repositories.destroy_all
-      @user.repositories << create(:repository, :with_technologies, commits_count: 1000, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 500, principal_technology: "A", user: @user)
 
       Evaluation::Disciplinarian.new(@user).run
 
@@ -46,7 +46,7 @@ RSpec.describe "Disciplinarian" do
 
     it '4' do
       @user.repositories.destroy_all
-      @user.repositories << create(:repository, :with_technologies, commits_count: 2000, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 1000, principal_technology: "A", user: @user)
 
       Evaluation::Disciplinarian.new(@user).run
 
@@ -56,7 +56,7 @@ RSpec.describe "Disciplinarian" do
 
     it '5' do
       @user.repositories.destroy_all
-      @user.repositories << create(:repository, :with_technologies, commits_count: 5000, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 2500, principal_technology: "A", user: @user)
 
       Evaluation::Disciplinarian.new(@user).run
 
@@ -84,7 +84,7 @@ RSpec.describe "Disciplinarian" do
 
     it "+ 1.4" do
       @user.repositories.destroy_all
-      @user.repositories << create(:repository, :with_technologies, commits_count: 500, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
 
       Profile::Score.new(@user).run
 
@@ -93,7 +93,7 @@ RSpec.describe "Disciplinarian" do
 
     it "+ 1.6" do
       @user.repositories.destroy_all
-      @user.repositories << create(:repository, :with_technologies, commits_count: 1000, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 500, principal_technology: "A", user: @user)
 
       Profile::Score.new(@user).run
 
@@ -102,7 +102,7 @@ RSpec.describe "Disciplinarian" do
 
     it "+ 1.8" do
       @user.repositories.destroy_all
-      @user.repositories << create(:repository, :with_technologies, commits_count: 2000, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 1000, principal_technology: "A", user: @user)
 
       Profile::Score.new(@user).run
 
@@ -111,7 +111,7 @@ RSpec.describe "Disciplinarian" do
 
     it "+ 2" do
       @user.repositories.destroy_all
-      @user.repositories << create(:repository, :with_technologies, commits_count: 5000, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 2500, principal_technology: "A", user: @user)
 
       Profile::Score.new(@user).run
 
