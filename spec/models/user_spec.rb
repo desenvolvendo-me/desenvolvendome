@@ -2,20 +2,21 @@
 #
 # Table name: users
 #
-#  id                :bigint           not null, primary key
-#  avatar            :string
-#  bio               :string
-#  email             :string
-#  evaluations_count :integer
-#  followers         :integer
-#  following         :integer
-#  login             :string
-#  name              :string
-#  office            :integer
-#  slug              :string
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  github_id         :integer
+#  id                 :bigint           not null, primary key
+#  avatar             :string
+#  bio                :string
+#  email              :string
+#  evaluations_count  :integer
+#  followers          :integer
+#  following          :integer
+#  login              :string
+#  name               :string
+#  office             :integer
+#  repositories_count :integer
+#  slug               :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  github_id          :integer
 #
 # Indexes
 #

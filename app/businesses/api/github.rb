@@ -13,8 +13,8 @@ class Api::Github
     JSON.parse(response.body)
   end
 
-  def repos(login)
-    response = @connect.get "/users/#{login}/repos?access_token=#{@github_api_key}"
+  def repos(login, page)
+    response = @connect.get "/users/#{login}/repos?page=#{page + 1}&per_page=100&access_token=#{@github_api_key}"
     JSON.parse(response.body)
   end
 
