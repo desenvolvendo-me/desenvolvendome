@@ -4,7 +4,7 @@ RSpec.describe "Github" do
 
   before(:all) do
     @user = create(:user, login: "desenvolvendome")
-    create(:repository, github_id: "218968548", stargazers_count: 1, user: @user)
+    create(:repository, name: 'php-blog', github_id: "218968548", stargazers_count: 1, user: @user)
     Import::Github.new.run(@user)
   end
 
@@ -49,7 +49,7 @@ RSpec.describe "Github" do
 
     it "ruby-blog update" do
       repository = @user.repositories.find_by(github_id: "218968548")
-      expect(repository.name).to eq("hello_world")
+      expect(repository.name).to eq("php-blog")
       expect(repository.stargazers_count).to eq(0)
 
       repository.update(pushed_at: "2019-11-01T11:16:01Z".to_date)
