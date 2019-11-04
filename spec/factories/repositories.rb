@@ -8,6 +8,7 @@
 #  forks_count          :integer
 #  name                 :string
 #  principal_technology :string
+#  pushed_at            :date
 #  size                 :integer
 #  stargazers_count     :integer
 #  created_at           :datetime         not null

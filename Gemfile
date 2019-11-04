@@ -80,6 +80,7 @@ group :test do
   gem 'webdrivers'
   gem 'chromedriver-helper'
   gem 'rspec-benchmark'
+  gem 'database_cleaner'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
