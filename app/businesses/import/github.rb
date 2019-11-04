@@ -56,7 +56,13 @@ class Import::Github
   def languages(repo, repository)
     @github.languages(@user.login, repo['name']).each do |language|
       lang = Language.find_or_create_by(description: language[0])
-      repository.technologies << Technology.create(exercise: language[1], language: lang)
+
+      technology = repository.technologies.find_by(language: lang)
+      unless technology
+        repository.technologies << Technology.create(exercise: language[1], language: lang)
+      else
+        technology.update(exercise: language[1])
+      end
     end
   end
 
