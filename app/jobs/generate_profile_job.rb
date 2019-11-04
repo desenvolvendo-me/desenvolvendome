@@ -5,6 +5,7 @@ class GenerateProfileJob < ApplicationJob
     import_github(user)
     profile_generate(user)
     send_profile(user)
+    evaluations_count(user)
   end
 
   def import_github(user)
@@ -19,5 +20,9 @@ class GenerateProfileJob < ApplicationJob
 
   def send_profile(user)
     ProfileMailer.with(user: user).evaluation_completed.deliver_now
+  end
+
+  def evaluations_count(user)
+    user.update(evaluations_count: user.evaluations_count.to_i + 1)
   end
 end
