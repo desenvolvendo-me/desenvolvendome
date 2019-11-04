@@ -25,16 +25,18 @@ class Import::Github
     @github.repos(@user.login).each do |repo|
       repo = repository(repo)
       commits = commits(repo)
-      repository = Repository.create(github_id: repo['id'],
-                                     name: repo['name'],
-                                     principal_technology: repo['language'],
-                                     fork: repo['fork'],
-                                     forks_count: repo['forks_count'],
-                                     stargazers_count: repo['stargazers_count'],
-                                     commits_count: commits ? commits['contributions'] : 0,
-                                     size: repo['size'])
-      languages(repo, repository)
-      @user.repositories << repository
+      unless Repository.find_by(github_id: repo['id'])
+        repository = Repository.create(github_id: repo['id'],
+                                       name: repo['name'],
+                                       principal_technology: repo['language'],
+                                       fork: repo['fork'],
+                                       forks_count: repo['forks_count'],
+                                       stargazers_count: repo['stargazers_count'],
+                                       commits_count: commits ? commits['contributions'] : 0,
+                                       size: repo['size'])
+        languages(repo, repository)
+        @user.repositories << repository
+      end
     end
   end
 
