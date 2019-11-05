@@ -1,43 +1,48 @@
-<div class="container">
+<div class="bg-perfil">
+</div>
+<div class="container container-profile">
   <div class="center-block">
-    <h1>Perfil</h1>
     <div class="row">
-      <div class="col-md-4">
-        <%= image_tag @user.avatar, size: "200x200" %>
-        <p>Score:
-          <span><button type="button" class="btn btn-<%= label_experience(@user.profile.score) %> btn-round"><%= @user.profile.score %></button></span>
-        </p>
-      </div>
-      <div class="col-md-4">
-        <h3>Linguagens</h3>
-        <ul class="list-group">
-          <% @user.profile.knowledges.each do |knowledge| %>
-            <li class="list-group-item d-flex justify-content-between align-items-center"><%= knowledge.language.description %>
-              <span class="label label-<%= label_experience(knowledge.experience) %>"><%= number_to_percentage knowledge.experience, precision: 1 %></span>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h3>Avaliações</h3>
-        <ul class="list-group">
-          <% @user.profile.evaluations.each do |evaluation| %>
-            <li class="list-group-item d-flex justify-content-between align-items-center"><%= t("enum.evaluation_type.#{evaluation.evaluation_type}") %>
-              <span class="label label-<%= label_level(evaluation.level) %>"><%= evaluation.level %></span>
-            </li>
-          <% end %>
-        </ul>
+      <div class="col-md-12">
+        <div class="image-container">
+          <%= image_tag @user.avatar, size: "150x150", class: "profile-image" %>
+          <p class="score-container">
+            <span class="score-title">Score</span>
+            <span class="score-value btn btn-primary"><%= @user.profile.score %></span>
+          </p>
+        </div>
+        <div class="profile-info">
+          <p class="name"><%= @user.name %></p>
+          <p class="login"><a href="https://github.com/<%= @user.login %>" title="<%= @user.login %>" target="_new">@<%= @user.login %></a></p>
+          <p class="office"><span><%= t("enum.office.#{@user.office}") %></span></p>
+          <p class="bio"><span><%= @user.bio %></span></p>
+        </div>
       </div>
     </div>
     <div class="row">
+        <%= react_component("VisitChat", { avaliacoes: @user.profile.evaluations }) %>
+    </div>
+    <div class="row">
       <div class="col-md-4">
-        <div class="profile-head">
-          <p>Github: <span><%= @user.login %></span></p>
-          <p>Nome: <span><%= @user.name %></span></p>
-          <p>Cargo: <span><%= t("enum.office.#{@user.office}") %></span></p>
-          <p>Bio: <span><%= @user.bio %></span></p>
-        </div>
-      </div>
+      <h3>Linguagens</h3>
+      <ul class="list-group">
+        <% @user.profile.knowledges.each do |knowledge| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center"><%= knowledge.language.description %>
+            <span class="label label-<%= label_experience(knowledge.experience) %>"><%= number_to_percentage knowledge.experience, precision: 1 %></span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h3>Avaliações</h3>
+      <ul class="list-group">
+        <% @user.profile.evaluations.each do |evaluation| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center"><%= t("enum.evaluation_type.#{evaluation.evaluation_type}") %>
+            <span class="label label-<%= label_level(evaluation.level) %>"><%= evaluation.level %></span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
     </div>
   </div>
 </div>
