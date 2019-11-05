@@ -5,7 +5,7 @@ puts "User: leonardoscorza, Score: 0.6"
 GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "leonardoscorza"))
 
 #FIXME: Pq os três tem a mesma nota?
-puts "User: marcodotcastro, Score: 2.2" #Score: 1
+puts "User: marcodotcastro, Score: 1.2" #Score: 1
 GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "marcodotcastro"))
 
 puts "User: lucascaton, Score: 2.2" #Score: 2

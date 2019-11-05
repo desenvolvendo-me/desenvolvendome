@@ -24,24 +24,28 @@
     </div>
     <div class="row">
       <div class="col-md-4">
-      <h3>Linguagens</h3>
-      <ul class="list-group">
-        <% @user.profile.knowledges.each do |knowledge| %>
-          <li class="list-group-item d-flex justify-content-between align-items-center"><%= knowledge.language.description %>
-            <span class="label label-<%= label_experience(knowledge.experience) %>"><%= number_to_percentage knowledge.experience, precision: 1 %></span>
+        <h3>Conhecimentos</h3>
+        <ul class="list-group">
+          <% knowledge_greater_than_1(@user).each do |knowledge| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center"><%= knowledge.language.description %>
+              <span class="label label-<%= label_experience(knowledge.experience) %>"><%= number_to_percentage knowledge.experience, precision: 1 %></span>
+            </li>
+          <% end %>
+          <li class="list-group-item d-flex justify-content-between align-items-center"><%= "Outras" %>
+            <span class="label label-<%= label_experience(knowledge_less_than_1(@user).sum(:experience)) %>"><%= number_to_percentage knowledge_less_than_1(@user).sum(:experience), precision: 1 %></span>
           </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="col-md-4">
-      <h3>Avaliações</h3>
-      <ul class="list-group">
-        <% @user.profile.evaluations.each do |evaluation| %>
-          <li class="list-group-item d-flex justify-content-between align-items-center"><%= t("enum.evaluation_type.#{evaluation.evaluation_type}") %>
-            <span class="label label-<%= label_level(evaluation.level) %>"><%= evaluation.level %></span>
-          </li>
-        <% end %>
-      </ul>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h3>Avaliações</h3>
+        <ul class="list-group">
+          <% @user.profile.evaluations.each do |evaluation| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center"><%= t("enum.evaluation_type.#{evaluation.evaluation_type}") %>
+              <span class="label label-<%= label_level(evaluation.level) %>"><%= evaluation.level %></span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
     </div>
   </div>
