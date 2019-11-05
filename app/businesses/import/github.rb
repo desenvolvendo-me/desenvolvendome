@@ -65,7 +65,7 @@ class Import::Github
 
       technology = repository.technologies.find_by(language: lang)
       unless technology
-        repository.technologies << Technology.create(exercise: language[1], language: lang)
+        Technology.create(exercise: language[1], language: lang, repository: repository)
       else
         technology.update(exercise: language[1])
       end
