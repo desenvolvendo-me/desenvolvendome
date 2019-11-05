@@ -28,7 +28,7 @@ class Import::Github
     pages = (repositories_count / 100) + 1
     pages.times do |page|
       @github.repos(@user.login, page).each.with_index do |repo, index|
-        Rails.logger.info "User: #{@user.login}, Repository: #{repo['name']} #{page * 100}#{index} to #{repositories_count}"
+        logging(index, repo, repositories_count)
         repo = repository(repo)
         commits = commits(repo)
         repository = Repository.find_by(github_id: repo['id']) #includes
@@ -58,6 +58,14 @@ class Import::Github
   end
 
   private
+
+  def logging(index, repo, repositories_count)
+    log = "User: #{@user.login}, "
+    log += "Repository: #{repo['name']}, "
+    log += "#{index + 1} to #{repositories_count}"
+
+    Rails.logger.info log
+  end
 
   def languages(repo, repository)
     @github.languages(@user.login, repo['name']).each do |language|
