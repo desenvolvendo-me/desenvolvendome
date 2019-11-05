@@ -35,7 +35,7 @@
     <div class="row">
       <div class="col-md-4">
         <div class="profile-head">
-          <p>Github: <span><%= @user.login %></span></p>
+          <p>Github: <span><%= link_to @user.login, "https://github.com/#{@user.login}", target: "_blank" %></span></p>
           <p>Nome: <span><%= @user.name %></span></p>
           <p>Cargo: <span><%= t("enum.office.#{@user.office}") %></span></p>
           <p>Bio: <span><%= @user.bio %></span></p>
