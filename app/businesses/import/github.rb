@@ -73,8 +73,10 @@ class Import::Github
   end
 
   def commits(repo)
+    github_commits = @github.commits(@user.login, repo['name'])
+    return nil unless github_commits
     commits = nil
-    @github.commits(@user.login, repo['name']).each do |contribuidor|
+    github_commits.each do |contribuidor|
       if contribuidor['login'] == @user.login
         commits = contribuidor
       end

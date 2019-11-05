@@ -25,7 +25,11 @@ class Api::Github
 
   def commits(login, repo)
     response = @connect.get "/repos/#{login}/#{repo}/contributors?access_token=#{@github_api_key}"
-    JSON.parse(response.body)
+    if response.status.eql? 200
+      JSON.parse(response.body)
+    else
+      nil
+    end
   end
 
   def languages(login, repo)

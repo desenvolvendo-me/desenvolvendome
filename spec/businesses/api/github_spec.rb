@@ -33,4 +33,33 @@ RSpec.describe "Github" do
     expect(repository['size']).to eq(142)
   end
 
+  context "commits" do
+    it "desenvolvendome/ruby-blog" do
+      login = "desenvolvendome"
+      repo = "ruby-blog"
+
+      commits = @api_github.commits(login, repo)
+
+      expect(commits.first['contributions']).to be > 0
+    end
+
+    it "leonardoscorza/KombiCode" do
+      login = "leonardoscorza"
+      repo = "KombiCode"
+
+      commits = @api_github.commits(login, repo)
+
+      expect(commits).to be_nil
+    end
+
+    it "lucascaton/udemy-dl" do
+      login = "lucascaton"
+      repo = "udemy-dl"
+
+      commits = @api_github.commits(login, repo)
+
+      expect(commits).to be_nil
+    end
+  end
+
 end
