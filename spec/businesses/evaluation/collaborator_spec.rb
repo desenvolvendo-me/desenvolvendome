@@ -2,22 +2,116 @@ require 'rails_helper'
 
 RSpec.describe "Collaborator" do
 
-  before(:all) do
-    @user = create(:user, :with_repository, :with_profile)
-    Evaluation::Collaborator.new(@user).run
+  before(:each) do
+    @user = create(:user, :with_repositories, :with_profile)
   end
 
-  it "run" do
-    evaluation =  @user.profile.evaluations.where(evaluation_type: :collaborator).take
-    expect(evaluation.level).to eq(1)
+  context "level" do
+
+    it "0" do
+      Evaluation::Collaborator.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(evaluation.level).to eq(0)
+    end
+
+    it '1' do
+      @user.repositories.first.update(stargazers_count: 50)
+
+      Evaluation::Collaborator.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(evaluation.level).to eq(1)
+    end
+
+    it '2' do
+      @user.repositories.first.update(stargazers_count: 100)
+
+      Evaluation::Collaborator.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(evaluation.level).to eq(2)
+    end
+
+    it '3' do
+      @user.repositories.first.update(stargazers_count: 500)
+
+      Evaluation::Collaborator.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(evaluation.level).to eq(3)
+    end
+
+    it '4' do
+      @user.repositories.first.update(stargazers_count: 1000)
+
+      Evaluation::Collaborator.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(evaluation.level).to eq(4)
+    end
+
+    it '5' do
+      @user.repositories.first.update(stargazers_count: 5000)
+
+      Evaluation::Collaborator.new(@user).run
+
+      evaluation = @user.profile.evaluations.where(evaluation_type: :collaborator).take
+      expect(evaluation.level).to eq(5)
+    end
+
   end
 
-  it "score" do
-    @user.repositories.first.update(stargazers_count: 500)
+  context "score" do
 
-    Profile::Score.new(@user).run
+    it "+ 1.2" do
+      @user.repositories.first.update(stargazers_count: 1)
 
-    expect(@user.profile.score).to eq(3)
+       Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(1.2)
+    end
+
+    it "+ 1.4" do
+      @user.repositories.first.update(stargazers_count: 50)
+
+       Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(1.4)
+    end
+
+    it "+ 1.6" do
+      @user.repositories.first.update(stargazers_count: 100)
+
+       Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(1.6)
+    end
+
+    it "+ 1.8" do
+      @user.repositories.first.update(stargazers_count: 500)
+
+      Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(1.8)
+    end
+
+    it "+ 2.0" do
+      @user.repositories.first.update(stargazers_count: 1000)
+
+       Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(2.0)
+    end
+
+    it "+ 2.2" do
+      @user.repositories.first.update(stargazers_count: 5000)
+
+       Profile::Score.new(@user).run
+
+      expect(@user.profile.score).to eq(2.2)
+    end
+
   end
 
 end
