@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="row">
-        <%= react_component("VisitChat", { avaliacoes: @user.profile.evaluations }) %>
+        <%= react_component("VisitChat", { avaliacoes: result_evaluations(@user.profile) }) %>
     </div>
     <div class="row">
       <div class="col-md-4">
