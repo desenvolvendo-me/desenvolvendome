@@ -1,30 +1,26 @@
 # INFORMAÇÕES
-## Email
-### Dev
-Acesse: http://localhost:3000/mail/inbox
-### Preview
-Acesse: http://localhost:3000/rails/mailers
-
-
 ## Desenvolvendo local
+### Docker
 ```
-    docker-compose run web rake db:create
-    docker-compose run web rake db:migrate
-    docker-compose up -d
+docker-compose run web rake db:create
+docker-compose run web rake db:migrate
+docker-compose up -d
 ```
-
-## Sidekiq
-
+### Sidekiq
 ```
 bundle exec sidekiq -q default
 ```
 Acesse: http://localhost:3000/sidekiq
+### Rake
+```
+rake profile:clean_duplicate            # Clear Duplicate User
+rake profile:update[user_login]         # Update Profile
+rake profile:update_all                 # Update All Profile
+```
 
-
+##IGNORAR DAQUI PRA BAIXO (AINDA NÃO DISPONÍVEL)
 ## Deploy
-
 ### Heroku
-
 ```
 heroku run bash
 rails db:migrate 

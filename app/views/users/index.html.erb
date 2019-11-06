@@ -1,0 +1,33 @@
+<div class="bg-perfil">
+</div>
+<div class="container container-profile">
+  <div class="center-block">
+    <div class="col-md-12">
+      <div class="row">
+        <% @users.joins(:profile).order('profiles.score DESC').each do |user| %>
+          <div class="col-md-3">
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="justify-content-between">
+                <% if user.avatar %>
+                  <%= image_tag user.avatar, size: "150x150", class: "profile-image" %>
+                <% end %>
+                <h5 class="mb-1">@<%= user.login %></h5>
+                <small class="text-muted">
+                  <span class="score-value btn btn-primary"><%= user.profile.score %></span>
+                </small>
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="mb-1"><%= link_to "Avaliação", user_path(user) %></p>
+                  </div>
+                  <div class="col-md-6">
+                    <p class="mb-1"><%= link_to "Github", "https://github.com/#{user.login}", target: "_blank" %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

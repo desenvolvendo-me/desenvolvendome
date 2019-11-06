@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get 'interesse/confirmacao', to: 'interests#show', as: "interest"
 
   #Users
+  get "avaliacoes", to: "users#index"
   get "avaliacao", to: "users#new", as: "new_user"
   post "avaliacao", to: "users#create", as: "users"
   get "avaliacao/confirmacao", to: "users#confirmation", as: "confirmation_user"
