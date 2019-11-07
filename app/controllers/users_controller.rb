@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.includes(profile: [knowledges: :language]).friendly.find(params[:id])
+    @user = User.includes(profile: [knowledges: :language]).where(login: params[:id]).take
   end
 
 end
