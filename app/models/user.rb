@@ -40,7 +40,7 @@ class User < ApplicationRecord
 
   enum office: [:fullstack, :frontend, :backend, :devops]
 
-  validates_presence_of :login, :email, :office
+  validates_presence_of :login, :email
 
   friendly_id :slug_name, use: :slugged
 
