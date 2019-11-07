@@ -3,6 +3,7 @@
 # Table name: profiles
 #
 #  id         :bigint           not null, primary key
+#  processing :integer
 #  score      :float
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
