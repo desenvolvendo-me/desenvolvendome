@@ -14,8 +14,12 @@
               <span class="score-value btn btn-primary">?</span>
             <% end %>
           </p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: <%= progress_bar(@user) %>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><%= number_to_percentage(progress_bar(@user), precision: 0) %></div>
+          </div>
         </div>
         <div class="profile-info">
+
           <p class="name"><%= @user.name %></p>
           <p class="login">
             <a href="https://github.com/<%= @user.login %>" title="<%= @user.login %>" target="_new">@<%= @user.login %></a>
