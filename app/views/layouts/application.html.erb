@@ -1,51 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Desenvolvendo Me</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>Desenvolvendo Me</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"/>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <%= stylesheet_pack_tag 'application' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"/>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <%= stylesheet_pack_tag 'application' %>
+</head>
 
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-        <div class="container">
-          <a class="navbar-brand" href="/">Desenvolvendo<span style="color:#16181F">Me</span></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="/">Início</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/avaliacao">Avaliação</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Instagram</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Youtube</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <%= yield %>
+<body>
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">Desenvolvendo<span style="color:#16181F">Me</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/avaliacao"><div class="btn btn-outline-light btn-small">Avaliação</div></a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.facebook.com/sitedesenvolvendome" target="_blank"><i class="fa fa-facebook-official"></i>Facebook</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.youtube.com/channel/UCp98bXHSc01w8fBfkkgHB1Q" target="_blank"><i class="fa fa-youtube-play"></i>Youtube</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" target="_blank"><i class="fa fa-book"></i>Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<%= yield %>
 
-    <!-- FOOTER -->
-    <footer class="container">
-      <hr class="footer-divider" />
-      <p class="float-right"><a href="#">Ir para Topo</a></p>
-      <p>&copy; 2019 DesenvolvendoMe. &middot; <a href="#">Privacidade</a> &middot; <a href="#">Termos</a></p>
-    </footer>
-  </body>
+<!-- FOOTER -->
+<footer class="container">
+  <hr class="footer-divider"/>
+  <p class="float-right"><a href="#">Ir para Topo</a></p>
+  <p>&copy; 2019 DesenvolvendoMe. &middot; <a href="#">Privacidade</a> &middot; <a href="#">Termos</a></p>
+</footer>
+</body>
 </html>
