@@ -2,15 +2,14 @@
   <div class="text-center">
     <div class="card card-register">
       <h3 class="title mx-auto">Avaliação</h3>
-      <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary" do %>
-        <i class="fab fa-github">Login GitHub</i>
-      <% end %>
-      <br>
-      <p>Enviaremos sua avaliação no email informado.</p>
-      <br>
-      <%= link_to new_interest_path, class: "btn btn-danger" do %>
-        <i class="fa fa-ban">Sem Github</i>
-      <% end %>
+      <div class="row">
+        <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary" do %>
+          <i class="fab fa-github">Login GitHub</i>
+        <% end %>
+        <%= link_to new_interest_path, class: "btn btn-danger" do %>
+          <i class="fa fa-ban">Sem Github</i>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
