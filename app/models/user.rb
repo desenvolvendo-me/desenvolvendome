@@ -57,4 +57,12 @@ class User < ApplicationRecord
       user.avatar = auth.info.image # assuming the user model has an image
     end
   end
+
+  before_update :start_processing
+
+  private
+
+  def start_processing
+    profile.update(processing: repositories_count)
+  end
 end

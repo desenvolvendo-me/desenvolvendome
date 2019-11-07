@@ -25,4 +25,14 @@
 class Repository < ApplicationRecord
   belongs_to :user, optional: true
   has_many :technologies, dependent: :destroy
+
+
+  after_save :update_processing
+
+  private
+
+  def update_processing
+    user.profile.update(processing: user.profile.processing - 1)
+  end
+
 end
