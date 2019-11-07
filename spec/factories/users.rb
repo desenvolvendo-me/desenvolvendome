@@ -2,25 +2,32 @@
 #
 # Table name: users
 #
-#  id                 :bigint           not null, primary key
-#  avatar             :string
-#  bio                :string
-#  email              :string
-#  evaluations_count  :integer
-#  followers          :integer
-#  following          :integer
-#  login              :string
-#  name               :string
-#  office             :integer
-#  repositories_count :integer
-#  slug               :string
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  github_id          :integer
+#  id                     :bigint           not null, primary key
+#  avatar                 :string
+#  bio                    :string
+#  email                  :string
+#  encrypted_password     :string           default(""), not null
+#  evaluations_count      :integer
+#  followers              :integer
+#  following              :integer
+#  login                  :string
+#  name                   :string
+#  office                 :integer
+#  provider               :string
+#  remember_created_at    :datetime
+#  repositories_count     :integer
+#  reset_password_sent_at :datetime
+#  reset_password_token   :string
+#  slug                   :string
+#  uid                    :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  github_id              :integer
 #
 # Indexes
 #
-#  index_users_on_slug  (slug) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_slug                  (slug) UNIQUE
 #
 
 FactoryBot.define do
