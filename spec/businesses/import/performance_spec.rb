@@ -18,7 +18,7 @@ RSpec.describe "Performance" do
 
   context "import" do
 
-    it "desenvolvendome" do
+    xit "desenvolvendome" do
       @user = create(:user, login: "desenvolvendome")
 
       expect {Import::Github.new.run(@user)}.to perform_under(10).sec

@@ -17,6 +17,7 @@
 FactoryBot.define do
   factory :profile do
     score {5.5}
+    processing {40}
 
     trait :with_knowledges do
       after(:create) do |profile|

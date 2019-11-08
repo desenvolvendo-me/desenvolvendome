@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "UserReal" do
 
-  it 'rafaelfranca' do
+  xit 'rafaelfranca' do
     @user = create(:user, login: "rafaelfranca")
 
     Import::Github.new.run(@user)

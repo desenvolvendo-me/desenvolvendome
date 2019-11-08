@@ -25,7 +25,7 @@ RSpec.describe "Programmer" do
     end
 
     it '2' do
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
 
       Evaluation::Programmer.new(@user).run
 
@@ -34,8 +34,8 @@ RSpec.describe "Programmer" do
     end
 
     it '3' do
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "A", user: @user)
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "B", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "B", user: @user)
 
       Evaluation::Programmer.new(@user).run
 
@@ -44,9 +44,9 @@ RSpec.describe "Programmer" do
     end
 
     it '4' do
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "A", user: @user)
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "B", user: @user)
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "C", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "B", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "C", user: @user)
 
       Evaluation::Programmer.new(@user).run
 
@@ -55,11 +55,11 @@ RSpec.describe "Programmer" do
     end
 
     it '5' do
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "A", user: @user)
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "B", user: @user)
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "C", user: @user)
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "D", user: @user)
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "E", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "B", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "C", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "D", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "E", user: @user)
 
       Evaluation::Programmer.new(@user).run
 
@@ -86,7 +86,7 @@ RSpec.describe "Programmer" do
     end
 
     it "+ 2.2" do
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
 
       Profile::Score.new(@user).run
 
@@ -94,8 +94,8 @@ RSpec.describe "Programmer" do
     end
 
     it "+ 3.2" do
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "A", user: @user)
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "B", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "B", user: @user)
 
       Profile::Score.new(@user).run
 
@@ -103,9 +103,9 @@ RSpec.describe "Programmer" do
     end
 
     it "+ 4.2" do
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "A", user: @user)
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "B", user: @user)
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "C", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "B", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "C", user: @user)
 
       Profile::Score.new(@user).run
 
@@ -113,10 +113,10 @@ RSpec.describe "Programmer" do
     end
 
     it "+ 5.2" do
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "A", user: @user)
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "B", user: @user)
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "C", user: @user)
-      @user.repositories << create(:repository, :with_technologies, commits_count: 100, principal_technology: "D", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "A", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "B", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "C", user: @user)
+      @user.repositories << create(:repository, :with_technologies, commits_count: 250, principal_technology: "D", user: @user)
 
       Profile::Score.new(@user).run
 
