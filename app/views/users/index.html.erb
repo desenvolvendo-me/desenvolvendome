@@ -17,7 +17,7 @@
                 </small>
                 <div class="row">
                   <div class="col-md-6">
-                    <p class="mb-1"><%= link_to "Avaliação", user_path(user) %></p>
+                    <p class="mb-1"><%= link_to "Avaliação", user_path(user.login) %></p>
                   </div>
                   <div class="col-md-6">
                     <p class="mb-1"><%= link_to "Github", "https://github.com/#{user.login}", target: "_blank" %></p>
