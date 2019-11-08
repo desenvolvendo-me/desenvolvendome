@@ -15,7 +15,9 @@
             <% end %>
           </p>
           <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: <%= progress_bar(@user) %>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><%= number_to_percentage(progress_bar(@user), precision: 0) %></div>
+            <% if @user.profile %>
+              <div class="progress-bar" role="progressbar" style="width: <%= progress_bar(@user) %>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><%= number_to_percentage(progress_bar(@user), precision: 0) %></div>
+            <% end %>
           </div>
         </div>
         <div class="profile-info">

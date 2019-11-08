@@ -32,7 +32,7 @@ class Repository < ApplicationRecord
   private
 
   def update_processing
-    user.profile.update(processing: user.profile.processing - 1)
+    user.profile.update(processing: user.profile.processing - 1) if user.profile
   end
 
 end

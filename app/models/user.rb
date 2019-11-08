@@ -63,6 +63,6 @@ class User < ApplicationRecord
   private
 
   def start_processing
-    profile.update(processing: repositories_count)
+    profile.update(processing: repositories_count) if profile
   end
 end
