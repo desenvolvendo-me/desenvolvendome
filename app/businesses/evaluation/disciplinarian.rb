@@ -36,30 +36,30 @@ class Evaluation::Disciplinarian
     index = 0
     repositories = @user.repositories
 
-    commits_100 = repositories.where("commits_count >= 100 and commits_count < 250").count
     commits_250 = repositories.where("commits_count >= 250 and commits_count < 500").count
     commits_500 = repositories.where("commits_count >= 500 and commits_count < 1000").count
     commits_1000 = repositories.where("commits_count >= 1000 and commits_count < 2500").count
-    commits_2500 = repositories.where("commits_count >= 2500").count
-
-    if commits_100 > 0
-      index += 1 + (0.1 * commits_100)
-    end
+    commits_2500 = repositories.where("commits_count >= 2500 and commits_count < 5000").count
+    commits_5000 = repositories.where("commits_count >= 5000").count
 
     if commits_250 > 0
-      index += 2 + (0.2 * commits_250)
+      index += 1 + (0.1 * commits_250)
     end
 
     if commits_500 > 0
-      index += 3 + (0.3 * commits_500)
+      index += 2 + (0.2 * commits_500)
     end
 
     if commits_1000 > 0
-      index += 4 + (0.4 * commits_1000)
+      index += 3 + (0.3 * commits_1000)
     end
 
     if commits_2500 > 0
-      index += 5 + (0.5 * commits_2500)
+      index += 4 + (0.4 * commits_2500)
+    end
+
+    if commits_5000 > 0
+      index += 5 + (0.5 * commits_5000)
     end
 
     index
