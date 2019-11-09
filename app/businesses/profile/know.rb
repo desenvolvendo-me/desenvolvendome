@@ -37,7 +37,7 @@ class Profile::Know
   end
 
   def technologies
-    Technology.joins(repository: [:user]).where("users.id = ?", @user.id)
+    Technology.joins(repository: [:user]).where("repositories.commits_count > 100 and users.id = ?", @user.id)
   end
 
   def experience(technology)
