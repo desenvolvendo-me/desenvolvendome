@@ -53,8 +53,8 @@ class User < ApplicationRecord
       user.login = auth.info.nickname
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
-      user.name = auth.info.name # assuming the user model has a name
-      user.avatar = auth.info.image # assuming the user model has an image
+      user.name = auth.info.name
+      user.avatar = auth.info.image
     end
   end
 
@@ -63,6 +63,7 @@ class User < ApplicationRecord
   private
 
   def start_processing
-    profile.update(processing: repositories_count) if profile
+    self.profile = Profile.new unless self.profile
+    self.profile.update(processing: repositories_count)
   end
 end

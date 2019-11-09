@@ -48,7 +48,7 @@ class Import::Github
                             forks_count: repo['forks_count'],
                             stargazers_count: repo['stargazers_count'],
                             commits_count: commits ? commits['contributions'] : 0,
-                            size: repo['size'])
+                            size: repo['size'], user: @user)
           languages(repo, repository)
         end
       end
