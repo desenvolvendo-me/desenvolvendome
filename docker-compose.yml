@@ -9,7 +9,7 @@ services:
     volumes:
       - .:/app
     ports:
-      - "3000:3000"
+      - "80:3000"
     depends_on:
       - db
     networks:
@@ -36,7 +36,7 @@ services:
     links:
       - db
       - redis
-    command: bundle exec sidekiq -q default
+    command: bash -c "yarn install --check-files && bundle && bundle exec sidekiq -q default"
     networks:
       - app
 networks:
