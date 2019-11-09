@@ -5,7 +5,9 @@ module ProfileHelper
   end
 
   def progress_bar(user)
-    (1 - (user.profile.processing.to_f / user.repositories_count.to_f)) * 100
+    processing = user.profile.processing.to_f / user.repositories_count.to_f
+    return 100 if processing == 1
+    (1 - processing) * 100
   end
 
 end
