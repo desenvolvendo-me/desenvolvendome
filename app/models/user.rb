@@ -49,6 +49,7 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
+    reimport(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.login = auth.info.nickname
       user.email = auth.info.email
@@ -61,6 +62,10 @@ class User < ApplicationRecord
   before_update :start_processing
 
   private
+
+  def self.reimport(auth)
+    User.find_by_login(auth.info.nickname).try(:destroy)
+  end
 
   def start_processing
     self.profile = Profile.new unless self.profile
