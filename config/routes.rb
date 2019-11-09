@@ -55,16 +55,13 @@ Rails.application.routes.draw do
   get 'visits/index'
 
   #Interests
-  get 'interesse', to: 'interests#new', as: "new_interest"
-  post "interesse", to: "interests#create", as: "interests"
-  get 'interesse/confirmacao', to: 'interests#show', as: "interest"
+  resources :interests
 
-  #Users
-  get "avaliacoes", to: "users#index"
-  get "avaliacao", to: "users#new", as: "new_user"
-  post "avaliacao", to: "users#create", as: "users"
-  get "avaliacao/confirmacao", to: "users#confirmation", as: "confirmation_user"
-  get "perfil/:id", to: "users#show", as: "user"
+  #Analyze
+  get "analysis", to: "users#index"
+  get "analyze", to: "users#new", as: "new_user"
+  post "analyze", to: "users#create", as: "users"
+  get "profile/:id", to: "users#show", as: "user"
 
 
 end

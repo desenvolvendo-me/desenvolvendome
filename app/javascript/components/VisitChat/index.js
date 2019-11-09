@@ -4,7 +4,7 @@ import {
 } from 'recharts';
 
 export default function VisitChat(props) {
-    const data = props.avaliacoes.map(item => ({
+    const data = props.analysis.map(item => ({
         label: item.evaluation_type,
         level: item.level,
         fullMark: 8

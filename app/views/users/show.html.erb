@@ -32,7 +32,7 @@
     </div>
     <% if @user.profile %>
       <div class="row">
-        <%= react_component("VisitChat", {avaliacoes: result_evaluations(@user.profile)}) %>
+        <%= react_component("VisitChat", {analysis: result_evaluations(@user.profile)}) %>
       </div>
       <div class="row">
         <div class="col-md-4">
@@ -49,7 +49,7 @@
           </ul>
         </div>
         <div class="col-md-4">
-          <h3>Avaliações</h3>
+          <h3>Análise</h3>
           <ul class="list-group">
             <% @user.profile.evaluations.each do |evaluation| %>
               <li class="list-group-item d-flex justify-content-between align-items-center"><%= t("enum.evaluation_type.#{evaluation.evaluation_type}") %>
