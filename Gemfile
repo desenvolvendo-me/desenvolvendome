@@ -15,6 +15,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'font-awesome-sass', '~> 5.11.2'
 gem 'devise'
 gem 'omniauth-github'
+gem 'activerecord-session_store'
+
 #React
 gem 'react-rails'
 
