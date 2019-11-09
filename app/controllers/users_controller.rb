@@ -11,9 +11,6 @@ class UsersController < ApplicationController
   def show
   end
 
-  def confirmation
-  end
-
   private
 
   def set_user
