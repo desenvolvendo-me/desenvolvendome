@@ -9,7 +9,7 @@
           <p class="score-container">
             <span class="score-title">Score</span>
             <% if @user.profile %>
-              <span class="score-value btn btn-primary"><%= @user.profile.score %></span>
+              <span class="score-value btn btn-primary"><%= @user.profile.score.to_f %></span>
             <% else %>
               <span class="score-value btn btn-primary">?</span>
             <% end %>
