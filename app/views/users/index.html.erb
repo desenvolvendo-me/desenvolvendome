@@ -12,9 +12,11 @@
                   <%= image_tag user.avatar, size: "150x150", class: "profile-image" %>
                 <% end %>
                 <h5 class="mb-1">@<%= user.login %></h5>
-                <small class="text-muted">
-                  <span class="score-value btn btn-primary"><%= user.profile.score %></span>
-                </small>
+                <% if user.profile %>
+                  <span class="score-value btn btn-primary"><%= user.profile.score.to_f %></span>
+                <% else %>
+                  <span class="score-value btn btn-primary">?</span>
+                <% end %>
                 <div class="row">
                   <div class="col-md-6">
                     <p class="mb-1"><%= link_to "Análise", user_path(user.login) %></p>
