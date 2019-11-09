@@ -4,15 +4,13 @@ class Profile::Generate
     @user = user
   end
 
-  def kown
-    Profile::Know.new(@user).run
-  end
-
   def score
     Profile::Score.new(@user).run
   end
 
   def evaluation
+    Evaluation::Know.new(@user).run
+
     #Exact
     Evaluation::Programmer.new(@user).run
     Evaluation::Disciplinarian.new(@user).run

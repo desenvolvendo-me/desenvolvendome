@@ -13,7 +13,6 @@ class GenerateProfileJob < ApplicationJob
   end
 
   def profile_generate(user)
-    Profile::Generate.new(user).kown
     Profile::Generate.new(user).evaluation
     Profile::Generate.new(user).score
   end

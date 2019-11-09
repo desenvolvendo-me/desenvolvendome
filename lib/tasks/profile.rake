@@ -5,7 +5,6 @@ namespace :profile do
     user = User.find_by_login(args[:user_login])
 
     if user
-      Profile::Generate.new(user).kown
       Profile::Generate.new(user).score
       Profile::Generate.new(user).evaluation
       puts "Updated: #{user.name}"
@@ -18,7 +17,6 @@ namespace :profile do
   desc "Update All Profile"
   task update_all: :environment do
     User.all.each do |user|
-      Profile::Generate.new(user).kown
       Profile::Generate.new(user).score
       Profile::Generate.new(user).evaluation
       puts "Updated: #{user.name}"
