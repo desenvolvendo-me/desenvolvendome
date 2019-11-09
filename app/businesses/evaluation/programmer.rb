@@ -42,7 +42,7 @@ class Evaluation::Programmer
   end
 
   def count_languages
-    repositories_valids = @user.repositories.joins(technologies: :language).where("commits_count >= 200")
+    repositories_valids = @user.repositories.joins(technologies: :language).where("commits_count >= 100")
     without_basic_knowledges = repositories_valids.where("languages.description NOT IN (?)", %w(CSS HTML))
     without_basic_knowledges.select(:principal_technology).distinct.count
   end
