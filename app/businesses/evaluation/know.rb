@@ -37,7 +37,7 @@ class Evaluation::Know
   end
 
   def technologies
-    Technology.joins(repository: [:user]).where("repositories.commits_count > 100 and users.id = ?", @user.id)
+    Technology.joins(:language, repository: [:user]).where("repositories.commits_count > 100 and users.id = ?", @user.id).where("languages.description NOT IN (?)", %w(CSS HTML))
   end
 
   def experience(technology)
