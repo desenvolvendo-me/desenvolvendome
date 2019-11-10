@@ -2,60 +2,60 @@
 
   <div class="carousel-container" id="carousel-container">
     <div id="myCarousel" class="carousel slide container" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Entenda suas Habilidades</h1>
-            <p>Utilizando inteligência artificial, entenda as habilidades que você possui.</p>
-            <p><a class="btn btn-lg btn-primary" href="# " role="button">Saiba Mais</a></p>
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Entenda suas Habilidades</h1>
+              <p>Entenda as habilidades que você possui utilizando nossa inteligência artificial.</p>
+              <p><%= link_to "Saiba Mais", new_user_path, class: "btn btn-lg btn-primary" %></p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Entenda as Mudanças</h1>
+              <p>Entenda o contexto das tecnologias nas novas empresas de TI.o</p>
+              <p><%= link_to "Acesse Agora", new_interest_path, class: "btn btn-lg btn-primary" %></p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Curso</h1>
-            <p>Tenha acesso a um catálogo de vídeos sobre o assunto</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Acesse Agora</a></p>
-          </div>
-        </div>
-      </div>
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Próximo</span>
+      </a>
     </div>
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Anterior</span>
-    </a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Próximo</span>
-    </a>
-  </div>
   </div>
 
 
   <div class="container marketing">
 
-    
+
     <div class="row">
       <div class="col-lg-4">
-        <%= icon('fas', 'project-diagram', class: "icone")%>
-        <h2>Entenda suas Habilidades</h2>
-        <p>Utilizando inteligência artificial, entenda as habilidades que você possui</p>
+        <%= icon('fas', 'project-diagram', class: "icone") %>
+        <h2>Se Conheça</h2>
+        <p>Entenda as habilidades que você possui utilizando nossa inteligência artificial.</p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-      <%= icon('fas', 'chart-area', class: "icone")%>
-        <h2>Mercado de Trabalho</h2>
-        <p>Entenda o Contexto das tecnologias nas empresas de TI.</p>
+        <%= icon('fas', 'chart-area', class: "icone") %>
+        <h2>Conheça o Mercado</h2>
+        <p>Entenda o contexto das tecnologias nas novas empresas de TI.</p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <%= icon('fas', 'chart-line', class: "icone")%>
-        <h2>Saiba onde deseja chegar</h2>
-        <p>Apartir da baseline trilhe seus estudos para se tornar um profissional completo</p>
+        <%= icon('fas', 'chart-line', class: "icone") %>
+        <h2>Se Prepare</h2>
+        <p>Trilhe seus planejamento para se tornar um profissional do novo mercado.</p>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
@@ -66,11 +66,16 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">Entenda suas Habilidades</h2>
-        <p class="lead">Utilizando inteligência artificial, entenda as habilidades que você possui</p>
+        <h2 class="featurette-heading">Se Conheça</h2>
+        <p class="lead">Anualmente se formam nas faculdade brasileiro mais de 77 mil alunos, mas somente 26 mil
+          encontram trabalho no setor, ou seja 33%.</p>
       </div>
       <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#eee"/>
+          <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+        </svg>
       </div>
     </div>
 
@@ -78,11 +83,16 @@
 
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Mercado de Trabalho</h2>
-        <p class="lead">Entenda o Contexto das tecnologias nas empresas de TI.</p>
+        <h2 class="featurette-heading">Conheça o Mercado</h2>
+        <p class="lead">No Brasil existem mais de 19,5 mil, desse total 12,7 mil são startups, sendo que 9 já se
+          tornaram unicórnios.</p>
       </div>
       <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#eee"/>
+          <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+        </svg>
       </div>
     </div>
 
@@ -90,128 +100,140 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">Saiba onde deseja chegar</h2>
-        <p class="lead">Apartir da baseline trilhe seus estudos para se tornar um profissional completo</p>
+        <h2 class="featurette-heading">Se Prepare</h2>
+        <p class="lead">Com o autoconhecimento, conhecimento do mercado e um bom planejametno você pode ser capaz de trabalhar em qualquer startup ou cria sua.</p>
       </div>
       <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#eee"/>
+          <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+        </svg>
       </div>
     </div>
 
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-12 order-md-2 text-center">
+        <h2 class="featurette-heading">Analise seu Perfil</h2>
+        <p><%= link_to "Conheça Suas Habilidades", new_user_path, class: "btn btn-lg btn-primary" %></p>
+      </div>
+    </div>
     <!-- /END THE FEATURETTES -->
 
   </div><!-- /.container -->
 </main>
 <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-  particlesJS('carousel-container', {
-    "particles": {
-      "number": {
-        "value": 38,
-        "density": {
-          "enable": true,
-          "value_area": 800
-        }
-      },
-      "color": {
-        "value": "#ffffff"
-      },
-      "shape": {
-        "type": "circle",
-        "stroke": {
-          "width": 0,
-          "color": "#000000"
+    particlesJS('carousel-container', {
+        "particles": {
+            "number": {
+                "value": 38,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+            },
+            "color": {
+                "value": "#ffffff"
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                },
+                "image": {
+                    "src": "img/github.svg",
+                    "width": 100,
+                    "height": 100
+                }
+            },
+            "opacity": {
+                "value": 0.5,
+                "random": false,
+                "anim": {
+                    "enable": false,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                    "enable": false,
+                    "speed": 40,
+                    "size_min": 0.1,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#ffffff",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 3.1565905665290903,
+                "direction": "none",
+                "random": true,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
         },
-        "polygon": {
-          "nb_sides": 5
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "repulse"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 400,
+                    "line_linked": {
+                        "opacity": 1
+                    }
+                },
+                "bubble": {
+                    "distance": 400,
+                    "size": 40,
+                    "duration": 2,
+                    "opacity": 8,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 200,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+            }
         },
-        "image": {
-          "src": "img/github.svg",
-          "width": 100,
-          "height": 100
-        }
-      },
-      "opacity": {
-        "value": 0.5,
-        "random": false,
-        "anim": {
-          "enable": false,
-          "speed": 1,
-          "opacity_min": 0.1,
-          "sync": false
-        }
-      },
-      "size": {
-        "value": 3,
-        "random": true,
-        "anim": {
-          "enable": false,
-          "speed": 40,
-          "size_min": 0.1,
-          "sync": false
-        }
-      },
-      "line_linked": {
-        "enable": true,
-        "distance": 150,
-        "color": "#ffffff",
-        "opacity": 0.4,
-        "width": 1
-      },
-      "move": {
-        "enable": true,
-        "speed": 3.1565905665290903,
-        "direction": "none",
-        "random": true,
-        "straight": false,
-        "out_mode": "out",
-        "bounce": false,
-        "attract": {
-          "enable": false,
-          "rotateX": 600,
-          "rotateY": 1200
-        }
-      }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": {
-          "enable": true,
-          "mode": "repulse"
-        },
-        "onclick": {
-          "enable": true,
-          "mode": "push"
-        },
-        "resize": true
-      },
-      "modes": {
-        "grab": {
-          "distance": 400,
-          "line_linked": {
-            "opacity": 1
-          }
-        },
-        "bubble": {
-          "distance": 400,
-          "size": 40,
-          "duration": 2,
-          "opacity": 8,
-          "speed": 3
-        },
-        "repulse": {
-          "distance": 200,
-          "duration": 0.4
-        },
-        "push": {
-          "particles_nb": 4
-        },
-        "remove": {
-          "particles_nb": 2
-        }
-      }
-    },
-    "retina_detect": true
-  });
+        "retina_detect": true
+    });
 </script>
