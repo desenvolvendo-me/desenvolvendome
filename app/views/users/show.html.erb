@@ -21,7 +21,6 @@
           </div>
         </div>
         <div class="profile-info">
-
           <p class="name"><%= @user.name %></p>
           <p class="login">
             <a href="https://github.com/<%= @user.login %>" title="<%= @user.login %>" target="_new">@<%= @user.login %></a>
@@ -38,7 +37,33 @@
         <div class="col-md-6">
           <%= react_component("VisitChatAnalise", {data: result_evaluations(@user.profile)}) %>
         </div>
+        <div class="col-md-6">
+          Legenda
+          <ul>
+            <li>
+              Tecnologia que mais pratica e conhece
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          Legenda
+          <ul>
+            <li>
+              Programador: demonstra o quanto conhece
+            </li>
+            <li>
+              Disciplinador: demonstra o quanto pratica
+            </li>
+            <li>
+              Colaborador: demonstra o quanto criar projetos úteis
+            </li>
+            <li>
+              Influenciador: demonstra o quanto cria projetos interessantes
+            </li>
+          </ul>
+        </div>
       </div>
+
     <% end %>
   </div>
 </div>
