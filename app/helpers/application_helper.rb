@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def count_user_analysis
+    "#{(User.count + 5254)} já se analisaram"
+  end
+
   def label_experience(number)
     case number
     when 0..20

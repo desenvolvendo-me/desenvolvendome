@@ -1,21 +1,26 @@
 <div class="container container-users-new">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card card-signin my-5">
-          <div class="card-body">
-            <h5 class="card-title text-center">Análise do Perfil</h5>
-            <form class="form-signin">
-              <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary" do %>
-                <i class="fab fa-github">Login GitHub</i>
-              <% end %>
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="text-center">
+          <p class="text-success"><%= count_user_analysis %> </p>
+        </div>
+        <div class="card-body">
 
-              <hr class="my-4">
-              <%= link_to new_interest_path, class: "btn btn-block" do %>
-                <i class="fa fa-ban">Sem Github</i>
-              <% end %>
-            </form>
-          </div>
+          <h5 class="card-title text-center">Análise do Perfil</h5>
+          <form class="form-signin">
+            <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary" do %>
+              <i class="fab fa-github">Login GitHub</i>
+            <% end %>
+            <hr class="my-4">
+            <%= link_to new_interest_path, class: "btn btn-block" do %>
+              <i class="fa fa-ban">Sem Github?</i>
+              Clique Aqui
+            <% end %>
+          </form>
+
         </div>
       </div>
     </div>
   </div>
+</div>
