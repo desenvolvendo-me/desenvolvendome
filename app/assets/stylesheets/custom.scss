@@ -20,6 +20,10 @@ background-color: #7965CC;
   margin-right: 5px;
 }
 
+.container-card{
+  margin-top: 30px;
+}
+
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -198,4 +202,12 @@ background-color: #7965CC;
 // Interests New
 .container-intests-new{
   margin-top: 30px;
+}
+
+// Users New
+.container-users-new{
+  margin-top: 30px;
+}
+.container-users-new .btn{
+  width: 100%;
 }
