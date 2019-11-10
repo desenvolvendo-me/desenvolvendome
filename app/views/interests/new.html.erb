@@ -1,20 +1,17 @@
-<div class="container">
-  <div class="text-center">
-    <h3>Quer saber como evoluir na carreira de programação?</h3>
-    <h3>Quer saber como criar um marketing pessoal eficiente?</h3>
-    <h3>Quer saber como melhorar seus estudos sobre programação?</h3>
-    <h3>Quer saber como como acompanhar a evolução como programador?</h3>
-
-    <h2>Então cadastre-se para receber dicas</h2>
-    <h2>para ser desejado no mercado de TI</h2>
-    <div class="row justify-content-md-center">
-      <div class="text-center">
-        <%= simple_form_for @interest, defaults: {input_html: {class: 'register-form'}} do |f| %>
-          <%= f.input :email, label: false, placeholder: "email", input_html: {class: 'form-control'} %>
-          <br>
-          <%= f.button :submit, "Cadastre-se", class: "btn btn-info btn-block btn-round" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="container container-intests-new">
+  <article class="card-body mx-auto" style="max-width: 400px;">
+    <ul class="list-group">
+      <li class="list-group-item">Quer saber como evoluir na carreira de programação?</li>
+      <li class="list-group-item">Quer saber como criar um marketing pessoal eficiente?</li>
+      <li class="list-group-item">Quer saber como melhorar seus estudos sobre programação?</li>
+      <li class="list-group-item">Quer saber como como acompanhar a evolução como programador?</li>
+    </ul>
+    <p class="card-title mt-3 text-center">Cadastre-se</p>
+    <%= simple_form_for @interest, defaults: {input_html: {class: 'register-form'}} do |f| %>
+      <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control'} %>
+      <br>
+      <%= f.button :submit, "Cadastre-se", class: "btn btn-primary btn-block" %>
+      <p class="text-center">Já está cadastrado? <a href="/analyze">Entre</a> </p>
+    <% end %>
+  </article>
+</div> 
