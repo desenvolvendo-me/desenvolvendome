@@ -21,7 +21,7 @@ const renderCustomizedLabel = ({cx, cy, midAngle, innerRadius, outerRadius, perc
 export default function VisitChatConhecimentos(props) {
     console.log(props)
     return (
-        <Card title="Conhecimentos" bordered={false}>
+        <Card title="Conhecimento" bordered={false}>
             <PieChart width={400} height={400}>
                 <Pie data={props.data} dataKey="value" fill="#8884d8" labelLine={false} label={renderCustomizedLabel}>
                     {
