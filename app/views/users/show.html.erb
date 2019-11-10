@@ -32,7 +32,12 @@
     </div>
     <% if @user.profile %>
       <div class="row">
-        <%= react_component("VisitChat", {analysis: result_evaluations(@user.profile)}) %>
+        <div class="col-md-6">
+          <%= react_component("VisitChatConhecimentos", {data: result_evaluations(@user.profile)}) %>
+        </div>
+        <div class="col-md-6">
+          <%= react_component("VisitChatAnalise", {data: result_evaluations(@user.profile)}) %>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-4">
