@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
   mount LetterOpenerWeb::Engine, at: "/mail/inbox" if Rails.env.development?
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
   root 'visits#index'
 
@@ -55,7 +55,9 @@ Rails.application.routes.draw do
   get 'visits/index'
 
   #Interests
-  resources :interests
+  resources :interests, except: [:show, :edit, :destroy, :update]
+  get "interest", to: "interests#show", as: "interest"
+
 
   #Analyze
   get "analysis", to: "users#index"

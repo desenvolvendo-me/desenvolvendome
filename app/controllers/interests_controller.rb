@@ -16,6 +16,10 @@ class InterestsController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
   private
 
   def interest_params
