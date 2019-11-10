@@ -30,40 +30,41 @@
       </div>
     </div>
     <% if @user.profile %>
-      <div class="row">
-        <div class="col-md-6">
-          <%= react_component("VisitChatConhecimentos", {data: result_knowledges(@user.profile)}) %>
+      <% if progress_bar(@user) == 100 %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= react_component("VisitChatConhecimentos", {data: result_knowledges(@user.profile)}) %>
+          </div>
+          <div class="col-md-6">
+            <%= react_component("VisitChatAnalise", {data: result_evaluations(@user.profile)}) %>
+          </div>
+          <div class="col-md-6">
+            Legenda
+            <ul>
+              <li>
+                Tecnologia que mais pratica e conhece
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            Legenda
+            <ul>
+              <li>
+                Programador: demonstra o quanto conhece
+              </li>
+              <li>
+                Disciplinador: demonstra o quanto pratica
+              </li>
+              <li>
+                Colaborador: demonstra o quanto criar projetos úteis
+              </li>
+              <li>
+                Influenciador: demonstra o quanto cria projetos interessantes
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col-md-6">
-          <%= react_component("VisitChatAnalise", {data: result_evaluations(@user.profile)}) %>
-        </div>
-        <div class="col-md-6">
-          Legenda
-          <ul>
-            <li>
-              Tecnologia que mais pratica e conhece
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          Legenda
-          <ul>
-            <li>
-              Programador: demonstra o quanto conhece
-            </li>
-            <li>
-              Disciplinador: demonstra o quanto pratica
-            </li>
-            <li>
-              Colaborador: demonstra o quanto criar projetos úteis
-            </li>
-            <li>
-              Influenciador: demonstra o quanto cria projetos interessantes
-            </li>
-          </ul>
-        </div>
-      </div>
-
+      <% end %>
     <% end %>
   </div>
 </div>
