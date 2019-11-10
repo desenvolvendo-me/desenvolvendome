@@ -1,17 +1,37 @@
 <div class="container container-intests-new">
-  <article class="card-body mx-auto" style="max-width: 400px;">
-    <ul class="list-group">
-      <li class="list-group-item">Quer saber como evoluir na carreira de programação?</li>
-      <li class="list-group-item">Quer saber como criar um marketing pessoal eficiente?</li>
-      <li class="list-group-item">Quer saber como melhorar seus estudos sobre programação?</li>
-      <li class="list-group-item">Quer saber como como acompanhar a evolução como programador?</li>
-    </ul>
-    <p class="card-title mt-3 text-center">Cadastre-se</p>
-    <%= simple_form_for @interest, defaults: {input_html: {class: 'register-form'}} do |f| %>
-      <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control'} %>
-      <br>
-      <%= f.button :submit, "Cadastre-se", class: "btn btn-primary btn-block" %>
-      <p class="text-center">Já está cadastrado? <a href="/analyze">Entre</a> </p>
-    <% end %>
-  </article>
-</div> 
+  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+    <div class="card card-signin my-5">
+      <p>No Brasil existem mais de 19,5 mil empresas no setor de software e serviço de TI.</p>
+      <p>Desse total 12,7 mil são startups, sendo que 9 já se tornaram unicórnios que são:</p>
+      <p>
+      <ul class="list-group">
+        <li class="list-group-item">99</li>
+        <li class="list-group-item">PagSeguro</li>
+        <li class="list-group-item">Nubank</li>
+        <li class="list-group-item">Stone</li>
+        <li class="list-group-item">IFood</li>
+        <li class="list-group-item">Movile</li>
+        <li class="list-group-item">Loggi</li>
+        <li class="list-group-item">Gympass</li>
+        <li class="list-group-item">QuintoAndar</li>
+        <li class="list-group-item">Ebank</li>
+      </ul>
+      </p>
+      <p>Será que você está preparado para ajudar essas empresas com seus propósitos?</p>
+      <p>Se a resposta é SIM. Isso significa que nunca mais lhe faltaram propostas de bons trabalho.</p>
+      <p>Se a resposta é NÃO SEI. Nosso dica é: crie um portifólio com projetos que comprovem na prática sua capacidade
+        técnica. E ainda lhe permitirá ser encontrado pelas melhores empresas desse novo mercado.</p>
+      <p>Caso tenha interesse em saber o porquê e como ter um portifólio pode mudar sua carreira.</p>
+      <p>Se inscreva para receber um guia completo de como criar o primeiro projeto com características de profissional
+        e iniciar seu portifólio.</p>
+      <p class="card-title mt-3 text-center">Cadastre-se</p>
+      <%= simple_form_for @interest, defaults: {input_html: {class: 'register-form'}} do |f| %>
+        <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control'} %>
+        <br>
+        <%= f.button :submit, "Enviar", class: "btn btn-primary btn-block" %>
+      <% end %>
+    </div>
+
+  </div>
+
+</div>
