@@ -4,7 +4,8 @@ class GenerateProfileJob < ApplicationJob
   def perform(user)
     import_github(user)
     profile_generate(user)
-    send_profile(user)
+    #NOTE: Não será enviado email ainda
+    # send_profile(user)
     evaluations_count(user)
   end
 
