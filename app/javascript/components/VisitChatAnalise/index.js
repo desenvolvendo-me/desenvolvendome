@@ -13,7 +13,7 @@ export default function VisitChatAnalise(props) {
       <RadarChart outerRadius={120} width={500} height={300} data={data}>
         <PolarGrid />
         <PolarAngleAxis dataKey="label" />
-        <PolarRadiusAxis angle={45} domain={[0, 8]} />
+        <PolarRadiusAxis angle={45} domain={[0, 5]} />
         <Radar name="Nível" dataKey="level" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
         <Tooltip />
       </RadarChart>
