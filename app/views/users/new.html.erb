@@ -6,19 +6,16 @@
           <p class="text-success"><%= count_user_analysis %> </p>
         </div>
         <div class="card-body">
-
           <h5 class="card-title text-center">Análise do Perfil</h5>
           <form class="form-signin">
             <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary" do %>
-              <i class="fab fa-github">Login GitHub</i>
+              <i class="fab fa-github"></i> &nbsp; Login GitHub
             <% end %>
             <hr class="my-4">
             <%= link_to new_interest_path, class: "btn btn-block" do %>
-              <i class="fa fa-ban">Sem Github?</i>
-              Clique Aqui
+              Sem Github? Clique Aqui
             <% end %>
           </form>
-
         </div>
       </div>
     </div>
