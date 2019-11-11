@@ -29,9 +29,9 @@
         </div>
       </div>
     </div>
-    <hr class="featurette-divider">
     <% if @user.profile %>
       <% if progress_bar(@user) == 100 %>
+        <hr class="featurette-divider">
         <div class="row">
           <div class="col-md-6">
             <%= react_component("VisitChatConhecimentos", {data: result_knowledges(@user.profile)}) %>
@@ -65,17 +65,15 @@
             </ul>
           </div>
         </div>
-      <% end %>
-    <% end %>
-    <hr class="featurette-divider">
-    <% if @user.profile %>
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h5>Seu Score é <%= @user.profile.score.to_f %> de 8. Achou baixo?</h5>
-          <p>Entenda o como e a importante de melhorar</p>
-          <p><%= link_to "Clique Aqui", new_interest_path, class: "btn btn-lg btn-primary" %></p>
+        <hr class="featurette-divider">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h5>Seu Score é <%= @user.profile.score.to_f %> de 8. Achou baixo?</h5>
+            <p>Entenda o como e a importante de melhorar</p>
+            <p><%= link_to "Clique Aqui", new_interest_path, class: "btn btn-lg btn-primary" %></p>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
