@@ -64,7 +64,9 @@ class User < ApplicationRecord
   private
 
   def self.reimport(auth)
-    User.find_by_login(auth.info.nickname).try(:destroy)
+    user = User.find_by_login(auth.info.nickname)
+    user.try(:profile).try(:destroy)
+    user.try(:repositories).try(:destroy_all)
   end
 
   def start_processing
