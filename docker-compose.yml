@@ -17,6 +17,8 @@ services:
   db:
     image: postgres
     container_name: "desenvolvendome-db"
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_PASSWORD: "postgres"
     volumes:
@@ -26,6 +28,8 @@ services:
   redis:
     image: redis
     container_name: "desenvolvendome-redis"
+    ports:
+      - "6379:6379"
     networks:
       - app
   sidekiq:
