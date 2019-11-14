@@ -27,6 +27,7 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'faraday'
 gem 'dotenv'
 gem "sentry-raven"
+gem 'rails_admin', '~> 2.0'
 
 # gem 'geocoder'
 # gem 'httparty'
