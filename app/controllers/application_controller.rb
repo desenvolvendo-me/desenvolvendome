@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
   end
 
   def handle_exception(exception)
-    Raven.capture_exception(exception)
+    #NOTE: para não usar o sentry em development local, somente na digitalocean já que hoje estamos usando em modo development
+    Raven.capture_exception(exception) if request.original_url.include? "0.0.0.0"
     raise exception
   end
 end
