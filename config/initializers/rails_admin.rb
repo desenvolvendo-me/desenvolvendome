@@ -38,4 +38,38 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'Interest' do
+    weight -2
+  end
+
+  config.model 'Profile' do
+    weight -1
+  end
+
+  config.model 'User' do
+    parent 'Profile'
+  end
+
+  config.model 'Repository' do
+    parent 'User'
+  end
+
+  config.model 'Language' do
+    parent 'Repository'
+  end
+
+  config.model 'Knowledge' do
+    parent 'Profile'
+  end
+
+  config.model 'Evaluation' do
+    parent 'Profile'
+  end
+
+  config.model 'Technology' do
+    parent 'Repository'
+  end
+
+
 end
