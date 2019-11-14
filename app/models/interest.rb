@@ -9,4 +9,5 @@
 #
 
 class Interest < ApplicationRecord
+  validates :email, :email_format => { :message => 'não é válido' }
 end

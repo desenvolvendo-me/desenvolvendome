@@ -16,6 +16,7 @@ gem 'font-awesome-sass', '~> 5.11.2'
 gem 'devise'
 gem 'omniauth-github'
 gem 'activerecord-session_store'
+gem 'validates_email_format_of'
 
 #React
 gem 'react-rails'
