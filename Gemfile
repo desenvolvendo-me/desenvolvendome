@@ -26,6 +26,7 @@ gem 'sidekiq'
 gem 'friendly_id', '~> 5.2.4'
 gem 'faraday'
 gem 'dotenv'
+gem "sentry-raven"
 
 # gem 'geocoder'
 # gem 'httparty'
