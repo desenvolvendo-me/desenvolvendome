@@ -7,11 +7,33 @@ pt-BR:
           has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
           has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
     models:
-      reclamacao:
-        one: "Reclamação"
-        other: "Reclamações"
-
+      evaluation:
+        one: "Avaliação"
+        other: "Avaliações"
+      interest:
+        one: "Interesse"
+        other: "Interesses"
+      knowledge:
+        one: "Conhecimento"
+        other: "Conhecimentos"
+      language:
+        one: "Linguagem"
+        other: "Linguagens"
+      profile:
+        one: "Perfil"
+        other: "Perfis"
+      repository:
+        one: "Repositório"
+        other: "Repositórios"
+      technology:
+        one: "Tecnologia"
+        other: "Tecnologias"
+      user:
+        one: "Usuário"
+        other: "Usuários"
     attributes:
-      reclamacao:
-        titulo: "Título"
-        descricao: "Descrição"
+      #TODO: adicionar todos atributos
+      evaluation:
+        level: "Nível"
+        evaluation_type: "Tipo"
+        profile: "Perfil"
