@@ -31,6 +31,9 @@ pt-BR:
       user:
         one: "Usuário"
         other: "Usuários"
+      admin:
+        one: "Administradores"
+        other: "Administradores"
     attributes:
       #TODO: adicionar todos atributos
       evaluation:
