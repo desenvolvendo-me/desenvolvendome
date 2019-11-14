@@ -1,5 +1,5 @@
 FROM ruby:2.6.5
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client npm
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client npm build-essential patch ruby-dev zlib1g-dev liblzma-dev
 RUN npm install yarn -g
 RUN mkdir /app
 WORKDIR /app
