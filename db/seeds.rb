@@ -4,6 +4,8 @@ Language.destroy_all
 Technology.destroy_all
 
 
+Admin.create(email: "marco.castro@desenvolvendo.me", password: "12345abc12345")
+
 puts "Usuários para Teste"
 puts "User: desenvolvendome, Score: 0"
 GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "desenvolvendome", email: "desenvolvendo@gmail.com"))
