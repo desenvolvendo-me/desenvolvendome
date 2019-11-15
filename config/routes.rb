@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq/admin'
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/admin/app', as: 'rails_admin'
 
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
   devise_for :admins
