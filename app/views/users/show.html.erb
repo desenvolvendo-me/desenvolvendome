@@ -80,4 +80,41 @@
       <% end %>
     <% end %>
   </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Menos de 50 commits</h5>
+          </div>
+          <small class="text-muted">Você tem <%= @user.repositories.where("commits_count < 50").count %> repositórios
+          </small>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Entre 50 e 100 commits</h5>
+          </div>
+          <small class="text-muted">Você
+            tem <%= @user.repositories.where("commits_count > 50 and commits_count < 100").count %> repositórios
+          </small>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Mais de 100 commits</h5>
+          </div>
+          <small class="text-muted">Você tem <%= @user.repositories.where("commits_count > 100").count %> repositórios </small>
+        </a>
+      </div>
+    </div>
+  </div>
+
 </div>
