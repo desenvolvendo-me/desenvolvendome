@@ -1,0 +1,851 @@
+{
+  "environment": "development",
+  "event_id": "1a741442ac23488ba4ab8abb4c732e02",
+  "extra": {
+    "server": {
+      "os": {
+        "name": "Linux",
+        "version": "#38~18.04.1-Ubuntu SMP Mon Nov 11 09:16:10 UTC 2019",
+        "build": "5.0.0-35-generic",
+        "kernel_version": "Linux zion 5.0.0-35-generic #38~18.04.1-Ubuntu SMP Mon Nov 11 09:16:10 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux"
+      },
+      "runtime": {
+        "name": "ruby",
+        "version": "ruby 2.6.5p114 (2019-10-01 revision 67812) [x86_64-linux]"
+      }
+    }
+  },
+  "level": "error",
+  "logger": "ruby",
+  "modules": {
+    "rake": "12.3.3",
+    "concurrent-ruby": "1.1.5",
+    "i18n": "1.6.0",
+    "minitest": "5.11.3",
+    "thread_safe": "0.3.6",
+    "tzinfo": "1.2.5",
+    "zeitwerk": "2.1.9",
+    "activesupport": "6.0.0",
+    "builder": "3.2.3",
+    "erubi": "1.8.0",
+    "mini_portile2": "2.4.0",
+    "nokogiri": "1.10.4",
+    "rails-dom-testing": "2.0.3",
+    "crass": "1.0.4",
+    "loofah": "2.2.3",
+    "rails-html-sanitizer": "1.2.0",
+    "actionview": "6.0.0",
+    "rack": "2.0.7",
+    "rack-test": "1.1.0",
+    "actionpack": "6.0.0",
+    "nio4r": "2.5.1",
+    "websocket-extensions": "0.1.4",
+    "websocket-driver": "0.7.1",
+    "actioncable": "6.0.0",
+    "globalid": "0.4.2",
+    "activejob": "6.0.0",
+    "activemodel": "6.0.0",
+    "activerecord": "6.0.0",
+    "mimemagic": "0.3.3",
+    "marcel": "0.3.3",
+    "activestorage": "6.0.0",
+    "mini_mime": "1.0.2",
+    "mail": "2.7.1",
+    "actionmailbox": "6.0.0",
+    "actionmailer": "6.0.0",
+    "actiontext": "6.0.0",
+    "activemodel-serializers-xml": "1.0.2",
+    "multi_json": "1.14.1",
+    "method_source": "0.9.2",
+    "thor": "0.20.3",
+    "railties": "6.0.0",
+    "activerecord-session_store": "1.1.3",
+    "public_suffix": "4.0.1",
+    "addressable": "2.7.0",
+    "annotate": "2.7.5",
+    "io-like": "0.3.0",
+    "archive-zip": "0.12.0",
+    "ast": "2.4.0",
+    "aws-eventstream": "1.0.3",
+    "aws-partitions": "1.207.0",
+    "aws-sigv4": "1.1.0",
+    "jmespath": "1.4.0",
+    "aws-sdk-core": "3.65.1",
+    "aws-sdk-kms": "1.24.0",
+    "aws-sdk-s3": "1.48.0",
+    "descendants_tracker": "0.0.4",
+    "ice_nine": "0.11.2",
+    "axiom-types": "0.1.1",
+    "babel-source": "5.8.35",
+    "execjs": "2.7.0",
+    "babel-transpiler": "0.7.0",
+    "bcrypt": "3.1.13",
+    "benchmark-malloc": "0.1.0",
+    "benchmark-perf": "0.5.0",
+    "benchmark-trend": "0.3.0",
+    "coderay": "1.1.2",
+    "better_errors": "2.5.1",
+    "bindex": "0.8.1",
+    "debug_inspector": "0.0.3",
+    "binding_of_caller": "0.8.0",
+    "msgpack": "1.3.1",
+    "bootsnap": "1.4.5",
+    "bundler": "1.17.2",
+    "byebug": "11.0.1",
+    "regexp_parser": "1.6.0",
+    "xpath": "3.2.0",
+    "capybara": "3.29.0",
+    "childprocess": "2.0.0",
+    "choice": "0.2.0",
+    "chromedriver-helper": "2.1.1",
+    "clipboard": "1.3.3",
+    "coercible": "1.0.0",
+    "equalizer": "0.0.11",
+    "virtus": "1.0.5",
+    "codeclimate-engine-rb": "0.4.1",
+    "connection_pool": "2.2.2",
+    "cpf_faker": "1.3.0",
+    "database_cleaner": "1.7.0",
+    "orm_adapter": "0.5.0",
+    "responders": "3.0.0",
+    "warden": "1.2.8",
+    "devise": "4.7.1",
+    "diff-lcs": "1.3",
+    "docile": "1.3.2",
+    "dotenv": "2.7.5",
+    "erubis": "2.7.0",
+    "factory_bot": "5.0.2",
+    "factory_bot_rails": "5.0.2",
+    "faker": "2.2.1",
+    "multipart-post": "2.1.1",
+    "faraday": "0.17.0",
+    "ffaker": "2.12.0",
+    "ffi": "1.11.1",
+    "path_expander": "1.0.4",
+    "sexp_processor": "4.12.1",
+    "ruby_parser": "3.13.1",
+    "flay": "2.12.0",
+    "flog": "4.6.2",
+    "sassc": "2.2.1",
+    "font-awesome-sass": "5.11.2",
+    "friendly_id": "5.2.5",
+    "temple": "0.8.2",
+    "tilt": "2.0.9",
+    "haml": "5.1.2",
+    "hashie": "3.6.0",
+    "jbuilder": "2.9.1",
+    "jquery-rails": "4.3.5",
+    "jquery-ui-rails": "6.0.1",
+    "json": "2.2.0",
+    "jwt": "2.2.1",
+    "kaminari-core": "1.1.1",
+    "kaminari-actionview": "1.1.1",
+    "kaminari-activerecord": "1.1.1",
+    "kaminari": "1.1.1",
+    "kwalify": "0.7.2",
+    "launchy": "2.4.3",
+    "letter_opener": "1.7.0",
+    "letter_opener_web": "1.3.4",
+    "rb-fsevent": "0.10.3",
+    "rb-inotify": "0.10.0",
+    "ruby_dep": "1.5.0",
+    "listen": "3.1.5",
+    "multi_xml": "0.6.0",
+    "nested_form": "0.3.2",
+    "oauth2": "1.4.2",
+    "omniauth": "1.9.0",
+    "omniauth-oauth2": "1.6.0",
+    "omniauth-github": "1.3.0",
+    "parser": "2.6.4.0",
+    "pg": "1.1.4",
+    "pry": "0.12.2",
+    "pry-byebug": "3.7.0",
+    "psych": "3.1.0",
+    "puma": "3.12.1",
+    "rack-mini-profiler": "1.0.2",
+    "rack-pjax": "1.1.0",
+    "rack-protection": "2.0.7",
+    "rack-proxy": "0.6.5",
+    "sprockets": "3.7.2",
+    "sprockets-rails": "3.2.1",
+    "rails": "6.0.0",
+    "ruby-graphviz": "1.2.4",
+    "rails-erd": "1.6.0",
+    "remotipart": "1.4.3",
+    "sassc-rails": "2.1.2",
+    "rails_admin": "2.0.0",
+    "rails_layout": "1.0.42",
+    "rainbow": "3.0.0",
+    "react-rails": "2.6.0",
+    "redis": "4.1.3",
+    "reek": "5.4.0",
+    "rspec-support": "3.8.2",
+    "rspec-core": "3.8.2",
+    "rspec-expectations": "3.8.4",
+    "rspec-mocks": "3.8.1",
+    "rspec": "3.8.0",
+    "rspec-benchmark": "0.5.1",
+    "rspec-rails": "3.8.2",
+    "tty-which": "0.4.1",
+    "rubycritic": "4.1.0",
+    "rubyzip": "1.2.3",
+    "sass-listen": "4.0.0",
+    "sass": "3.7.4",
+    "sass-rails": "5.1.0",
+    "selenium-webdriver": "3.142.4",
+    "sentry-raven": "2.12.3",
+    "sidekiq": "6.0.3",
+    "simple_form": "4.1.0",
+    "simplecov-html": "0.10.2",
+    "simplecov": "0.17.0",
+    "spring": "2.1.0",
+    "spring-watcher-listen": "2.0.1",
+    "turbolinks-source": "5.2.0",
+    "turbolinks": "5.2.0",
+    "validates_email_format_of": "1.6.3",
+    "web-console": "4.0.1",
+    "webdrivers": "4.1.2",
+    "webpacker": "4.0.7"
+  },
+  "platform": "ruby",
+  "release": "ddc35f8",
+  "sdk": {
+    "name": "raven-ruby",
+    "version": "2.12.3"
+  },
+  "server_name": "zion",
+  "tags": {},
+  "time_spent": 582,
+  "timestamp": "2019-11-15T17:16:44",
+  "transaction": "/sdadasdas",
+  "user": {
+    "ip_address": "127.0.0.1"
+  },
+  "exception": {
+    "values": [
+      {
+        "type": "ActionController::RoutingError",
+        "value": "No route matches [GET] \"/sdadasdas\"",
+        "module": "ActionController",
+        "stacktrace": {
+          "frames": [
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/puma-3.12.1/lib/puma/thread_pool.rb",
+              "function": "block in spawn_thread",
+              "lineno": 135,
+              "in_app": false,
+              "pre_context": [
+                "          end\n",
+                "\n",
+                "          begin\n"
+              ],
+              "context_line": "            block.call(work, *extra)\n",
+              "post_context": [
+                "          rescue Exception : e\n",
+                "            STDERR.puts \"Error reached top of thread-pool: \#{e.message} (\#{e.class})\"\n",
+                "          end\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "puma/thread_pool.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/puma-3.12.1/lib/puma/server.rb",
+              "function": "block in run",
+              "lineno": 334,
+              "in_app": false,
+              "pre_context": [
+                "          client.close\n",
+                "        else\n",
+                "          if process_now\n"
+              ],
+              "context_line": "            process_client client, buffer\n",
+              "post_context": [
+                "          else\n",
+                "            client.set_timeout @first_data_timeout\n",
+                "            @reactor.add client\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "puma/server.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/puma-3.12.1/lib/puma/server.rb",
+              "function": "process_client",
+              "lineno": 474,
+              "in_app": false,
+              "pre_context": [
+                "        close_socket = true\n",
+                "\n",
+                "        while true\n"
+              ],
+              "context_line": "          case handle_request(client, buffer)\n",
+              "post_context": [
+                "          when false\n",
+                "            return\n",
+                "          when :async\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "puma/server.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/puma-3.12.1/lib/puma/server.rb",
+              "function": "handle_request",
+              "lineno": 660,
+              "in_app": false,
+              "pre_context": [
+                "\n",
+                "      begin\n",
+                "        begin\n"
+              ],
+              "context_line": "          status, headers, res_body = @app.call(env)\n",
+              "post_context": [
+                "\n",
+                "          return :async if req.hijacked\n",
+                "\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "puma/server.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/puma-3.12.1/lib/puma/configuration.rb",
+              "function": "call",
+              "lineno": 227,
+              "in_app": false,
+              "pre_context": [
+                "\n",
+                "      def call(env)\n",
+                "        env[Const::PUMA_CONFIG] = @config\n"
+              ],
+              "context_line": "        @app.call(env)\n",
+              "post_context": [
+                "      end\n",
+                "    end\n",
+                "\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "puma/configuration.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.0/lib/rails/engine.rb",
+              "function": "call",
+              "lineno": 526,
+              "in_app": false,
+              "pre_context": [
+                "    # Define the Rack API for this engine.\n",
+                "    def call(env)\n",
+                "      req = build_request env\n"
+              ],
+              "context_line": "      app.call req.env\n",
+              "post_context": [
+                "    end\n",
+                "\n",
+                "    # Defines additional Rack env configuration that is added on each call.\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "rails/engine.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rack-proxy-0.6.5/lib/rack/proxy.rb",
+              "function": "call",
+              "lineno": 57,
+              "in_app": false,
+              "pre_context": [
+                "    end\n",
+                "\n",
+                "    def call(env)\n"
+              ],
+              "context_line": "      rewrite_response(perform_request(rewrite_env(env)))\n",
+              "post_context": [
+                "    end\n",
+                "\n",
+                "    # Return modified env\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "rack/proxy.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/webpacker-4.0.7/lib/webpacker/dev_server_proxy.rb",
+              "function": "perform_request",
+              "lineno": 29,
+              "in_app": false,
+              "pre_context": [
+                "\n",
+                "      super(env)\n",
+                "    else\n"
+              ],
+              "context_line": "      @app.call(env)\n",
+              "post_context": [
+                "    end\n",
+                "  end\n",
+                "\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "webpacker/dev_server_proxy.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/sentry-raven-2.12.3/lib/raven/integrations/rack.rb",
+              "function": "call",
+              "lineno": 51,
+              "in_app": false,
+              "pre_context": [
+                "      Raven.context.transaction.push(env[\"PATH_INFO\"]) if env[\"PATH_INFO\"]\n",
+                "\n",
+                "      begin\n"
+              ],
+              "context_line": "        response = @app.call(env)\n",
+              "post_context": [
+                "      rescue Error\n",
+                "        raise # Don't capture Raven errors\n",
+                "      rescue Exception : e\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "raven/integrations/rack.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-6.0.0/lib/action_dispatch/middleware/host_authorization.rb",
+              "function": "call",
+              "lineno": 77,
+              "in_app": false,
+              "pre_context": [
+                "    end\n",
+                "\n",
+                "    def call(env)\n"
+              ],
+              "context_line": "      return @app.call(env) if @permissions.empty?\n",
+              "post_context": [
+                "\n",
+                "      request = Request.new(env)\n",
+                "\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "action_dispatch/middleware/host_authorization.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rack-2.0.7/lib/rack/sendfile.rb",
+              "function": "call",
+              "lineno": 111,
+              "in_app": false,
+              "pre_context": [
+                "    end\n",
+                "\n",
+                "    def call(env)\n"
+              ],
+              "context_line": "      status, headers, body = @app.call(env)\n",
+              "post_context": [
+                "      if body.respond_to?(:to_path)\n",
+                "        case type = variation(env)\n",
+                "        when 'X-Accel-Redirect'\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "rack/sendfile.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-6.0.0/lib/action_dispatch/middleware/static.rb",
+              "function": "call",
+              "lineno": 126,
+              "in_app": false,
+              "pre_context": [
+                "        end\n",
+                "      end\n",
+                "\n"
+              ],
+              "context_line": "      @app.call(req.env)\n",
+              "post_context": [
+                "    end\n",
+                "  end\n",
+                "end\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "action_dispatch/middleware/static.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-6.0.0/lib/action_dispatch/middleware/executor.rb",
+              "function": "call",
+              "lineno": 14,
+              "in_app": false,
+              "pre_context": [
+                "    def call(env)\n",
+                "      state = @executor.run!\n",
+                "      begin\n"
+              ],
+              "context_line": "        response = @app.call(env)\n",
+              "post_context": [
+                "        returned = response << ::Rack::BodyProxy.new(response.pop) { state.complete! }\n",
+                "      ensure\n",
+                "        state.complete! unless returned\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "action_dispatch/middleware/executor.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activesupport-6.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb",
+              "function": "call",
+              "lineno": 29,
+              "in_app": false,
+              "pre_context": [
+                "\n",
+                "          def call(env)\n",
+                "            LocalCacheRegistry.set_cache_for(local_cache_key, LocalStore.new)\n"
+              ],
+              "context_line": "            response = @app.call(env)\n",
+              "post_context": [
+                "            response[2] = ::Rack::BodyProxy.new(response[2]) do\n",
+                "              LocalCacheRegistry.set_cache_for(local_cache_key, nil)\n",
+                "            end\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "active_support/cache/strategy/local_cache_middleware.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rack-2.0.7/lib/rack/runtime.rb",
+              "function": "call",
+              "lineno": 22,
+              "in_app": false,
+              "pre_context": [
+                "\n",
+                "    def call(env)\n",
+                "      start_time = Utils.clock_time\n"
+              ],
+              "context_line": "      status, headers, body = @app.call(env)\n",
+              "post_context": [
+                "      request_time = Utils.clock_time - start_time\n",
+                "\n",
+                "      unless headers.has_key?(@header_name)\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "rack/runtime.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rack-2.0.7/lib/rack/method_override.rb",
+              "function": "call",
+              "lineno": 22,
+              "in_app": false,
+              "pre_context": [
+                "        end\n",
+                "      end\n",
+                "\n"
+              ],
+              "context_line": "      @app.call(env)\n",
+              "post_context": [
+                "    end\n",
+                "\n",
+                "    def method_override(env)\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "rack/method_override.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-6.0.0/lib/action_dispatch/middleware/request_id.rb",
+              "function": "call",
+              "lineno": 27,
+              "in_app": false,
+              "pre_context": [
+                "    def call(env)\n",
+                "      req = ActionDispatch::Request.new env\n",
+                "      req.request_id = make_request_id(req.x_request_id)\n"
+              ],
+              "context_line": "      @app.call(env).tap { |_status, headers, _body| headers[X_REQUEST_ID] = req.request_id }\n",
+              "post_context": [
+                "    end\n",
+                "\n",
+                "    private\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "action_dispatch/middleware/request_id.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-6.0.0/lib/action_dispatch/middleware/remote_ip.rb",
+              "function": "call",
+              "lineno": 81,
+              "in_app": false,
+              "pre_context": [
+                "    def call(env)\n",
+                "      req = ActionDispatch::Request.new env\n",
+                "      req.remote_ip = GetIp.new(req, check_ip, proxies)\n"
+              ],
+              "context_line": "      @app.call(req.env)\n",
+              "post_context": [
+                "    end\n",
+                "\n",
+                "    # The GetIp class exists as a way to defer processing of the request data\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "action_dispatch/middleware/remote_ip.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/quiet_assets.rb",
+              "function": "call",
+              "lineno": 13,
+              "in_app": false,
+              "pre_context": [
+                "        if env['PATH_INFO'] =~ @assets_regex\n",
+                "          ::Rails.logger.silence { @app.call(env) }\n",
+                "        else\n"
+              ],
+              "context_line": "          @app.call(env)\n",
+              "post_context": [
+                "        end\n",
+                "      end\n",
+                "    end\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "sprockets/rails/quiet_assets.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.0/lib/rails/rack/logger.rb",
+              "function": "call",
+              "lineno": 26,
+              "in_app": false,
+              "pre_context": [
+                "        request = ActionDispatch::Request.new(env)\n",
+                "\n",
+                "        if logger.respond_to?(:tagged)\n"
+              ],
+              "context_line": "          logger.tagged(compute_tags(request)) { call_app(request, env) }\n",
+              "post_context": [
+                "        else\n",
+                "          call_app(request, env)\n",
+                "        end\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "rails/rack/logger.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activesupport-6.0.0/lib/active_support/tagged_logging.rb",
+              "function": "tagged",
+              "lineno": 80,
+              "in_app": false,
+              "pre_context": [
+                "    delegate :push_tags, :pop_tags, :clear_tags!, to: :formatter\n",
+                "\n",
+                "    def tagged(*tags)\n"
+              ],
+              "context_line": "      formatter.tagged(*tags) { yield self }\n",
+              "post_context": [
+                "    end\n",
+                "\n",
+                "    def flush\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "active_support/tagged_logging.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activesupport-6.0.0/lib/active_support/tagged_logging.rb",
+              "function": "tagged",
+              "lineno": 28,
+              "in_app": false,
+              "pre_context": [
+                "\n",
+                "      def tagged(*tags)\n",
+                "        new_tags = push_tags(*tags)\n"
+              ],
+              "context_line": "        yield self\n",
+              "post_context": [
+                "      ensure\n",
+                "        pop_tags(new_tags.size)\n",
+                "      end\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "active_support/tagged_logging.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activesupport-6.0.0/lib/active_support/tagged_logging.rb",
+              "function": "block in tagged",
+              "lineno": 80,
+              "in_app": false,
+              "pre_context": [
+                "    delegate :push_tags, :pop_tags, :clear_tags!, to: :formatter\n",
+                "\n",
+                "    def tagged(*tags)\n"
+              ],
+              "context_line": "      formatter.tagged(*tags) { yield self }\n",
+              "post_context": [
+                "    end\n",
+                "\n",
+                "    def flush\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "active_support/tagged_logging.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.0/lib/rails/rack/logger.rb",
+              "function": "block in call",
+              "lineno": 26,
+              "in_app": false,
+              "pre_context": [
+                "        request = ActionDispatch::Request.new(env)\n",
+                "\n",
+                "        if logger.respond_to?(:tagged)\n"
+              ],
+              "context_line": "          logger.tagged(compute_tags(request)) { call_app(request, env) }\n",
+              "post_context": [
+                "        else\n",
+                "          call_app(request, env)\n",
+                "        end\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "rails/rack/logger.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-6.0.0/lib/rails/rack/logger.rb",
+              "function": "call_app",
+              "lineno": 38,
+              "in_app": false,
+              "pre_context": [
+                "          instrumenter = ActiveSupport::Notifications.instrumenter\n",
+                "          instrumenter.start \"request.action_dispatch\", request: request\n",
+                "          logger.info { started_request_message(request) }\n"
+              ],
+              "context_line": "          status, headers, body = @app.call(env)\n",
+              "post_context": [
+                "          body = ::Rack::BodyProxy.new(body) { finish(request) }\n",
+                "          [status, headers, body]\n",
+                "        rescue Exception\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "rails/rack/logger.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-6.0.0/lib/action_dispatch/middleware/show_exceptions.rb",
+              "function": "call",
+              "lineno": 33,
+              "in_app": false,
+              "pre_context": [
+                "\n",
+                "    def call(env)\n",
+                "      request = ActionDispatch::Request.new env\n"
+              ],
+              "context_line": "      @app.call(env)\n",
+              "post_context": [
+                "    rescue Exception : exception\n",
+                "      if request.show_exceptions?\n",
+                "        render_exception(request, exception)\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "action_dispatch/middleware/show_exceptions.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/web-console-4.0.1/lib/web_console/middleware.rb",
+              "function": "call",
+              "lineno": 17,
+              "in_app": false,
+              "pre_context": [
+                "    end\n",
+                "\n",
+                "    def call(env)\n"
+              ],
+              "context_line": "      app_exception = catch :app_exception do\n",
+              "post_context": [
+                "        request = create_regular_or_whiny_request(env)\n",
+                "        return call_app(env) unless request.permitted?\n",
+                "\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "web_console/middleware.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/web-console-4.0.1/lib/web_console/middleware.rb",
+              "function": "catch",
+              "lineno": 17,
+              "in_app": false,
+              "pre_context": [
+                "    end\n",
+                "\n",
+                "    def call(env)\n"
+              ],
+              "context_line": "      app_exception = catch :app_exception do\n",
+              "post_context": [
+                "        request = create_regular_or_whiny_request(env)\n",
+                "        return call_app(env) unless request.permitted?\n",
+                "\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "web_console/middleware.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/web-console-4.0.1/lib/web_console/middleware.rb",
+              "function": "block in call",
+              "lineno": 28,
+              "in_app": false,
+              "pre_context": [
+                "        end\n",
+                "\n",
+                "\n"
+              ],
+              "context_line": "        status, headers, body = call_app(env)\n",
+              "post_context": [
+                "\n",
+                "        if (session = Session.from(Thread.current)) && acceptable_content_type?(headers)\n",
+                "          headers[\"X-Web-Console-Session-Id\"] = session.id\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "web_console/middleware.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/web-console-4.0.1/lib/web_console/middleware.rb",
+              "function": "call_app",
+              "lineno": 132,
+              "in_app": false,
+              "pre_context": [
+                "      end\n",
+                "\n",
+                "      def call_app(env)\n"
+              ],
+              "context_line": "        @app.call(env)\n",
+              "post_context": [
+                "      rescue : e\n",
+                "        throw :app_exception, e\n",
+                "      end\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "web_console/middleware.rb"
+            },
+            {
+              "abs_path": "/home/marcodotcastro/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-6.0.0/lib/action_dispatch/middleware/debug_exceptions.rb",
+              "function": "call",
+              "lineno": 36,
+              "in_app": false,
+              "pre_context": [
+                "\n",
+                "      if headers[\"X-Cascade\"] == \"pass\"\n",
+                "        body.close if body.respond_to?(:close)\n"
+              ],
+              "context_line": "        raise ActionController::RoutingError, \"No route matches [\#{env['REQUEST_METHOD']}] \#{env['PATH_INFO'].inspect}\"\n",
+              "post_context": [
+                "      end\n",
+                "\n",
+                "      response\n"
+              ],
+              "project_root": "/home/marcodotcastro/RubymineProjects/desenvolvendome",
+              "filename": "action_dispatch/middleware/debug_exceptions.rb"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "request": {
+    "headers": {
+      "Host": "localhost:3000",
+      "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0",
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "Accept-Language": "pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3",
+      "Accept-Encoding": "gzip, deflate",
+      "Connection": "keep-alive",
+      "Upgrade-Insecure-Requests": "1",
+      "Cache-Control": "max-age=0"
+    },
+    "env": {
+      "SERVER_NAME": "localhost",
+      "SERVER_PORT": "3000",
+      "REMOTE_ADDR": "127.0.0.1"
+    },
+    "cookies": {
+      "Rubymine-efbde2c0": "eb1d6f27-b7f7-4fb8-9725-b8cd3d7fd4bd",
+      "_session_id": "6d666294bf3c76e5d4061877121895d4"
+    },
+    "url": "http://localhost:3000/sdadasdas",
+    "method": "GET",
+    "query_string": "",
+    "data": nil
+  }
+}
