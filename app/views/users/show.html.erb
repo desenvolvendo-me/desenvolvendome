@@ -80,6 +80,7 @@
       <% end %>
     <% end %>
   </div>
+  <hr class="featurette-divider">
 
   <div class="row">
     <div class="col-md-4">
@@ -88,8 +89,12 @@
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Menos de 50 commits</h5>
           </div>
-          <small class="text-muted">Você tem <%= @user.repositories.where("commits_count < 50").count %> repositórios
-          </small>
+          <% if @user %>
+            <small class="text-muted">Você tem <%= @user.repositories.where("commits_count < 50").count %>repositórios
+            </small>
+          <% else %>
+            <small class="text-muted">Você tem 0 repositórios</small>
+          <% end %>
         </a>
       </div>
     </div>
@@ -99,9 +104,13 @@
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Entre 50 e 100 commits</h5>
           </div>
-          <small class="text-muted">Você
-            tem <%= @user.repositories.where("commits_count > 50 and commits_count < 100").count %> repositórios
-          </small>
+          <% if @user %>
+            <small class="text-muted">Você
+              tem <%= @user.repositories.where("commits_count > 50 and commits_count < 100").count %> repositórios
+            </small>
+          <% else %>
+            <small class="text-muted">Você tem 0 repositórios</small>
+          <% end %>
         </a>
       </div>
     </div>
@@ -111,7 +120,12 @@
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Mais de 100 commits</h5>
           </div>
-          <small class="text-muted">Você tem <%= @user.repositories.where("commits_count > 100").count %> repositórios </small>
+          <% if @user %>
+            <small class="text-muted">Você tem <%= @user.repositories.where("commits_count > 100").count %>repositórios
+            </small>
+          <% else %>
+            <small class="text-muted">Você tem 0 repositórios</small>
+          <% end %>
         </a>
       </div>
     </div>
