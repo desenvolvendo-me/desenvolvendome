@@ -1,5 +1,5 @@
 class GenerateProfileJob < ApplicationJob
-  queue_as :default
+  queue_as :profile
 
   def perform(user)
     import_github(user)
