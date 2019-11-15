@@ -152,7 +152,7 @@
             <div class="col-lg-12 text-center">
               <h5>Os Quase Relevantes</h5>
             </div>
-            <% @user.repositories.where("commits_count > 50 and commits_count < 100").each do |repository| %>
+            <% @user.repositories.where("commits_count > 100 and commits_count < 200").each do |repository| %>
               <div class="col-md-3">
                 <div class="list-group">
                   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
