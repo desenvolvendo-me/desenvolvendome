@@ -36,5 +36,7 @@ test:
 production:
   <<: *default
   database: desenvolvendo_me_production
-  username: desenvolvendo_me
-  password: <%= ENV['DESENVOLVENDO_ME_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: postgres
+  host: db
+  port: 5432

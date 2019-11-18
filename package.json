@@ -27,6 +27,8 @@
     "react-dom": "^16.11.0",
     "react_ujs": "^2.6.0",
     "recharts": "^1.8.5",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "regenerator-runtime": "^0.13.3",
     "style-resources-loader": "^1.2.1",
     "turbolinks": "^5.2.0"
