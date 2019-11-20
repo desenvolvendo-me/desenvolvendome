@@ -6,6 +6,8 @@ WORKDIR /app
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
+COPY package.json /app/package.json
+RUN yarn
 COPY . /app
 
 # Add a script to be executed every time the container starts.
