@@ -33,3 +33,4 @@ yarn-debug.log*
 .env
 /.data/*
 !/.data/.keep
+nohup.out
