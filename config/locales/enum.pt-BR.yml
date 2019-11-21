@@ -2,7 +2,7 @@ pt-BR:
   enum:
     evaluation_type:
       started: "Iniciado"
-      apprentice: "Aprendiz"
+      novice: "Aprendiz"
       knight: "Programador"
     office:
       fullstack: "Full Stack"

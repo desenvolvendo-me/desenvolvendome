@@ -21,7 +21,7 @@
 class Evaluation < ApplicationRecord
   belongs_to :profile
 
-  enum evaluation_type: [:started, :apprentice, :knight]
+  enum evaluation_type: [:started, :novice, :knight]
 
   validates_presence_of :evaluation_type, :level
 
