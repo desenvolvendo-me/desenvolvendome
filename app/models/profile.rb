@@ -17,5 +17,5 @@
 class Profile < ApplicationRecord
   belongs_to :user, optional: true
   has_many :knowledges, dependent: :destroy
-  has_many :evaluations, dependent: :destroy
+  has_one :evaluation, dependent: :destroy
 end
