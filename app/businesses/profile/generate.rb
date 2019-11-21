@@ -8,8 +8,12 @@ class Profile::Generate
     Profile::Score.new(@user).run
   end
 
-  def evaluation
+  def know
     Evaluation::Know.new(@user).run
-    Evaluation::Started.new(@user).run
   end
+
+  def level_up
+    Profile::LevelUp.new(@user).run
+  end
+
 end
