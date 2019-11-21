@@ -19,7 +19,7 @@ class Evaluation::Started
     evaludation = @user.profile.evaluation
 
     if evaludation
-      evaludation.update(level: level)
+      evaludation.update(level: level, evaluation_type: :started)
     else
       Evaluation.create(level: level, evaluation_type: :started, profile: @user.profile)
     end
