@@ -38,7 +38,7 @@ RSpec.describe User, type: :model do
     @user = create(:user, :with_repositories, :with_profile)
   end
 
-  it "user evaluation not_evaluation" do
+  it "user" do
     expect(@user.name).to eq("Marco")
     expect(@user.login).to eq("marcodotcastro")
     expect(@user.office).to eq("fullstack")
@@ -52,11 +52,6 @@ RSpec.describe User, type: :model do
     technology = repository.technologies.first
     expect(technology.exercise).to eq(5500)
     expect(technology.language.description).to eq("Portugol")
-
-    expect(@user.profile.score).to eq(5.5)
-    evaluation = @user.profile.evaluations.first
-    expect(evaluation.level).to eq(1)
-    expect(evaluation.evaluation_type).to eq("not_evaluation")
   end
 
 end

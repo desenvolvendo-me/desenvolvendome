@@ -10,7 +10,7 @@ RSpec.describe "Performance" do
       user = nil
       login = "desenvolvendome"
 
-      expect {user = @api_github.user(login)}.to perform_under(1).sec
+      expect {user = @api_github.user(login)}.to perform_under(5).sec
       expect(user['name']).to eq("Desenvolvendo Me")
     end
 
