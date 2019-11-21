@@ -5,13 +5,15 @@ class Evaluation::Started
   end
 
   def run
-    create_evaluation
+    create_evaluation unless up?
   end
 
   def level
-    commits = count_commits
+    1 + (count_commits / 15) unless up?
+  end
 
-    1 + (commits / 15) if commits <= 150
+  def up?
+    !(count_commits <= 150)
   end
 
   private

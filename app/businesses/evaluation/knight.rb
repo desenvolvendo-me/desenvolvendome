@@ -5,13 +5,15 @@ class Evaluation::Knight
   end
 
   def run
-    create_evaluation
+    create_evaluation unless up?
   end
 
   def level
-    commits = count_commits
-    repositories = count_repositories
-    commits / 300 if commits <= 3000 and repositories >= 3
+    count_commits / 300 unless up?
+  end
+
+  def up?
+   !(count_commits >= 300 and count_commits <= 3000 and count_repositories >= 3)
   end
 
   private

@@ -5,13 +5,15 @@ class Evaluation::Novice
   end
 
   def run
-    create_evaluation
+    create_evaluation unless up?
   end
 
   def level
-    commits = count_commits
-    repositories = count_repositories
-    ((commits - 150) / 15) + 1 if commits <= 300 and repositories >= 3
+    ((count_commits - 150) / 15) + 1 unless up?
+  end
+
+  def up?
+    !(count_commits >= 150 and count_commits <= 300 and count_repositories >= 3)
   end
 
   private
