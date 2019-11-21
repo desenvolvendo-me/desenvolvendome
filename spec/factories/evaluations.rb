@@ -21,6 +21,6 @@
 FactoryBot.define do
   factory :evaluation do
     level {1}
-    evaluation_type {:not_evaluation}
+    evaluation_type {:started}
   end
 end
