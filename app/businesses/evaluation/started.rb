@@ -9,8 +9,9 @@ class Evaluation::Started
   end
 
   def level
-    number = count_commits
-    number / 15 if number <= 150
+    commits = count_commits
+
+    1 + (commits / 15) if commits <= 150
   end
 
   private

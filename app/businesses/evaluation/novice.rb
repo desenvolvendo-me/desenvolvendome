@@ -11,7 +11,7 @@ class Evaluation::Novice
   def level
     commits = count_commits
     repositories = count_repositories
-    (commits - 150) / 15 if commits <= 300 and repositories >= 3
+    ((commits - 150) / 15) + 1 if commits <= 300 and repositories >= 3
   end
 
   private

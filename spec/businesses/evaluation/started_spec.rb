@@ -8,22 +8,22 @@ RSpec.describe "Started" do
 
   context "level" do
 
-    it "0" do
+    it "1" do
       create(:repository, commits_count: 14, user: @user)
 
       Evaluation::Started.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
-      expect(@user.profile.evaluation.level).to eq(0)
+      expect(@user.profile.evaluation.level).to eq(1)
     end
 
-    it "1" do
+    it "2" do
       create(:repository, commits_count: 15, user: @user)
 
       Evaluation::Started.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
-      expect(@user.profile.evaluation.level).to eq(1)
+      expect(@user.profile.evaluation.level).to eq(2)
     end
 
     it '10' do
@@ -32,7 +32,8 @@ RSpec.describe "Started" do
       create(:repository, commits_count: 30, user: @user)
       create(:repository, commits_count: 30, user: @user)
       create(:repository, commits_count: 11, user: @user)
-      create(:repository, commits_count: 49, user: @user)
+      create(:repository, commits_count: 40, user: @user)
+      create(:repository, commits_count: 8, user: @user)
 
       Evaluation::Started.new(@user).run
 

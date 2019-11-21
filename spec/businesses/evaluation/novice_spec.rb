@@ -12,20 +12,20 @@ RSpec.describe "Novice" do
 
   context "level" do
 
-    it "0" do
+    it "1" do
       Evaluation::Novice.new(@user).run
 
       expect(@user.profile.evaluation.novice?).to be_truthy
-      expect(@user.profile.evaluation.level).to eq(0)
+      expect(@user.profile.evaluation.level).to eq(1)
     end
 
-    it "1" do
+    it "2" do
       create(:repository, commits_count: 15, user: @user)
 
       Evaluation::Novice.new(@user).run
 
       expect(@user.profile.evaluation.novice?).to be_truthy
-      expect(@user.profile.evaluation.level).to eq(1)
+      expect(@user.profile.evaluation.level).to eq(2)
     end
 
     it '10' do
@@ -34,7 +34,8 @@ RSpec.describe "Novice" do
       create(:repository, commits_count: 30, user: @user)
       create(:repository, commits_count: 30, user: @user)
       create(:repository, commits_count: 11, user: @user)
-      create(:repository, commits_count: 49, user: @user)
+      create(:repository, commits_count: 40, user: @user)
+      create(:repository, commits_count: 8, user: @user)
 
       Evaluation::Novice.new(@user).run
 
