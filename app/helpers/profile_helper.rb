@@ -14,4 +14,18 @@ module ProfileHelper
     (1 - processing) * 100
   end
 
+  def next_level_bar(user)
+    level = {number: 0, percentage: 0}
+    if user.profile.evaluation.started?
+      started = Evaluation::Started.new(user)
+      level[:number] = started.max ? "MÁXIMO NÍVEL" : "+#{started.xp_next_level}"
+      level[:percentage] = started.max ? 100 : (1 - (started.xp_next_level.to_f / started.role[:calc].to_f)) * 100
+    elsif user.profile.evaluation.novice?
+      20
+    elsif user.profile.evaluation.knight?
+      30
+    end
+    level
+  end
+
 end
