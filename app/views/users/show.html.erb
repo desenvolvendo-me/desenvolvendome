@@ -17,9 +17,10 @@
           </div>
           <p class="score-container">
             <% if @user.profile.try(:evaluation) %>
-            <h5 class="text-center"><%= t("enum.evaluation_type.#{@user.profile.try(:evaluation).try(:evaluation_type)  }") %> <%= "(#{@user.profile.try(:evaluation).try(:level)} lvl)" %></h5>
+            <h4 class="text-center"><%= t("enum.evaluation_type.#{@user.profile.try(:evaluation).try(:evaluation_type)  }") %></h4>
+            <h6 class="text-center"><%= "#{@user.profile.try(:evaluation).try(:level)}º nível" %></h6>
           <% else %>
-            <h5>? (? lvl)</h5>
+            <h5>? (?º nível)</h5>
           <% end %>
           <% if @user.try(:profile) %>
             <span class="score-value btn btn-primary"><%= @user.profile.score.to_i %> xp</span>
