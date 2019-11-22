@@ -10,7 +10,7 @@ class Evaluation::Novice
 
   def level
     lv = 0
-    lv = 1 + (commits / role[:calc]) unless up?
+    lv = 1 + ((commits - role[:commits_preview]) / role[:calc]) unless up?
     lv = 10 if max
     lv
   end
@@ -55,7 +55,7 @@ class Evaluation::Novice
   end
 
   def role
-    {calc: 30, repositories: 3, commits: 300, repository_size: 100}
+    {calc: 30, repositories: 3, commits: 300, repository_size: 100, commits_preview: 150}
   end
 
 end

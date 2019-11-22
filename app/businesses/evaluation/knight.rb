@@ -10,7 +10,7 @@ class Evaluation::Knight
 
   def level
     lv = 0
-    lv = 1 + (commits / role[:calc]) unless up?
+    lv = 1 + ((commits - role[:commits_preview]) / role[:calc]) unless up?
     lv = 10 if max
     lv
   end
@@ -55,7 +55,7 @@ class Evaluation::Knight
   end
 
   def role
-    {calc: 300, repositories: 3, commits: 3000, repository_size: 500}
+    {calc: 300, repositories: 3, commits: 3000, repository_size: 500, commits_preview: 300}
   end
 
 end
