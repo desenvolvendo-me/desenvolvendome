@@ -5,8 +5,8 @@ namespace :profile do
     user = User.find_by_login(args[:user_login])
 
     if user
+      puts "Updated: #{user.login}"
       Profile::Generate.new(user).run
-      puts "Updated: #{user.name}"
     else
       puts "User: #{args[:user_login]} not exist"
     end
@@ -16,8 +16,8 @@ namespace :profile do
   desc "Update All Profile"
   task update_all: :environment do
     User.all.each do |user|
+      puts "Updated: #{user.login}"
       Profile::Generate.new(user).run
-      puts "Updated: #{user.name}"
     end
     puts "Updated All"
   end
