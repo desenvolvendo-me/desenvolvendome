@@ -1,8 +1,8 @@
+Evaluation.destroy_all
 User.destroy_all
 Interest.destroy_all
 Language.destroy_all
 Technology.destroy_all
-
 
 Admin.create(email: "marco.castro@desenvolvendo.me", password: "12345abc12345")
 
@@ -18,12 +18,29 @@ GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "pvm", email: "
 GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "phalmeida", email: "phalmeida@gmail.com"))
 GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "leonnleite", email: "leonnleite@gmail.com"))
 
-# puts "Desenvolvedores"
-# puts "User: leonardoscorza, Score: 0.6"
-# GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "leonardoscorza", email: "leonardoscorza@gmail.com"))
-# puts "User: lucascaton, Score: 3.8"
-# GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "lucascaton", email: "lucascaton@gmail.com"))
-# puts "User: rafaelfranca, Score: 3.6" #Score: 3
-# GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "rafaelfranca", email: "rafaelfranca@gmail.com"))
-# puts "User: kamranahmedse, Score: 4.2"
-# GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "kamranahmedse", email: "kamranahmedse@gmail.com"))
+puts "Os Melhores por Linguagem"
+puts "Javascript"
+GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "diegohaz", email: "diegohaz@gmail.com"))
+GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "eduardolundgren", email: "eduardolundgren@gmail.com"))
+
+puts "Java"
+GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "andremion", email: "andremion@gmail.com"))
+GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "jrvansuita", email: "jrvansuita@gmail.com"))
+
+puts "Ruby"
+GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "fnando", email: "fnando@gmail.com"))
+GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "franzejr", email: "franzejr@gmail.com"))
+
+puts "Python"
+GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "rochacbruno", email: "rochacbruno@gmail.com"))
+GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "iogf", email: "iogf@gmail.com"))
+
+puts "PHP"
+GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "antonioribeiro", email: "antonioribeiro@gmail.com"))
+GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "zizaco", email: "zizaco@gmail.com"))
+
+puts "Os Melhores por Frameworks"
+puts "React"
+puts "Laravel"
+puts "Rails"
+GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "rafaelfranca", email: "rafaelfranca@gmail.com"))
