@@ -16,7 +16,8 @@ class Evaluation::Knight
   end
 
   def up?
-    (repositories >= role[:repositories] and commits >= role[:commits])
+    # (repositories >= role[:repositories] and commits >= role[:commits])
+    false #TODO: Desabilitado level up, pois não tem um próximo nível
   end
 
   def next_level
