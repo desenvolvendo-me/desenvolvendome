@@ -9,11 +9,15 @@ class Evaluation::Started
   end
 
   def level
-    1 + (count_commits / 15) unless up?
+    lv = 0
+    lv = 1 + (count_commits / 15) unless up?
+
+    lv = 10 if count_commits >= 150
+    lv
   end
 
   def up?
-    (count_repositories >= 3 and count_commits.between?(150, 300))
+    (count_repositories >= 3 and count_commits >= 150)
   end
 
   private

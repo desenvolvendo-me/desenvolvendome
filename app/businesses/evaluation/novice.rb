@@ -9,11 +9,14 @@ class Evaluation::Novice
   end
 
   def level
-    ((count_commits - 150) / 15) + 1 unless up?
+    lv = 0
+    lv = 1 + ((count_commits - 150) / 15) unless up?
+    lv = 10 if count_commits >= 300
+    lv
   end
 
   def up?
-    (count_repositories >= 3 and count_commits.between?(300, 3000))
+    (count_repositories >= 3 and count_commits >= 300)
   end
 
   private

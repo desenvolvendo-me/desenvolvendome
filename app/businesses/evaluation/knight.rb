@@ -9,11 +9,14 @@ class Evaluation::Knight
   end
 
   def level
-    count_commits / 300 unless up?
+    lv = 0
+    lv = count_commits / 300 unless up?
+    lv = 10 if count_commits >= 3000
+    lv
   end
 
   def up?
-    (count_repositories >= 3 and count_commits.between?(3000, 30000))
+    (count_repositories >= 3 and count_commits >= 3000)
   end
 
   private
