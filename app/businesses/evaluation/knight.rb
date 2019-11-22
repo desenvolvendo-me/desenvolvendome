@@ -10,13 +10,20 @@ class Evaluation::Knight
 
   def level
     lv = 0
-    lv = count_commits / 300 unless up?
-    lv = 10 if count_commits >= 3000
+    lv = 1 + (commits / role[:calc]) unless up?
+    lv = 10 if max
     lv
   end
 
   def up?
-    (count_repositories >= 3 and count_commits >= 3000)
+    (repositories >= role[:repositories] and commits >= role[:commits])
+  end
+
+  def next_level
+    level = {number: 0, percentage: 0}
+    level[:number] = max ? "MÁXIMO NÍVEL" : "+#{xp_next_level}"
+    level[:percentage] = max ? 100 : (1 - (xp_next_level.to_f / role[:calc].to_f)) * 100
+    level
   end
 
   private
@@ -31,12 +38,24 @@ class Evaluation::Knight
     end
   end
 
-  def count_commits
+  def commits
     @user.repositories.sum(:commits_count)
   end
 
-  def count_repositories
-    @user.repositories.where("commits_count >= 500").count
+  def repositories
+    @user.repositories.where("commits_count >= #{role[:repository_size]}").count
+  end
+
+  def xp_next_level
+    role[:calc] - (commits % role[:calc])
+  end
+
+  def max
+    commits >= role[:commits]
+  end
+
+  def role
+    {calc: 300, repositories: 3, commits: 3000, repository_size: 500}
   end
 
 end
