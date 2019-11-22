@@ -5,9 +5,14 @@ class Profile::LevelUp
   end
 
   def run
-    Evaluation::Started.new(@user).run
-    Evaluation::Novice.new(@user).run
-    Evaluation::Knight.new(@user).run
+    started = Evaluation::Started.new(@user)
+    started.run
+
+    novice = Evaluation::Novice.new(@user)
+    novice.run if started.up?
+
+    knight = Evaluation::Knight.new(@user)
+    knight.run if novice.up?
   end
 
 end

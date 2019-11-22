@@ -13,7 +13,7 @@ class Evaluation::Started
   end
 
   def up?
-    !(count_commits <= 150)
+    (count_repositories >= 3 and count_commits.between?(150, 300))
   end
 
   private
@@ -30,6 +30,10 @@ class Evaluation::Started
 
   def count_commits
     @user.repositories.sum(:commits_count)
+  end
+
+  def count_repositories
+    @user.repositories.where("commits_count >= 50").count
   end
 
 end

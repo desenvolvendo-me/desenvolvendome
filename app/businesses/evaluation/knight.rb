@@ -13,7 +13,7 @@ class Evaluation::Knight
   end
 
   def up?
-   !(count_commits >= 300 and count_commits <= 3000 and count_repositories >= 3)
+    (count_repositories >= 3 and count_commits.between?(3000, 30000))
   end
 
   private
@@ -33,7 +33,7 @@ class Evaluation::Knight
   end
 
   def count_repositories
-    @user.repositories.where("commits_count >= 100").count
+    @user.repositories.where("commits_count >= 500").count
   end
 
 end
