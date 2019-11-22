@@ -3,7 +3,7 @@ pt-BR:
     evaluation_type:
       started: "Iniciado"
       novice: "Aprendiz"
-      knight: "Programador"
+      knight: "Cavaleiro"
     office:
       fullstack: "Full Stack"
       frontend: "Front End"
