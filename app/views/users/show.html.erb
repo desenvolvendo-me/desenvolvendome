@@ -29,6 +29,12 @@
           <% end %>
           </p>
         </div>
+        <h4 class="text-info">Próximo Nível</h4>
+        <div class="progress">
+          <% if @user.try(:profile) %>
+            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= next_level_bar(@user)[:percentage] %>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><%= next_level_bar(@user)[:number] %></div>
+          <% end %>
+        </div>
         <div class="profile-info">
           <div class="info">
             <p class="name"><%= @user.try(:name) %></p>
