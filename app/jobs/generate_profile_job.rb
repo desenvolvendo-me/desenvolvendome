@@ -14,9 +14,7 @@ class GenerateProfileJob < ApplicationJob
   end
 
   def profile_generate(user)
-    Profile::Generate.new(user).know
-    Profile::Generate.new(user).score
-    Profile::Generate.new(user).level_up
+    Profile::Generate.new(user).run
   end
 
   def send_profile(user)

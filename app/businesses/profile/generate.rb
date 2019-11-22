@@ -4,12 +4,13 @@ class Profile::Generate
     @user = user
   end
 
-  def score
-    Profile::Score.new(@user).run
+  def run
+    score
+    level_up
   end
 
-  def know
-    Evaluation::Know.new(@user).run
+  def score
+    Profile::Score.new(@user).run
   end
 
   def level_up
