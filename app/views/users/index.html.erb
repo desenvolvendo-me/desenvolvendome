@@ -15,7 +15,11 @@
                   <% end %>
                 <% end %>
                 <h5 class="mb-1"><%= link_to "@#{user.login}", "https://github.com/#{user.login}", target: "_blank" %></h5>
-                <h5 class="mb-1"><%= t("enum.evaluation_type.#{user.profile.try(:evaluation).try(:evaluation_type)  }") %> <%= "(#{user.profile.try(:evaluation).try(:level)} lvl)" %></h5>
+                <% if user.profile.try(:evaluation) %>
+                  <h5 class="mb-1"><%= t("enum.evaluation_type.#{user.profile.try(:evaluation).try(:evaluation_type)  }") %> <%= "(#{user.profile.try(:evaluation).try(:level)} lvl)" %></h5>
+                <% else %>
+                  <h5 class="mb-1">? (? lvl)</h5>
+                <% end %>
                 <%= link_to user_path(user.login) do %>
                   <% if user.profile %>
                     <span class="score-value btn btn-primary"><%= user.profile.score.to_i %> xp</span>
