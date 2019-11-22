@@ -14,4 +14,16 @@ module ProfileHelper
     (1 - processing) * 100
   end
 
+  def next_level_bar(user)
+    level = {}
+    if user.profile.evaluation.started?
+      level = Evaluation::Started.new(user).next_level
+    elsif user.profile.evaluation.novice?
+      level = Evaluation::Novice.new(user).next_level
+    elsif user.profile.evaluation.knight?
+      level = Evaluation::Knight.new(user).next_level
+    end
+    level
+  end
+
 end

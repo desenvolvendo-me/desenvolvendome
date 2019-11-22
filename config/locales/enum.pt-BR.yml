@@ -1,10 +1,9 @@
 pt-BR:
   enum:
     evaluation_type:
-      programmer: "Programador"
-      influencer: "Influenciador"
-      collaborator: "Colaborador"
-      disciplinarian: "Disciplinador"
+      started: "Iniciado"
+      novice: "Aprendiz"
+      knight: "Cavaleiro"
     office:
       fullstack: "Full Stack"
       frontend: "Front End"

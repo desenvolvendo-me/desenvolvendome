@@ -4,55 +4,69 @@
   <div class="center-block">
     <div class="row">
       <div class="col-md-12">
-        <div class="image-container">
+        <div class="image-container text-center">
           <% if @user %>
             <%= image_tag @user.avatar, size: "150x150", class: "profile-image" %>
           <% else %>
             <%= image_tag "user.png", size: "150x150", class: "profile-image" %>
           <% end %>
-          <p class="score-container">
-            <span class="score-title">Score</span>
-            <% if @user.try(:profile) %>
-              <span class="score-value btn btn-primary"><%= @user.profile.score.to_f %> de 8</span>
-            <% else %>
-              <span class="score-value btn btn-primary">?</span>
-            <% end %>
-          </p>
           <div class="progress">
             <% if @user.try(:profile) %>
-              <div class="progress-bar" role="progressbar" style="width: <%= progress_bar(@user) %>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><%= number_to_percentage(progress_bar(@user), precision: 0) %></div>
+              <div class="progress-bar" role="progressbar" style="width: <%= progress_bar(@user) %>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Importado <%= number_to_percentage(progress_bar(@user), precision: 0) %></div>
             <% end %>
           </div>
+          <p class="score-container">
+            <% if @user.profile.try(:evaluation) %>
+            <h4 class="text-center"><%= t("enum.evaluation_type.#{@user.profile.try(:evaluation).try(:evaluation_type)  }") %></h4>
+            <h6 class="text-center"><%= "#{@user.profile.try(:evaluation).try(:level)}º nível" %></h6>
+          <% else %>
+            <h5>? (?º nível)</h5>
+          <% end %>
+          <% if @user.try(:profile) %>
+            <span class="score-value btn btn-primary"><%= @user.profile.score.to_i %> xp</span>
+          <% else %>
+            <span class="score-value btn btn-primary">?</span>
+          <% end %>
+          </p>
+        </div>
+        <h4 class="text-info">Próximo Nível</h4>
+        <div class="progress">
+          <% if @user.try(:profile) %>
+            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= next_level_bar(@user)[:percentage] %>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><%= next_level_bar(@user)[:number] %></div>
+          <% end %>
         </div>
         <div class="profile-info">
-          <p class="name"><%= @user.try(:name) %></p>
-          <p class="login">
-            <a href="https://github.com/<%= @user.try(:login) %>" title="<%= @user.try(:login) %>" target="_new">@<%= @user.try(:login) %></a>
-          </p>
-          <p class="bio"><span><%= @user.try(:bio) %></span></p>
+          <div class="info">
+            <p class="name"><%= @user.try(:name) %></p>
+            <p class="login">
+              <a href="https://github.com/<%= @user.try(:login) %>" title="<%= @user.try(:login) %>" target="_new">@<%= @user.try(:login) %></a>
+            </p>
+            <p class="bio"><span><%= @user.try(:bio) %></span></p>
+          </div>
         </div>
       </div>
     </div>
     <% if @user.try(:profile) %>
       <% if progress_bar(@user) == 100 %>
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h5>Usamos para o cálculo somente repositórios com mais de 200 commits.</h5>
-            <p>Mas isso não significa que seja um mal programador, apenas significa que não deu atenção suficiente para seu o projeto.</p>
-          </div>
-        </div>
         <hr class="featurette-divider">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-lg-12 text-center">
+            <h5>Seus Projetos</h5>
+            <p>A experiência é medida com base na quantidade de código criado. </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
             <div class="list-group">
               <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">Menos de 50 commits</h5>
+                  <small>Perfil Iniciado</small>
                 </div>
                 <% if @user %>
                   <small class="text-muted">Você tem
                     <strong><%= @user.repositories.where("commits_count < 50").count %></strong>
-                    repositórios
+                    repositórios.
                   </small>
                 <% else %>
                   <small class="text-muted">Você tem 0 repositórios</small>
@@ -60,11 +74,12 @@
               </a>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="list-group">
               <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Menos de 100 commits</h5>
+                  <h5 class="mb-1">Entre 50 e 100 commits</h5>
+                  <small>Perfil Aprendiz</small>
                 </div>
                 <% if @user %>
                   <small class="text-muted">Você
@@ -78,15 +93,16 @@
               </a>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-4">
             <div class="list-group">
               <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Menos de 150 commits</h5>
+                  <h5 class="mb-1">Mais de 100 commits</h5>
+                  <small>Perfil Cavaleiro</small>
                 </div>
                 <% if @user %>
                   <small class="text-muted">Você tem
-                    <strong><%= @user.repositories.where("commits_count > 100 and commits_count < 150").count %></strong>
+                    <strong><%= @user.repositories.where("commits_count > 100").count %></strong>
                     repositórios
                   </small>
                 <% else %>
@@ -95,94 +111,27 @@
               </a>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Menos de 200 commits</h5>
-                </div>
-                <% if @user %>
-                  <small class="text-muted">Você tem
-                    <strong><%= @user.repositories.where("commits_count > 200").count %></strong> repositórios
-                  </small>
-                <% else %>
-                  <small class="text-muted">Você tem 0 repositórios</small>
-                <% end %>
-              </a>
-            </div>
-          </div>
-        </div>
-        <hr class="featurette-divider">
-        <div class="row">
-          <div class="col-md-6">
-            <%= react_component("VisitChatConhecimentos", {data: result_knowledges(@user.profile)}) %>
-          </div>
-          <div class="col-md-6">
-            <%= react_component("VisitChatAnalise", {data: result_evaluations(@user.profile)}) %>
-          </div>
-          <div class="col-md-6">
-            Legenda
-            <ul>
-              <li>
-                Tecnologia que mais pratica e conhece
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            Legenda
-            <ul>
-              <li>
-                Programador: demonstra o quanto conhece programação
-              </li>
-              <li>
-                Disciplinador: demonstra o quanto pratica programação
-              </li>
-              <li>
-                Colaborador: demonstra o quanto criar projetos úteis
-              </li>
-              <li>
-                Influenciador: demonstra o quanto cria projetos interessantes
-              </li>
-            </ul>
-          </div>
-        </div>
-        <hr class="featurette-divider">
-        <div class="row">
-          <% if @user %>
-            <div class="col-lg-12 text-center">
-              <h5>Os Quase Relevantes</h5>
-            </div>
-            <% @user.repositories.where("commits_count > 100 and commits_count < 200").each do |repository| %>
-              <div class="col-md-3">
-                <div class="list-group">
-                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1"><%= repository.name %></h5>
-                      <small class="text-muted"><%= repository.commits_count %></small>
-                    </div>
-                    <p class="mb-1">
-                    <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: <%= (repository.commits_count.to_f / 200.0) * 100 %>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><%= number_to_percentage((repository.commits_count.to_f / 200.0) * 100, precision: 0) %></div>
-                    </div>
-                    </p>
-                    <small class="text-muted">Faltam só mais <%= 200 - repository.commits_count %> commits</small>
-                  </a>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
         </div>
         <hr class="featurette-divider">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h5>Seu Score é <%= @user.profile.score.to_f %> de 8. Achou baixo?</h5>
-            <p>Sabia como melhorar e entenda sua importãncia</p>
+            <h5>Seu XP é <%= @user.profile.score.to_i %> xp!</h5>
+            <p>Querer saber como aumentar sua experiêncie?</p>
             <p><%= link_to "Clique Aqui", new_interest_path, class: "btn btn-lg btn-primary" %></p>
+          </div>
+        </div>
+        <hr class="featurette-divider">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <code>
+              <h5>Nota</h5>
+              <p>Ainda não levamos em consideração a relevância e qualidade do código</p>
+              <p>Nosso objetivo é disponibilizar na versão v1.1 e v1.2 respectivamente, hoje estamos na
+                v0.2</p>
+            </code>
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
-
-
 </div>
