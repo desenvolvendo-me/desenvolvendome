@@ -15,16 +15,17 @@ RSpec.describe "Novice" do
     it "1" do
       Evaluation::Novice.new(@user).run
 
-      expect(@user.profile.evaluation.novice?).to be_truthy
+      expect(@user.profile.evaluation.evaluation_type).to eq("novice")
       expect(@user.profile.evaluation.level).to eq(1)
     end
 
     it "2" do
       create(:repository, commits_count: 15, user: @user)
+      create(:repository, commits_count: 15, user: @user)
 
       Evaluation::Novice.new(@user).run
 
-      expect(@user.profile.evaluation.novice?).to be_truthy
+      expect(@user.profile.evaluation.evaluation_type).to eq("novice")
       expect(@user.profile.evaluation.level).to eq(2)
     end
 
@@ -35,11 +36,14 @@ RSpec.describe "Novice" do
       create(:repository, commits_count: 30, user: @user)
       create(:repository, commits_count: 11, user: @user)
       create(:repository, commits_count: 40, user: @user)
+      create(:repository, commits_count: 50, user: @user)
+      create(:repository, commits_count: 50, user: @user)
+      create(:repository, commits_count: 50, user: @user)
       create(:repository, commits_count: 8, user: @user)
 
       Evaluation::Novice.new(@user).run
 
-      expect(@user.profile.evaluation.novice?).to be_truthy
+      expect(@user.profile.evaluation.evaluation_type).to eq("novice")
       expect(@user.profile.evaluation.level).to eq(10)
     end
 
@@ -52,7 +56,7 @@ RSpec.describe "Novice" do
       Evaluation::Novice.new(@user).run
       Profile::Score.new(@user).run
 
-      expect(@user.profile.evaluation.novice?).to be_truthy
+      expect(@user.profile.evaluation.evaluation_type).to eq("novice")
       expect(@user.profile.score).to eq(164)
     end
 
@@ -62,7 +66,7 @@ RSpec.describe "Novice" do
       Evaluation::Novice.new(@user).run
       Profile::Score.new(@user).run
 
-      expect(@user.profile.evaluation.novice?).to be_truthy
+      expect(@user.profile.evaluation.evaluation_type).to eq("novice")
       expect(@user.profile.score).to eq(165)
     end
 
@@ -77,7 +81,7 @@ RSpec.describe "Novice" do
       Evaluation::Novice.new(@user).run
       Profile::Score.new(@user).run
 
-      expect(@user.profile.evaluation.novice?).to be_truthy
+      expect(@user.profile.evaluation.evaluation_type).to eq("novice")
       expect(@user.profile.score).to eq(300)
     end
 

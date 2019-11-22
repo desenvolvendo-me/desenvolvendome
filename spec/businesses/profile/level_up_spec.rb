@@ -42,7 +42,7 @@ RSpec.describe "LevelUp" do
       Profile::LevelUp.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("novice")
-      expect(@user.profile.evaluation.level).to eq(2)
+      expect(@user.profile.evaluation.level).to eq(1)
       expect(@user.repositories.sum(:commits_count)).to eq(179)
     end
 
@@ -62,7 +62,7 @@ RSpec.describe "LevelUp" do
       Profile::LevelUp.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("novice")
-      expect(@user.profile.evaluation.level).to eq(2)
+      expect(@user.profile.evaluation.level).to eq(1)
       expect(@user.repositories.sum(:commits_count)).to eq(179)
 
       create(:repository, commits_count: 100, user: @user)

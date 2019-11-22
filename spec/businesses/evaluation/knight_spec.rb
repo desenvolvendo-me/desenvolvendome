@@ -15,7 +15,7 @@ RSpec.describe "Knight" do
     it "1" do
       Evaluation::Knight.new(@user).run
 
-      expect(@user.profile.evaluation.knight?).to be_truthy
+      expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.evaluation.level).to eq(1)
     end
 
@@ -25,7 +25,7 @@ RSpec.describe "Knight" do
 
       Evaluation::Knight.new(@user).run
 
-      expect(@user.profile.evaluation.knight?).to be_truthy
+      expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.evaluation.level).to eq(2)
     end
 
@@ -38,7 +38,7 @@ RSpec.describe "Knight" do
 
       Evaluation::Knight.new(@user).run
 
-      expect(@user.profile.evaluation.knight?).to be_truthy
+      expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.evaluation.level).to eq(10)
     end
 
@@ -51,7 +51,7 @@ RSpec.describe "Knight" do
       Evaluation::Knight.new(@user).run
       Profile::Score.new(@user).run
 
-      expect(@user.profile.evaluation.knight?).to be_truthy
+      expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.score).to eq(314)
     end
 
@@ -62,7 +62,7 @@ RSpec.describe "Knight" do
       Evaluation::Knight.new(@user).run
       Profile::Score.new(@user).run
 
-      expect(@user.profile.evaluation.knight?).to be_truthy
+      expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.score).to eq(633)
     end
 
@@ -75,7 +75,7 @@ RSpec.describe "Knight" do
       Evaluation::Knight.new(@user).run
       Profile::Score.new(@user).run
 
-      expect(@user.profile.evaluation.knight?).to be_truthy
+      expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.score).to eq(2799)
     end
 
