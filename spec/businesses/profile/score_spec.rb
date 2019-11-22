@@ -12,4 +12,8 @@ RSpec.describe "GenerateScore" do
     expect(@user.profile.score).to eq(30)
   end
 
+  it "level_up" do
+    pending "pendente #{__FILE__}"
+  end
+
 end
