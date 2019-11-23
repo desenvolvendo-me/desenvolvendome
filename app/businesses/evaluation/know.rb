@@ -24,11 +24,12 @@ class Evaluation::Know
   private
 
   def merge_knowledge(exercise_total, technology)
-    language_exist = @user.profile.knowledges.joins(:language).where("languages.id = ?", technology.language.id).last
-    if language_exist
-      language_exist.update(experience: calc_experience_per_technology(exercise_total, technology), knowledge_type: set_knowledge_type(technology.language))
+    knowledge_with_language_exist = @user.profile.knowledges.joins(:language).where("languages.id = ?", technology.language.id).last
+
+    if knowledge_with_language_exist
+      knowledge_with_language_exist.update(experience: calc_experience_per_technology(exercise_total, technology), knowledge_type: set_knowledge_type(technology.language), level: level(technology.language))
     else
-      @user.profile.knowledges << Knowledge.create(experience: calc_experience_per_technology(exercise_total, technology), language: technology.language, knowledge_type: set_knowledge_type(technology.language))
+      @user.profile.knowledges << Knowledge.create(experience: calc_experience_per_technology(exercise_total, technology), language: technology.language, knowledge_type: set_knowledge_type(technology.language), level: level(technology.language))
     end
   end
 
@@ -57,6 +58,10 @@ class Evaluation::Know
     return :normal if normal.include? language.description
     return :rare if rare.include? language.description
     return :special if special.include? language.description
+  end
+
+  def level(language)
+    technologies.where("languages.description = ?", language.description).count
   end
 
   def basic
