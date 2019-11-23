@@ -55,7 +55,6 @@
         <% if progress_bar(@user) == 100 %>
           <hr class="featurette-divider">
           <div class="row">
-
             <div class="col-lg-12 text-center">
               <div class="h3">Projetos</div>
             </div>
@@ -65,16 +64,18 @@
               <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                   <div class="d-flex w-100 justify-content-between">
-                    <div class="h5 mb-1">Menos de 50 commits</div>
-                    <small>Perfil Iniciado</small>
+                    <small><%= image_tag "started.png", size: "30x30" %></small>
+                    <div class="h5 mb-1">Você tem
+                      <strong><%= @user.repositories.where("commits_count < 50").count %></strong>
+                      projeto(s)
+                    </div>
                   </div>
                   <% if @user %>
-                    <small class="text-muted">Você tem
-                      <strong><%= @user.repositories.where("commits_count < 50").count %></strong>
-                      repositórios.
+                    <small class="text-muted">
+                      com pouco código
                     </small>
                   <% else %>
-                    <small class="text-muted">Você tem 0 repositórios</small>
+                    <small class="text-muted">Você tem 0 projeto(s)</small>
                   <% end %>
                 </a>
               </div>
@@ -83,17 +84,19 @@
               <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                   <div class="d-flex w-100 justify-content-between">
-                    <div class="h5" class="mb-1">Entre 50 e 100 commits</div>
-                    <small>Perfil Aprendiz</small>
-                  </div>
-                  <% if @user %>
-                    <small class="text-muted">Você
+                    <small><%= image_tag "novice.png", size: "30x30" %></small>
+                    <div class="h5" class="mb-1">Você
                       tem
                       <strong><%= @user.repositories.where("commits_count > 50 and commits_count < 100").count %></strong>
-                      repositórios
+                      projeto(s)
+                    </div>
+                  </div>
+                  <% if @user %>
+                    <small class="text-muted">
+                      com bastante código
                     </small>
                   <% else %>
-                    <small class="text-muted">Você tem 0 repositórios</small>
+                    <small class="text-muted">Você tem 0 projeto(s)</small>
                   <% end %>
                 </a>
               </div>
@@ -102,16 +105,18 @@
               <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                   <div class="d-flex w-100 justify-content-between">
-                    <div class="h5" class="mb-1">Mais de 100 commits</div>
-                    <small>Perfil Cavaleiro</small>
+                    <small><%= image_tag "knight.png", size: "30x30" %></small>
+                    <div class="h5" class="mb-1">Você tem
+                      <strong><%= @user.repositories.where("commits_count > 100").count %></strong>
+                      projeto(s)
+                    </div>
                   </div>
                   <% if @user %>
-                    <small class="text-muted">Você tem
-                      <strong><%= @user.repositories.where("commits_count > 100").count %></strong>
-                      repositórios
+                    <small class="text-muted">
+                      com muito código.
                     </small>
                   <% else %>
-                    <small class="text-muted">Você tem 0 repositórios</small>
+                    <small class="text-muted">Você tem 0 projeto(s)</small>
                   <% end %>
                 </a>
               </div>
