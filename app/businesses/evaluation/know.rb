@@ -1,3 +1,4 @@
+#TODO: Refatoring
 class Evaluation::Know
 
   def initialize(user)

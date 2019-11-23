@@ -1,3 +1,4 @@
+#TODO: Refatoring
 class Evaluation::Novice
 
   def initialize(user)

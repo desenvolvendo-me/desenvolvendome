@@ -1,3 +1,4 @@
+#TODO: Refatoring
 class Evaluation::Knight
 
   def initialize(user)
