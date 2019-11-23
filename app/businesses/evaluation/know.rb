@@ -2,34 +2,26 @@ class Evaluation::Know
 
   def initialize(user)
     @user = user
-    @experience_per_language = {}
   end
 
   def run
     update_knowledges
   end
 
-  def update_knowledges
-    set_profile
-    exercise_total = technologies.sum(:exercise)
-    technologies.each do |technology|
-      merge_knowledge(exercise_total, technology)
-    end
-  end
-
-  def calc_experience_per_technology(exercise_total, technology)
-    experience(technology) / exercise_total * 100
-  end
-
   private
 
-  def merge_knowledge(exercise_total, technology)
+  def update_knowledges
+    set_profile
+    technologies.each(&method(:merge_knowledge))
+  end
+
+  def merge_knowledge(technology)
     knowledge_with_language_exist = @user.profile.knowledges.joins(:language).where("languages.id = ?", technology.language.id).last
 
     if knowledge_with_language_exist
-      knowledge_with_language_exist.update(experience: calc_experience_per_technology(exercise_total, technology), knowledge_type: set_knowledge_type(technology.language), level: level(technology.language))
+      knowledge_with_language_exist.update(experience: technology.exercise, knowledge_type: set_knowledge_type(technology.language), level: level(technology.language))
     else
-      @user.profile.knowledges << Knowledge.create(experience: calc_experience_per_technology(exercise_total, technology), language: technology.language, knowledge_type: set_knowledge_type(technology.language), level: level(technology.language))
+      @user.profile.knowledges << Knowledge.create(experience: technology.exercise, language: technology.language, knowledge_type: set_knowledge_type(technology.language), level: level(technology.language))
     end
   end
 
@@ -41,29 +33,24 @@ class Evaluation::Know
     Technology.joins(:language, repository: [:user]).where("users.id = ?", @user.id)
   end
 
-  def experience(technology)
-    language = technology.language.description
-
-    if @experience_per_language.has_key? language
-      @experience_per_language[language][1] += technology.exercise
-    else
-      @experience_per_language.merge! language => [language, technology.exercise]
-    end
-
-    @experience_per_language[language][1]
-  end
-
   def set_knowledge_type(language)
-    return :basic if basic.include? language.description
-    return :normal if normal.include? language.description
-    return :rare if rare.include? language.description
-    return :special if special.include? language.description
+    knowledge_type = nil
+    knowledge_type = :basic if basic.include? language.description
+    knowledge_type = :normal if normal.include? language.description
+    knowledge_type = :rare if rare.include? language.description
+    knowledge_type = :special if special.include? language.description
+    knowledge_type
   end
 
   def level(language)
-    technologies.where("languages.description = ?", language.description).count
+    commits = 0
+    technologies.where("languages.description = ?", language.description).each do |technology|
+      commits += technology.repository.commits_count
+    end
+    commits / settings[:commits_level]
   end
 
+  #TODO:Informação que devem ir para o modulo admin
   def basic
     ["HTML", "CSS", "JavaScript"]
   end
@@ -73,11 +60,14 @@ class Evaluation::Know
   end
 
   def rare
-    ["XSLT", "R", "C", "C++", "Shell", "PowerShell", "Groovy", "Dockerfile"]
+    ["XSLT", "R", "C", "C++", "Shell", "PowerShell", "Groovy", "Dockerfile", "Vue"]
   end
 
   def special
     ["Swift", "Objective-C ", "Go", "Elixir", "Erlang"]
   end
 
+  def settings
+    {commits_level: 25}
+  end
 end
