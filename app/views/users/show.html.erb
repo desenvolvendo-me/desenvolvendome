@@ -48,61 +48,12 @@
     </div>
     <% if @user.try(:profile) %>
       <% if progress_bar(@user) == 100 %>
+
         <hr class="featurette-divider">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h5>Suas Linguagens</h5>
-          </div>
-          <div class="col-md-3">
-            <h5>Básicas</h5>
-            <ul class="list-group">
-              <% @user.profile.knowledges.where(knowledge_type: :basic).each do |knowledge| %>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <%= knowledge.language.description %>
-                  <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-          <div class="col-md-3">
-            <h5>Normais</h5>
-            <ul class="list-group">
-              <% @user.profile.knowledges.where(knowledge_type: :normal).each do |knowledge| %>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <%= knowledge.language.description %>
-                  <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-          <div class="col-md-3">
-            <h5>Raras</h5>
-            <ul class="list-group">
-              <% @user.profile.knowledges.where(knowledge_type: :rare).each do |knowledge| %>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <%= knowledge.language.description %>
-                  <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-          <div class="col-md-3">
-            <h5>Especiais</h5>
-            <ul class="list-group">
-              <% @user.profile.knowledges.where(knowledge_type: :special).each do |knowledge| %>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <%= knowledge.language.description %>
-                  <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-        <hr class="featurette-divider">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h5>Seus Projetos</h5>
-            <p>A experiência é medida com base na quantidade de código criado. </p>
+            <h3>SEUS PROJETOS</h3>
+            <p class="text-info">A experiência é medida com base na quantidade de código criado. Não gostou? leia a nota <a href="#nota">clique aqui</a> </p>
           </div>
         </div>
         <div class="row">
@@ -165,17 +116,68 @@
         <hr class="featurette-divider">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h5>Seu XP é <%= @user.profile.score.to_i %> xp!</h5>
-            <p>Querer saber como aumentar sua experiêncie?</p>
+            <h3>SUAS LINGUAGENS</h3>
+            <p class="text-info">A experiência é medida com base na quantidade de código criado. Não gostou? leia a nota <a href="#nota">clique aqui</a> </p>
+          </div>
+          <div class="col-md-3">
+            <h5>Básicas</h5>
+            <ul class="list-group">
+              <% @user.profile.knowledges.where(knowledge_type: :basic).each do |knowledge| %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <%= knowledge.language.description %>
+                  <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Normais</h5>
+            <ul class="list-group">
+              <% @user.profile.knowledges.where(knowledge_type: :normal).each do |knowledge| %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <%= knowledge.language.description %>
+                  <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Raras</h5>
+            <ul class="list-group">
+              <% @user.profile.knowledges.where(knowledge_type: :rare).each do |knowledge| %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <%= knowledge.language.description %>
+                  <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Especiais</h5>
+            <ul class="list-group">
+              <% @user.profile.knowledges.where(knowledge_type: :special).each do |knowledge| %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <%= knowledge.language.description %>
+                  <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <hr class="featurette-divider">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h3>Seu XP é <%= @user.profile.score.to_i %> xp!</h3>
+            <p>Quer saber como aumentar sua experiêncie?</p>
             <p><%= link_to "Clique Aqui", new_interest_path, class: "btn btn-lg btn-primary" %></p>
           </div>
         </div>
         <hr class="featurette-divider">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <code>
-              <h5>Nota</h5>
-              <p>Ainda não levamos em consideração a relevância e qualidade do código, somente quantitativo.</p>
+            <code id="nota">
+              <h3>NOTA</h3>
+              <p>Ainda não levamos em consideração a Relevância e a Qualidade do código, somente a Quantidade.</p>
               <p>Nosso objetivo é disponibilizar na versão v1.1 e v1.2 respectivamente, hoje estamos na
                 v0.2</p>
             </code>
