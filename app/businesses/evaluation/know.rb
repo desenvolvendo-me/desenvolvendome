@@ -53,7 +53,7 @@ class Evaluation::Know
 
   #TODO:Informação que devem ir para o modulo admin
   def basic
-    ["HTML", "CSS", "JavaScript"]
+    ["HTML", "CSS", "JavaScript", "Shell", "PowerShell"]
   end
 
   def normal
@@ -61,11 +61,11 @@ class Evaluation::Know
   end
 
   def rare
-    ["XSLT", "R", "C", "C++", "Shell", "PowerShell", "Groovy", "Dockerfile", "Vue"]
+    ["C", "C++", "Groovy", "Dockerfile", "Vue"]
   end
 
   def special
-    ["Swift", "Objective-C ", "Go", "Elixir", "Erlang"]
+    ["Swift", "Objective-C ", "Kotlin", "Go", "Elixir", "Erlang"]
   end
 
   def settings

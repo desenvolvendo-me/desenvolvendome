@@ -18,7 +18,7 @@
         </div>
         <div class="evaluation-container">
           <% if @user.try(:profile).try(:evaluation) %>
-            <%= image_tag "#{@user.profile.try(:evaluation).try(:evaluation_type)}.png", size: "150x150", class: "profile-image" %>
+            <%= image_tag "evaluation/#{@user.profile.try(:evaluation).try(:evaluation_type)}.png", size: "150x150", class: "profile-image" %>
             <div class="h4 text-center"><%= t("enum.evaluation_type.#{@user.profile.try(:evaluation).try(:evaluation_type)  }") %></div>
             <div class="h6 text-center"><%= "#{@user.profile.try(:evaluation).try(:level)}º nível" %></div>
           <% else %>
@@ -64,7 +64,7 @@
               <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                   <div class="d-flex w-100 justify-content-between">
-                    <small><%= image_tag "started.png", size: "30x30" %></small>
+                    <small><%= image_tag "evaluation/started.png", size: "30x30" %></small>
                     <div class="h5 mb-1">Você tem
                       <strong><%= @user.repositories.where("commits_count < 50").count %></strong>
                       projeto(s)
@@ -84,7 +84,7 @@
               <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                   <div class="d-flex w-100 justify-content-between">
-                    <small><%= image_tag "novice.png", size: "30x30" %></small>
+                    <small><%= image_tag "evaluation/novice.png", size: "30x30" %></small>
                     <div class="h5" class="mb-1">Você
                       tem
                       <strong><%= @user.repositories.where("commits_count > 50 and commits_count < 100").count %></strong>
@@ -105,7 +105,7 @@
               <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                   <div class="d-flex w-100 justify-content-between">
-                    <small><%= image_tag "knight.png", size: "30x30" %></small>
+                    <small><%= image_tag "evaluation/knight.png", size: "30x30" %></small>
                     <div class="h5" class="mb-1">Você tem
                       <strong><%= @user.repositories.where("commits_count > 100").count %></strong>
                       projeto(s)
@@ -132,7 +132,14 @@
               <ul class="list-group">
                 <% @user.profile.knowledges.where(knowledge_type: :basic).each do |knowledge| %>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <%= knowledge.language.description %>
+                    <div class="row">
+                      <% if asset_exists? "language/basic/#{knowledge.language.description.downcase}.png" %>
+                        <%= image_tag "language/basic/#{knowledge.language.description.downcase}.png", size: "30x30" %>
+                      <% else %>
+                        <%= image_tag "language/empty.png", size: "30x30" %>
+                      <% end %>
+                      <%= knowledge.language.description %>
+                    </div>
                     <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
                   </li>
                 <% end %>
@@ -143,7 +150,14 @@
               <ul class="list-group">
                 <% @user.profile.knowledges.where(knowledge_type: :normal).each do |knowledge| %>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <%= knowledge.language.description %>
+                    <div class="row">
+                      <% if asset_exists? "language/normal/#{knowledge.language.description.downcase.gsub('#', 'net')}.png" %>
+                        <%= image_tag "language/normal/#{knowledge.language.description.downcase.gsub('#', 'net')}.png", size: "30x30" %>
+                      <% else %>
+                        <%= image_tag "language/empty.png", size: "30x30" %>
+                      <% end %>
+                      <%= knowledge.language.description %>
+                    </div>
                     <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
                   </li>
                 <% end %>
@@ -154,7 +168,14 @@
               <ul class="list-group">
                 <% @user.profile.knowledges.where(knowledge_type: :rare).each do |knowledge| %>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <%= knowledge.language.description %>
+                    <div class="row">
+                      <% if asset_exists? "language/rare/#{knowledge.language.description.downcase.gsub('+', 'plus')}.png" %>
+                        <%= image_tag "language/rare/#{knowledge.language.description.downcase.gsub('+', 'plus')}.png", size: "30x30" %>
+                      <% else %>
+                        <%= image_tag "language/empty.png", size: "30x30" %>
+                      <% end %>
+                      <%= knowledge.language.description %>
+                    </div>
                     <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
                   </li>
                 <% end %>
@@ -165,7 +186,14 @@
               <ul class="list-group">
                 <% @user.profile.knowledges.where(knowledge_type: :special).each do |knowledge| %>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <%= knowledge.language.description %>
+                    <div class="row">
+                      <% if asset_exists? "language/special/#{knowledge.language.description.downcase}.png" %>
+                        <%= image_tag "language/special/#{knowledge.language.description.downcase}.png", size: "30x30" %>
+                      <% else %>
+                        <%= image_tag "language/empty.png", size: "30x30" %>
+                      <% end %>
+                      <%= knowledge.language.description %>
+                    </div>
                     <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
                   </li>
                 <% end %>
