@@ -59,7 +59,7 @@
               <% @user.profile.knowledges.where(knowledge_type: :basic).each do |knowledge| %>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <%= knowledge.language.description %>
-                  <span class="badge badge-primary badge-pill">?</span>
+                  <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
                 </li>
               <% end %>
             </ul>
@@ -70,7 +70,7 @@
               <% @user.profile.knowledges.where(knowledge_type: :normal).each do |knowledge| %>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <%= knowledge.language.description %>
-                  <span class="badge badge-primary badge-pill">?</span>
+                  <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
                 </li>
               <% end %>
             </ul>
@@ -81,7 +81,7 @@
               <% @user.profile.knowledges.where(knowledge_type: :rare).each do |knowledge| %>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <%= knowledge.language.description %>
-                  <span class="badge badge-primary badge-pill">?</span>
+                  <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
                 </li>
               <% end %>
             </ul>
@@ -92,7 +92,7 @@
               <% @user.profile.knowledges.where(knowledge_type: :special).each do |knowledge| %>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <%= knowledge.language.description %>
-                  <span class="badge badge-primary badge-pill">?</span>
+                  <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
                 </li>
               <% end %>
             </ul>
@@ -175,7 +175,7 @@
           <div class="col-lg-12 text-center">
             <code>
               <h5>Nota</h5>
-              <p>Ainda não levamos em consideração a relevância e qualidade do código</p>
+              <p>Ainda não levamos em consideração a relevância e qualidade do código, somente quantitativo.</p>
               <p>Nosso objetivo é disponibilizar na versão v1.1 e v1.2 respectivamente, hoje estamos na
                 v0.2</p>
             </code>
