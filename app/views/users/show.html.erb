@@ -56,10 +56,10 @@
           <div class="col-md-3">
             <h5>Básicas</h5>
             <ul class="list-group">
-              <% @user.profile.knowledges.each do |knowledge| %>
+              <% @user.profile.knowledges.where(knowledge_type: :basic).each do |knowledge| %>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <%= knowledge.language.description %>
-                  <span class="badge badge-primary badge-pill">14</span>
+                  <span class="badge badge-primary badge-pill">?</span>
                 </li>
               <% end %>
             </ul>
@@ -67,10 +67,10 @@
           <div class="col-md-3">
             <h5>Normais</h5>
             <ul class="list-group">
-              <% @user.profile.knowledges.each do |knowledge| %>
+              <% @user.profile.knowledges.where(knowledge_type: :normal).each do |knowledge| %>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <%= knowledge.language.description %>
-                  <span class="badge badge-primary badge-pill">14</span>
+                  <span class="badge badge-primary badge-pill">?</span>
                 </li>
               <% end %>
             </ul>
@@ -78,10 +78,10 @@
           <div class="col-md-3">
             <h5>Raras</h5>
             <ul class="list-group">
-              <% @user.profile.knowledges.each do |knowledge| %>
+              <% @user.profile.knowledges.where(knowledge_type: :rare).each do |knowledge| %>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <%= knowledge.language.description %>
-                  <span class="badge badge-primary badge-pill">14</span>
+                  <span class="badge badge-primary badge-pill">?</span>
                 </li>
               <% end %>
             </ul>
@@ -89,10 +89,10 @@
           <div class="col-md-3">
             <h5>Especiais</h5>
             <ul class="list-group">
-              <% @user.profile.knowledges.each do |knowledge| %>
+              <% @user.profile.knowledges.where(knowledge_type: :special).each do |knowledge| %>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <%= knowledge.language.description %>
-                  <span class="badge badge-primary badge-pill">14</span>
+                  <span class="badge badge-primary badge-pill">?</span>
                 </li>
               <% end %>
             </ul>
