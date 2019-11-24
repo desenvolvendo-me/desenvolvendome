@@ -1,7 +1,7 @@
 require 'faraday'
 require 'json'
 
-class Api::Github
+class Github::Api
 
   def initialize(args = {})
     @github_api_key = ENV["GITHUB_API_KEY"]

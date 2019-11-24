@@ -2,7 +2,7 @@
 class Import::Github
 
   def initialize
-    @github = Api::Github.new
+    @github = Github::Api.new
   end
 
   def run(user)

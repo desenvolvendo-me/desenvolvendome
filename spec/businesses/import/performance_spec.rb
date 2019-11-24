@@ -5,7 +5,7 @@ RSpec.describe "Performance" do
   context "api" do
 
     it 'user' do
-      @api_github = Api::Github.new
+      @api_github = Github::Api.new
 
       user = nil
       login = "desenvolvendome"

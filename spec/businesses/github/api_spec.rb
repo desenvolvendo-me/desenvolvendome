@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Github" do
+RSpec.describe "Github::Api" do
 
   before(:all) do
-    @api_github = Api::Github.new
+    @api_github = Github::Api.new
   end
 
   it "user" do
