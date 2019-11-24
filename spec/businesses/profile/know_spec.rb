@@ -57,7 +57,7 @@ RSpec.describe "Know" do
   context "knowledge level" do
 
     it "1" do
-      repository = create(:repository, commits_count: 15, user: @user)
+      repository = create(:repository, commits_count: 25, user: @user)
       language = create(:language, description: "HTML")
       create(:technology, repository: repository, exercise: 5500, language: language)
 
@@ -69,8 +69,8 @@ RSpec.describe "Know" do
     end
 
     it "2" do
-      repository1 = create(:repository, commits_count: 15, user: @user)
-      repository2 = create(:repository, commits_count: 15, user: @user)
+      repository1 = create(:repository, commits_count: 25, user: @user)
+      repository2 = create(:repository, commits_count: 25, user: @user)
       language = create(:language, description: "Ruby")
       create(:technology, repository: repository1, exercise: 5500, language: language)
       create(:technology, repository: repository2, exercise: 5500, language: language)
@@ -83,9 +83,9 @@ RSpec.describe "Know" do
     end
 
     it "3" do
-      repository1 = create(:repository, commits_count: 15, user: @user)
-      repository2 = create(:repository, commits_count: 15, user: @user)
-      repository3 = create(:repository, commits_count: 15, user: @user)
+      repository1 = create(:repository, commits_count: 25, user: @user)
+      repository2 = create(:repository, commits_count: 25, user: @user)
+      repository3 = create(:repository, commits_count: 25, user: @user)
       language = create(:language, description: "C")
       create(:technology, repository: repository1, exercise: 5500, language: language)
       create(:technology, repository: repository2, exercise: 5500, language: language)
