@@ -7,7 +7,6 @@ class Profile::Generate
   def run
     evaluation
     evolution
-    score
   end
 
   private
@@ -20,8 +19,5 @@ class Profile::Generate
     Profile::Evolution.new(@user).run
   end
 
-  def score
-    Profile::Score.new(@user).run
-  end
 
 end

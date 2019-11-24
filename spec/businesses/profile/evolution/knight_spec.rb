@@ -13,7 +13,7 @@ RSpec.describe "Knight" do
   context "level" do
 
     it "1" do
-      Evolution::Knight.new(@user).run
+      Profile::Evolution::Knight.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.evaluation.level).to eq(1)
@@ -23,7 +23,7 @@ RSpec.describe "Knight" do
       create(:repository, commits_count: 100, user: @user)
       create(:repository, commits_count: 200, user: @user)
 
-      Evolution::Knight.new(@user).run
+      Profile::Evolution::Knight.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.evaluation.level).to eq(2)
@@ -36,7 +36,7 @@ RSpec.describe "Knight" do
       create(:repository, commits_count: 500, user: @user)
       create(:repository, commits_count: 200, user: @user)
 
-      Evolution::Knight.new(@user).run
+      Profile::Evolution::Knight.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.evaluation.level).to eq(10)
@@ -48,8 +48,8 @@ RSpec.describe "Knight" do
     it "+ 314" do
       create(:repository, commits_count: 14, user: @user)
 
-      Evolution::Knight.new(@user).run
-      Profile::Score.new(@user).run
+      Profile::Evolution::Knight.new(@user).run
+      Profile::Evaluation::Score.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.score).to eq(314)
@@ -59,8 +59,8 @@ RSpec.describe "Knight" do
       create(:repository, commits_count: 100, user: @user)
       create(:repository, commits_count: 233, user: @user)
 
-      Evolution::Knight.new(@user).run
-      Profile::Score.new(@user).run
+      Profile::Evolution::Knight.new(@user).run
+      Profile::Evaluation::Score.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.score).to eq(633)
@@ -72,8 +72,8 @@ RSpec.describe "Knight" do
       create(:repository, commits_count: 500, user: @user)
       create(:repository, commits_count: 499, user: @user)
 
-      Evolution::Knight.new(@user).run
-      Profile::Score.new(@user).run
+      Profile::Evolution::Knight.new(@user).run
+      Profile::Evaluation::Score.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.score).to eq(2799)

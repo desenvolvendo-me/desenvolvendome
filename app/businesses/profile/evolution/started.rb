@@ -1,16 +1,16 @@
-class Evolution::Novice < Evolution::Kind
+class Profile::Evolution::Started < Profile::Evolution::Kind
   #TODO:Informação que devem ir para o modulo admin
   SETTINGS = {
       min_level: 1,
       max_level: 10,
       role: {
-          kind: :novice,
-          calc: 30,
-          repository_size: 100,
-          commits_preview: 150,
+          kind: :started,
+          calc: 15,
+          repository_size: 50,
+          commits_preview: 0,
           level_up: {
               repositories: 3,
-              commits: 300
+              commits: 150
           }
       }
   }

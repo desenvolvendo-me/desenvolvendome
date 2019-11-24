@@ -11,7 +11,7 @@ RSpec.describe "Started" do
     it "1" do
       create(:repository, commits_count: 14, user: @user)
 
-      Evolution::Started.new(@user).run
+      Profile::Evolution::Started.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
       expect(@user.profile.evaluation.level).to eq(1)
@@ -20,7 +20,7 @@ RSpec.describe "Started" do
     it "2" do
       create(:repository, commits_count: 15, user: @user)
 
-      Evolution::Started.new(@user).run
+      Profile::Evolution::Started.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
       expect(@user.profile.evaluation.level).to eq(2)
@@ -35,7 +35,7 @@ RSpec.describe "Started" do
       create(:repository, commits_count: 40, user: @user)
       create(:repository, commits_count: 8, user: @user)
 
-      Evolution::Started.new(@user).run
+      Profile::Evolution::Started.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
       expect(@user.profile.evaluation.level).to eq(10)
@@ -48,7 +48,7 @@ RSpec.describe "Started" do
     it "+ 0" do
       create(:repository, commits_count: 14, user: @user)
 
-      Profile::Score.new(@user).run
+      Profile::Evaluation::Score.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
       expect(@user.profile.score).to eq(14)
@@ -57,7 +57,7 @@ RSpec.describe "Started" do
     it "+ 15" do
       create(:repository, commits_count: 15, user: @user)
 
-      Profile::Score.new(@user).run
+      Profile::Evaluation::Score.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
       expect(@user.profile.score).to eq(15)
@@ -71,7 +71,7 @@ RSpec.describe "Started" do
       create(:repository, commits_count: 11, user: @user)
       create(:repository, commits_count: 49, user: @user)
 
-      Profile::Score.new(@user).run
+      Profile::Evaluation::Score.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
       expect(@user.profile.score).to eq(150)
