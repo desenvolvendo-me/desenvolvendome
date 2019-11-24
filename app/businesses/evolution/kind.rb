@@ -8,16 +8,16 @@ class Evolution::Kind
   end
 
   def run
-    create_evaluation unless up?
+    create_evaluation unless level_up?
   end
 
   def level
-    lv = @settings[:min_level] + ((commits - @settings[:role][:commits_preview]) / @settings[:role][:calc]) unless up?
+    lv = @settings[:min_level] + ((commits - @settings[:role][:commits_preview]) / @settings[:role][:calc]) unless level_up?
     lv = @settings[:max_level] if max
     lv
   end
 
-  def up?
+  def level_up?
     (repositories >= @settings[:role][:level_up][:repositories] and commits >= @settings[:role][:level_up][:commits])
   end
 

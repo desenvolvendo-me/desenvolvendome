@@ -13,7 +13,7 @@
 #
 #  index_profiles_on_user_id  (user_id)
 #
-
+#TODO: Mudar score para xp
 class Profile < ApplicationRecord
   belongs_to :user, optional: true
   has_many :knowledges, dependent: :destroy

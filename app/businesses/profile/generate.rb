@@ -5,21 +5,23 @@ class Profile::Generate
   end
 
   def run
+    evaluation
+    evolution
     score
-    level_up
-    know
+  end
+
+  private
+
+  def evaluation
+    Profile::Evaluation.new(@user).run
+  end
+
+  def evolution
+    Profile::Evolution.new(@user).run
   end
 
   def score
     Profile::Score.new(@user).run
-  end
-
-  def level_up
-    Profile::LevelUp.new(@user).run
-  end
-
-  def know
-    Evaluation::Know.new(@user).run
   end
 
 end
