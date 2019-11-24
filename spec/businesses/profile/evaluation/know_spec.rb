@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Know" do
+RSpec.describe "Profile::Evaluation::Know" do
 
   before(:all) do
     @user = create(:user, :with_profile)

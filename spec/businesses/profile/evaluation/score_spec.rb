@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 #FIXME: Rspec
-RSpec.describe "Score" do
+RSpec.describe "Profile::Evaluation::Score" do
 
   before(:each) do
     @user = create(:user, :with_repositories, :with_profile)

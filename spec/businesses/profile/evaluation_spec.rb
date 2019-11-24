@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Evaluation" do
+RSpec.describe "Profile::Evaluation" do
 
   before(:each) do
     @user = create(:user, :with_profile)

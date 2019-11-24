@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Generate" do
+RSpec.describe "Profile::Generate" do
 
   before(:each) do
     @user = create(:user, :with_profile)
