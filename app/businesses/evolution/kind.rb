@@ -1,9 +1,9 @@
 class Evolution::Kind
   DESCRIPTION_MAX_LEVEL = "MÁXIMO NÍVEL"
-  @setting = {}
+  @settings = {}
 
-  def initialize(user, setting)
-    @setting = setting
+  def initialize(user, settings)
+    @settings = settings
     @user = user
   end
 
@@ -12,19 +12,19 @@ class Evolution::Kind
   end
 
   def level
-    lv = @setting[:min_level] + ((commits - @setting[:role][:commits_preview]) / @setting[:role][:calc]) unless up?
-    lv = @setting[:max_level] if max
+    lv = @settings[:min_level] + ((commits - @settings[:role][:commits_preview]) / @settings[:role][:calc]) unless up?
+    lv = @settings[:max_level] if max
     lv
   end
 
   def up?
-    (repositories >= @setting[:role][:level_up][:repositories] and commits >= @setting[:role][:level_up][:commits])
+    (repositories >= @settings[:role][:level_up][:repositories] and commits >= @settings[:role][:level_up][:commits])
   end
 
   def next_level
     level = {number: 0, percentage: 0}
     level[:number] = max ? DESCRIPTION_MAX_LEVEL : "+#{xp_next_level}"
-    level[:percentage] = max ? 100 : (1 - (xp_next_level.to_f / @setting[:role][:calc].to_f)) * 100
+    level[:percentage] = max ? 100 : (1 - (xp_next_level.to_f / @settings[:role][:calc].to_f)) * 100
     level
   end
 
@@ -34,9 +34,9 @@ class Evolution::Kind
     evaludation = @user.profile.evaluation
 
     if evaludation
-      evaludation.update(level: level, evaluation_type: @setting[:role][:kind])
+      evaludation.update(level: level, evaluation_type: @settings[:role][:kind])
     else
-      Evaluation.create(level: level, evaluation_type: @setting[:role][:kind], profile: @user.profile)
+      Evaluation.create(level: level, evaluation_type: @settings[:role][:kind], profile: @user.profile)
     end
   end
 
@@ -45,15 +45,15 @@ class Evolution::Kind
   end
 
   def repositories
-    @user.repositories.where("commits_count >= #{@setting[:role][:repository_size]}").count
+    @user.repositories.where("commits_count >= #{@settings[:role][:repository_size]}").count
   end
 
   def xp_next_level
-    @setting[:role][:calc] - (commits % @setting[:role][:calc])
+    @settings[:role][:calc] - (commits % @settings[:role][:calc])
   end
 
   def max
-    commits >= @setting[:role][:level_up][:commits]
+    commits >= @settings[:role][:level_up][:commits]
   end
 
 end

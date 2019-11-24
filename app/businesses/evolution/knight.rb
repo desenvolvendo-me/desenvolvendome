@@ -1,5 +1,5 @@
 class Evolution::Knight < Evolution::Kind
-  SETTING = {
+  SETTINGS = {
       min_level: 1,
       max_level: 10,
       role: {
