@@ -1,5 +1,5 @@
 #TODO: Refatoring
-class Import::Github
+class Github::Importation
 
   def initialize
     @github = Github::Api.new
