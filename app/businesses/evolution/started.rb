@@ -1,15 +1,15 @@
-class Evaluation::Novice < Evaluation::Kind
+class Evolution::Started < Evolution::Kind
   SETTING = {
       min_level: 1,
       max_level: 10,
       role: {
-          kind: :novice,
-          calc: 30,
-          repository_size: 100,
-          commits_preview: 150,
+          kind: :started,
+          calc: 15,
+          repository_size: 50,
+          commits_preview: 0,
           level_up: {
               repositories: 3,
-              commits: 300
+              commits: 150
           }
       }
   }

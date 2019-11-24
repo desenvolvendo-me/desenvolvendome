@@ -13,7 +13,7 @@ RSpec.describe "Knight" do
   context "level" do
 
     it "1" do
-      Evaluation::Knight.new(@user).run
+      Evolution::Knight.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.evaluation.level).to eq(1)
@@ -23,7 +23,7 @@ RSpec.describe "Knight" do
       create(:repository, commits_count: 100, user: @user)
       create(:repository, commits_count: 200, user: @user)
 
-      Evaluation::Knight.new(@user).run
+      Evolution::Knight.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.evaluation.level).to eq(2)
@@ -36,7 +36,7 @@ RSpec.describe "Knight" do
       create(:repository, commits_count: 500, user: @user)
       create(:repository, commits_count: 200, user: @user)
 
-      Evaluation::Knight.new(@user).run
+      Evolution::Knight.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.evaluation.level).to eq(10)
@@ -48,7 +48,7 @@ RSpec.describe "Knight" do
     it "+ 314" do
       create(:repository, commits_count: 14, user: @user)
 
-      Evaluation::Knight.new(@user).run
+      Evolution::Knight.new(@user).run
       Profile::Score.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
@@ -59,7 +59,7 @@ RSpec.describe "Knight" do
       create(:repository, commits_count: 100, user: @user)
       create(:repository, commits_count: 233, user: @user)
 
-      Evaluation::Knight.new(@user).run
+      Evolution::Knight.new(@user).run
       Profile::Score.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
@@ -72,7 +72,7 @@ RSpec.describe "Knight" do
       create(:repository, commits_count: 500, user: @user)
       create(:repository, commits_count: 499, user: @user)
 
-      Evaluation::Knight.new(@user).run
+      Evolution::Knight.new(@user).run
       Profile::Score.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")

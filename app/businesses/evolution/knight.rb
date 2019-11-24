@@ -1,4 +1,4 @@
-class Evaluation::Knight < Evaluation::Kind
+class Evolution::Knight < Evolution::Kind
   SETTING = {
       min_level: 1,
       max_level: 10,

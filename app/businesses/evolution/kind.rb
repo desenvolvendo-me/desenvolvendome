@@ -1,4 +1,4 @@
-class Evaluation::Kind
+class Evolution::Kind
   DESCRIPTION_MAX_LEVEL = "MÁXIMO NÍVEL"
   @setting = {}
 
