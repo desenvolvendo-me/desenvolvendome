@@ -16,7 +16,7 @@ class Evolution::Knight < Evolution::Kind
   }
 
   def initialize(user)
-    super(user, SETTING)
+    super(user, SETTINGS)
   end
 
   def up?
