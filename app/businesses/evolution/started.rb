@@ -1,4 +1,5 @@
 class Evolution::Started < Evolution::Kind
+  #TODO:Informação que devem ir para o modulo admin
   SETTINGS = {
       min_level: 1,
       max_level: 10,
