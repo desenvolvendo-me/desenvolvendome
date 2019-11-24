@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "LevelUp" do
+RSpec.describe "Evolution" do
 
   before(:each) do
     @user = create(:user, :with_profile)
@@ -11,7 +11,7 @@ RSpec.describe "LevelUp" do
     it 'started' do
       create(:repository, commits_count: 14, user: @user)
 
-      Profile::LevelUp.new(@user).run
+      Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("started")
       expect(@user.profile.evaluation.level).to eq(1)
@@ -19,7 +19,7 @@ RSpec.describe "LevelUp" do
       create(:repository, commits_count: 40, user: @user)
       create(:repository, commits_count: 40, user: @user)
 
-      Profile::LevelUp.new(@user).run
+      Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("started")
       expect(@user.profile.evaluation.level).to eq(7)
@@ -29,7 +29,7 @@ RSpec.describe "LevelUp" do
     it 'novice' do
       create(:repository, commits_count: 14, user: @user)
 
-      Profile::LevelUp.new(@user).run
+      Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("started")
       expect(@user.profile.evaluation.level).to eq(1)
@@ -39,7 +39,7 @@ RSpec.describe "LevelUp" do
       create(:repository, commits_count: 50, user: @user)
       create(:repository, commits_count: 15, user: @user)
 
-      Profile::LevelUp.new(@user).run
+      Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("novice")
       expect(@user.profile.evaluation.level).to eq(1)
@@ -49,7 +49,7 @@ RSpec.describe "LevelUp" do
     it 'knight' do
       create(:repository, commits_count: 14, user: @user)
 
-      Profile::LevelUp.new(@user).run
+      Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("started")
       expect(@user.profile.evaluation.level).to eq(1)
@@ -59,7 +59,7 @@ RSpec.describe "LevelUp" do
       create(:repository, commits_count: 50, user: @user)
       create(:repository, commits_count: 15, user: @user)
 
-      Profile::LevelUp.new(@user).run
+      Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("novice")
       expect(@user.profile.evaluation.level).to eq(1)
@@ -70,7 +70,7 @@ RSpec.describe "LevelUp" do
       create(:repository, commits_count: 100, user: @user)
       create(:repository, commits_count: 177, user: @user)
 
-      Profile::LevelUp.new(@user).run
+      Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.evaluation.level).to eq(2)
@@ -97,7 +97,7 @@ RSpec.describe "LevelUp" do
       create(:repository, commits_count: 0, user: @user)
       create(:repository, commits_count: 39, user: @user)
 
-      Profile::LevelUp.new(@user).run
+      Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("novice")
       expect(@user.profile.evaluation.level).to eq(10)
@@ -117,7 +117,7 @@ RSpec.describe "LevelUp" do
       create(:repository, commits_count: 26, user: @user)
       create(:repository, commits_count: 124, user: @user)
 
-      Profile::LevelUp.new(@user).run
+      Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("started")
       expect(@user.profile.evaluation.level).to eq(10)
@@ -178,7 +178,7 @@ RSpec.describe "LevelUp" do
       create(:repository, commits_count: 0, user: @user)
       create(:repository, commits_count: 1, user: @user)
 
-      Profile::LevelUp.new(@user).run
+      Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("started")
       expect(@user.profile.evaluation.level).to eq(7)

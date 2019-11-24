@@ -7,12 +7,12 @@ RSpec.describe "GenerateScore" do
   end
 
   it "score" do
-    Profile::Generate.new(@user).score
+    Profile::Score.new(@user).run
 
     expect(@user.profile.score).to eq(30)
   end
 
-  xit "level_up" do
+  xit "evolution" do
   end
 
 end
