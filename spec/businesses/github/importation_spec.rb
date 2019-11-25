@@ -16,6 +16,7 @@ RSpec.describe "Github::Importation" do
 
     repository = @user.repositories.last
     expect(repository.name).to eq("ruby-blog")
+    expect(repository.commits_count).to eq(1)
     expect(repository.principal_technology).to eq("Ruby")
 
     expect(repository.technologies.count).to eq(4)
