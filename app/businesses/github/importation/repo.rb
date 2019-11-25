@@ -1,4 +1,4 @@
-class Github::Importation::Repo  < Github::Importation
+class Github::Importation::Repo < Github::Importation
 
   def run(user)
     @user = user
@@ -12,7 +12,6 @@ class Github::Importation::Repo  < Github::Importation
       @github.repos(@user.login, page).each.with_index do |repo, index|
         logging(index, repo, repositories_count)
         repo = repository(repo)
-        commits = commits(repo)
         repository = Repository.find_by(github_id: repo['id'])
         unless repository
           repository = Repository.create(github_id: repo['id'],
@@ -21,7 +20,6 @@ class Github::Importation::Repo  < Github::Importation
                                          fork: repo['fork'],
                                          forks_count: repo['forks_count'],
                                          stargazers_count: repo['stargazers_count'],
-                                         commits_count: commits ? commits['contributions'] : 0,
                                          size: repo['size'], user: @user)
           languages(repo, repository)
         else
@@ -31,7 +29,6 @@ class Github::Importation::Repo  < Github::Importation
                             fork: repo['fork'],
                             forks_count: repo['forks_count'],
                             stargazers_count: repo['stargazers_count'],
-                            commits_count: commits ? commits['contributions'] : 0,
                             size: repo['size'], user: @user)
           languages(repo, repository)
         end
@@ -60,18 +57,6 @@ class Github::Importation::Repo  < Github::Importation
         technology.update(exercise: language[1])
       end
     end
-  end
-
-  def commits(repo)
-    github_commits = @github.commits(@user.login, repo['name'])
-    return nil unless github_commits
-    commits = nil
-    github_commits.each do |contribuidor|
-      if contribuidor['login'] == @user.login
-        commits = contribuidor
-      end
-    end
-    commits
   end
 
   def repository(repo)
