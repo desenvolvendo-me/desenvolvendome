@@ -1,3 +1,6 @@
+# NOTA:
+# O nome da classe está curta Repo, pois gerar conflito com a model Repository, caso use o mesmo nome dado pelo github
+# FIXME: Corrigir os conflitos entre nomes das classes
 class Github::Importation::Repo < Github::Importation
 
   def run(user)
@@ -14,14 +17,13 @@ class Github::Importation::Repo < Github::Importation
         repo = repository(repo)
         repository = Repository.find_by(github_id: repo['id'])
         unless repository
-          repository = Repository.create(github_id: repo['id'],
-                                         name: repo['name'],
-                                         principal_technology: repo['language'],
-                                         fork: repo['fork'],
-                                         forks_count: repo['forks_count'],
-                                         stargazers_count: repo['stargazers_count'],
-                                         size: repo['size'], user: @user)
-          languages(repo, repository)
+          Repository.create(github_id: repo['id'],
+                            name: repo['name'],
+                            principal_technology: repo['language'],
+                            fork: repo['fork'],
+                            forks_count: repo['forks_count'],
+                            stargazers_count: repo['stargazers_count'],
+                            size: repo['size'], user: @user)
         else
           repository.update(github_id: repo['id'],
                             name: repo['name'],
@@ -30,7 +32,6 @@ class Github::Importation::Repo < Github::Importation
                             forks_count: repo['forks_count'],
                             stargazers_count: repo['stargazers_count'],
                             size: repo['size'], user: @user)
-          languages(repo, repository)
         end
       end
     end
@@ -44,19 +45,6 @@ class Github::Importation::Repo < Github::Importation
     log += "#{index + 1} to #{repositories_count}"
 
     Rails.logger.info log
-  end
-
-  def languages(repo, repository)
-    @github.languages(@user.login, repo['name']).each do |language|
-      lang = Language.find_or_create_by(description: language[0])
-
-      technology = repository.technologies.find_by(language: lang)
-      unless technology
-        Technology.create(exercise: language[1], language: lang, repository: repository)
-      else
-        technology.update(exercise: language[1])
-      end
-    end
   end
 
   def repository(repo)
