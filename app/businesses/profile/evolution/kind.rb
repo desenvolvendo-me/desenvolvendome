@@ -1,5 +1,5 @@
 class Profile::Evolution::Kind
-  DESCRIPTION_MAX_LEVEL = "MÁXIMO NÍVEL"
+  DESCRIPTION_MAX_LEVEL = "Nível Máximo"
   @settings = {}
 
   def initialize(user, settings)
