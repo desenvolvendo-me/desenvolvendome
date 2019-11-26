@@ -49,7 +49,7 @@ RSpec.describe "Github::Api" do
 
       commits = @api_github.commits(login, repo)
 
-      expect(commits).to be_nil
+      expect(commits).to be_an_instance_of(Array)
     end
 
     it "lucascaton/udemy-dl" do
@@ -58,7 +58,7 @@ RSpec.describe "Github::Api" do
 
       commits = @api_github.commits(login, repo)
 
-      expect(commits).to be_nil
+      expect(commits).to be_an_instance_of(Array)
     end
   end
 
