@@ -1,4 +1,4 @@
-class Evolution::Kind
+class Profile::Evolution::Kind
   DESCRIPTION_MAX_LEVEL = "MÁXIMO NÍVEL"
   @settings = {}
 

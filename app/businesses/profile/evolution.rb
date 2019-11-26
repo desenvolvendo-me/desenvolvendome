@@ -5,9 +5,9 @@ class Profile::Evolution
 
   def initialize(user)
     @user = user
-    @started = Evolution::Started.new(@user)
-    @novice = Evolution::Novice.new(@user)
-    @knight = Evolution::Knight.new(@user)
+    @started = Profile::Evolution::Started.new(@user)
+    @novice = Profile::Evolution::Novice.new(@user)
+    @knight = Profile::Evolution::Knight.new(@user)
   end
 
   def run

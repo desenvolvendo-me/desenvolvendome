@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Github" do
+RSpec.describe "Github::Api" do
 
   before(:all) do
-    @api_github = Api::Github.new
+    @api_github = Github::Api.new
   end
 
   it "user" do
@@ -49,7 +49,7 @@ RSpec.describe "Github" do
 
       commits = @api_github.commits(login, repo)
 
-      expect(commits).to be_nil
+      expect(commits).to be_an_instance_of(Array)
     end
 
     it "lucascaton/udemy-dl" do
@@ -58,7 +58,7 @@ RSpec.describe "Github" do
 
       commits = @api_github.commits(login, repo)
 
-      expect(commits).to be_nil
+      expect(commits).to be_an_instance_of(Array)
     end
   end
 

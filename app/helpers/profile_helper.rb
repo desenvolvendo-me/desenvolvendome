@@ -17,11 +17,11 @@ module ProfileHelper
   def next_level_bar(user)
     level = {}
     if user.profile.evaluation.started?
-      level = Evolution::Started.new(user).next_level
+      level = Profile::Evolution::Started.new(user).next_level
     elsif user.profile.evaluation.novice?
-      level = Evolution::Novice.new(user).next_level
+      level = Profile::Evolution::Novice.new(user).next_level
     elsif user.profile.evaluation.knight?
-      level = Evolution::Knight.new(user).next_level
+      level = Profile::Evolution::Knight.new(user).next_level
     end
     level
   end

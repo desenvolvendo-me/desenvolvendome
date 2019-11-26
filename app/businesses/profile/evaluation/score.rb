@@ -1,4 +1,4 @@
-class Profile::Score
+class Profile::Evaluation::Score
 
   def initialize(user)
     @user = user

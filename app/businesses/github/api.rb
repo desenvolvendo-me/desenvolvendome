@@ -1,7 +1,7 @@
 require 'faraday'
 require 'json'
 
-class Api::Github
+class Github::Api
 
   def initialize(args = {})
     @github_api_key = ENV["GITHUB_API_KEY"]
@@ -28,7 +28,7 @@ class Api::Github
     if response.status.eql? 200
       JSON.parse(response.body)
     else
-      nil
+      []
     end
   end
 

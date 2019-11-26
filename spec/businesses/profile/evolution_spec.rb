@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Evolution" do
+RSpec.describe "Profile::Evolution" do
 
   before(:each) do
     @user = create(:user, :with_profile)

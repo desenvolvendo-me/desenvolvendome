@@ -5,7 +5,7 @@ RSpec.describe "Performance" do
   context "api" do
 
     it 'user' do
-      @api_github = Api::Github.new
+      @api_github = Github::Api.new
 
       user = nil
       login = "desenvolvendome"
@@ -21,7 +21,7 @@ RSpec.describe "Performance" do
     xit "desenvolvendome" do
       @user = create(:user, login: "desenvolvendome")
 
-      expect {Import::Github.new.run(@user)}.to perform_under(10).sec
+      expect {Github::Importation.new.run(@user)}.to perform_under(10).sec
 
       expect(@user.name).to eq("Desenvolvendo Me")
       expect(@user.login).to eq("desenvolvendome")

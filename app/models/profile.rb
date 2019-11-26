@@ -17,5 +17,5 @@
 class Profile < ApplicationRecord
   belongs_to :user, optional: true
   has_many :knowledges, dependent: :destroy
-  has_one :evaluation, dependent: :destroy
+  has_one :evaluation, dependent: :destroy, class_name: "::Evaluation"#Conflito com businesses/Profile::Evaluation, refatorar os models ou businesses
 end
