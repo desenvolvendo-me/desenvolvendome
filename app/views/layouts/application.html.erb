@@ -6,6 +6,9 @@
   <%= csp_meta_tag %>
 
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <% if check_js(params[:controller], params[:action]) %>
+    <%= javascript_pack_tag "#{params[:controller]}/#{params[:action]}", 'data-turbolinks-track': 'reload' %>
+  <% end %>
   <%= stylesheet_link_tag "application", media: "all" %>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet"/>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">

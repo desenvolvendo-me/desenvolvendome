@@ -68,5 +68,7 @@ Rails.application.routes.draw do
   post "analyze", to: "users#create", as: "users"
   get "profile/:id", to: "users#show", as: "user"
 
+  # Rodando Vuejs
+  get 'vuejs/index'
 
 end

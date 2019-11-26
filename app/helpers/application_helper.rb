@@ -1,4 +1,9 @@
 module ApplicationHelper
+
+  def check_js(controller, action)
+    File.exist? Rails.root.to_s + "/app/javascript/packs/#{controller}/#{action}.js"
+  end
+
   def asset_exists?(path)
     begin
       pathname = Rails.application.assets.resolve(path)

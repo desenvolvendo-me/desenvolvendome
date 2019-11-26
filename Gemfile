@@ -18,9 +18,6 @@ gem 'omniauth-github'
 gem 'activerecord-session_store'
 gem 'validates_email_format_of'
 
-#React
-gem 'react-rails'
-
 #Analisar Necessidade
 gem 'simple_form'
 gem 'sidekiq'
