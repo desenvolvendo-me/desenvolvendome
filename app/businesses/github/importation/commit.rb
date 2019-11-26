@@ -2,24 +2,27 @@ class Github::Importation::Commit < Github::Importation
 
   def run(user)
     @user = user
-    commits
+    import
   end
 
-  def commits
-    commits_per_contribuidor = nil
+  private
+
+  def import
     @user.repositories.each do |repository|
-      github_commits = @github.commits(@user.login, repository.name)
-      return nil unless github_commits
-
-      github_commits.each do |contribuidor|
-        if contribuidor['login'] == @user.login
-          commits_per_contribuidor = contribuidor
-        end
-      end
-
-      repository.update(commits_count: commits_per_contribuidor ? commits_per_contribuidor['contributions'] : 0,)
+      repository.update(commits_count: get_contributions(repository))
     end
   end
 
+  def get_contributions(repository)
+    get_commits(repository).each do |contribuidor|
+      if contribuidor['login'] == @user.login
+        return contribuidor ? contribuidor['contributions'] : 0
+      end
+    end
+  end
+
+  def get_commits(repository)
+    @github.commits(@user.login, repository.name)
+  end
 
 end

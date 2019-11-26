@@ -28,7 +28,7 @@ class Github::Api
     if response.status.eql? 200
       JSON.parse(response.body)
     else
-      nil
+      []
     end
   end
 
