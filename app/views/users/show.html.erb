@@ -134,7 +134,7 @@
               <div class="row">
                 <div class="col-md-3">
                   <div class="text-center">
-                    <div class="h5">Básicas</div>
+                    <div class="h5"><%= image_tag "language/basic/default.png", size: "30x30" %>Básicas</div>
                   </div>
                   <ul class="list-group">
                     <% @user.profile.knowledges.where(knowledge_type: :basic).each do |knowledge| %>
@@ -161,7 +161,7 @@
                   </ul>
                 </div>
                 <div class="col-md-3">
-                  <div class="h5">Normais</div>
+                  <div class="h5"><%= image_tag "language/normal/default.png", size: "30x30" %>Normais</div>
                   <ul class="list-group">
                     <% @user.profile.knowledges.where(knowledge_type: :normal).each do |knowledge| %>
                       <div class="text-center">
@@ -187,7 +187,7 @@
                   </ul>
                 </div>
                 <div class="col-md-3">
-                  <div class="h5">Raras</div>
+                  <div class="h5"><%= image_tag "language/rare/default.png", size: "30x30" %>Raras</div>
                   <ul class="list-group">
                     <% @user.profile.knowledges.where(knowledge_type: :rare).each do |knowledge| %>
                       <div class="text-center">
@@ -213,7 +213,7 @@
                   </ul>
                 </div>
                 <div class="col-md-3">
-                  <div class="h5">Especiais</div>
+                  <div class="h5"><%= image_tag "language/special/default.png", size: "30x30" %>Especiais</div>
                   <ul class="list-group">
                     <% @user.profile.knowledges.where(knowledge_type: :special).each do |knowledge| %>
                       <div class="text-center">
@@ -246,7 +246,7 @@
         <div class="row">
           <div class="col-md-12 text-center">
             <div class="h3">Seu XP é <%= @user.profile.score.to_i %> xp!</div>
-            <p>Quer saber como aumentar sua experiêncie?</p>
+            <p>Quer saber como aumentar sua experiêncie e habilidades?</p>
             <p><%= link_to "Clique Aqui", new_interest_path, class: "btn btn-lg btn-primary" %></p>
           </div>
         </div>

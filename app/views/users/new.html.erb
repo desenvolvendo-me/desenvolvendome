@@ -1,18 +1,122 @@
-<div class="container container-users-new">
-  <div class="row">
-    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-      <div class="card card-signin my-5">
-        <div class="card-body">
-          <h5 class="card-title text-center">Análise do Perfil</h5>
-          <form class="form-signin">
-            <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary" do %>
-              <i class="fab fa-github"></i> &nbsp; Login GitHub
-            <% end %>
-            <hr class="my-4">
-            <%= link_to new_interest_path, class: "btn btn-block" do %>
-              Sem Github? Clique Aqui
-            <% end %>
-          </form>
+<div class="container container-intests-new">
+  <div class="col-sm-9 col-md-9 col-lg-9 mx-auto">
+    <div class="card card-signin my-5 justify-content-sm-center text-justify">
+      <div class="text-center">
+        <h3>Conheça-se</h3>
+      </div>
+      <h4>
+        Como se conhecer?
+      </h4>
+      <p>Se imagine em um jogo de RPG, onde quantos mais você prática mais evoluir.</p>
+      <p>Nosso objetivo é traduzir isso área de TI.</p>
+      <p>E para isso vamos precisar do seu apoio como criticas, sugestões e melhorias</p>
+      <h4>
+        Como será na prática?
+      </h4>
+
+      <p>Como o seu login do Github:</p>
+      <ol>
+        <li>Vamos buscar as informações públicas.</li>
+        <li>Vamos calcular quanto praticou, por:
+          <ul>
+            <li>Projetos</li>
+            <li>Linguagens</li>
+            <li>Tecnologias</li>
+          </ul>
+        </li>
+        <li>
+          Vamos definir níveis, por:
+          <ul>
+            <li>
+              Perfil:
+              <ul>
+                <li><%= image_tag "evaluation/started.png", size: "20x20" %>Iniciado:
+                  <ul>
+                    <li>Nível 1 a 10</li>
+                  </ul>
+                </li>
+                <li><%= image_tag "evaluation/novice.png", size: "20x20" %>Aprediz:
+                  <ul>
+                    <li>Nível 1 a 10</li>
+                  </ul>
+                </li>
+                <li><%= image_tag "evaluation/knight.png", size: "20x20" %>Cavaleiro:
+                  <ul>
+                    <li>Nível 1 a 10</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Linguagens:
+              <ul>
+                <li><%= image_tag "language/basic/default.png", size: "20x20" %>Básicas
+                  <ul>
+                    <li>Nível 0 a 1000</li>
+                  </ul>
+                </li>
+                <li><%= image_tag "language/normal/default.png", size: "20x20" %>Normais
+                  <ul>
+                    <li>Nível 0 a 1000</li>
+                  </ul>
+                </li>
+                <li><%= image_tag "language/rare/default.png", size: "20x20" %>Raras
+                  <ul>
+                    <li>Nível 0 a 1000</li>
+                  </ul>
+                </li>
+                <li><%= image_tag "language/special/default.png", size: "20x20" %>Especiais
+                  <ul>
+                    <li>Nível 0 a 1000</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Tecnologias:
+              <ul>
+                <li><%= image_tag "language/basic/default.png", size: "20x20" %>Básicas
+                  <ul>
+                    <li>Nível 0 a 1000</li>
+                  </ul>
+                </li>
+                <li><%= image_tag "language/normal/default.png", size: "20x20" %>Normais
+                  <ul>
+                    <li>Nível 0 a 1000</li>
+                  </ul>
+                </li>
+                <li><%= image_tag "language/rare/default.png", size: "20x20" %>Raras
+                  <ul>
+                    <li>Nível 0 a 1000</li>
+                  </ul>
+                </li>
+                <li><%= image_tag "language/special/default.png", size: "20x20" %>Especiais
+                  <ul>
+                    <li>Nível 0 a 1000</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <code>
+        Em uma próxima versão vamos explicar melhor o cálculo do níveis.
+      </code>
+      <hr class="my-4">
+      <div class="text-center">
+        <p>Caso tenha interesse em participar dessa aventura.</p>
+        <div class="col-md-12">
+          Faça seu Login
+          <br>
+          <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary" do %>
+            <i class="fab fa-github"></i> &nbsp; Login Github
+          <% end %>
+        </div>
+        Ou
+        <div class="col-md-12">
+          Sem Github? Enteda seu papel,
+          <%= link_to "clique aqui", new_interest_path %>
         </div>
       </div>
     </div>
