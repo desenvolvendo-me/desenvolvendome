@@ -10,18 +10,18 @@
         <div class="carousel-item active">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Entenda suas Habilidades</h1>
-              <p>Entenda as habilidades que você possui utilizando nossa inteligência artificial.</p>
-              <p><%= link_to "Saiba Mais", new_user_path, class: "btn btn-lg btn-primary" %></p>
+              <h1>Conhece suas Habilidades?</h1>
+              <p>Conhecer suas habilidades é o 1º passo para o sucesso.</p>
+              <p><%= link_to "Saiba Mais", new_user_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
             </div>
           </div>
         </div>
         <div class="carousel-item">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Entenda as Mudanças</h1>
-              <p>Entenda o contexto das tecnologias nas novas empresas de TI.</p>
-              <p><%= link_to "Acesse Agora", new_interest_path, class: "btn btn-lg btn-primary" %></p>
+              <h1>Conhece o Mercado?</h1>
+              <p>Conhecer o mercado onde que trabalhar é o 2º passo para o sucesso.</p>
+              <p><%= link_to "Saiba Mais", new_interest_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
             </div>
           </div>
         </div>
@@ -37,41 +37,51 @@
     </div>
   </div>
 
-
   <div class="container marketing">
-
 
     <div class="row">
       <div class="col-lg-4">
         <%= icon('fas', 'chart-pie', class: "icone") %>
         <h2>Conheça-se</h2>
-        <p>Entenda as habilidades que você possui utilizando nossa inteligência artificial.</p>
+        <p>Quais tecnologias mais conhece?</p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
         <%= icon('fas', 'chart-area', class: "icone") %>
         <h2>Conheça o Mercado</h2>
-        <p>Entenda o contexto das tecnologias nas novas empresas de TI.</p>
+        <p>Quais tecnologias são mais solicitadas no mercado onde quer trabalhar?</p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
         <%= icon('fas', 'brain', class: "icone") %>
         <h2>Prepara-se</h2>
-        <p>Trilhe seus planejamento para se tornar um profissional do novo mercado.</p>
+        <p>Qual o seu planejamento para o próximo ano?</p>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
 
-    <!-- START THE FEATURETTES -->
+    <hr class="featurette-divider">
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to new_user_path, class: 'nav-link' do %>
+          <div class="btn btn-primary btn-lg text-uppercase">Conheça-se Agora</div>
+        <% end %>
+      </div>
+    </div>
 
     <hr class="featurette-divider">
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">Conheça-se</h2>
-        <p class="lead">Anualmente se formam nas faculdades brasileiras mais de 77 mil alunos nos cursos da área de
-          tecnologia da informação, porém somente 33% (26 mil) encontram trabalho no setor.</p>
-        <p class="lead">Isso acontece por falta de conhecimento do mercado. Ao autoconhecer-se e entender as demandas do
-          mercado os profissionais poderiam se preparar mais objetivamente para uma vaga e não simplesmente esperar ser
-          chamado para uma vaga.</p>
+        <h2 class="featurette-heading text-uppercase">Conheça-se</h2>
+        <p class="text-justify">
+          Anualmente se formam, nas faculdades brasileiras, mais de 77 mil alunos nos cursos
+          da área de tecnologia da informação, porém somente 33% (26 mil) encontram trabalho no setor.
+          <br>
+          Isso acontece por falta de conhecimento do mercado.
+          <br>
+          Ao <strong>autoconhecer-se</strong> e entender as demandas do mercado os profissionais poderiam se
+          preparar mais objetivamente para uma vaga e não simplesmente esperar ser chamado para uma vaga.
+        </p>
       </div>
       <div class="col-md-5">
         <%= image_tag "se-conheca.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" %>
@@ -82,15 +92,16 @@
 
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Conheça o Mercado</h2>
-        <p class="lead">No Brasil existem mais de 19,5 mil empresas no setor de tecnologia, onde 5,1 mil atuam no
-          desenvolvimento de software.</p>
-        <p class="lead">Um fato curioso é cada dia nascem novas startups e hoje já existem 12,7 mil no Brasil, dessas 9
-          já se tornaram unicórnios.</p>
-        <p class="lead">A tendência é que diminua drasticamente o número de empresas no setor de tecnologia, pois cada
-          dia
-          o mercado percebe o quanto a TI é fundamental para o negócio, tornando um risco a terceirização.</p>
-
+        <h2 class="featurette-heading text-uppercase">Conheça o Mercado</h2>
+        <p class="text-justify">
+          No Brasil existem mais de 19,5 mil empresas no setor de tecnologia, onde 5,1 mil
+          atuam no desenvolvimento de software.
+          <br>
+          Um fato curioso é cada dia nascem novas startups e hoje já existem 12,7 mil no Brasil, dessas 9 já se tornaram
+          unicórnios.
+          <br>
+          A tendência é que diminua drasticamente o número de empresas no setor de tecnologia, pois cada dia o mercado
+          percebe o quanto a TI é fundamental para o negócio, tornando um risco a terceirização.</p>
       </div>
       <div class="col-md-5 order-md-1">
         <%= image_tag "conheca-o-mercado.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" %>
@@ -101,13 +112,14 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">Prepara-se</h2>
-        <p class="lead">O mercado está cada vez mais exigente com a qualidade dos profissionais de TI. E essa exigência
-          não é somente saber React, Javascript, Java, Python e etc.</p>
-        <p class="lead">Hoje o profissional de TI além do conhecimento Técnico, da área, é um grande diferencial
-          entender do Negócio
-          e da Gestão.</p>
-        <p class="lead">
+        <h2 class="featurette-heading text-uppercase">Prepara-se</h2>
+        <p class="text-justify">
+          O mercado está cada vez mais exigente com a qualidade dos profissionais de TI. E
+          essa exigência não é somente saber React, Javascript, Java, Python e etc.
+          <br>
+          Hoje o profissional de TI além do conhecimento Técnico (tecnologias em geral) é um grande diferencial entender
+          do Negócio e da Gestão.
+          <br>
           E para torna-se esse profissional desejado pelo novo mercado, basta 3 coisas:
           Autoconhecimento, Conhecimento do Mercado e Planejamento.
         </p>
@@ -123,12 +135,16 @@
       <div class="col-md-12 text-center">
         <h1 class="featurette-heading">Conheça-se Agora</h1>
         <p class="lead">
-          Como Autoconhecimento, Conhecimento do Mercado e Planejamento é possível trabalhar em qualquer empresa ou startup, e até mesmo criar a sua.
+          Com o Autoconhecimento, Conhecimento do Mercado e Planejamento é possível trabalhar em qualquer empresa
+          ou startup.
+        </p>
+        <p class="lead">
+          E até mesmo criar a sua startup.
         </p>
         <p class="lead">
           E lhe garanto é mais simples do que tornar-se um verdadeiro Full Stack Developer.
         </p>
-        <p><%= link_to "Clique Aqui", new_user_path, class: "btn btn-lg btn-primary" %></p>
+        <p><%= link_to "Clique Aqui", new_user_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
       </div>
     </div>
     <!-- /END THE FEATURETTES -->
