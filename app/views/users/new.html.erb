@@ -1,20 +1,29 @@
 <div class="container container-intests-new">
   <div class="col-sm-9 col-md-9 col-lg-9 mx-auto">
-    <div class="card card-signin my-5 justify-content-sm-center text-justify">
+    <div class="card card-signin">
       <div class="text-center">
-        <h3>Conheça-se</h3>
+        <h1>Conheça-se</h1>
       </div>
-      <h4>
+      <h2>
         Como se conhecer?
-      </h4>
-      <p>Se imagine em um jogo de RPG, onde quantos mais você prática mais evoluir.</p>
-      <p>Nosso objetivo é traduzir isso área de TI.</p>
-      <p>E para isso vamos precisar do seu apoio como criticas, sugestões e melhorias</p>
-      <h4>
+      </h2>
+      <div class="text-justify">
+        <p>Em resumo é saber suas <strong>forças e fraquezas</strong>.</p>
+        <p>Que nada mais é do que saber <strong>o que tenho mais conhecimento</strong> e
+          <strong>o que tenho menos conhecimento</strong>.</p>
+      </div>
+      <h2>
+        Como vamos análisar?
+      </h2>
+      <div class="text-justify">
+        <p>Se imagine em um jogo de RPG, onde <strong>quantos mais você prática mais evolui</strong>.</p>
+        <p>Nosso objetivo é traduzir isso área de TI.</p>
+        <p>E para isso vamos precisar do seu apoio com <strong>críticas, sugestões e melhorias</strong></p>
+      </div>
+      <h2>
         Como será na prática?
-      </h4>
-
-      <p>Como o seu login do Github:</p>
+      </h2>
+      <p>Com o seu login do Github:</p>
       <ol>
         <li>Vamos buscar as informações públicas.</li>
         <li>Vamos calcular quanto praticou, por:
@@ -101,23 +110,29 @@
         </li>
       </ol>
       <code>
-        Em uma próxima versão vamos explicar melhor o cálculo do níveis.
+        Em uma próxima versão vamos explicar o cálculo dos níveis.
       </code>
+      <h2>
+        E depois?
+      </h2>
+      <div class="text-justify">
+        <p>Com essas informações conseguirá entrer quais seus níveis de conhecimento.</p>
+        <p>Podendo decidir <strong>o que manter e o que melhorar</strong>.</p>
+      </div>
       <hr class="my-4">
       <div class="text-center">
         <p>Caso tenha interesse em participar dessa aventura.</p>
         <div class="col-md-12">
-          Faça seu Login
           <br>
           <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary" do %>
-            <i class="fab fa-github"></i> &nbsp; Login Github
+            <i class="fab fa-github"></i> &nbsp; Faça seu Login
           <% end %>
         </div>
-        Ou
-        <div class="col-md-12">
-          Sem Github? Enteda seu papel,
-          <%= link_to "clique aqui", new_interest_path %>
-        </div>
+        <!--        Ou-->
+        <!--        <div class="col-md-12">-->
+        <!--          Sem Github? Enteda seu papel,-->
+        <%#= link_to "clique aqui", new_interest_path %>
+        <!--        </div>-->
       </div>
     </div>
   </div>

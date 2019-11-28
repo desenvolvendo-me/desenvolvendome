@@ -3,7 +3,7 @@
 <div class="container profile">
   <div class="center-block">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 text-center">
         <div class="image-container">
           <% if @user %>
             <%= image_tag @user.avatar, size: "150x150", class: "profile-image" %>
@@ -35,9 +35,9 @@
           <% end %>
 
         </div>
-
       </div>
     </div>
+    <hr class="featurette-divider">
     <div class="row">
       <div class="col-md-12">
         <% if @user.try(:profile) %>
@@ -47,6 +47,7 @@
         <% end %>
       </div>
     </div>
+    <hr class="featurette-divider">
     <div class="row">
       <div class="col-md-12">
         <div class="text-center">
@@ -57,6 +58,14 @@
             </span>
           </div>
         </div>
+      </div>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary btn-lg" do %>
+          <i class="fab fa-github"></i> &nbsp; Reimportar
+        <% end %>
       </div>
     </div>
     <hr class="featurette-divider">
