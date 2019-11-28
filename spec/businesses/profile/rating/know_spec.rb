@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Profile::Evaluation::Know" do
+RSpec.describe "Profile::Rating::Know" do
 
   before(:all) do
     @user = create(:user, :with_profile)
@@ -13,7 +13,7 @@ RSpec.describe "Profile::Evaluation::Know" do
       language = create(:language, description: "HTML")
       create(:technology, repository: repository, exercise: 5500, language: language)
 
-      Profile::Evaluation::Know.new(@user).run
+      Profile::Rating::Know.new(@user).run
 
       knowledge = @user.profile.knowledges.where(knowledge_type: :basic).first
       expect(knowledge.language.description).to eq("HTML")
@@ -24,7 +24,7 @@ RSpec.describe "Profile::Evaluation::Know" do
       language = create(:language, description: "Ruby")
       create(:technology, repository: repository, exercise: 5500, language: language)
 
-      Profile::Evaluation::Know.new(@user).run
+      Profile::Rating::Know.new(@user).run
 
       knowledge = @user.profile.knowledges.where(knowledge_type: :normal).first
       expect(knowledge.language.description).to eq("Ruby")
@@ -35,7 +35,7 @@ RSpec.describe "Profile::Evaluation::Know" do
       language = create(:language, description: "C")
       create(:technology, repository: repository, exercise: 5500, language: language)
 
-      Profile::Evaluation::Know.new(@user).run
+      Profile::Rating::Know.new(@user).run
 
       knowledge = @user.profile.knowledges.where(knowledge_type: :rare).first
       expect(knowledge.language.description).to eq("C")
@@ -46,7 +46,7 @@ RSpec.describe "Profile::Evaluation::Know" do
       language = create(:language, description: "Go")
       create(:technology, repository: repository, exercise: 5500, language: language)
 
-      Profile::Evaluation::Know.new(@user).run
+      Profile::Rating::Know.new(@user).run
 
       knowledge = @user.profile.knowledges.where(knowledge_type: :special).first
       expect(knowledge.language.description).to eq("Go")
@@ -61,7 +61,7 @@ RSpec.describe "Profile::Evaluation::Know" do
       language = create(:language, description: "HTML")
       create(:technology, repository: repository, exercise: 5500, language: language)
 
-      Profile::Evaluation::Know.new(@user).run
+      Profile::Rating::Know.new(@user).run
 
       knowledge = @user.profile.knowledges.where(knowledge_type: :basic).first
       expect(knowledge.level).to eq(1)
@@ -75,7 +75,7 @@ RSpec.describe "Profile::Evaluation::Know" do
       create(:technology, repository: repository1, exercise: 5500, language: language)
       create(:technology, repository: repository2, exercise: 5500, language: language)
 
-      Profile::Evaluation::Know.new(@user).run
+      Profile::Rating::Know.new(@user).run
 
       knowledge = @user.profile.knowledges.where(knowledge_type: :normal).first
       expect(knowledge.level).to eq(2)
@@ -91,7 +91,7 @@ RSpec.describe "Profile::Evaluation::Know" do
       create(:technology, repository: repository2, exercise: 5500, language: language)
       create(:technology, repository: repository3, exercise: 5500, language: language)
 
-      Profile::Evaluation::Know.new(@user).run
+      Profile::Rating::Know.new(@user).run
 
       knowledge = @user.profile.knowledges.where(knowledge_type: :rare).first
       expect(knowledge.level).to eq(3)

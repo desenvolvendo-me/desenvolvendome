@@ -1,4 +1,4 @@
-class Profile::Evaluation::Know
+class Profile::Rating::Know
   #TODO:Informação que devem ir para o modulo admin
   @technologies = nil
   SETTINGS = {
