@@ -102,6 +102,9 @@ Rails.application.routes.draw do
 
   #Analyze
   get "rankings", to: "profiles#index"
+  get "rankings/starteds", to: "profiles#starteds", as: "starteds"
+  get "rankings/novices", to: "profiles#novices", as: "novices"
+  get "rankings/knights", to: "profiles#knights", as: "knights"
   get "analysis", to: "users#index"
   get "analyze", to: "users#new", as: "new_user"
   post "analyze", to: "users#create", as: "users"

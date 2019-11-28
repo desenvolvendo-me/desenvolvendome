@@ -5,7 +5,7 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-4 text-center">
-          <h3 class="text-light">Iniciado</h3>
+          <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Iniciados", starteds_path %></h3>
           <% Profile.evaluation(evaluation_type: :started, limit: 10).each_with_index do |profile, index| %>
             <div class="list-group-item list-group-item-action flex-column align-items-start">
               <button type="button" class="btn btn-primary">
@@ -30,9 +30,10 @@
             </div>
             <br>
           <% end %>
+          <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", starteds_path %></h3>
         </div>
         <div class="col-md-4 text-center">
-          <h3 class="text-light">Aprendiz</h3>
+          <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Aprendizes", novices_path %></h3>
           <% Profile.evaluation(evaluation_type: :novice, limit: 10).each_with_index do |profile, index| %>
             <div class="list-group-item list-group-item-action flex-column align-items-start">
               <button type="button" class="btn btn-primary">
@@ -56,9 +57,10 @@
             </div>
             <br>
           <% end %>
+          <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", novices_path %></h3>
         </div>
         <div class="col-md-4 text-center">
-          <h3 class="text-light">Cavaleiro</h3>
+          <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Cavaleiros", knights_path %></h3>
           <% Profile.evaluation(evaluation_type: :knight, limit: 10).each_with_index do |profile, index| %>
             <div class="list-group-item list-group-item-action flex-column align-items-start">
               <button type="button" class="btn btn-primary">
@@ -82,6 +84,7 @@
             </div>
             <br>
           <% end %>
+          <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", knights_path %></h3>
         </div>
       </div>
     </div>

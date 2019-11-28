@@ -15,6 +15,7 @@
 #
 #TODO: Mudar score para xp
 class Profile < ApplicationRecord
+  paginates_per 25
   belongs_to :user, optional: true
   has_many :knowledges, dependent: :destroy
   has_one :evaluation, dependent: :destroy
