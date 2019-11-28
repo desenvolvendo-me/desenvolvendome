@@ -33,7 +33,7 @@
                   <% end %>
                   <%= link_to user_path(profile.user.login) do %>
                     <% if profile %>
-                      <span class="btn btn-info"><%= profile.score.to_i %> xp</span>
+                      <span class="btn btn-info"><%= profile.score %></span>
                     <% else %>
                       <span class="btn btn-info">?</span>
                     <% end %>

@@ -22,7 +22,7 @@
                   <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
 
                   <% if profile %>
-                    <span class="btn btn-info"><%= profile.score.to_i %> xp</span>
+                    <span class="btn btn-info"><%= profile.score %></span>
                   <% else %>
                     <span class="btn btn-info">?</span>
                   <% end %>
@@ -50,7 +50,7 @@
                   <% end %>
                   <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
                   <% if profile %>
-                    <span class="btn btn-info"><%= profile.score.to_i %> xp</span>
+                    <span class="btn btn-info"><%= profile.score %></span>
                   <% else %>
                     <span class="btn btn-info">?</span>
                   <% end %>
@@ -78,7 +78,7 @@
                   <% end %>
                   <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
                   <% if profile %>
-                    <span class="btn btn-info"><%= profile.score.to_i %> xp</span>
+                    <span class="btn btn-info"><%= profile.score %></span>
                   <% else %>
                     <span class="btn btn-info">?</span>
                   <% end %>
