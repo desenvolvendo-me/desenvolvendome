@@ -18,9 +18,9 @@
 
                 <%= link_to user_path(user.login) do %>
                   <% if user.profile %>
-                    <span class="score-value btn btn-primary"><%= user.profile.score.to_i %> xp</span>
+                    <span class="score-value btn btn-info"><%= user.profile.score.to_i %> xp</span>
                   <% else %>
-                    <span class="score-value btn btn-primary">?</span>
+                    <span class="score-value btn btn-info">?</span>
                   <% end %>
                 <% end %>
                 <% if user.profile.try(:evaluation) %>

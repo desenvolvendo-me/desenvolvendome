@@ -1,4 +1,4 @@
-class Profile::Evaluation
+class Profile::Rating
 
   def initialize(user)
     @user = user
@@ -12,11 +12,11 @@ class Profile::Evaluation
   private
 
   def know
-    Profile::Evaluation::Know.new(@user).run
+    Profile::Rating::Know.new(@user).run
   end
 
   def score
-    Profile::Evaluation::Score.new(@user).run
+    Profile::Rating::Score.new(@user).run
   end
 
 end

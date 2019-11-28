@@ -12,7 +12,7 @@ class Profile::Generate
   private
 
   def evaluation
-    Profile::Evaluation.new(@user).run
+    Profile::Rating.new(@user).run
   end
 
   def evolution

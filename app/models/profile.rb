@@ -15,7 +15,15 @@
 #
 #TODO: Mudar score para xp
 class Profile < ApplicationRecord
+  paginates_per 25
   belongs_to :user, optional: true
   has_many :knowledges, dependent: :destroy
-  has_one :evaluation, dependent: :destroy, class_name: "::Evaluation"#Conflito com businesses/Profile::Evaluation, refatorar os models ou businesses
+  has_one :evaluation, dependent: :destroy
+
+  scope :evaluation, -> (args) {
+    joins(:evaluation)
+        .where("evaluations.evaluation_type = ?", Evaluation.evaluation_types[args[:evaluation_type]])
+        .limit(args[:limit])
+        .order(score: :desc)
+  }
 end

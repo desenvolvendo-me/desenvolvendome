@@ -1,4 +1,4 @@
-class Profile::Evaluation::Know
+class Profile::Rating::Know
   #TODO:Informação que devem ir para o modulo admin
   @technologies = nil
   SETTINGS = {
@@ -54,7 +54,7 @@ class Profile::Evaluation::Know
   def get_level(language)
     commits = 0
     @technologies.where("languages.description = ?", language.description).each do |technology|
-      commits += technology.repository.commits_count
+      commits += technology.repository.commits_count.to_i #FIXME: Vindo nil
     end
     commits / SETTINGS[:commits_level]
   end
