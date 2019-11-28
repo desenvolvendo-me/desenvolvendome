@@ -18,4 +18,11 @@ class Profile < ApplicationRecord
   belongs_to :user, optional: true
   has_many :knowledges, dependent: :destroy
   has_one :evaluation, dependent: :destroy
+
+  scope :evaluation, -> (args) {
+    joins(:evaluation)
+        .where("evaluations.evaluation_type = ?", Evaluation.evaluation_types[args[:evaluation_type]])
+        .limit(args[:limit])
+        .order(score: :desc)
+  }
 end
