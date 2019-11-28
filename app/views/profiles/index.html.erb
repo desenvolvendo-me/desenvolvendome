@@ -1,0 +1,102 @@
+<div class="bg-perfil">
+</div>
+<div class="container profile">
+  <div class="center-block">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <h3 class="text-success">Iniciado</h3>
+          <% Profile.evaluation(evaluation_type: :started, limit: 10).each do |profile| %>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="justify-content-between">
+                <% if profile.user.avatar %>
+                  <%= link_to user_path(profile.user.login) do %>
+                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
+                  <% end %>
+                <% end %>
+                <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
+
+                <%= link_to user_path(profile.user.login) do %>
+                  <% if profile %>
+                    <span class="score-value btn btn-primary"><%= profile.score.to_i %> xp</span>
+                  <% else %>
+                    <span class="score-value btn btn-primary">?</span>
+                  <% end %>
+                <% end %>
+                <% if profile.try(:evaluation) %>
+                  <h4 class="mb-1"><%= t("enum.evaluation_type.#{profile.try(:evaluation).try(:evaluation_type)  }") %></h4>
+                  <h6 class="mb-1"><%= "#{profile.try(:evaluation).try(:level)}º nível" %></h6>
+                <% else %>
+                  <h5 class="mb-1">? (?º nível)</h5>
+                <% end %>
+              </div>
+            </div>
+            <br>
+          <% end %>
+        </div>
+        <div class="col-md-4 text-center">
+          <h3 class="text-success">Aprendiz</h3>
+          <% Profile.evaluation(evaluation_type: :novice, limit: 10).each do |profile| %>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="justify-content-between">
+
+                <% if profile.user.avatar %>
+                  <%= link_to user_path(profile.user.login) do %>
+                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
+                  <% end %>
+                <% end %>
+                <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
+
+                <%= link_to user_path(profile.user.login) do %>
+                  <% if profile %>
+                    <span class="score-value btn btn-primary"><%= profile.score.to_i %> xp</span>
+                  <% else %>
+                    <span class="score-value btn btn-primary">?</span>
+                  <% end %>
+                <% end %>
+                <% if profile.try(:evaluation) %>
+                  <h4 class="mb-1"><%= t("enum.evaluation_type.#{profile.try(:evaluation).try(:evaluation_type)  }") %></h4>
+                  <h6 class="mb-1"><%= "#{profile.try(:evaluation).try(:level)}º nível" %></h6>
+                <% else %>
+                  <h5 class="mb-1">? (?º nível)</h5>
+                <% end %>
+              </div>
+            </div>
+            <br>
+          <% end %>
+        </div>
+        <div class="col-md-4 text-center">
+          <h3 class="text-success">Cavaleiro</h3>
+          <% Profile.evaluation(evaluation_type: :knight, limit: 10).each do |profile| %>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="justify-content-between">
+
+                <% if profile.user.avatar %>
+                  <%= link_to user_path(profile.user.login) do %>
+                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
+                  <% end %>
+                <% end %>
+                <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
+
+                <%= link_to user_path(profile.user.login) do %>
+                  <% if profile %>
+                    <span class="score-value btn btn-primary"><%= profile.score.to_i %> xp</span>
+                  <% else %>
+                    <span class="score-value btn btn-primary">?</span>
+                  <% end %>
+                <% end %>
+                <% if profile.try(:evaluation) %>
+                  <h4 class="mb-1"><%= t("enum.evaluation_type.#{profile.try(:evaluation).try(:evaluation_type)  }") %></h4>
+                  <h6 class="mb-1"><%= "#{profile.try(:evaluation).try(:level)}º nível" %></h6>
+                <% else %>
+                  <h5 class="mb-1">? (?º nível)</h5>
+                <% end %>
+              </div>
+            </div>
+            <br>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
