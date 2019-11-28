@@ -1,20 +1,46 @@
 # == Route Map
 #
 #                                Prefix Verb     URI Pattern                                                                              Controller#Action
-#                           sidekiq_web          /sidekiq                                                                                 Sidekiq::Web
 #                     letter_opener_web          /mail/inbox                                                                              LetterOpenerWeb::Engine
-#        user_github_omniauth_authorize GET|POST /users/auth/github(.:format)                                                             devise/omniauth_callbacks#passthru
-#         user_github_omniauth_callback GET|POST /users/auth/github/callback(.:format)                                                    devise/omniauth_callbacks#github
+#                           sidekiq_web          /sidekiq/admin                                                                           Sidekiq::Web
+#                           rails_admin          /admin/app                                                                               RailsAdmin::Engine
+#                      new_user_session GET      /users/sign_in(.:format)                                                                 devise/sessions#new
+#                          user_session POST     /users/sign_in(.:format)                                                                 devise/sessions#create
+#                  destroy_user_session DELETE   /users/sign_out(.:format)                                                                devise/sessions#destroy
+#        user_github_omniauth_authorize GET|POST /users/auth/github(.:format)                                                             users/omniauth_callbacks#passthru
+#         user_github_omniauth_callback GET|POST /users/auth/github/callback(.:format)                                                    users/omniauth_callbacks#github
+#                     new_user_password GET      /users/password/new(.:format)                                                            devise/passwords#new
+#                    edit_user_password GET      /users/password/edit(.:format)                                                           devise/passwords#edit
+#                         user_password PATCH    /users/password(.:format)                                                                devise/passwords#update
+#                                       PUT      /users/password(.:format)                                                                devise/passwords#update
+#                                       POST     /users/password(.:format)                                                                devise/passwords#create
+#                     new_admin_session GET      /admins/sign_in(.:format)                                                                devise/sessions#new
+#                         admin_session POST     /admins/sign_in(.:format)                                                                devise/sessions#create
+#                 destroy_admin_session DELETE   /admins/sign_out(.:format)                                                               devise/sessions#destroy
+#                    new_admin_password GET      /admins/password/new(.:format)                                                           devise/passwords#new
+#                   edit_admin_password GET      /admins/password/edit(.:format)                                                          devise/passwords#edit
+#                        admin_password PATCH    /admins/password(.:format)                                                               devise/passwords#update
+#                                       PUT      /admins/password(.:format)                                                               devise/passwords#update
+#                                       POST     /admins/password(.:format)                                                               devise/passwords#create
+#             cancel_admin_registration GET      /admins/cancel(.:format)                                                                 devise/registrations#cancel
+#                new_admin_registration GET      /admins/sign_up(.:format)                                                                devise/registrations#new
+#               edit_admin_registration GET      /admins/edit(.:format)                                                                   devise/registrations#edit
+#                    admin_registration PATCH    /admins(.:format)                                                                        devise/registrations#update
+#                                       PUT      /admins(.:format)                                                                        devise/registrations#update
+#                                       DELETE   /admins(.:format)                                                                        devise/registrations#destroy
+#                                       POST     /admins(.:format)                                                                        devise/registrations#create
 #                                  root GET      /                                                                                        visits#index
 #                          visits_index GET      /visits/index(.:format)                                                                  visits#index
-#                          new_interest GET      /interesse(.:format)                                                                     interests#new
-#                             interests POST     /interesse(.:format)                                                                     interests#create
-#                              interest GET      /interesse/confirmacao(.:format)                                                         interests#show
-#                            avaliacoes GET      /avaliacoes(.:format)                                                                    users#index
-#                              new_user GET      /avaliacao(.:format)                                                                     users#new
-#                                 users POST     /avaliacao(.:format)                                                                     users#create
-#                     confirmation_user GET      /avaliacao/confirmacao(.:format)                                                         users#confirmation
-#                                  user GET      /perfil/:id(.:format)                                                                    users#show
+#                             interests GET      /interests(.:format)                                                                     interests#index
+#                                       POST     /interests(.:format)                                                                     interests#create
+#                          new_interest GET      /interests/new(.:format)                                                                 interests#new
+#                              interest GET      /interest(.:format)                                                                      interests#show
+#                              rankings GET      /rankings(.:format)                                                                      profiles#index
+#                              analysis GET      /analysis(.:format)                                                                      users#index
+#                              new_user GET      /analyze(.:format)                                                                       users#new
+#                                 users POST     /analyze(.:format)                                                                       users#create
+#                                  user GET      /profile/:id(.:format)                                                                   users#show
+#                           vuejs_index GET      /vuejs/index(.:format)                                                                   vuejs#index
 #         rails_mandrill_inbound_emails POST     /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
 #         rails_postmark_inbound_emails POST     /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST     /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
@@ -41,6 +67,18 @@
 #       letters GET    /                                letter_opener_web/letters#index
 #        letter GET    /:id(/:style)(.:format)          letter_opener_web/letters#show
 #               GET    /:id/attachments/:file(.:format) letter_opener_web/letters#attachment
+# 
+# Routes for RailsAdmin::Engine:
+#   dashboard GET         /                                      rails_admin/main#dashboard
+#       index GET|POST    /:model_name(.:format)                 rails_admin/main#index
+#         new GET|POST    /:model_name/new(.:format)             rails_admin/main#new
+#      export GET|POST    /:model_name/export(.:format)          rails_admin/main#export
+# bulk_delete POST|DELETE /:model_name/bulk_delete(.:format)     rails_admin/main#bulk_delete
+# bulk_action POST        /:model_name/bulk_action(.:format)     rails_admin/main#bulk_action
+#        show GET         /:model_name/:id(.:format)             rails_admin/main#show
+#        edit GET|PUT     /:model_name/:id/edit(.:format)        rails_admin/main#edit
+#      delete GET|DELETE  /:model_name/:id/delete(.:format)      rails_admin/main#delete
+# show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#show_in_app
 
 Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/mail/inbox" if Rails.env.development?
@@ -63,6 +101,7 @@ Rails.application.routes.draw do
 
 
   #Analyze
+  get "rankings", to: "profiles#index"
   get "analysis", to: "users#index"
   get "analyze", to: "users#new", as: "new_user"
   post "analyze", to: "users#create", as: "users"
