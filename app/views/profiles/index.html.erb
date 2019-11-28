@@ -8,27 +8,27 @@
           <h3 class="text-light text-uppercase text-uppercase">top 10 iniciados</h3>
           <h3 class="text-info text-uppercase text-uppercase"><%= link_to "Veja Todos", starteds_path, class: "btn btn-info" %></h3>
           <% Profile.evaluation(evaluation_type: :started, limit: 10).each_with_index do |profile, index| %>
-            <div class="list-group-item list-group-item-action flex-column align-items-start">
-              <button type="button" class="btn btn-primary">
-                <span class="badge"><h3><%= index + 1 %>º</h3></span>
-              </button>
-              <div class="justify-content-between">
-                <% if profile.user.avatar %>
-                  <%= link_to user_path(profile.user.login) do %>
-                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
+            <%= link_to user_path(profile.user.login) do %>
+              <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <button type="button" class="btn btn-success">
+                  <span class="badge"><h3><%= index + 1 %>º</h3></span>
+                </button>
+                <div class="justify-content-between">
+                  <% if profile.user.avatar %>
+                    <%= link_to user_path(profile.user.login) do %>
+                      <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
+                    <% end %>
                   <% end %>
-                <% end %>
-                <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
+                  <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
 
-                <%= link_to user_path(profile.user.login) do %>
                   <% if profile %>
-                    <span class="btn btn-primary"><%= profile.score.to_i %> xp</span>
+                    <span class="btn btn-info"><%= profile.score.to_i %> xp</span>
                   <% else %>
-                    <span class="btn btn-primary">?</span>
+                    <span class="btn btn-info">?</span>
                   <% end %>
-                <% end %>
+                </div>
               </div>
-            </div>
+            <% end %>
             <br>
           <% end %>
           <h3 class="text-info text-uppercase text-uppercase"><%= link_to "Veja Todos", starteds_path, class: "btn btn-info" %></h3>
@@ -37,26 +37,26 @@
           <h3 class="text-light text-uppercase text-uppercase">top 10 aprendizes</h3>
           <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", novices_path, class: "btn btn-info" %></h3>
           <% Profile.evaluation(evaluation_type: :novice, limit: 10).each_with_index do |profile, index| %>
-            <div class="list-group-item list-group-item-action flex-column align-items-start">
-              <button type="button" class="btn btn-primary">
-                <span class="badge"><h3><%= index + 1 %>º</h3></span>
-              </button>
-              <div class="justify-content-between">
-                <% if profile.user.avatar %>
-                  <%= link_to user_path(profile.user.login) do %>
-                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
+            <%= link_to user_path(profile.user.login) do %>
+              <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <button type="button" class="btn btn-success">
+                  <span class="badge"><h3><%= index + 1 %>º</h3></span>
+                </button>
+                <div class="justify-content-between">
+                  <% if profile.user.avatar %>
+                    <%= link_to user_path(profile.user.login) do %>
+                      <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
+                    <% end %>
                   <% end %>
-                <% end %>
-                <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
-                <%= link_to user_path(profile.user.login) do %>
+                  <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
                   <% if profile %>
-                    <span class="btn btn-primary"><%= profile.score.to_i %> xp</span>
+                    <span class="btn btn-info"><%= profile.score.to_i %> xp</span>
                   <% else %>
-                    <span class="btn btn-primary">?</span>
+                    <span class="btn btn-info">?</span>
                   <% end %>
-                <% end %>
+                </div>
               </div>
-            </div>
+            <% end %>
             <br>
           <% end %>
           <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", novices_path, class: "btn btn-info" %></h3>
@@ -65,26 +65,26 @@
           <h3 class="text-light text-uppercase text-uppercase">top 10 cavaleiros</h3>
           <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", knights_path, class: "btn btn-info" %></h3>
           <% Profile.evaluation(evaluation_type: :knight, limit: 10).each_with_index do |profile, index| %>
-            <div class="list-group-item list-group-item-action flex-column align-items-start">
-              <button type="button" class="btn btn-primary">
-                <span class="badge"><h3><%= index + 1 %>º</h3></span>
-              </button>
-              <div class="justify-content-between">
-                <% if profile.user.avatar %>
-                  <%= link_to user_path(profile.user.login) do %>
-                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
+            <%= link_to user_path(profile.user.login) do %>
+              <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <button type="button" class="btn btn-success">
+                  <span class="badge"><h3><%= index + 1 %>º</h3></span>
+                </button>
+                <div class="justify-content-between">
+                  <% if profile.user.avatar %>
+                    <%= link_to user_path(profile.user.login) do %>
+                      <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
+                    <% end %>
                   <% end %>
-                <% end %>
-                <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
-                <%= link_to user_path(profile.user.login) do %>
+                  <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
                   <% if profile %>
-                    <span class="btn btn-primary"><%= profile.score.to_i %> xp</span>
+                    <span class="btn btn-info"><%= profile.score.to_i %> xp</span>
                   <% else %>
-                    <span class="btn btn-primary">?</span>
+                    <span class="btn btn-info">?</span>
                   <% end %>
-                <% end %>
+                </div>
               </div>
-            </div>
+            <% end %>
             <br>
           <% end %>
           <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", knights_path, class: "btn btn-info" %></h3>
