@@ -27,8 +27,9 @@ gem 'dotenv'
 gem "sentry-raven"
 gem 'rails_admin', '~> 2.0'
 gem 'kaminari'
-# gem 'ransack'
+gem 'rails_admin_rollincode', '~> 1.0'
 
+# gem 'ransack'
 # gem 'geocoder'
 # gem 'httparty'
 # gem 'via_cep'
