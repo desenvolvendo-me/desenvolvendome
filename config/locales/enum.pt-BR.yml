@@ -7,8 +7,8 @@ pt-BR:
           critical: "Crítica"
           suggestion: "Sugestão"
           improvement: "Melhoria"
-  enum:
-    evaluation_type:
-      started: "Iniciado"
-      novice: "Aprendiz"
-      knight: "Cavaleiro"
+      evaluation:
+        evaluation_types:
+          started: "Iniciado"
+          novice: "Aprendiz"
+          knight: "Cavaleiro"
