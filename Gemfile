@@ -25,8 +25,10 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'faraday'
 gem 'dotenv'
 gem "sentry-raven"
-gem 'rails_admin', '~> 2.0'
 gem 'kaminari'
+
+#Admin
+gem 'rails_admin', '~> 2.0'
 gem 'rails_admin_rollincode', '~> 1.0'
 
 # gem 'ransack'
