@@ -34,9 +34,17 @@ pt-BR:
       admin:
         one: "Administradores"
         other: "Administradores"
+      contact:
+        one: "Contato"
+        other: "Contatos"
     attributes:
       #TODO: adicionar todos atributos
       evaluation:
         level: "Nível"
         evaluation_type: "Tipo"
         profile: "Perfil"
+      contact:
+        name: "Nome"
+        email: "Email"
+        description: "Descrição"
+        contact_type: "Tipo"

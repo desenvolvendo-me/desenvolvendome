@@ -122,11 +122,15 @@
       <hr class="my-4">
       <div class="text-center">
         <p>Caso tenha interesse em participar dessa aventura.</p>
-        <div class="col-md-12">
+        <div class="col-md-12 text-uppercase">
           <br>
           <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary" do %>
             <i class="fab fa-github"></i> &nbsp; Faça seu Login
           <% end %>
+        </div>
+        <hr class="my-4">
+        <div class="col-md-12 text-uppercase">
+          <%= link_to "Conheça os Melhores", rankings_path, class: "btn btn-primary", target: "_blank" %>
         </div>
         <!--        Ou-->
         <!--        <div class="col-md-12">-->

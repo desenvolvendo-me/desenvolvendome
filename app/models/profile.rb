@@ -15,6 +15,8 @@
 #
 #TODO: Mudar score para xp
 class Profile < ApplicationRecord
+  include ActionView::Helpers::NumberHelper
+
   paginates_per 25
   belongs_to :user, optional: true
   has_many :knowledges, dependent: :destroy
@@ -26,4 +28,19 @@ class Profile < ApplicationRecord
         .limit(args[:limit])
         .order(score: :desc)
   }
+
+
+  def score
+    number = 0
+    bytes = self[:score]
+    kilobytes = (bytes / 1024)
+    megabytes = (kilobytes / 1024)
+    gigabytes = (megabytes / 1024)
+
+    number = bytes.to_f.round(2).to_s + "b xp" if bytes > 1
+    number = kilobytes.to_f.round(2).to_s + "kb xp" if kilobytes > 1
+    number = megabytes.to_f.round(2).to_s + "mb xp" if megabytes > 1
+    number = gigabytes.to_f.round(2).to_s + "gb xp" if gigabytes > 1
+    number
+  end
 end
