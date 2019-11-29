@@ -1,11 +1,14 @@
 pt-BR:
+  activerecord:
+    enums:
+      contact:
+        contact_types:
+          hi: "Dizer Oi"
+          critical: "Crítica"
+          suggestion: "Sugestão"
+          improvement: "Melhoria"
   enum:
     evaluation_type:
       started: "Iniciado"
       novice: "Aprendiz"
       knight: "Cavaleiro"
-    office:
-      fullstack: "Full Stack"
-      frontend: "Front End"
-      backend: "Back End"
-      devops: "Devops"
