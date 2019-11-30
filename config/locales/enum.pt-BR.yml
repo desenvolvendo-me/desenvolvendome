@@ -1,12 +1,14 @@
 pt-BR:
-  enum:
-    evaluation_type:
-      programmer: "Programador"
-      influencer: "Influenciador"
-      collaborator: "Colaborador"
-      disciplinarian: "Disciplinador"
-    office:
-      fullstack: "Full Stack"
-      frontend: "Front End"
-      backend: "Back End"
-      devops: "Devops"
+  activerecord:
+    enums:
+      contact:
+        contact_types:
+          hi: "Dizer Oi"
+          critical: "Crítica"
+          suggestion: "Sugestão"
+          improvement: "Melhoria"
+      evaluation:
+        evaluation_types:
+          started: "Iniciado"
+          novice: "Aprendiz"
+          knight: "Cavaleiro"

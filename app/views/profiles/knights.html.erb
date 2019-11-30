@@ -1,0 +1,51 @@
+<div class="bg-perfil">
+</div>
+<div class="container profile">
+  <div class="center-block">
+    <div class="col-md-12">
+      <h3 class="text-light text-center text-uppercase">
+        <%= image_tag "evaluation/knight.png", size: "50x50", class: "profile-image" %>
+        Cavaleiros
+      </h3>
+      <div class="row justify-content-center">
+        <%= paginate @profiles %>
+      </div>
+      <div class="row">
+        <% @profiles.each_with_index do |profile, index| %>
+          <div class="col-md-3 text-center">
+            <%= link_to user_path(profile.user.login) do %>
+              <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="justify-content-between">
+                  <% if profile.user %>
+                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
+                    <div class="h4 text-center"><%= truncate(profile.user.try(:name), length: 20) %></div>
+                    <div class="h6 text-center">
+                      <a href="https://github.com/<%= profile.user.try(:login) %>" title="<%= profile.user.try(:login) %>" target="_new">@<%= profile.user.try(:login) %></a>
+                    </div>
+                  <% else %>
+                    <%= image_tag "user.png", size: "150x150", class: "profile-image" %>
+                  <% end %>
+                  <% if profile.user.try(:profile).try(:evaluation) %>
+                    <div class="h6 text-center"><%= "#{profile.try(:evaluation).try(:level)}º nível" %></div>
+                  <% else %>
+                    <div class="h4 text-center">?</div>
+                    <div class="h6 text-center">?º nível</div>
+                  <% end %>
+                  <% if profile %>
+                    <span class="btn btn-info"><%= profile.score %></span>
+                  <% else %>
+                    <span class="btn btn-info">?</span>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+            <br>
+          </div>
+        <% end %>
+      </div>
+      <div class="row justify-content-center">
+        <%= paginate @profiles %>
+      </div>
+    </div>
+  </div>
+</div>

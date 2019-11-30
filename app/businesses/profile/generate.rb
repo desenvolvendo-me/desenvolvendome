@@ -4,19 +4,20 @@ class Profile::Generate
     @user = user
   end
 
-  def score
-    Profile::Score.new(@user).run
+  def run
+    evaluation
+    evolution
   end
+
+  private
 
   def evaluation
-    Evaluation::Know.new(@user).run
-
-    #Exact
-    Evaluation::Programmer.new(@user).run
-    Evaluation::Disciplinarian.new(@user).run
-
-    #Human
-    Evaluation::Influencer.new(@user).run
-    Evaluation::Collaborator.new(@user).run
+    Profile::Rating.new(@user).run
   end
+
+  def evolution
+    Profile::Evolution.new(@user).run
+  end
+
+
 end

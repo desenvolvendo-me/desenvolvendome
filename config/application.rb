@@ -5,6 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+ENV['RAILS_ADMIN_THEME'] = 'rollincode'
 Dotenv.load
 module DesenvolvendoMe
   class Application < Rails::Application
@@ -12,6 +13,7 @@ module DesenvolvendoMe
     config.load_defaults 6.0
     config.hosts.clear
     config.active_job.queue_adapter = :sidekiq
+    config.exceptions_app = self.routes
 
     ## Permite que seja criada arquivos durante os generates
     config.generators do |g|

@@ -25,19 +25,37 @@ RailsAdmin.config do |config|
   # config.show_gravatar = true
 
   config.actions do
-    dashboard # mandatory
-    index # mandatory
-    new
-    export
-    bulk_delete
-    show
-    edit
-    delete
-    show_in_app
+    all_limit = [User, Profile, Evaluation, Knowledge, Repository, Language, Technology]
 
-    ## With an audit adapter, you can add:
-    # history_index
-    # history_show
+    dashboard
+
+    index
+
+    new do
+      except all_limit + [Interest]
+    end
+
+    show do
+      except all_limit
+    end
+
+    edit do
+      except all_limit + [Interest]
+    end
+
+    delete do
+      except all_limit
+    end
+
+    export
+
+    bulk_delete do
+      except all_limit
+    end
+
+    #show_in_app
+    #history_index
+    #history_show
   end
 
   config.model 'Interest' do

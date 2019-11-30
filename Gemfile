@@ -18,9 +18,6 @@ gem 'omniauth-github'
 gem 'activerecord-session_store'
 gem 'validates_email_format_of'
 
-#React
-gem 'react-rails'
-
 #Analisar Necessidade
 gem 'simple_form'
 gem 'sidekiq'
@@ -28,19 +25,21 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'faraday'
 gem 'dotenv'
 gem "sentry-raven"
-gem 'rails_admin', '~> 2.0'
+gem 'kaminari'
 
+#Admin
+gem 'rails_admin', '~> 2.0'
+gem 'rails_admin_rollincode', '~> 1.0'
+
+# gem 'ransack'
 # gem 'geocoder'
 # gem 'httparty'
 # gem 'via_cep'
-# gem 'kaminari'
 # gem 'devise_invitable', '~> 1.7.5'
 # gem 'paranoia', '~> 2.2'
 # gem 'cocoon'
 # gem 'aasm'
 # gem 'merit', '~> 3.0.2'
-# gem 'ransack'
-# gem 'kaminari'
 # gem 'activeadmin'
 # gem 'pagarme'
 # gem "cpf_cnpj"

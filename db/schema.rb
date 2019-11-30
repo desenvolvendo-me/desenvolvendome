@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_142038) do
+ActiveRecord::Schema.define(version: 2019_11_29_111221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2019_11_14_142038) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.integer "contact_type"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -59,6 +68,8 @@ ActiveRecord::Schema.define(version: 2019_11_14_142038) do
     t.bigint "profile_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "knowledge_type"
+    t.integer "level"
     t.index ["language_id"], name: "index_knowledges_on_language_id"
     t.index ["profile_id"], name: "index_knowledges_on_profile_id"
   end
@@ -78,7 +89,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_142038) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "repositories", force: :cascade do |t|
+  create_table "repositories", id: :bigint, default: -> { "nextval('projects_id_seq'::regclass)" }, force: :cascade do |t|
     t.integer "github_id"
     t.string "name"
     t.boolean "fork"
@@ -91,7 +102,7 @@ ActiveRecord::Schema.define(version: 2019_11_14_142038) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "principal_technology"
     t.date "pushed_at"
-    t.index ["user_id"], name: "index_repositories_on_user_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|

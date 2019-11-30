@@ -2,12 +2,14 @@
 #
 # Table name: knowledges
 #
-#  id          :bigint           not null, primary key
-#  experience  :float
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  language_id :bigint
-#  profile_id  :bigint
+#  id             :bigint           not null, primary key
+#  experience     :float
+#  knowledge_type :integer
+#  level          :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  language_id    :bigint
+#  profile_id     :bigint
 #
 # Indexes
 #

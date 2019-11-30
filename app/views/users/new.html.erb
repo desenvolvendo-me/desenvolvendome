@@ -1,19 +1,106 @@
-<div class="container container-users-new">
-  <div class="row">
-    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-      <div class="card card-signin my-5">
-        <div class="card-body">
-          <h5 class="card-title text-center">Análise do Perfil</h5>
-          <form class="form-signin">
-            <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary" do %>
-              <i class="fab fa-github"></i> &nbsp; Login GitHub
-            <% end %>
-            <hr class="my-4">
-            <%= link_to new_interest_path, class: "btn btn-block" do %>
-              Sem Github? Clique Aqui
-            <% end %>
-          </form>
+<div class="container container-intests-new">
+  <div class="col-sm-9 col-md-9 col-lg-9 mx-auto">
+    <div class="card card-signin">
+      <div class="text-center">
+        <h1>Conheça-se</h1>
+      </div>
+      <h2>
+        Como se conhecer?
+      </h2>
+      <div class="text-justify">
+        <p>Em resumo é saber suas <strong>forças e fraquezas</strong>.</p>
+        <p>Que nada mais é do que saber <strong>o que tenho mais conhecimento</strong> e
+          <strong>o que tenho menos conhecimento</strong>.</p>
+        <%= image_tag "swot.jpg", class: "img-fluid" %>
+      </div>
+      <h2>
+        Como vamos análisar?
+      </h2>
+      <div class="text-justify">
+        <p>Se imagine em um jogo de RPG, onde <strong>quantos mais você prática mais evolui</strong>.</p>
+      </div>
+      <%= image_tag "rpg.jpg", class: "img-fluid" %>
+      <div class="text-justify">
+        <p>Nosso objetivo é traduzir isso área de TI.</p>
+        <p>E para isso vamos ouvir todas as <strong>críticas, sugestões e melhorias</strong></p>
+      </div>
+      <h2>
+        Como será na prática?
+      </h2>
+      <p>Com o seu login do Github:</p>
+      <ol>
+        <li>Vamos buscar as informações públicas.</li>
+        <li>Vamos calcular quanto praticou, por:
+          <ul>
+            <li>Projetos</li>
+            <ul>
+              <li>Linguagens</li>
+              <li>Tecnologias</li>
+            </ul>
+          </ul>
+        </li>
+        <li>
+          Vamos definir níveis, por:
+          <ul>
+            <li>
+              Perfil:
+              <ul>
+                <li>Nível de 1 a 10:
+                  <ul>
+                    <li><%= image_tag "evaluation/started.png", size: "20x20" %>Iniciado</li>
+                    <li><%= image_tag "evaluation/novice.png", size: "20x20" %>Aprediz</li>
+                    <li><%= image_tag "evaluation/knight.png", size: "20x20" %>Cavaleiro</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Linguagens e Tecnologias:
+              <ul>
+                <li>Nível de 0 a 1000
+                  <ul>
+                    <li><%= image_tag "language/basic/default.png", size: "20x20" %>Básicas</li>
+                    <li><%= image_tag "language/normal/default.png", size: "20x20" %>Normais</li>
+                    <li><%= image_tag "language/rare/default.png", size: "20x20" %>Raras</li>
+                    <li><%= image_tag "language/special/default.png", size: "20x20" %>Especiais</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <code>
+        Em uma próxima versão vamos explicar o cálculo dos níveis.
+        <%= image_tag "evoluacao.jpg", class: "img-fluid" %>
+      </code>
+      <h2>
+        E depois?
+      </h2>
+      <div class="text-justify">
+        <p>Com essas informações conseguirá entrer quais seus níveis de conhecimento.</p>
+        <p>Podendo decidir <strong>o que manter e o que melhorar</strong>.</p>
+        <p>Assim, vamos ajudá-lo <strong>evoluir</strong>.</p>
+        <%= image_tag "github-rpg.jpg", class: "img-fluid" %>
+      </div>
+      <hr class="my-4">
+      <div class="text-center">
+        <p>Caso tenha interesse em participar dessa aventura.</p>
+        <div class="col-md-12 text-uppercase">
+          <br>
+          <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary" do %>
+            <i class="fab fa-github"></i> &nbsp; Faça seu Login
+          <% end %>
         </div>
+        <hr class="my-4">
+        <div class="col-md-12 text-uppercase">
+          <%= link_to "Conheça os Melhores", rankings_path, class: "btn btn-primary", target: "_blank" %>
+        </div>
+        <!--        Ou-->
+        <!--        <div class="col-md-12">-->
+        <!--          Sem Github? Enteda seu papel,-->
+        <%#= link_to "clique aqui", new_interest_path %>
+        <!--        </div>-->
       </div>
     </div>
   </div>

@@ -19,10 +19,9 @@
 #
 
 class Evaluation < ApplicationRecord
-  default_scope {order(level: :desc)}
   belongs_to :profile
 
-  enum evaluation_type: [:not_evaluation, :influencer, :programmer, :collaborator, :disciplinarian]
+  enum evaluation_type: [:started, :novice, :knight]
 
   validates_presence_of :evaluation_type, :level
 

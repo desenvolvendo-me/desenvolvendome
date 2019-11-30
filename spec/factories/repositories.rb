@@ -18,13 +18,14 @@
 #
 # Indexes
 #
-#  index_repositories_on_user_id  (user_id)
+#  index_projects_on_user_id  (user_id)
 #
 
 FactoryBot.define do
   factory :repository do
     github_id {1}
     name {"hello_world"}
+    commits_count{15}
     fork {false}
     size {330}
     forks_count {1}

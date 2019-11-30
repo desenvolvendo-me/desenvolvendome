@@ -35,7 +35,9 @@ FactoryBot.define do
     github_id {15907252}
     login {"marcodotcastro"}
     office {:fullstack}
-    email {"marco.castro@desenvolvendo.me"}
+    sequence :email do |n|
+      "user-#{n}@desenvolvendo.me"
+    end
     password {"123456"}
     name {"Marco"}
     bio {"Pai da Luísa, Empreendedor e Engenheiro de Software. Fã do ecossistema do Ruby e Rails, mas trabalho também com PHP, Java e Javascript."}
@@ -45,7 +47,7 @@ FactoryBot.define do
 
     trait :with_repositories do
       transient do
-        commits_count {250}
+        commits_count {15}
         principal_technology {"Z"}
       end
       after(:create) do |user, evaluator|

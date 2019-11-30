@@ -13,14 +13,15 @@ body {
 }
 
 /* Header */
-header > nav.navbar{
-background-color: #7965CC;
+header > nav.navbar {
+  background-color: #7965CC;
 }
-.nav-link i{
+
+.nav-link i {
   margin-right: 5px;
 }
 
-.container-card{
+.container-card {
   margin-top: 30px;
 }
 
@@ -29,24 +30,27 @@ background-color: #7965CC;
 -------------------------------------------------- */
 
 /* Carousel base class */
-.carousel-container{
+.carousel-container {
   background-color: #7965cc;
   background-attachment: fixed;
   background-position: center;
   // height: calc(100vh - 48px);
   display: flex;
 }
-.carousel-container .btn-primary{
+
+.carousel-container .btn-primary {
   background-color: rgb(114, 96, 189);
   border-color: rgb(94, 79, 156);
 }
 
-.carousel-container canvas{
+.carousel-container canvas {
   position: absolute;
 }
+
 .carousel {
   margin-bottom: 4rem;
 }
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   bottom: 3rem;
@@ -57,6 +61,7 @@ background-color: #7965CC;
 .carousel-item {
   height: 32rem;
 }
+
 .carousel-item > img {
   position: absolute;
   top: 0;
@@ -68,23 +73,27 @@ background-color: #7965CC;
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
-.marketing{
+.marketing {
   margin-top: 50px;
 }
-.marketing .icone{
+
+.marketing .icone {
   color: #7965cc;
   font-size: 112px;
 }
+
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
   text-align: center;
 }
+
 .marketing h2 {
   font-weight: 400;
   line-height: 32px;
   font-size: 24px;
 }
+
 .marketing .col-lg-4 p {
   margin-right: .75rem;
   margin-left: .75rem;
@@ -129,58 +138,84 @@ background-color: #7965CC;
   }
 }
 
-.justify-content-md-center{
+.justify-content-md-center {
   min-height: calc(100vh - 143px);
   align-content: center;
 }
-.card{
+
+.card {
   padding: 20px;
 }
 
 // Avaliação New
-.simple_form.new_user{
+.simple_form.new_user {
   text-align: left;
 }
-.bg-perfil{
+
+.bg-perfil {
   background-color: #37435B;
   height: 140px;
   position: absolute;
   width: 100%;
 }
-.profile-image{
+
+.profile-image {
   border: 11px solid #FFF;
   border-radius: 7px;
 }
-.container-profile{
+
+.profile {
   margin-top: 70px;
 }
-.container-profile .profile-info{
+
+.vuejs-container {
+  margin-top: 140px;
+}
+
+.profile .profile-info {
   margin-top: 70px;
 }
-.container-profile .profile-info .name{
+
+.profile .profile-info .info {
+  margin-left: 175px;
+}
+
+.profile .profile-info .name {
   font-size: 20px;
-    line-height: 33px;
-    font-weight: 700;
-    margin-bottom: 0px;
+  line-height: 33px;
+  font-weight: 700;
+  margin-bottom: 0px;
 }
-.container-profile .profile-info .login{
+
+.profile .profile-info .login {
   margin: 0px;
 }
-.container-profile .profile-info .login a{
-  font-size: 16px;
-  margin: 0px;
-}
-.container-profile .image-container{
-  width: 165px;
-  float: left;
-}
-.container-profile .profile-info .office,
-.container-profile .profile-info .bio{
+
+.profile .profile-info .login a {
   font-size: 16px;
   margin: 0px;
 }
 
-.container-profile .score-title{
+.profile .image-container {
+  text-align: center;
+  width: 165px;
+  float: left;
+
+}
+
+.profile .evaluation-container {
+  text-align: center;
+  width: 165px;
+  float: right;
+}
+
+.profile .profile-info .office,
+.profile .profile-info .bio {
+  font-size: 16px;
+  margin: 0px;
+}
+
+.profile .score-title {
   color: #8899a6;
   font-size: 10px;
   letter-spacing: 0.02em;
@@ -188,26 +223,29 @@ background-color: #7965CC;
   text-transform: uppercase;
   transition: color 0.15s ease-in-out 0s;
 }
-.container-profile .score-value{
+
+.profile .score-value {
   display: block;
   font-size: 18px;
   font-weight: 500;
   transition: color 0.15s ease-in-out 0s;
 }
-.container-profile .score-container{
+
+.profile .score-container {
   margin-left: 12px;
   width: 126px;
 }
 
 // Interests New
-.container-intests-new{
+.container-intests-new {
   margin-top: 30px;
 }
 
 // Users New
-.container-users-new{
+.container-users-new {
   margin-top: 30px;
 }
-.container-users-new .btn{
+
+.container-users-new .btn {
   width: 100%;
 }
