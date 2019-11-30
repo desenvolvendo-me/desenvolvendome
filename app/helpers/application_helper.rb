@@ -5,11 +5,10 @@ module ApplicationHelper
   end
 
   def asset_exists?(path)
-    begin
-      pathname = Rails.application.assets.resolve(path)
-      return !!pathname # double-bang turns String into boolean
-    rescue Sprockets::FileNotFound
-      return false
+    if Rails.configuration.assets.compile
+      Rails.application.precompiled_assets.include? path
+    else
+      Rails.application.assets_manifest.assets[path].present?
     end
   end
 end
