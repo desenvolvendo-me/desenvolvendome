@@ -22,8 +22,9 @@ namespace :profile do
   task update_all: :environment do
     Benchmark.bm do |x|
       x.report {
-        User.all.each do |user|
-          puts "Updated: #{user.login}"
+        total = User.count
+        User.all.each_with_index do |user, index|
+          puts "Updated[#{index}/#{total}]: #{user.login}"
           Profile::Generate.new(user).run
         end
       }
@@ -33,11 +34,12 @@ namespace :profile do
 
   desc "Clear Duplicate User"
   task clean_duplicate: :environment do
-    User.all.each do |user|
+    total = User.count
+    User.all.each_with_index do |user, index|
       user_duplicate = User.where(login: user.login)
       if user_duplicate.count > 1
         user = user_duplicate.last
-        puts "Duplicate: #{user.name}"
+        puts "Duplicate[#{index}/#{total}]: #{user.name}"
         user.destroy
       end
     end
