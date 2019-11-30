@@ -114,4 +114,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
   devise_for :admins
+
+  get '/404', to: "errors#not_found", as: "not_found", :via => :all
+  get '/500', to: "errors#internal_server_error", as: "something_wrong", :via => :all
 end

@@ -13,6 +13,7 @@ module DesenvolvendoMe
     config.load_defaults 6.0
     config.hosts.clear
     config.active_job.queue_adapter = :sidekiq
+    config.exceptions_app = self.routes
 
     ## Permite que seja criada arquivos durante os generates
     config.generators do |g|
