@@ -1,3 +1,4 @@
+Dir[Rails.root.join('lib/rails_admin/**/*.rb')].each {|f| require f}
 RailsAdmin.config do |config|
 
   ### Popular gems integration
@@ -56,6 +57,10 @@ RailsAdmin.config do |config|
     #show_in_app
     #history_index
     #history_show
+
+    reimport do
+      only User
+    end
   end
 
   config.model 'Interest' do
