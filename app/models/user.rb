@@ -50,12 +50,14 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     reimport(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    where(login: auth.info.nickname).first_or_create do |user|
       user.login = auth.info.nickname
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name
       user.avatar = auth.info.image
+      user.provider = auth.provider
+      user.uid = auth.uid
     end
   end
 
@@ -70,6 +72,7 @@ class User < ApplicationRecord
 
   def self.reimport(auth)
     user = User.find_by_login(auth.info.nickname)
+    user.update(provider: nil, uid: nil)
     user.try(:profile).try(:destroy)
     user.try(:repositories).try(:destroy_all)
   end
