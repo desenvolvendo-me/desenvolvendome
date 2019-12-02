@@ -119,10 +119,6 @@ pt-BR:
         title: Reimportar %{model_label} '%{object_label}'
         menu: Reimportar
         breadcrumb: Reimportar
-      reimports:
-        title: Reimportar %{model_label_plural}
-        menu: Reimportar
-        breadcrumb: Reimportar
     form:
       cancel: Cancelar
       basic_info: Informações básicas
