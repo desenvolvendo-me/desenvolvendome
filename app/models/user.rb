@@ -63,8 +63,7 @@ class User < ApplicationRecord
   before_update :start_processing
 
   def after_import_save(record)
-    user = User.find_by_login(record[:login])
-    GenerateProfileJob.perform_later(user)
+    GenerateProfileJob.perform_later(record[:login])
   end
 
   private

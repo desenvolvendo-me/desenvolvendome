@@ -1,7 +1,9 @@
 class GenerateProfileJob < ApplicationJob
   queue_as :profile
 
-  def perform(user)
+  def perform(login)
+    user = User.find_by_login(login)
+
     import_github(user)
     profile_generate(user)
     #NOTE: Não será enviado email ainda

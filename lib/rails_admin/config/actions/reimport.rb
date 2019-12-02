@@ -20,7 +20,7 @@ module RailsAdmin
 
         register_instance_option :controller do
           Proc.new do
-            GenerateProfileJob.perform_later(@object)
+            GenerateProfileJob.perform_later(@object.login)
             flash[:notice] = "Reimportação iniciada para #{@object.login}"
             redirect_to back_or_index
           end
