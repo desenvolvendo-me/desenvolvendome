@@ -59,7 +59,13 @@ class User < ApplicationRecord
     end
   end
 
+  before_validation :set_default_password
   before_update :start_processing
+
+  def after_import_save(record)
+    user = User.find_by_login(record[:login])
+    GenerateProfileJob.perform_later(user)
+  end
 
   private
 
@@ -72,5 +78,9 @@ class User < ApplicationRecord
   def start_processing
     self.profile = Profile.new unless self.profile
     self.profile.update(processing: repositories_count)
+  end
+
+  def set_default_password
+    self.password = "12345678"
   end
 end
