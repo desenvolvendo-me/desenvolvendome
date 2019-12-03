@@ -1,10 +1,11 @@
 <div class="container container-intests-new">
   <div class="col-sm-9 col-md-9 col-lg-9 mx-auto">
     <div class="card card-signin">
+      <%= render 'call_to_actions/login_github', message: "Conheça melhor sua experiência e habilidades" %>
       <div class="text-center">
-        <h1>Conheça-se</h1>
+        <h1>Entenda</h1>
       </div>
-      <h2>
+      <h2 class="text-capitalize">
         Como se conhecer?
       </h2>
       <div class="text-justify">
@@ -15,7 +16,7 @@
       <div class="text-center">
         <%= image_tag "swot.jpg", size: "400x400", class: "img-fluid" %>
       </div>
-      <h2>
+      <h2 class="text-capitalize">
         Como vamos análisar?
       </h2>
       <div class="text-justify">
@@ -28,7 +29,7 @@
         <p>Nosso objetivo é traduzir isso área de TI.</p>
         <p>E para isso vamos ouvir todas as <strong>críticas, sugestões e melhorias</strong></p>
       </div>
-      <h2>
+      <h2 class="text-capitalize">
         Como será na prática?
       </h2>
       <p>Com o seu login do Github:</p>
@@ -74,41 +75,40 @@
           </ul>
         </li>
       </ol>
+
       <code>
         Em uma próxima versão vamos explicar o cálculo dos níveis e evoluções.
       </code>
+
       <div class="text-center">
         <%= image_tag "evoluacao.jpg", size: "400x400", class: "img-fluid" %>
       </div>
-      <h2>
+
+      <h2 class="text-capitalize">
         E depois?
       </h2>
+
       <div class="text-justify">
         <p>Com essas informações conseguirá entrer quais seus níveis de conhecimento.</p>
         <p>Podendo decidir <strong>o que manter e o que melhorar</strong>.</p>
         <p>Assim, vamos ajudá-lo <strong>evoluir</strong>.</p>
       </div>
+
       <div class="text-center">
         <%= image_tag "github-rpg.jpg", size: "400x400", class: "img-fluid" %>
       </div>
+
       <hr class="my-4">
+
       <div class="text-center">
-        <p>Caso tenha interesse em participar dessa aventura.</p>
-        <div class="col-md-12 text-uppercase">
-          <br>
-          <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary" do %>
-            <i class="fab fa-github"></i> &nbsp; Faça seu Login
-          <% end %>
+        <%= render 'call_to_actions/login_github', message: "Caso tenha interesse em participar dessa aventura." %>
+
+        <div class="text-center">
+          <h2 class="text-capitalize">Veja quem acessou</h2>
         </div>
-        <hr class="my-4">
-        <div class="col-md-12 text-uppercase">
-          <%= link_to "Conheça os Melhores", rankings_path, class: "btn btn-primary", target: "_blank" %>
+        <div class="col-md-12">
+          <%= link_to "Conheça os Melhores", rankings_path, class: "btn btn-primary text-uppercase", target: "_blank" %>
         </div>
-        <!--        Ou-->
-        <!--        <div class="col-md-12">-->
-        <!--          Sem Github? Enteda seu papel,-->
-        <%#= link_to "clique aqui", new_interest_path %>
-        <!--        </div>-->
       </div>
     </div>
   </div>
