@@ -5,11 +5,14 @@ RailsAdmin.config do |config|
     reimport do
       only User
     end
+    profile do
+      only User
+    end
   end
 
   config.model "User" do
     list do
-      include_fields :login, :name, :evaluations_count, :repositories_count, :followers, :following
+      include_fields :name, :evaluations_count, :repositories_count, :followers, :following, :email
     end
   end
 

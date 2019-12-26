@@ -25,7 +25,7 @@ RailsAdmin.config do |config|
   # config.show_gravatar = true
 
   config.actions do
-    all_limit = [Profile, Evaluation, Knowledge, Repository, Language, Technology]
+    all_limit = [User, Profile, Evaluation, Knowledge, Repository, Language, Technology]
 
     dashboard
 
