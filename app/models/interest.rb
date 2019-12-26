@@ -10,4 +10,6 @@
 
 class Interest < ApplicationRecord
   validates :email, :email_format => { :message => 'não é válido' }
+
+  validates_uniqueness_of :email
 end
