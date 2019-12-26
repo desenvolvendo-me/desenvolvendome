@@ -36,7 +36,6 @@
 #                          new_interest GET      /interests/new(.:format)                                                                 interests#new
 #                              interest GET      /interest(.:format)                                                                      interests#show
 #                              rankings GET      /rankings(.:format)                                                                      profiles#index
-#                              analysis GET      /analysis(.:format)                                                                      users#index
 #                              new_user GET      /analyze(.:format)                                                                       users#new
 #                                 users POST     /analyze(.:format)                                                                       users#create
 #                                  user GET      /profile/:id(.:format)                                                                   users#show
@@ -98,7 +97,6 @@ Rails.application.routes.draw do
   get "rankings/starteds", to: "profiles#starteds", as: "starteds"
   get "rankings/novices", to: "profiles#novices", as: "novices"
   get "rankings/knights", to: "profiles#knights", as: "knights"
-  get "analysis", to: "users#index"
   get "analyze", to: "users#new", as: "new_user"
   post "analyze", to: "users#create", as: "users"
   get "profile/:id", to: "users#show", as: "user"
