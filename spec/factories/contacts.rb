@@ -4,7 +4,7 @@
 #
 #  id           :bigint           not null, primary key
 #  contact_type :integer
-#  description  :string
+#  description  :text
 #  email        :string
 #  name         :string
 #  created_at   :datetime         not null

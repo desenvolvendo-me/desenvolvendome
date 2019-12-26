@@ -68,6 +68,10 @@ class User < ApplicationRecord
     GenerateProfileJob.perform_later(record[:login])
   end
 
+  def to_s
+    "#{self.try(:profile).try(:evaluation).try(:evaluation_type).try(:capitalize)}, Lvl: #{self.try(:profile).try(:evaluation).try(:level)} XP: #{self.try(:profile).try(:score)}" if self.try(:profile)
+  end
+
   private
 
   def self.reimport(auth)
