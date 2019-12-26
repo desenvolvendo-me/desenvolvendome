@@ -28,9 +28,8 @@ gem "sentry-raven"
 gem 'kaminari'
 
 #Admin
-gem 'rails_admin', '~> 2.0'
-gem 'rails_admin_rollincode', '~> 1.0'
-gem "rails_admin_import", "~> 2.2"
+gem 'activeadmin'
+
 
 # gem 'ransack'
 # gem 'geocoder'
@@ -41,7 +40,6 @@ gem "rails_admin_import", "~> 2.2"
 # gem 'cocoon'
 # gem 'aasm'
 # gem 'merit', '~> 3.0.2'
-# gem 'activeadmin'
 # gem 'pagarme'
 # gem "cpf_cnpj"
 # gem 'airbrake', '~> 5.0'
