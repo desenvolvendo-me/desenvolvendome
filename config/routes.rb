@@ -3,7 +3,6 @@
 #                                Prefix Verb     URI Pattern                                                                              Controller#Action
 #                     letter_opener_web          /mail/inbox                                                                              LetterOpenerWeb::Engine
 #                           sidekiq_web          /sidekiq/admin                                                                           Sidekiq::Web
-#                           rails_admin          /admin/app                                                                               RailsAdmin::Engine
 #                      new_user_session GET      /users/sign_in(.:format)                                                                 devise/sessions#new
 #                          user_session POST     /users/sign_in(.:format)                                                                 devise/sessions#create
 #                  destroy_user_session DELETE   /users/sign_out(.:format)                                                                devise/sessions#destroy
@@ -66,20 +65,11 @@
 #       letters GET    /                                letter_opener_web/letters#index
 #        letter GET    /:id(/:style)(.:format)          letter_opener_web/letters#show
 #               GET    /:id/attachments/:file(.:format) letter_opener_web/letters#attachment
-# 
-# Routes for RailsAdmin::Engine:
-#   dashboard GET         /                                      rails_admin/main#dashboard
-#       index GET|POST    /:model_name(.:format)                 rails_admin/main#index
-#         new GET|POST    /:model_name/new(.:format)             rails_admin/main#new
-#      export GET|POST    /:model_name/export(.:format)          rails_admin/main#export
-# bulk_delete POST|DELETE /:model_name/bulk_delete(.:format)     rails_admin/main#bulk_delete
-# bulk_action POST        /:model_name/bulk_action(.:format)     rails_admin/main#bulk_action
-#        show GET         /:model_name/:id(.:format)             rails_admin/main#show
-#        edit GET|PUT     /:model_name/:id/edit(.:format)        rails_admin/main#edit
-#      delete GET|DELETE  /:model_name/:id/delete(.:format)      rails_admin/main#delete
-# show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#show_in_app
+#
 
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :contacts
 
   root 'visits#index'
@@ -107,8 +97,6 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/mail/inbox" if Rails.env.development?
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq/admin'
-
-  mount RailsAdmin::Engine => '/admin/app', as: 'rails_admin'
 
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
   devise_for :admins
