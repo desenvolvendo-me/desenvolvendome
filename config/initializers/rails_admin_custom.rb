@@ -12,7 +12,13 @@ RailsAdmin.config do |config|
 
   config.model "User" do
     list do
-      include_fields :name, :evaluations_count, :repositories_count, :followers, :following, :email
+      include_fields :login, :evaluations_count, :repositories_count, :followers, :following, :email
+      field :evaluations_count do
+        label "Evaluations"
+      end
+      field :repositories_count do
+        label "Repositories"
+      end
     end
   end
 
