@@ -3,9 +3,11 @@ ActiveAdmin.register User do
 
   index do
     column :evaluation_type do |user|
-      user
+      link_to user.to_s, user_path(user.login), target: "_blank"
     end
-    column :login
+    column :login do |user|
+      link_to user.login, "https://github.com/#{user.login}", target: "_blank"
+    end
     column :email
     column :followers
     column :following
