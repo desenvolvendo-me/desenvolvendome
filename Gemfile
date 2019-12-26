@@ -29,7 +29,8 @@ gem 'kaminari'
 
 #Admin
 gem 'activeadmin'
-
+gem "chartkick", '~> 2.2.0'
+gem 'groupdate'
 
 # gem 'ransack'
 # gem 'geocoder'
@@ -43,8 +44,6 @@ gem 'activeadmin'
 # gem 'pagarme'
 # gem "cpf_cnpj"
 # gem 'airbrake', '~> 5.0'
-# gem "chartkick", '~> 2.2.0'
-# gem 'groupdate'
 
 #Básicos
 group :production do
