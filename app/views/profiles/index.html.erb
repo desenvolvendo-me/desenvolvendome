@@ -15,12 +15,9 @@
                 </button>
                 <div class="justify-content-between">
                   <% if profile.user.avatar %>
-                    <%= link_to user_path(profile.user.login) do %>
-                      <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
-                    <% end %>
+                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
                   <% end %>
-                  <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
-
+                  <h5 class="mb-1"><%= "@#{profile.user.login}" %></h5>
                   <% if profile %>
                     <span class="btn btn-info"><%= profile.score %></span>
                   <% else %>
@@ -44,11 +41,9 @@
                 </button>
                 <div class="justify-content-between">
                   <% if profile.user.avatar %>
-                    <%= link_to user_path(profile.user.login) do %>
-                      <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
-                    <% end %>
+                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
                   <% end %>
-                  <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
+                  <h5 class="mb-1"><%= "@#{profile.user.login}" %></h5>
                   <% if profile %>
                     <span class="btn btn-info"><%= profile.score %></span>
                   <% else %>
@@ -72,11 +67,9 @@
                 </button>
                 <div class="justify-content-between">
                   <% if profile.user.avatar %>
-                    <%= link_to user_path(profile.user.login) do %>
-                      <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
-                    <% end %>
+                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
                   <% end %>
-                  <h5 class="mb-1"><%= link_to "@#{profile.user.login}", "https://github.com/#{profile.user.login}", target: "_blank" %></h5>
+                  <h5 class="mb-1"><%= "@#{profile.user.login}" %></h5>
                   <% if profile %>
                     <span class="btn btn-info"><%= profile.score %></span>
                   <% else %>
