@@ -1,9 +1,6 @@
 require 'rails_admin/config/actions'
 require 'rails_admin/config/actions/base'
 
-module RailsAdminApproveReview
-end
-
 module RailsAdmin
   module Config
     module Actions
