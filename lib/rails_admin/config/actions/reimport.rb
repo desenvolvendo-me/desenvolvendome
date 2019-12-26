@@ -12,7 +12,7 @@ module RailsAdmin
         end
 
         register_instance_option :link_icon do
-          'icon-check'
+          'icon-folder-open'
         end
 
         register_instance_option :controller do
