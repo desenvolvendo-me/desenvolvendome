@@ -158,7 +158,7 @@
                     <div class="h5"><%= image_tag "language/basic/default.png", size: "30x30" %>Básicas</div>
                   </div>
                   <ul class="list-group">
-                    <% @user.profile.knowledges.where(knowledge_type: :basic).each do |knowledge| %>
+                    <% @user.profile.knowledges.where(knowledge_type: :basic).ordered_by_level.each do |knowledge| %>
                       <div class="text-center">
                         <li class="list-group-item d-flex justify-content-between align-items-center mb-1">
                           <div class="row">
@@ -184,7 +184,7 @@
                 <div class="col-md-3">
                   <div class="h5"><%= image_tag "language/normal/default.png", size: "30x30" %>Normais</div>
                   <ul class="list-group">
-                    <% @user.profile.knowledges.where(knowledge_type: :normal).each do |knowledge| %>
+                    <% @user.profile.knowledges.where(knowledge_type: :normal).ordered_by_level.each do |knowledge| %>
                       <div class="text-center">
                         <li class="list-group-item d-flex justify-content-between align-items-center mb-1">
                           <div class="row">
@@ -210,7 +210,7 @@
                 <div class="col-md-3">
                   <div class="h5"><%= image_tag "language/rare/default.png", size: "30x30" %>Raras</div>
                   <ul class="list-group">
-                    <% @user.profile.knowledges.where(knowledge_type: :rare).each do |knowledge| %>
+                    <% @user.profile.knowledges.where(knowledge_type: :rare).ordered_by_level.each do |knowledge| %>
                       <div class="text-center">
                         <li class="list-group-item d-flex justify-content-between align-items-center mb-1">
                           <div class="row">
@@ -236,7 +236,7 @@
                 <div class="col-md-3">
                   <div class="h5"><%= image_tag "language/special/default.png", size: "30x30" %>Especiais</div>
                   <ul class="list-group">
-                    <% @user.profile.knowledges.where(knowledge_type: :special).each do |knowledge| %>
+                    <% @user.profile.knowledges.where(knowledge_type: :special).ordered_by_level.each do |knowledge| %>
                       <div class="text-center">
                         <li class="list-group-item d-flex justify-content-between align-items-center mb-1">
                           <div class="row">

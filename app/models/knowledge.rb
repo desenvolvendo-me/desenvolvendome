@@ -18,11 +18,11 @@
 #
 
 class Knowledge < ApplicationRecord
-  default_scope {order(level: :desc)}
-
   belongs_to :profile, optional: true
   belongs_to :language, optional: true
 
-  enum knowledge_type: [:basic, :normal, :rare, :special]
+  scope :ordered_by_level, -> {order(level: :desc)}
+  scope :ordered_by_language, -> { includes(:language).order('languages.description DESC')}
 
+  enum knowledge_type: [:basic, :normal, :rare, :special]
 end
