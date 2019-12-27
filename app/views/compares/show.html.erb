@@ -1,17 +1,31 @@
-<div class="container container-intests-new">
-  <div class="col-sm-9 col-md-9 col-lg-9 mx-auto">
-    <div class="card card-signin my-5 justify-content-sm-center text-justify">
-
-      <h1> User: <%= @user.login %></h1>
-      <% if @user.avatar %>
-        <%= image_tag @user.avatar, size: "150x150", class: "profile-image" %>
-      <% end %>
-
-      <h1> User: <%= @compared.login %></h1>
-      <% if @compared.avatar %>
-        <%= image_tag @compared.avatar, size: "150x150", class: "profile-image" %>
-      <% end %>
-
-    </div>
+<div class="bg-perfil">
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <%= render 'profile', user: @user %>
+  </div>
+  <div class="col-md-4">
+    <%= render 'profile', user: @compared %>
+  </div>
+</div>
+<hr class="featurette-divider">
+<div class="row">
+  <div class="col-md-12 text-center">
+    <div class="h3">Seu XP é <%= @compared.profile.score %>!</div>
+    <p>Quer saber como aumentar sua experiêncie e habilidades?</p>
+    <p><%= link_to "Clique Aqui", new_interest_path, class: "btn btn-lg btn-primary" %></p>
+  </div>
+</div>
+<hr class="featurette-divider">
+<div class="row">
+  <div class="col-md-12 text-center">
+    <code id="nota">
+      <div class="h3">NOTA</div>
+      <p>Ainda não levamos em consideração a Relevância e a Qualidade do código, somente a Quantidade.</p>
+      <p>Nosso objetivo é disponibilizar na versão v1.1 e v1.2 respectivamente, hoje estamos na
+        v0.2</p>
+    </code>
+    <div class="h3">Críticas, Sugestões e Melhorias</div>
+    <%= link_to "Clique Aqui", new_contact_path, class: "btn btn-lg btn-primary" %>
   </div>
 </div>
