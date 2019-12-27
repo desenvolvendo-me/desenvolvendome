@@ -1,0 +1,12 @@
+<div class="container container-intests-new">
+  <div class="col-sm-9 col-md-9 col-lg-9 mx-auto">
+    <div class="card card-signin my-5 justify-content-sm-center text-justify">
+      <%= simple_form_for @compare, defaults: {input_html: {class: 'register-form'}} do |f| %>
+        <input type="text" id="compare_login_1" name="compare[login_1]" , placeholder="Login 1" class="form-control"/>
+        <input type="text" id="compare_login_2" name="compare[login_2]" , placeholder="Login 2" class="form-control"/>
+        <br>
+        <%= f.button :submit, "COMPARAR", class: "btn btn-primary btn-block" %>
+      <% end %>
+    </div>
+  </div>
+</div>
