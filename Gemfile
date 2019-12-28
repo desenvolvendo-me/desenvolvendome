@@ -75,6 +75,10 @@ group :development do
   gem 'rails_layout'
   gem 'letter_opener_web'
   gem 'rails-erd'
+  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano-rails", "~> 1.3", require: false
+  gem 'capistrano3-puma', require: false
+  gem 'capistrano-rvm', require: false
 end
 
 group :test do

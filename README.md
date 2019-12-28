@@ -2,32 +2,27 @@
 ## Desenvolvendo local
 ### Docker
 ```
-docker-compose run web rake db:create
-docker-compose run web rake db:migrate
-docker-compose up -d
+shell> docker-compose run web rake db:create
+shell> docker-compose run web rake db:migrate
+shell> docker-compose up -d
 ```
 ### Sidekiq
 ```
-bundle exec sidekiq -q default
+shell> bundle exec sidekiq -q default
 ```
-Acesse: http://localhost:3000/sidekiq
+Acesse: http://localhost:3000/sidekiq/admin
 ### Rake
 ```
-rake profile:clean_duplicate            # Clear Duplicate User
-rake profile:update[user_login]         # Update Profile
-rake profile:update_all                 # Update All Profile
+shell> rake profile:clean_duplicate            # Clear Duplicate User
+shell> rake profile:update[user_login]         # Update Profile
+shell> rake profile:update_all                 # Update All Profile
 ```
 
-##IGNORAR DAQUI PRA BAIXO (AINDA NÃO DISPONÍVEL)
 ## Deploy
-### Heroku
+### Digital Ocean
 ```
-heroku run bash
-rails db:migrate 
-rails c
-Rails.application.load_seed
+shell> cap production deploy
 ```
-PS: Por algum muito motivo rodar o `rails db:seed` via `heroku run rails db:seed` não funciona
 
 #QUALIDADE
 
@@ -46,6 +41,7 @@ shell> rspec spec
 
 Acesse: http://localhost:63342/desenvolvendome/coverage/index.html
 
+##IGNORAR DAQUI PRA BAIXO (AINDA NÃO DISPONÍVEL)
 #Variaveis de Ambiente
 
 ## Email Server
