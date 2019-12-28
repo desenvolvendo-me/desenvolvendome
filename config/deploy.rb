@@ -22,22 +22,46 @@ set :nginx_sites_enabled_path, "/etc/nginx/sites-enabled"
 set :rvm_ruby_version, '2.6.5'
 
 namespace :puma do
-  desc 'Create Puma dirs'
-  task :create_dirs do
+  desc 'Create Directories for Puma Pids and Socket'
+  task :make_dirs do
     on roles(:app) do
       execute "mkdir #{shared_path}/tmp/sockets -p"
       execute "mkdir #{shared_path}/tmp/pids -p"
     end
   end
 
-  desc "Restart Nginx"
-  task :nginx_restart do
+  before :start, :make_dirs
+end
+
+namespace :deploy do
+  desc "Make sure local git is in sync with remote."
+  task :check_revision do
     on roles(:app) do
-      execute "sudo service nginx restart"
+      unless `git rev-parse HEAD` == `git rev-parse origin/master`
+        puts "WARNING: HEAD is not the same as origin/master"
+        puts "Run `git push` to sync changes."
+        exit
+      end
     end
   end
 
-  before :start, :create_dirs
-  after :start, :nginx_restart
-end
+  desc 'Initial Deploy'
+  task :initial do
+    on roles(:app) do
+      before 'deploy:restart', 'puma:start'
+      invoke 'deploy'
+    end
+  end
 
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      invoke 'puma:restart'
+    end
+  end
+
+  before :starting,     :check_revision
+  after  :finishing,    :compile_assets
+  after  :finishing,    :cleanup
+  after  :finishing,    :restart
+end
