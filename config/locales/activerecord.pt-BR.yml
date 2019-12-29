@@ -7,6 +7,9 @@ pt-BR:
           has_one: "Não é possível excluir o registro pois existe um %{record} dependente"
           has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
     models:
+      admin_user:
+        one: "Administrador"
+        other: "Administradores"
       evaluation:
         one: "Avaliação"
         other: "Avaliações"
@@ -38,7 +41,15 @@ pt-BR:
         one: "Contato"
         other: "Contatos"
     attributes:
-      #TODO: adicionar todos atributos
+      user:
+        level: "Nível"
+        login: "Login"
+        email: "Email"
+        followers: "Seguidores"
+        following: "Seguidos"
+        evaluations: "Avaliações"
+        repositories: "Repositorios"
+        created_at: "Criado Em"
       evaluation:
         level: "Nível"
         evaluation_type: "Tipo"
@@ -48,3 +59,7 @@ pt-BR:
         email: "Email"
         description: "Descrição"
         contact_type: "Tipo"
+        created_at: "Criado Em"
+      interest:
+        email: "Email"
+        created_at: "Criado Em"
