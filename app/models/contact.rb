@@ -17,4 +17,8 @@ class Contact < ApplicationRecord
 
   validates_presence_of :name, :email, :description, :contact_type
 
+  def to_s
+    "#{self.created_at.strftime("%d/%m/%y %H:%M")}: #{self.name}"
+  end
+
 end
