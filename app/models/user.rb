@@ -69,6 +69,10 @@ class User < ApplicationRecord
   end
 
   def to_s
+    "#{self.created_at.strftime("%d/%m/%y %H:%M")}: #{level}"
+  end
+
+  def level
     "#{self.try(:profile).try(:evaluation).try(:evaluation_type).try(:capitalize)}, Lvl: #{self.try(:profile).try(:evaluation).try(:level)} XP: #{self.try(:profile).try(:score)}" if self.try(:profile)
   end
 
