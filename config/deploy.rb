@@ -5,7 +5,7 @@ set :repo_url, "git@github.com:marcodotcastro/desenvolvendome.git"
 
 set :deploy_to, "/var/www/desenvolvendome"
 
-append :linked_files, "config/database.yml", "config/storage.yml", "config/master.key"
+append :linked_files, "config/database.yml", "config/storage.yml", "config/master.key", ".env"
 append :linked_dirs, "log", "tmp"
 
 set :keep_releases, 5
