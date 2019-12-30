@@ -1,5 +1,6 @@
 ActiveAdmin.register Contact do
   menu priority: 3
+  menu parent: "Gerenciamento"
 
   index do
     column :name

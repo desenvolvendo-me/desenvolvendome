@@ -8,8 +8,8 @@ pt-BR:
           has_many: "Não é possível excluir o registro pois existem %{record} dependentes"
     models:
       admin_user:
-        one: "Administrador"
-        other: "Administradores"
+        one: "Usuário"
+        other: "Usuários"
       evaluation:
         one: "Avaliação"
         other: "Avaliações"
