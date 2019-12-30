@@ -9,6 +9,23 @@ ActiveAdmin.register_page "Dashboard" do
     end
     columns do
       column do
+        panel "Total de Usuários" do
+          User.count
+        end
+      end
+      column do
+        panel "Total de Interesses" do
+          Interest.count
+        end
+      end
+      column do
+        panel "Total de Contatos" do
+          Contact.count
+        end
+      end
+    end
+    columns do
+      column do
         panel "Usuários por Dia" do
           render partial: 'dashboards/users/per_day'
         end
