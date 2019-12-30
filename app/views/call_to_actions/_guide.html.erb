@@ -1,9 +1,13 @@
-<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-  <%= simple_form_for @interest, defaults: {input_html: {class: 'register-form'}} do |f| %>
-    <p class="card-title mt-3 text-center">Cadastre-se para Receber</p>
-    <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control'} %>
-    <p class="card-title mt-3 text-center text-danger">Assim que ficar pronto lhe enviarem</p>
-    <br>
-    <%= f.button :submit, "QUERO O GUIA", class: "btn btn-primary btn-block" %>
-  <% end %>
+<div class="row text-center">
+  <div class="col-sm-9 col-md-7 col-lg-6 mx-auto">
+    <p>Vamos preparar um guia passo-a-passo de: </p>
+    <p class="text-center text-capitalize"><strong>Como Se Preparar Para Esse Mercado</strong></p>
+    <%= simple_form_for @interest, defaults: {input_html: {class: 'register-form'}} do |f| %>
+      <p class="card-title mt-3 text-center">Cadastre-se para Receber</p>
+      <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control'} %>
+      <p class="card-title mt-3 text-center text-danger">Assim que ficar pronto lhe informamos.</p>
+      <br>
+      <%= f.button :submit, "QUERO O GUIA", class: "btn btn-primary btn-block" %>
+    <% end %>
+  </div>
 </div>
