@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
   menu priority: 1
+  menu parent: "Gerenciamento"
 
   index do
     column :level do |user|
