@@ -1,17 +1,17 @@
 <div class="container container-intests-new">
   <div class="col-sm-9 col-md-9 col-lg-9 mx-auto">
     <div class="card card-signin">
-      <%= render 'call_to_actions/login_github', message: "Conheça melhor sua experiência e habilidades" %>
+      <%= render 'call_to_actions/login_github', message: "Conheça melhor suas experiências e habilidades" %>
       <div class="text-center">
         <h1>Entenda</h1>
       </div>
       <h2 class="text-capitalize">
-        Como se conhecer?
+        O que é se conhecer?
       </h2>
       <div class="text-justify">
-        <p>Em resumo é saber suas <strong>forças e fraquezas</strong>.</p>
-        <p>Que nada mais é do que saber <strong>o que tenho mais conhecimento</strong> e
-          <strong>o que tenho menos conhecimento</strong>.</p>
+        <p>Em resumo é saber suas <strong>forças e fraquezas</strong>, ou seja
+          <strong>em qual tecnologia tenho mais conhecimento</strong> e
+          <strong>menos conhecimento</strong>.</p>
       </div>
       <div class="text-center">
         <%= image_tag "swot.jpg", size: "400x400", class: "img-fluid" %>
@@ -20,20 +20,25 @@
         Como vamos análisar?
       </h2>
       <div class="text-justify">
-        <p>Se imagine em um jogo de RPG, onde <strong>quantos mais você prática mais evolui</strong>.</p>
+        <p>Se imagine em um jogo de RPG, onde <strong>quanto mais joga (pratica) mais evolui</strong>.</p>
       </div>
       <div class="text-center">
         <%= image_tag "rpg.jpg", size: "400x400", class: "img-fluid" %>
       </div>
       <div class="text-justify">
-        <p>Nosso objetivo é traduzir isso área de TI.</p>
+        <p>Nosso objetivo é traduzir isso área de TI e suas tecnologias.</p>
         <p>E para isso vamos ouvir todas as <strong>críticas, sugestões e melhorias</strong></p>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <%= link_to "Clique Aqui", new_contact_path, class: "btn btn-lg btn-primary" %>
+          </div>
+        </div>
       </div>
       <h2 class="text-capitalize">
         Como será na prática?
       </h2>
-      <p>Com o seu login do Github:</p>
       <ol>
+        <li>Com o seu login do Github:</li>
         <li>Vamos buscar as informações públicas.</li>
         <li>Vamos calcular quanto praticou, por:
           <ul>
@@ -50,10 +55,10 @@
             <li>
               Perfil:
               <ul>
-                <li>Nível de 1 a 10:
+                <li>Nível de 1 a 10 para:
                   <ul>
                     <li><%= image_tag "evaluation/started.png", size: "20x20" %>Iniciado</li>
-                    <li><%= image_tag "evaluation/novice.png", size: "20x20" %>Aprediz</li>
+                    <li><%= image_tag "evaluation/novice.png", size: "20x20" %>Aprendiz</li>
                     <li><%= image_tag "evaluation/knight.png", size: "20x20" %>Cavaleiro</li>
                   </ul>
                 </li>
@@ -62,7 +67,7 @@
             <li>
               Linguagens e Tecnologias:
               <ul>
-                <li>Nível de 0 a 1000
+                <li>Nível de 0 a 1000 para:
                   <ul>
                     <li><%= image_tag "language/basic/default.png", size: "20x20" %>Básicas</li>
                     <li><%= image_tag "language/normal/default.png", size: "20x20" %>Normais</li>
@@ -76,21 +81,21 @@
         </li>
       </ol>
 
-      <code>
-        Em uma próxima versão vamos explicar o cálculo dos níveis e evoluções.
-      </code>
-
       <div class="text-center">
         <%= image_tag "evoluacao.jpg", size: "400x400", class: "img-fluid" %>
       </div>
+
+      <code>
+        Em uma próxima versão vamos explicar o cálculo dos níveis e evoluções.
+      </code>
 
       <h2 class="text-capitalize">
         E depois?
       </h2>
 
       <div class="text-justify">
-        <p>Com essas informações conseguirá entrer quais seus níveis de conhecimento.</p>
-        <p>Podendo decidir <strong>o que manter e o que melhorar</strong>.</p>
+        <p>Com essas informações conseguirá entender qual é seu nível de conhecimento por tecnologia.</p>
+        <p>Podendo decidir qual conhecimento <strong>manter e melhorar</strong>.</p>
         <p>Assim, vamos ajudá-lo <strong>evoluir</strong>.</p>
       </div>
 
