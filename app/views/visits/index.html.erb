@@ -5,6 +5,7 @@
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -21,6 +22,15 @@
             <div class="carousel-caption">
               <h1>Conhece seu Mercado?</h1>
               <p>Conhecer seu mercado é o 2º passo para o sucesso.</p>
+              <p><%= link_to "Saiba Mais", new_interest_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Sabe se Preparar?</h1>
+              <p>Saber se preparar é o 3º passo para o sucesso.</p>
               <p><%= link_to "Saiba Mais", new_interest_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
             </div>
           </div>
@@ -46,19 +56,18 @@
       <div class="col-lg-4">
         <%= icon('fas', 'chart-pie', class: "icone") %>
         <h2>Conheça-se</h2>
-        <p>Sabe quais são as tecnologias que <strong>mais</strong> conhece, <strong>menos</strong> conhece e
-          <strong>nada</strong> conhece?</p>
+        <p>Saiba quais são as tecnologias que <strong>mais</strong> conhece e <strong>menos</strong> conhece.</p>
       </div>
       <div class="col-lg-4">
         <%= icon('fas', 'chart-area', class: "icone") %>
-        <h2>Conheça o Mercado</h2>
-        <p>Sabe quais são as tecnologias que o mercado <strong>mais</strong> solicitada, <strong>menos</strong>
-          solicitada e <strong>nada</strong> solicitada?</p>
+        <h2>Conheça seu Mercado</h2>
+        <p>Saiba quais são as tecnologias que o seu mercado <strong>mais</strong> solicita e <strong>menos</strong>
+          solicita.</p>
       </div>
       <div class="col-lg-4">
         <%= icon('fas', 'brain', class: "icone") %>
         <h2>Prepara-se</h2>
-        <p>Qual o <strong>planejamento</strong> para a sua carreira <strong>alinhado</strong> com o seu mercado?</p>
+        <p>Saiba como <strong>planejar</strong> sua carreira para <strong>alinhado</strong> com o seu mercado.</p>
       </div>
     </div>
 
@@ -83,13 +92,12 @@
           <br>
           <br>
           Isso acontece principalmente por falta de conhecimento do mercado e a culpa não é do aluno, mas sim das
-          <strong>faculdades que não preparam os alunos para atender as demandas do mercado</strong>, as faculdade hoje
-          lutam para não trocar da emenda de aula o Pascal e C, por Javascript e Python.
+          <strong>faculdades que não preparam os alunos para atender as demandas do mercado</strong>, as faculdades hoje
+          lutam para não trocar o Pascal e C, por Javascript e Python.
           <br>
           <br>
-          Ao <strong>autoconhecer-se mostrará como se preparar para atender as demandas do mercado e se tornando mais
-          proativo</strong> e objetivo entrar em uma vaga e não simplesmente esperar ser chamado com envio de
-          currículo.
+          Ao <strong>conhecer-se permitirá tornar a entrada no mercado mais proativo e objetivo</strong> e não
+          simplesmente esperar ser chamado com envio de currículo.
         </p>
       </div>
       <div class="col-md-5">
@@ -104,19 +112,20 @@
         <h2 class="featurette-heading text-uppercase">Conheça o Mercado</h2>
         <p class="text-justify">
           Atualmente existem mais de 19,5 mil empresas no setor de tecnologia brasileiro, <strong>onde 5,1 mil
-          atuam no desenvolvimento de software, sendo 95% são micros e pequenas empresas</strong>.
+          atuam no desenvolvimento de software, sendo 95% composto por micros e pequenas empresas</strong>.
           <br>
           <br>
-          O mais curioso no mercado de hoje é que
-          <strong> a cada dia nascem novas empresas com DNA de TI, as startups, e hoje já existem 12,7 mil no Brasil
-            (<a href="https://startupbase.com.br/home">fonte</a>)</strong>, sendo que 9 já ultrapassaram os $1bi e se
-          tornaram os primeiros unicórnios brasileiros.
+          O mais curioso é que no mercado de hoje
+          <strong> a cada dia nascem novas empresas com DNA de TI, as famosas startups, e nos dias de hoje já existem
+            mais 12 mil no Brasil (<a href="https://startupbase.com.br/home">fonte</a>)</strong>, sendo que 9 já
+          ultrapassaram os $1bi e se tornaram os primeiros unicórnios brasileiros.
           <br>
           <br>
-          Com essa mudança no mercado mundial e nacional, onde sem a TI, como core, a empresa na escala. Assim,
+          Essa mudança no mercado nacional ocorre, pois já foi percebido que sem a TI no core business a empresa na
+          escala rápido Assim,
           <strong>a tendência é que diminua drasticamente o número de empresas no setor de tecnologia focadas
-            em terceirização</strong>, pois cada dia o mercado percebe o quanto a TI é estratégica para o negócio,
-          tornando um risco a terceirização.</p>
+            em desenvolvimento de software</strong>. Devido o mercado perceber o quanto a TI é estratégica para o
+          negócio e que é um risco a terceirização.</p>
       </div>
       <div class="col-md-5 order-md-1">
         <%= image_tag "conheca-o-mercado.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" %>
@@ -134,12 +143,12 @@
           profissional qualificado.
           <br>
           <br>
-          Para essas empresas que dominiam o mercado, o profissional de TI, além do conhecimento Técnico (tecnologias em
-          geral) <strong>é um grande diferencial entender do Negócio, de Venda e da Gestão</strong>, pois as conversar e
-          demandas não são simples, e requer precisão e velocidade na mudança.
+          Para essas novas empresas, o profissional de TI, além do conhecimento Técnico (tecnologias em
+          geral) <strong>é um grande diferencial entender do Negócio, de Venda e da Gestão</strong>, pois as conversas
+          sobre as demandas não são simples, e requer precisão e velocidade no entendimento para a mudança.
           <br>
           <br>
-          Lembrando que
+          Lembrando que,
           <strong>entender dessas outras área não significa ter um MBA ou 10 anos de experiência em cada uma
             área</strong>. É simplesmente partipar de reuniões e conseguir colaborar com sua visão de tecnologia sobre
           um problema de Negócio, de Venda ou de Gestão, ou seja é saber que cada linha de código tem um porque maior.
@@ -155,15 +164,15 @@
     <div class="row featurette">
       <div class="col-md-12 text-center">
         <h1 class="featurette-heading">Conheça-se Agora</h1>
-        <p class="lead">
-          Com o Autoconhecimento, Conhecimento do Mercado e Planejamento é possível trabalhar em qualquer empresa
-          ou startup.
+        <p class="text-center">
+          Em resumo, <strong>Conhecendo-se, Conhecendo seu Mercado e Preparando-se</strong> é possível trabalhar em qualquer empresa ou
+          startup.
         </p>
-        <p class="lead">
-          E até mesmo criar a sua startup.
+        <p class="text-center">
+          Ou quem sabe até mesmo <strong>criar a sua própria</strong>.
         </p>
-        <p class="lead">
-          E lhe garanto é mais simples do que tornar-se um verdadeiro Full Stack Developer.
+        <p class="text-center">
+          Posso lhe garantir que é mais simples do que ser <strong>Full Stack Developer</strong>.
         </p>
         <p><%= link_to "Clique Aqui", new_user_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
       </div>
