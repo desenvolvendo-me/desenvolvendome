@@ -48,6 +48,10 @@ GEM
       ransack (~> 2.1, >= 2.1.1)
       sassc-rails (~> 2.1)
       sprockets (>= 3.0, < 4.1)
+    activeadmin_sidekiq_stats (0.1.1)
+      activeadmin (>= 1.1.0)
+      arbre (>= 1.1.1)
+      sidekiq (>= 4.0.0)
     activejob (6.0.1)
       activesupport (= 6.0.1)
       globalid (>= 0.3.6)
@@ -509,6 +513,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  activeadmin_sidekiq_stats
   activerecord-session_store
   annotate
   aws-sdk-s3
