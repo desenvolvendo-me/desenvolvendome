@@ -1,18 +1,20 @@
 <div class="container profile">
   <div class="center-block">
-    <div class="col-md-12">
+    <div class="col-md-12  mx-auto">
       <div class="card card-signin">
-        <%= search_form_for @q, url: profiles_path, class: "simple_form form-inline" do |f| %>
-          <div class="form-group">
-            <%= f.search_field :name_cont, placeholder: "Nome", class: "form-control" %>
-            <%= f.search_field :login_cont, placeholder: "Login", class: "form-control" %>
-            <%= f.select :profile_evaluation_evaluation_type_eq,
-                         Evaluation.evaluation_types.to_a.map {|w| [enum_i18n(Evaluation, "evaluation_type", w[0]), w[1]]}, {:include_blank => true}, class: "form-control" %>
-            <%= f.select :profile_evaluation_level_eq, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], {:include_blank => true}, class: "form-control" %>
-          </div>
-          <%= f.submit "Pesquisar", class: "form-control btn btn-success" %>
-          <%= link_to "Cancelar", request.path, class: "form-control btn btn-info" %>
-        <% end %>
+        <div class="col-md-12 mx-auto">
+          <%= search_form_for @q, url: profiles_path, class: "simple_form form-inline" do |f| %>
+            <div class="row">
+              <%= f.search_field :name_cont, placeholder: "Nome", class: "form-control mr-2" %>
+              <%= f.search_field :login_cont, placeholder: "Login Github", class: "form-control mr-2" %>
+              <%= f.select :profile_evaluation_evaluation_type_eq,
+                           Evaluation.evaluation_types.to_a.map {|w| [enum_i18n(Evaluation, "evaluation_type", w[0]), w[1]]}, {:include_blank => true}, class: "form-control mr-2" %>
+              <%= f.select :profile_evaluation_level_eq, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], {:include_blank => true}, class: "form-control mr-2" %>
+              <%= f.submit "Pesquisar", class: "form-control mr-2 btn btn-success" %>
+              <%= link_to "Cancelar", request.path, class: "form-control mr-2 btn btn-info" %>
+            </div>
+          <% end %>
+        </div>
       </div>
       <hr class="featurette-divider">
       <div class="row justify-content-center">
