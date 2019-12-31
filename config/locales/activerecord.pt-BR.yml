@@ -42,6 +42,7 @@ pt-BR:
         other: "Contatos"
     attributes:
       user:
+        name: "Nome"
         level: "Nível"
         login: "Login"
         email: "Email"
@@ -63,3 +64,11 @@ pt-BR:
       interest:
         email: "Email"
         created_at: "Criado Em"
+      repository:
+        name: "Nome"
+        principal_technology: "Principal Tecnologia"
+        commits_count: "Número de Commits"
+        forks_count: "Número de Forks"
+        stargazers_count: "Número de Estrelas"
+        technologies: "Tecnologias"
+
