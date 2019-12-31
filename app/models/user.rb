@@ -29,7 +29,7 @@
 #
 
 class User < ApplicationRecord
-  paginates_per 25
+  paginates_per 16
 
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable, :omniauthable
