@@ -10,7 +10,6 @@
 #                                       PUT        /admin/password(.:format)                                                                active_admin/devise/passwords#update
 #                                       POST       /admin/password(.:format)                                                                active_admin/devise/passwords#create
 #                            admin_root GET        /admin(.:format)                                                                         admin/dashboard#index
-#             admin_dashboard_avaliacao GET        /admin/dashboard_avaliacao(.:format)                                                     admin/dashboard_avaliacao#index
 #          batch_action_admin_interests POST       /admin/interests/batch_action(.:format)                                                  admin/interests#batch_action
 #                       admin_interests GET        /admin/interests(.:format)                                                               admin/interests#index
 #                                       POST       /admin/interests(.:format)                                                               admin/interests#create
@@ -20,6 +19,8 @@
 #                                       PATCH      /admin/interests/:id(.:format)                                                           admin/interests#update
 #                                       PUT        /admin/interests/:id(.:format)                                                           admin/interests#update
 #                                       DELETE     /admin/interests/:id(.:format)                                                           admin/interests#destroy
+#                        admin_usuarios GET        /admin/usuarios(.:format)                                                                admin/usuarios#index
+#                       admin_dashboard GET        /admin/dashboard(.:format)                                                               admin/dashboard#index
 #        batch_action_admin_admin_users POST       /admin/admin_users/batch_action(.:format)                                                admin/admin_users#batch_action
 #                     admin_admin_users GET        /admin/admin_users(.:format)                                                             admin/admin_users#index
 #                                       POST       /admin/admin_users(.:format)                                                             admin/admin_users#create
@@ -38,7 +39,6 @@
 #                                       PATCH      /admin/users/:id(.:format)                                                               admin/users#update
 #                                       PUT        /admin/users/:id(.:format)                                                               admin/users#update
 #                                       DELETE     /admin/users/:id(.:format)                                                               admin/users#destroy
-#                       admin_dashboard GET        /admin/dashboard(.:format)                                                               admin/dashboard#index
 #           batch_action_admin_contacts POST       /admin/contacts/batch_action(.:format)                                                   admin/contacts#batch_action
 #                        admin_contacts GET        /admin/contacts(.:format)                                                                admin/contacts#index
 #                                       POST       /admin/contacts(.:format)                                                                admin/contacts#create
@@ -70,10 +70,10 @@
 #                              starteds GET        /rankings/starteds(.:format)                                                             profiles#starteds
 #                               novices GET        /rankings/novices(.:format)                                                              profiles#novices
 #                               knights GET        /rankings/knights(.:format)                                                              profiles#knights
+#                              profiles GET        /profiles(.:format)                                                                      users#index
 #                              new_user GET        /analyze(.:format)                                                                       users#new
 #                                 users POST       /analyze(.:format)                                                                       users#create
 #                                  user GET        /profile/:id(.:format)                                                                   users#show
-#                               compare GET        /profile/:login_1/compare/:login_2(.:format)                                             compare#new
 #                           vuejs_index GET        /vuejs/index(.:format)                                                                   vuejs#index
 #                     letter_opener_web            /mail/inbox                                                                              LetterOpenerWeb::Engine
 #                           sidekiq_web            /sidekiq/admin                                                                           Sidekiq::Web
@@ -151,14 +151,10 @@ Rails.application.routes.draw do
   get "rankings/starteds", to: "profiles#starteds", as: "starteds"
   get "rankings/novices", to: "profiles#novices", as: "novices"
   get "rankings/knights", to: "profiles#knights", as: "knights"
+  get "profiles", to: "users#index"
   get "analyze", to: "users#new", as: "new_user"
   post "analyze", to: "users#create", as: "users"
   get "profile/:id", to: "users#show", as: "user"
-
-  get "compare", to: "compares#new", as: "compare_new"
-  post "compare", to: "compares#create", as: "compares"
-
-  get "profile/:login_1/compare/:login_2", to: "compares#show", as: "compare"
 
   # Rodando Vuejs
   get 'vuejs/index'
