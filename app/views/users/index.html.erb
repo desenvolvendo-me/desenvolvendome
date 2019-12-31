@@ -26,17 +26,15 @@
                 <div class="justify-content-between">
                   <% if user %>
                     <%= image_tag user.avatar, size: "150x150", class: "profile-image" %>
-                    <div class="h4 text-center"><%= truncate(user.try(:name), length: 20) %></div>
+                    <div class="h4 text-center"><%= user.try(:name) ? truncate(user.try(:name), length: 20) : "?" %></div>
                     <div class="h6 text-center">
-                      <a href="https://github.com/<%= user.try(:login) %>" title="<%= user.try(:login) %>" target="_new">@<%= user.try(:login) %></a>
+                      <a href="https://github.com/<%= user.try(:login) %>" title="<%= user.try(:login) %>" target="_new"><%= user.try(:login) ? "@#{user.try(:login)}" : "?" %></a>
                     </div>
                   <% else %>
                     <%= image_tag "user.png", size: "150x150", class: "profile-image" %>
                   <% end %>
-                  <% if user.try(:profile).try(:evaluation) %>
-                    <div class="h4 text-center"><%= enum_i18n(Evaluation, "evaluation_type", user.profile.try(:evaluation).try(:evaluation_type)) %></div>
-                    <div class="h6 text-center"><%= "#{user.profile.try(:evaluation).try(:level)}º nível" %></div>
-                  <% end %>
+                  <div class="h4 text-center"><%= user.profile.try(:evaluation).try(:evaluation_type) ? enum_i18n(Evaluation, "evaluation_type", user.profile.try(:evaluation).try(:evaluation_type)) : "?" %></div>
+                  <div class="h6 text-center"><%= user.profile.try(:evaluation).try(:level) ? "#{user.profile.try(:evaluation).try(:level)}º nível" : "?" %></div>
                 </div>
               </div>
             <% end %>
