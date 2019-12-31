@@ -1,0 +1,79 @@
+<div class="bg-perfil">
+</div>
+<div class="col-md-12">
+
+  <div class="row">
+    <div class="col-md-2">
+      <div class="h3 perfis-compare">Perfis</div>
+    </div>
+    <div class="col-md-5">
+      <%= render 'profile', user: @user %>
+    </div>
+    <div class="col-md-5">
+      <%= render 'profile', user: @compared %>
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="h3">Projetos</div>
+    </div>
+    <div class="col-md-5">
+      <%= render 'projects', user: @user %>
+    </div>
+
+    <div class="col-md-5">
+      <%= render 'projects', user: @compared %>
+    </div>
+
+  </div>
+  <hr class="featurette-divider">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="h3">Linguagens Básicas</div>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @user, type: :basic %>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @compared, type: :basic %>
+    </div>
+  </div>
+  <hr class="featurette-divider">
+
+  <div class="row">
+    <div class="col-md-2">
+      <div class="h3">Linguagens Normal</div>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @user, type: :normal %>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @compared, type: :normal %>
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="h3">Linguagens Rara</div>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @user, type: :rare %>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @compared, type: :rare %>
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="h3">Linguagens Especial</div>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @user, type: :special %>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @compared, type: :special %>
+    </div>
+  </div>
+</div>

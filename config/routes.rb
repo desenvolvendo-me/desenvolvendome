@@ -156,6 +156,11 @@ Rails.application.routes.draw do
   post "analyze", to: "users#create", as: "users"
   get "profile/:id", to: "users#show", as: "user"
 
+  get "compare", to: "compares#new", as: "compare_new"
+  post "compare", to: "compares#create", as: "compares"
+
+  get "profile/:login_1/compare/:login_2", to: "compares#show", as: "compare"
+
   # Rodando Vuejs
   get 'vuejs/index'
 
