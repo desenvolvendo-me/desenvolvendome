@@ -29,6 +29,7 @@ gem 'kaminari'
 
 #Admin
 gem 'activeadmin'
+gem 'activeadmin_sidekiq_stats'
 gem "chartkick", '~> 2.2.0'
 gem 'groupdate'
 
