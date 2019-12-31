@@ -4,6 +4,9 @@ ActiveAdmin.register User do
 
   actions :index, :show
 
+  filter :name
+  filter :login
+
   index do
     column :id
     column :level do |user|
