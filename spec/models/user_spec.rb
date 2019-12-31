@@ -18,7 +18,6 @@
 #  repositories_count     :integer
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  slug                   :string
 #  uid                    :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -27,7 +26,6 @@
 # Indexes
 #
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-#  index_users_on_slug                  (slug) UNIQUE
 #
 
 require 'rails_helper'
