@@ -44,21 +44,22 @@
             <% end %>
           </div>
         </div>
-      </div>
-      <% if user.try(:profile) %>
-        <% if progress_bar(user) == 100 %>
-          <hr class="featurette-divider">
-          <div class="row">
-            <div class="col-md-12 text-center">
-              <% if user.try(:profile) %>
-                <div class="btn btn-info btn-lg btn-block"><%= user.profile.score %></div>
-              <% else %>
-                <div class="btn btn-info btn-lg btn-block">?</div>
-              <% end %>
+        <% if user.try(:profile) %>
+          <% if progress_bar(user) == 100 %>
+            <hr class="featurette-divider">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <% if user.try(:profile) %>
+                  <div class="btn btn-info btn-lg btn-block">XP <%= user.profile.score %></div>
+                <% else %>
+                  <div class="btn btn-info btn-lg btn-block">?</div>
+                <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
+
     </div>
   </div>
 </div>

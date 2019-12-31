@@ -1,31 +1,79 @@
 <div class="bg-perfil">
 </div>
-<div class="row">
-  <div class="col-md-4">
-    <%= render 'profile', user: @user %>
+<div class="col-md-12">
+
+  <div class="row">
+    <div class="col-md-2">
+      <div class="h3 perfis-compare">Perfis</div>
+    </div>
+    <div class="col-md-5">
+      <%= render 'profile', user: @user %>
+    </div>
+    <div class="col-md-5">
+      <%= render 'profile', user: @compared %>
+    </div>
   </div>
-  <div class="col-md-4">
-    <%= render 'profile', user: @compared %>
+  <hr class="featurette-divider">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="h3">Projetos</div>
+    </div>
+    <div class="col-md-5">
+      <%= render 'projects', user: @user %>
+    </div>
+
+    <div class="col-md-5">
+      <%= render 'projects', user: @compared %>
+    </div>
+
   </div>
-</div>
-<hr class="featurette-divider">
-<div class="row">
-  <div class="col-md-12 text-center">
-    <div class="h3">Seu XP é <%= @compared.profile.score %>!</div>
-    <p>Quer saber como aumentar sua experiêncie e habilidades?</p>
-    <p><%= link_to "Clique Aqui", new_interest_path, class: "btn btn-lg btn-primary" %></p>
+  <hr class="featurette-divider">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="h3">Linguagens Básicas</div>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @user, type: :basic %>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @compared, type: :basic %>
+    </div>
   </div>
-</div>
-<hr class="featurette-divider">
-<div class="row">
-  <div class="col-md-12 text-center">
-    <code id="nota">
-      <div class="h3">NOTA</div>
-      <p>Ainda não levamos em consideração a Relevância e a Qualidade do código, somente a Quantidade.</p>
-      <p>Nosso objetivo é disponibilizar na versão v1.1 e v1.2 respectivamente, hoje estamos na
-        v0.2</p>
-    </code>
-    <div class="h3">Críticas, Sugestões e Melhorias</div>
-    <%= link_to "Clique Aqui", new_contact_path, class: "btn btn-lg btn-primary" %>
+  <hr class="featurette-divider">
+
+  <div class="row">
+    <div class="col-md-2">
+      <div class="h3">Linguagens Normal</div>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @user, type: :normal %>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @compared, type: :normal %>
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="h3">Linguagens Rara</div>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @user, type: :rare %>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @compared, type: :rare %>
+    </div>
+  </div>
+  <hr class="featurette-divider">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="h3">Linguagens Especial</div>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @user, type: :special %>
+    </div>
+    <div class="col-md-5">
+      <%= render 'languages', user: @compared, type: :special %>
+    </div>
   </div>
 </div>

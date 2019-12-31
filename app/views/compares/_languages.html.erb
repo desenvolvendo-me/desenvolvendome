@@ -1,0 +1,33 @@
+<% if user.try(:profile) %>
+  <% if progress_bar(user) == 100 %>
+    <div class="col-md-12">
+      <ul class="list-group">
+        <% user.profile.knowledges.where(knowledge_type: type.to_sym).ordered_by_language.each do |knowledge| %>
+          <div class="text-center">
+            <li class="list-group-item d-flex justify-content-between align-items-center mb-1">
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <div class="col-md-4">
+                    <% if asset_exists? "language/#{type}/#{knowledge.language.description.downcase}.png" %>
+                      <%= image_tag "language/#{type}/#{knowledge.language.description.downcase}.png", size: "30x30" %>
+                    <% else %>
+                      <%= image_tag "language/empty.png", size: "30x30" %>
+                    <% end %>
+                    <strong>
+                      <%= knowledge.language.description %>
+                    </strong>
+                  </div>
+                  <div class="col-md-4">
+                    <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </div>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+
