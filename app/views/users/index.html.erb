@@ -1,0 +1,40 @@
+<div class="bg-perfil">
+</div>
+<div class="container profile">
+  <div class="center-block">
+    <div class="col-md-12">
+      <div class="row justify-content-center">
+        <%= paginate @users %>
+      </div>
+      <div class="row">
+        <% @users.each do |user| %>
+          <div class="col-md-3 text-center">
+            <%= link_to user_path(user.login) do %>
+              <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="justify-content-between">
+                  <% if user %>
+                    <%= image_tag user.avatar, size: "150x150", class: "profile-image" %>
+                    <div class="h4 text-center"><%= truncate(user.try(:name), length: 20) %></div>
+                    <div class="h6 text-center">
+                      <a href="https://github.com/<%= user.try(:login) %>" title="<%= user.try(:login) %>" target="_new">@<%= user.try(:login) %></a>
+                    </div>
+                  <% else %>
+                    <%= image_tag "user.png", size: "150x150", class: "profile-image" %>
+                  <% end %>
+                  <% if user.try(:profile).try(:evaluation) %>
+                    <div class="h4 text-center"><%= enum_i18n(Evaluation, "evaluation_type", user.profile.try(:evaluation).try(:evaluation_type)) %></div>
+                    <div class="h6 text-center"><%= "#{user.profile.try(:evaluation).try(:level)}º nível" %></div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+            <br>
+          </div>
+        <% end %>
+      </div>
+      <div class="row justify-content-center">
+        <%= paginate @users %>
+      </div>
+    </div>
+  </div>
+</div>
