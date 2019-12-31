@@ -2,6 +2,8 @@ ActiveAdmin.register Interest do
   menu priority: 2
   menu parent: "Gerenciamento"
 
+  config.filters = false
+
   index do
     column :email
     column :created_at do |user|

@@ -2,6 +2,8 @@ ActiveAdmin.register Contact do
   menu priority: 3
   menu parent: "Gerenciamento"
 
+  config.filters = false
+
   index do
     column :name
     column :email
