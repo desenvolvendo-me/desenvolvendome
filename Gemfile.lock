@@ -545,6 +545,7 @@ DEPENDENCIES
   rails (~> 6.0.1)
   rails-erd
   rails_layout
+  ransack
   rspec-benchmark
   rspec-rails (~> 3.8)
   rubycritic

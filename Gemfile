@@ -26,13 +26,13 @@ gem 'faraday'
 gem 'dotenv'
 gem "sentry-raven"
 gem 'kaminari'
+gem 'ransack'
 
 #Admin
 gem 'activeadmin'
 gem "chartkick", '~> 2.2.0'
 gem 'groupdate'
 
-# gem 'ransack'
 # gem 'geocoder'
 # gem 'httparty'
 # gem 'via_cep'
