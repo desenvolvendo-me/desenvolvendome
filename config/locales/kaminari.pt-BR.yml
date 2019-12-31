@@ -2,7 +2,7 @@ pt-BR:
   helpers:
     page_entries_info:
       more_pages:
-        display_entries: Exibindo %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de um total de <b>%{total}</b>
+        display_entries: <p>Exibindo <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b></p>
       one_page:
         display_entries:
           one: Exibindo <b>1</b> %{entry_name}
