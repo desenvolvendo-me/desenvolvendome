@@ -24,7 +24,7 @@ ActiveAdmin.register User do
   end
 
   show title: proc {|p| "Usuário: #{p.name ? p.name : p.login}"} do
-    attributes_table do
+    attributes_table title: "Usuário" do
       row :avatar do |user|
         image_tag user.avatar, size: "50x50"
       end
@@ -44,9 +44,12 @@ ActiveAdmin.register User do
       end
 
       panel "Repositórios" do
-        paginated_collection(user.repositories.page(params[:page]).per(15), download_links: false) do
-          table_for(user.repositories, sortable: false) do
-            column :name
+        repositories = user.repositories.where.not(commits_count: [nil, 0]).order(commits_count: :desc)
+        paginated_collection(repositories.page(params[:page]).per(15), download_links: false) do
+          table_for(repositories, sortable: false) do
+            column :name do |repository|
+              link_to repository.name, "https://github.com/#{repository.user.login}/#{repository.name}", target: "_blank"
+            end
             column :principal_technology
             column :stargazers_count
             column :commits_count
