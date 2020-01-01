@@ -2,6 +2,11 @@
   <div class="center-block">
     <div class="col-md-9 mx-auto">
       <div class="card card-signin">
+        <% if flash[:notice] %>
+          <div class="alert alert-danger" role="alert">
+            <%= flash[:notice].html_safe %>
+          </div>
+        <% end %>
         <div class="col-md-12">
           <%= simple_form_for @compare, html: {class: 'simple_form form-inline'} do |f| %>
             <div class="col-md-6">
