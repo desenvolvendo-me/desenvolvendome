@@ -2,7 +2,9 @@
 <html>
 <head>
   <title>Desenvolvendo Me</title>
-  <% unless "#{params[:controller]}/#{params[:action]}".eql?("compares/show") %>
+  <% if "#{params[:controller]}/#{params[:action]}".eql?("compares/show") %>
+    <meta name="viewport" content="width=1500"/>
+  <% else %>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
   <% end %>
   <%= csrf_meta_tags %>
