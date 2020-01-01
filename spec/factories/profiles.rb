@@ -21,9 +21,9 @@ FactoryBot.define do
 
     trait :with_knowledges do
       after(:create) do |profile|
-        create(:knowledge, profile: profile, experience: 25, language: create(:language, description: "Portugol"))
-        create(:knowledge, profile: profile, experience: 50, language: create(:language, description: "Abap"))
-        create(:knowledge, profile: profile, experience: 25, language: create(:language, description: "CSS"))
+        create(:knowledge, level: 15, profile: profile, experience: 25, language: create(:language, description: "Portugol"))
+        create(:knowledge, level: 10, profile: profile, experience: 50, language: create(:language, description: "Abap"))
+        create(:knowledge, level: 100, profile: profile, experience: 25, language: create(:language, description: "CSS"))
       end
     end
 
