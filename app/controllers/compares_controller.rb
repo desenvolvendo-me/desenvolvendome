@@ -1,3 +1,4 @@
+#TODO: Factoring esse controller
 class ComparesController < ApplicationController
 
   def new
@@ -8,11 +9,12 @@ class ComparesController < ApplicationController
     user1 = User.find_by_login(compare_params[:login_1])
     user2 = User.find_by_login(compare_params[:login_2])
 
-    @compare = Compare.new(user: user1, compared: user2)
+    manager_compare(user1, user2)
 
     respond_to do |format|
-      if @compare.save!
-        format.html {redirect_to compare_path(login_1: @compare.user.login, login_2: @compare.compared.login )}
+      if user1 and user2
+        @compare.save!
+        format.html {redirect_to compare_path(login_1: @compare.user.login, login_2: @compare.compared.login)}
       else
         format.html {render :new}
       end
