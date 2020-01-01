@@ -4,7 +4,7 @@ ActiveAdmin.register_page "Dashboard" do
   content title: proc {I18n.t("active_admin.dashboard")} do
     div class: "blank_slate_container", id: "dashboard_default_message" do
       span class: "blank_slate" do
-        span "Cadastros".upcase
+        span "Estatísticas".upcase
       end
     end
     columns do
@@ -21,6 +21,11 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Total de Contatos" do
           Contact.count
+        end
+      end
+      column do
+        panel "Total de Comparações" do
+          Compare.count
         end
       end
     end
