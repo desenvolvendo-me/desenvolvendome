@@ -23,6 +23,11 @@ ActiveAdmin.register_page "Dashboard" do
           Contact.count
         end
       end
+      column do
+        panel "Total de Comparações" do
+          Compare.count
+        end
+      end
     end
     columns do
       column do
