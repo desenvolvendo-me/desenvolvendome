@@ -48,8 +48,8 @@ pt-BR:
         email: "Email"
         followers: "Seguidores"
         following: "Seguidos"
-        evaluations: "Avaliações"
-        repositories: "Repositorios"
+        evaluations_count: "Avaliações"
+        repositories_count: "Repositorios"
         created_at: "Criado Em"
       evaluation:
         level: "Nível"

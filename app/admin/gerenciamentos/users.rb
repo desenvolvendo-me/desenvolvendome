@@ -18,8 +18,8 @@ ActiveAdmin.register User do
     column :email
     column :followers
     column :following
-    column "Evaluations", :evaluations_count
-    column "Repositories", :repositories_count
+    column :evaluations_count
+    column :repositories_count
     column :created_at do |user|
       user.created_at.strftime("%d/%m/%y %H:%M")
     end
