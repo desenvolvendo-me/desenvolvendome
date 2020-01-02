@@ -7,11 +7,13 @@
 #  description  :text
 #  email        :string
 #  name         :string
+#  response     :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
 
 class Contact < ApplicationRecord
+  paginates_per 2
 
   enum contact_type: [:hi, :critical, :suggestion, :improvement]
 

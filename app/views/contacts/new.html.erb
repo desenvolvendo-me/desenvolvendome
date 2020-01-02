@@ -1,25 +1,47 @@
 <div class="container container-intests-new">
-  <div class="col-sm-9 col-md-9 col-lg-9 mx-auto">
-    <div class="card card-signin">
-      <div class="text-center">
-        <h1>Contato</h1>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card card-signin">
+        <div class="text-center">
+          <h1>Contato</h1>
+        </div>
+        <%= simple_form_for(@contact) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+          <div class="form-inputs">
+            <%= f.input :name %>
+            <%= f.input :email %>
+            <%= f.input :contact_type, collection: enum_options_for_select(Contact, :contact_type), input_html: {class: 'form-control'} %>
+
+            <%= f.input :description %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.submit "Enviar", class: "btn btn-primary" %>
+          </div>
+        <% end %>
       </div>
-      <%= simple_form_for(@contact) do |f| %>
-        <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-        <div class="form-inputs">
-          <%= f.input :name %>
-          <%= f.input :email %>
-          <%= f.input :contact_type, collection: enum_options_for_select(Contact, :contact_type), input_html: {class: 'form-control'} %>
-
-          <%= f.input :description %>
+    </div>
+    <div class="col-lg-6">
+      <div class="card card-signin">
+        <div class="list-group">
+          <% @contacts.each do |contact| %>
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><%= contact.name.to_s.capitalize %></h5>
+                <small><%= l(contact.created_at, format: :short) %></small>
+              </div>
+              <p class="mb-1"><%= contact.description %></p>
+              <small>Donec id elit non mi porta.</small>
+            </a>
+          <% end %>
         </div>
+      </div>
+      <div class="row justify-content-center">
+        <%= paginate @contacts %>
+      </div>
 
-        <div class="form-actions">
-          <%= f.submit "Enviar", class: "btn btn-primary" %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>
