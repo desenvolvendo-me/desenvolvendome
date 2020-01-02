@@ -3,6 +3,8 @@ class ComparesController < ApplicationController
 
   def new
     @compare = Compare.new
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).includes(:profile).page params[:page]
   end
 
   def create

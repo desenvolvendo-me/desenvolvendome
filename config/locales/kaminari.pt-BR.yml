@@ -5,9 +5,9 @@ pt-BR:
         display_entries: <p>Exibindo <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b></p>
       one_page:
         display_entries:
-          one: Exibindo <b>1</b> %{entry_name}
-          other: Exibindo <b>%{count}</b> %{entry_name}
-          zero: Nenhum %{entry_name} encontrado
+          one: <p>Exibindo <b>1</b></p>
+          other: <p>Exibindo <b>%{count}</b></p>
+          zero: <p>Nenhum encontrado</p>
   views:
     pagination:
       first: "&laquo; Primeiro"
