@@ -13,7 +13,7 @@
 #
 
 class Contact < ApplicationRecord
-  paginates_per 2
+  paginates_per 5
 
   enum contact_type: [:hi, :critical, :suggestion, :improvement]
 
