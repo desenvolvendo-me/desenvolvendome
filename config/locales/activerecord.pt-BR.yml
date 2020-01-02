@@ -59,6 +59,7 @@ pt-BR:
         name: "Nome"
         email: "Email"
         description: "Descrição"
+        response: "Resposta"
         contact_type: "Tipo"
         created_at: "Criado Em"
       interest:

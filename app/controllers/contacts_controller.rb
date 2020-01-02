@@ -2,6 +2,7 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
+    @contacts = Contact.all.page params[:page]
   end
 
   def create
@@ -9,7 +10,7 @@ class ContactsController < ApplicationController
     #TODO: Adicionar email agradeçendo o contato
     respond_to do |format|
       if @contact.save
-        format.html {redirect_to root_path, notice: 'Contato enviado com sucesso.'}
+        format.html {redirect_to new_contact_path, notice: 'Contato enviado com sucesso.'}
       else
         format.html {render :new}
       end

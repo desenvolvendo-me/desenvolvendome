@@ -6,7 +6,7 @@
 #  comparations_count :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
-#  compared_id         :integer
+#  compared_id        :integer
 #  user_id            :integer
 #
 
