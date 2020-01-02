@@ -1,4 +1,9 @@
 <div class="container container-intests-new">
+  <% if flash[:notice] %>
+    <div class="alert alert-info" role="alert">
+      <%= flash[:notice].html_safe %>
+    </div>
+  <% end %>
   <div class="row">
     <div class="col-lg-6">
       <div class="card card-signin">
