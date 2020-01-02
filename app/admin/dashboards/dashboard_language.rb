@@ -9,7 +9,7 @@ ActiveAdmin.register_page "Linguagens" do
     end
     columns do
       column do
-        panel "Por Conhecimento" do
+        panel "Por Uso (Linguagens ABCDE)" do
           render partial: 'dashboards/languages/knowledge', locals: {starters: ["a", "b", "c", "d", "e"]}
         end
       end
@@ -17,7 +17,7 @@ ActiveAdmin.register_page "Linguagens" do
 
     columns do
       column do
-        panel "Por Conhecimento" do
+        panel "Por Uso (Linguagens FGHIJ)" do
           render partial: 'dashboards/languages/knowledge', locals: {starters: ["f", "g", "h", "i", "j"]}
         end
       end
@@ -25,7 +25,7 @@ ActiveAdmin.register_page "Linguagens" do
 
     columns do
       column do
-        panel "Por Conhecimento" do
+        panel "Por Uso (Linguagens LMNOP)" do
           render partial: 'dashboards/languages/knowledge', locals: {starters: ["l", "m", "n", "o", "p"]}
         end
       end
@@ -33,14 +33,14 @@ ActiveAdmin.register_page "Linguagens" do
 
     columns do
       column do
-        panel "Por Conhecimento" do
+        panel "Por Uso (Linguagens QRSTU)" do
           render partial: 'dashboards/languages/knowledge', locals: {starters: ["q", "r", "s", "t", "u"]}
         end
       end
     end
     columns do
       column do
-        panel "Por Conhecimento" do
+        panel "Por Uso (Linguagens VXWYZ)" do
           render partial: 'dashboards/languages/knowledge', locals: {starters: ["v", "x", "x", "w", "y", "z"]}
         end
       end
