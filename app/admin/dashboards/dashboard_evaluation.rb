@@ -9,8 +9,15 @@ ActiveAdmin.register_page "Usuários" do
     end
     columns do
       column do
-        panel "Por Avaliação" do
+        panel "Por Tipo de Nível" do
           render partial: 'dashboards/profiles/evaluation_type'
+        end
+      end
+    end
+    columns do
+      column do
+        panel "Por Quantidade de Avaliações" do
+          render partial: 'dashboards/profiles/evaluation_count'
         end
       end
     end
