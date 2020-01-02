@@ -2,16 +2,20 @@ ActiveAdmin.register Contact do
   menu priority: 3
   menu parent: "Gerenciamento"
 
-  config.filters = false
+  permit_params :response
+
+  filter :response
 
   index do
+    column :created_at do |user|
+      user.created_at.strftime("%d/%m/%y %H:%M")
+    end
     column :name
     column :email
     column :contact_type
     column :description
-    column :created_at do |user|
-      user.created_at.strftime("%d/%m/%y %H:%M")
-    end
+    column :response
+    actions
   end
 
 end
