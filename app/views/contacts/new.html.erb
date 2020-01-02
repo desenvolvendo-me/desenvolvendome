@@ -24,16 +24,16 @@
       </div>
     </div>
     <div class="col-lg-6">
-      <div class="card card-signin">
+      <div class="card card-signin mb-2">
         <div class="list-group">
           <% @contacts.each do |contact| %>
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1"><%= contact.name.to_s.capitalize %></h5>
-                <small><%= l(contact.created_at, format: :short) %></small>
+                <small><%= enum_i18n(Contact, "contact_type", contact.contact_type) %>: <%= l(contact.created_at, format: :short) %></small>
               </div>
               <p class="mb-1"><%= contact.description %></p>
-              <small>Donec id elit non mi porta.</small>
+              <small><%= contact.response ? "Resposta: " + contact.response : "" %></small>
             </a>
           <% end %>
         </div>
@@ -41,7 +41,6 @@
       <div class="row justify-content-center">
         <%= paginate @contacts %>
       </div>
-
     </div>
   </div>
 </div>
