@@ -15,7 +15,7 @@
 class Contact < ApplicationRecord
   paginates_per 5
 
-  enum contact_type: [:hi, :critical, :suggestion, :improvement]
+  enum contact_type: [:doubt, :critical, :suggestion, :improvement]
 
   validates_presence_of :name, :email, :description, :contact_type
 

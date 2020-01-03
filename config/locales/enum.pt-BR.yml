@@ -3,7 +3,7 @@ pt-BR:
     enums:
       contact:
         contact_types:
-          hi: "Dizer Oi"
+          doubt: "Dúvida"
           critical: "Crítica"
           suggestion: "Sugestão"
           improvement: "Melhoria"
