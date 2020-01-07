@@ -19,26 +19,10 @@
 #                                       PATCH      /admin/interests/:id(.:format)                                                           admin/interests#update
 #                                       PUT        /admin/interests/:id(.:format)                                                           admin/interests#update
 #                                       DELETE     /admin/interests/:id(.:format)                                                           admin/interests#destroy
-#                        admin_usuarios GET        /admin/usuarios(.:format)                                                                admin/usuarios#index
-#                       admin_dashboard GET        /admin/dashboard(.:format)                                                               admin/dashboard#index
-#        batch_action_admin_admin_users POST       /admin/admin_users/batch_action(.:format)                                                admin/admin_users#batch_action
-#                     admin_admin_users GET        /admin/admin_users(.:format)                                                             admin/admin_users#index
-#                                       POST       /admin/admin_users(.:format)                                                             admin/admin_users#create
-#                  new_admin_admin_user GET        /admin/admin_users/new(.:format)                                                         admin/admin_users#new
-#                 edit_admin_admin_user GET        /admin/admin_users/:id/edit(.:format)                                                    admin/admin_users#edit
-#                      admin_admin_user GET        /admin/admin_users/:id(.:format)                                                         admin/admin_users#show
-#                                       PATCH      /admin/admin_users/:id(.:format)                                                         admin/admin_users#update
-#                                       PUT        /admin/admin_users/:id(.:format)                                                         admin/admin_users#update
-#                                       DELETE     /admin/admin_users/:id(.:format)                                                         admin/admin_users#destroy
+#                   reimport_admin_user GET        /admin/users/:id/reimport(.:format)                                                      admin/users#reimport
 #              batch_action_admin_users POST       /admin/users/batch_action(.:format)                                                      admin/users#batch_action
 #                           admin_users GET        /admin/users(.:format)                                                                   admin/users#index
-#                                       POST       /admin/users(.:format)                                                                   admin/users#create
-#                        new_admin_user GET        /admin/users/new(.:format)                                                               admin/users#new
-#                       edit_admin_user GET        /admin/users/:id/edit(.:format)                                                          admin/users#edit
 #                            admin_user GET        /admin/users/:id(.:format)                                                               admin/users#show
-#                                       PATCH      /admin/users/:id(.:format)                                                               admin/users#update
-#                                       PUT        /admin/users/:id(.:format)                                                               admin/users#update
-#                                       DELETE     /admin/users/:id(.:format)                                                               admin/users#destroy
 #           batch_action_admin_contacts POST       /admin/contacts/batch_action(.:format)                                                   admin/contacts#batch_action
 #                        admin_contacts GET        /admin/contacts(.:format)                                                                admin/contacts#index
 #                                       POST       /admin/contacts(.:format)                                                                admin/contacts#create
@@ -48,6 +32,19 @@
 #                                       PATCH      /admin/contacts/:id(.:format)                                                            admin/contacts#update
 #                                       PUT        /admin/contacts/:id(.:format)                                                            admin/contacts#update
 #                                       DELETE     /admin/contacts/:id(.:format)                                                            admin/contacts#destroy
+#        batch_action_admin_admin_users POST       /admin/admin_users/batch_action(.:format)                                                admin/admin_users#batch_action
+#                     admin_admin_users GET        /admin/admin_users(.:format)                                                             admin/admin_users#index
+#                                       POST       /admin/admin_users(.:format)                                                             admin/admin_users#create
+#                  new_admin_admin_user GET        /admin/admin_users/new(.:format)                                                         admin/admin_users#new
+#                 edit_admin_admin_user GET        /admin/admin_users/:id/edit(.:format)                                                    admin/admin_users#edit
+#                      admin_admin_user GET        /admin/admin_users/:id(.:format)                                                         admin/admin_users#show
+#                                       PATCH      /admin/admin_users/:id(.:format)                                                         admin/admin_users#update
+#                                       PUT        /admin/admin_users/:id(.:format)                                                         admin/admin_users#update
+#                                       DELETE     /admin/admin_users/:id(.:format)                                                         admin/admin_users#destroy
+#                        admin_usuarios GET        /admin/usuarios(.:format)                                                                admin/usuarios#index
+#                      admin_linguagens GET        /admin/linguagens(.:format)                                                              admin/linguagens#index
+#                       admin_dashboard GET        /admin/dashboard(.:format)                                                               admin/dashboard#index
+#                         admin_sidekiq GET        /admin/sidekiq(.:format)                                                                 admin/sidekiq#index
 #                        admin_comments GET        /admin/comments(.:format)                                                                admin/comments#index
 #                                       POST       /admin/comments(.:format)                                                                admin/comments#create
 #                         admin_comment GET        /admin/comments/:id(.:format)                                                            admin/comments#show
@@ -70,10 +67,12 @@
 #                              starteds GET        /rankings/starteds(.:format)                                                             profiles#starteds
 #                               novices GET        /rankings/novices(.:format)                                                              profiles#novices
 #                               knights GET        /rankings/knights(.:format)                                                              profiles#knights
-#                              profiles GET        /profiles(.:format)                                                                      users#index
 #                              new_user GET        /analyze(.:format)                                                                       users#new
 #                                 users POST       /analyze(.:format)                                                                       users#create
 #                                  user GET        /profile/:id(.:format)                                                                   users#show
+#                           compare_new GET        /compare(.:format)                                                                       compares#new
+#                              compares POST       /compare(.:format)                                                                       compares#create
+#                               compare GET        /profile/:login_1/compare/:login_2(.:format)                                             compares#show
 #                           vuejs_index GET        /vuejs/index(.:format)                                                                   vuejs#index
 #                     letter_opener_web            /mail/inbox                                                                              LetterOpenerWeb::Engine
 #                           sidekiq_web            /sidekiq/admin                                                                           Sidekiq::Web
@@ -87,21 +86,6 @@
 #                         user_password PATCH      /users/password(.:format)                                                                devise/passwords#update
 #                                       PUT        /users/password(.:format)                                                                devise/passwords#update
 #                                       POST       /users/password(.:format)                                                                devise/passwords#create
-#                     new_admin_session GET        /admins/sign_in(.:format)                                                                devise/sessions#new
-#                         admin_session POST       /admins/sign_in(.:format)                                                                devise/sessions#create
-#                 destroy_admin_session DELETE     /admins/sign_out(.:format)                                                               devise/sessions#destroy
-#                    new_admin_password GET        /admins/password/new(.:format)                                                           devise/passwords#new
-#                   edit_admin_password GET        /admins/password/edit(.:format)                                                          devise/passwords#edit
-#                        admin_password PATCH      /admins/password(.:format)                                                               devise/passwords#update
-#                                       PUT        /admins/password(.:format)                                                               devise/passwords#update
-#                                       POST       /admins/password(.:format)                                                               devise/passwords#create
-#             cancel_admin_registration GET        /admins/cancel(.:format)                                                                 devise/registrations#cancel
-#                new_admin_registration GET        /admins/sign_up(.:format)                                                                devise/registrations#new
-#               edit_admin_registration GET        /admins/edit(.:format)                                                                   devise/registrations#edit
-#                    admin_registration PATCH      /admins(.:format)                                                                        devise/registrations#update
-#                                       PUT        /admins(.:format)                                                                        devise/registrations#update
-#                                       DELETE     /admins(.:format)                                                                        devise/registrations#destroy
-#                                       POST       /admins(.:format)                                                                        devise/registrations#create
 #                             not_found GET        /404(.:format)                                                                           errors#not_found
 #                       something_wrong GET        /500(.:format)                                                                           errors#internal_server_error
 #         rails_mandrill_inbound_emails POST       /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
