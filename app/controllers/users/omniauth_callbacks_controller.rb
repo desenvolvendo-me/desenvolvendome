@@ -5,7 +5,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
       sign_in @user
 
-      GenerateProfileJob.perform_later(@user.login)
+      unless @user.profile
+        GenerateProfileJob.perform_later(@user.login)
+      end
 
       redirect_to user_path(@user.login)
     else
