@@ -68,6 +68,7 @@
 #                               novices GET        /rankings/novices(.:format)                                                              profiles#novices
 #                               knights GET        /rankings/knights(.:format)                                                              profiles#knights
 #                              new_user GET        /analyze(.:format)                                                                       users#new
+#                             rule_user GET        /rule(.:format)                                                                          user#rule
 #                                 users POST       /analyze(.:format)                                                                       users#create
 #                                  user GET        /profile/:id(.:format)                                                                   users#show
 #                           compare_new GET        /compare(.:format)                                                                       compares#new
@@ -136,6 +137,7 @@ Rails.application.routes.draw do
   get "rankings/novices", to: "profiles#novices", as: "novices"
   get "rankings/knights", to: "profiles#knights", as: "knights"
   get "analyze", to: "users#new", as: "new_user"
+  get "rule", to: "users#rule", as: "rule_user"
   post "analyze", to: "users#create", as: "users"
   get "profile/:id", to: "users#show", as: "user"
 
