@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   def show
   end
 
+  def rule
+  end
+
   private
 
   def set_user
