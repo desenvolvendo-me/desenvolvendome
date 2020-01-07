@@ -151,7 +151,6 @@ Rails.application.routes.draw do
   get "rankings/starteds", to: "profiles#starteds", as: "starteds"
   get "rankings/novices", to: "profiles#novices", as: "novices"
   get "rankings/knights", to: "profiles#knights", as: "knights"
-  get "profiles", to: "users#index"
   get "analyze", to: "users#new", as: "new_user"
   post "analyze", to: "users#create", as: "users"
   get "profile/:id", to: "users#show", as: "user"
