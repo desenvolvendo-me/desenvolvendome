@@ -30,7 +30,7 @@ RSpec.describe "Github::Api" do
 
     repository = @api_github.repo(login, repo)
 
-    expect(repository['size']).to eq(142)
+    expect(repository['size']).to eq(149)
   end
 
   context "commits" do

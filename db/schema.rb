@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2020_01_02_191836) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "repositories", id: :bigint, default: -> { "nextval('projects_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "repositories", force: :cascade do |t|
     t.integer "github_id"
     t.string "name"
     t.boolean "fork"
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 2020_01_02_191836) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "principal_technology"
     t.date "pushed_at"
-    t.index ["user_id"], name: "index_projects_on_user_id"
+    t.index ["user_id"], name: "index_repositories_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|

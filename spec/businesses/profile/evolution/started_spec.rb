@@ -48,19 +48,19 @@ RSpec.describe "Profile::Evolution::Started" do
     it "+ 0" do
       create(:repository, commits_count: 14, user: @user)
 
-      Profile::Evaluation::Score.new(@user).run
+      Profile::Rating::Score.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
-      expect(@user.profile.score).to eq(14)
+      expect(@user.profile.score).to eq("14.0b")
     end
 
     it "+ 15" do
       create(:repository, commits_count: 15, user: @user)
 
-      Profile::Evaluation::Score.new(@user).run
+      Profile::Rating::Score.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
-      expect(@user.profile.score).to eq(15)
+      expect(@user.profile.score).to eq("15.0b")
     end
 
     it "+ 150" do
@@ -71,10 +71,10 @@ RSpec.describe "Profile::Evolution::Started" do
       create(:repository, commits_count: 11, user: @user)
       create(:repository, commits_count: 49, user: @user)
 
-      Profile::Evaluation::Score.new(@user).run
+      Profile::Rating::Score.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
-      expect(@user.profile.score).to eq(150)
+      expect(@user.profile.score).to eq("150.0b")
     end
 
   end
