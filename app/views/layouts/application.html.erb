@@ -47,6 +47,18 @@
           <li class="nav-item">
             <%= link_to "Contato", new_contact_path, class: "nav-link" %>
           </li>
+
+          <% if user_signed_in? %>
+            <%= link_to destroy_user_session_path, :method => 'delete', class: "fa- nav-link" do %>
+              Sair <i class="fa fa-sign-out"></i>
+            <% end %>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to user_github_omniauth_authorize_path, class: "nav-link" do %>
+                Entrar <i class="fa fa-sign-in"></i>
+            <% end %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
