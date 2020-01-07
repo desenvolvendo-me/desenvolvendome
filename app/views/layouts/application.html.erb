@@ -51,6 +51,9 @@
           </li>
 
           <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Perfil", user_path(current_user.login), class: "nav-link" %>
+            </li>
             <%= link_to destroy_user_session_path, :method => 'delete', class: "fa- nav-link" do %>
               Sair <i class="fa fa-sign-out"></i>
             <% end %>
