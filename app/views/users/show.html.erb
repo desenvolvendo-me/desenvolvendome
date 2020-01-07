@@ -51,11 +51,20 @@
     </div>
     <% if @user.try(:profile) %>
       <% if progress_bar(@user) == 100 %>
+        <% if @user == current_user %>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <%= link_to reimport_user_path(login: current_user.login), class: "btn btn-outline-info", method: :post do %>
+                <i class="fab fa-github"></i> &nbsp; Reimportar
+              <% end %>
+            </div>
+          </div>
+        <% end %>
         <hr class="featurette-divider">
         <div class="row">
           <div class="col-md-12">
             <% if @user.try(:profile) %>
-              <div class="btn btn-info btn-lg btn-block">XP <%= @user.profile.score %></div>
+              <div class="btn btn-primary btn-lg btn-block">XP <%= @user.profile.score %></div>
             <% else %>
               <div class="btn btn-info btn-lg btn-block">?</div>
             <% end %>
@@ -72,14 +81,6 @@
             </span>
               </div>
             </div>
-          </div>
-        </div>
-        <hr class="featurette-divider">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <%= link_to user_github_omniauth_authorize_path, class: "btn btn-primary btn-lg" do %>
-              <i class="fab fa-github"></i> &nbsp; Reimportar
-            <% end %>
           </div>
         </div>
         <hr class="featurette-divider">

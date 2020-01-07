@@ -139,6 +139,7 @@ Rails.application.routes.draw do
   get "analyze", to: "users#new", as: "new_user"
   get "rule", to: "users#rule", as: "rule_user"
   post "analyze", to: "users#create", as: "users"
+  post "reimport", to: "users#reimport", as: "reimport_user"
   get "profile/:id", to: "users#show", as: "user"
 
   get "compare", to: "compares#new", as: "compare_new"

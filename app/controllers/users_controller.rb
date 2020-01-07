@@ -10,6 +10,12 @@ class UsersController < ApplicationController
   def rule
   end
 
+  def reimport
+    user = User.find_by_login(params["login"])
+    GenerateProfileJob.perform_later(user.login)
+    redirect_to user_path(user.login)
+  end
+
   private
 
   def set_user
