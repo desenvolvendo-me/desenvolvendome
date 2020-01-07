@@ -30,20 +30,22 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to new_user_path, class: 'nav-link' do %>
-              <div class="btn btn-outline-light btn-small text-uppercase">Conheça-se Agora</div>
-            <% end %>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
             <%= link_to "Perfis", compare_new_path, class: "nav-link" %>
           </li>
 
           <li class="nav-item">
             <%= link_to "Rankings", rankings_path, class: "nav-link" %>
           </li>
+        </ul>
 
+        <ul class="navbar-nav ml-0">
+          <li class="nav-item">
+            <%= link_to new_user_path, class: 'nav-link' do %>
+              <div class="btn btn-outline-light btn-small text-uppercase">Conheça-se Agora</div>
+            <% end %>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <%= link_to "Contato", new_contact_path, class: "nav-link" %>
           </li>
