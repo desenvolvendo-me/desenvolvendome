@@ -15,7 +15,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'font-awesome-sass', '~> 5.11.2'
 gem 'devise'
 gem 'omniauth-github'
-gem 'activerecord-session_store'
+gem 'redis-rails'
+gem 'redis-rack'
 gem 'validates_email_format_of'
 
 #Analisar Necessidade
