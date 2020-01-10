@@ -11,6 +11,8 @@ require("channels")
 import "jquery"
 import "popper.js"
 import "bootstrap"
+import ahoy from "ahoy.js";
+ahoy.trackAll();
 
 document.addEventListener("turbolinks:load", () => {
   
