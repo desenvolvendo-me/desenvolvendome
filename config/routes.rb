@@ -117,14 +117,17 @@
 #               GET    /:id/attachments/:file(.:format) letter_opener_web/letters#attachment
 
 Rails.application.routes.draw do
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-  resources :contacts
+
+  #Users
+  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
   root 'visits#index'
 
   #Visits
   get 'visits/index'
+
+  #Contacts
+  resources :contacts
 
   #Interests
   resources :interests, except: [:show, :edit, :destroy, :update]
@@ -132,30 +135,41 @@ Rails.application.routes.draw do
 
 
   #Analyze
+  get "analyze", to: "users#new", as: "new_user"
+  post "analyze", to: "users#create", as: "users"
+
+  #Profile
+  post "reimport", to: "users#reimport", as: "reimport_user"
+  get "profile/:id", to: "users#show", as: "user"
+
+  #Ranking
   get "rankings", to: "profiles#index"
   get "rankings/starteds", to: "profiles#starteds", as: "starteds"
   get "rankings/novices", to: "profiles#novices", as: "novices"
   get "rankings/knights", to: "profiles#knights", as: "knights"
-  get "analyze", to: "users#new", as: "new_user"
-  get "rule", to: "users#rule", as: "rule_user"
-  post "analyze", to: "users#create", as: "users"
-  post "reimport", to: "users#reimport", as: "reimport_user"
-  get "profile/:id", to: "users#show", as: "user"
 
+  #Rule
+  get "rule", to: "users#rule", as: "rule_user"
+
+  #Compare
   get "compare", to: "compares#new", as: "compare_new"
   post "compare", to: "compares#create", as: "compares"
-
   get "profile/:login_1/compare/:login_2", to: "compares#show", as: "compare"
 
-  # Rodando Vuejs
+  #POC
   get 'vuejs/index'
 
+  #Dev
   mount LetterOpenerWeb::Engine, at: "/mail/inbox" if Rails.env.development?
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq/admin'
 
-  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
-
+  #Custom
   get '/404', to: "errors#not_found", as: "not_found", :via => :all
   get '/500', to: "errors#internal_server_error", as: "something_wrong", :via => :all
+
+  #Admin
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
 end
