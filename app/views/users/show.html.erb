@@ -54,7 +54,7 @@
         <% if @user == current_user %>
           <div class="row">
             <div class="col-md-12 text-center">
-              <%= link_to reimport_user_path(login: current_user.login), class: "btn btn-outline-info", method: :post do %>
+              <%= link_to reimport_user_path, class: "btn btn-outline-info", method: :post do %>
                 <i class="fab fa-github"></i> &nbsp; Reimportar
               <% end %>
             </div>

@@ -11,9 +11,8 @@ class UsersController < ApplicationController
   end
 
   def reimport
-    user = User.find_by_login(params["login"])
-    GenerateProfileJob.perform_later(user.login)
-    redirect_to user_path(user.login)
+    GenerateProfileJob.perform_later(current_user.login)
+    redirect_to user_path(current_user.login)
   end
 
   private
