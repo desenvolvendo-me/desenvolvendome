@@ -1,0 +1,4 @@
+<%= javascript_include_tag "https://www.google.com/jsapi" %>
+<%= javascript_include_tag "chartkick" %>
+
+<%= line_chart Ahoy::Event.where_props(page: "/interests/new").group("properties -> 'page'").count %>
