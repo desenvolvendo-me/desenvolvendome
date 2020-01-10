@@ -18,7 +18,6 @@ gem 'omniauth-github'
 gem 'activerecord-session_store'
 gem 'validates_email_format_of'
 
-#Analisar Necessidade
 gem 'simple_form'
 gem 'sidekiq'
 gem 'friendly_id', '~> 5.2.4'
@@ -27,6 +26,7 @@ gem 'dotenv'
 gem "sentry-raven"
 gem 'kaminari'
 gem 'ransack'
+gem "ahoy_matey"
 
 #Admin
 gem 'activeadmin'
@@ -34,6 +34,7 @@ gem 'activeadmin_sidekiq_stats'
 gem "chartkick", '~> 2.2.0'
 gem 'groupdate'
 
+#Analisar Necessidade
 # gem 'geocoder'
 # gem 'httparty'
 # gem 'via_cep'
