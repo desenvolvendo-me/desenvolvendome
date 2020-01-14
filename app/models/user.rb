@@ -42,7 +42,6 @@ class User < ApplicationRecord
   validates_presence_of :login, :email
 
   def self.from_omniauth(auth)
-    reimport(auth)
     where(login: auth.info.nickname).first_or_create do |user|
       user.login = auth.info.nickname
       user.email = auth.info.email
@@ -70,15 +69,6 @@ class User < ApplicationRecord
   end
 
   private
-
-  def self.reimport(auth)
-    user = User.find_by_login(auth.info.nickname)
-    if user
-      # user.try(:profile).try(:destroy)
-      # user.try(:repositories).try(:destroy_all)
-    end
-  end
-
   def start_processing
     self.profile = Profile.new unless self.profile
     self.profile.update(processing: repositories_count)
