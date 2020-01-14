@@ -9,6 +9,18 @@ ActiveAdmin.register_page "Visitas" do
     end
     columns do
       column do
+        panel "Total de Visitantes" do
+          Ahoy::Visit.count
+        end
+      end
+      column do
+        panel "Total de Acessos" do
+          Ahoy::Event.count
+        end
+      end
+    end
+    columns do
+      column do
         panel "Por Todas" do
           render partial: 'dashboards/visits/per_page'
         end

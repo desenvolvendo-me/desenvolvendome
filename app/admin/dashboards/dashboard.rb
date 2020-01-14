@@ -9,11 +9,6 @@ ActiveAdmin.register_page "Dashboard" do
     end
     columns do
       column do
-        panel "Total de Visitas" do
-          Ahoy::Visit.count
-        end
-      end
-      column do
         panel "Total de Usuários" do
           User.count
         end
