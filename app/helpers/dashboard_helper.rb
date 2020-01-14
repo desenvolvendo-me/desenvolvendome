@@ -3,7 +3,7 @@ module DashboardHelper
   def self.per_page
     group_event_page = Ahoy::Event.group("properties -> 'page'").count
     group_event_page = group_event_page.delete_if {|k, v| k.include?("profile")}
-    group_event_page = group_event_page.delete_if {|k, v| k.include?("interests")}
+    group_event_page = group_event_page.delete_if {|k, v| k.include?("interest")}
     group_event_page
   end
 

@@ -44,7 +44,7 @@ ActiveAdmin.register_page "Visitas" do
       end
     end
     columns do
-      column do
+      column span: 2 do
         panel "Por Todas" do
           render partial: 'dashboards/visits/per_page'
         end
