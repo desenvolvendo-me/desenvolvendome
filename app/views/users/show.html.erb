@@ -260,7 +260,7 @@
             <div class="col-md-12">
               <p>Ainda não levamos em consideração a Relevância e a Qualidade do código, somente a Quantidade. Nosso
                 objetivo é disponibilizar na versão v1.1 e v1.2 respectivamente, hoje estamos na
-                v0.3</p>
+                <%= "#{`git describe --tags --abbrev=0`}" %></p>
             </div>
             <div class="col-md-12 text-center">
               <%= link_to "Dúvidas, Críticas e Sugestões", new_contact_path, class: "btn btn-lg btn-primary" %>

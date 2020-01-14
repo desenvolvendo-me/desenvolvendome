@@ -317,7 +317,7 @@ ActiveAdmin.setup do |config|
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
   #
-  # config.footer = 'my custom footer text'
+  config.footer = "Versão: #{`git describe --tags --abbrev=0`}, #{`git rev-parse --short HEAD`}"
 
   # == Sorting
   #
