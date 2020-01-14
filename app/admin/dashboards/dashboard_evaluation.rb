@@ -14,24 +14,24 @@ ActiveAdmin.register_page "Perfis" do
         end
       end
       column do
-        panel "Por Quantidade de Avaliações" do
+        panel "Por Uso" do
           render partial: 'dashboards/profiles/evaluation_count'
         end
       end
     end
     columns do
       column do
-        panel "Por Perfil com Acessos entre 10 e 25" do
+        panel "Com Acessos entre 10 e 25" do
           render partial: 'dashboards/visits/per_page_profile_greater_than', locals: {number_accesses_min: 10, number_accesses_max: 25}
         end
       end
       column do
-        panel "Por Perfil com Acessos entre 25 e 50" do
+        panel "Com Acessos entre 25 e 50" do
           render partial: 'dashboards/visits/per_page_profile_greater_than', locals: {number_accesses_min: 25, number_accesses_max: 50}
         end
       end
       column do
-        panel "Por Perfil com Acessos entre 50 e 100" do
+        panel "Com Acessos entre 50 e 100" do
           render partial: 'dashboards/visits/per_page_profile_greater_than', locals: {number_accesses_min: 50, number_accesses_max: 100}
         end
       end
