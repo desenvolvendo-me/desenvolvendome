@@ -1,5 +1,5 @@
 ActiveAdmin.register_page "Sidekiq" do
-  menu parent: "Dashboards"
+  menu parent: "Administração"
 
   content title: proc {I18n.t("active_admin.dashboard")} do
     columns do
