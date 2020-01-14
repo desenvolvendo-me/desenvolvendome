@@ -4,15 +4,10 @@ ActiveAdmin.register_page "Dashboard" do
   content title: proc {I18n.t("active_admin.dashboard")} do
     div class: "blank_slate_container", id: "dashboard_default_message" do
       span class: "blank_slate" do
-        span "Estatísticas".upcase
+        span "Estatísticas Geral".upcase
       end
     end
     columns do
-      column do
-        panel "Total de Visitas" do
-          Ahoy::Visit.count
-        end
-      end
       column do
         panel "Total de Usuários" do
           User.count
@@ -35,7 +30,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
     columns do
-      column do
+      column span: 2 do
         panel "Usuários por Dia" do
           render partial: 'dashboards/users/per_day'
         end
@@ -47,7 +42,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
     columns do
-      column do
+      column span: 2 do
         panel "Interesses por Dia" do
           render partial: 'dashboards/interests/per_day'
         end
@@ -59,7 +54,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
     columns do
-      column do
+      column span: 2 do
         panel "Contatos por Dia" do
           render partial: 'dashboards/contacts/per_day'
         end

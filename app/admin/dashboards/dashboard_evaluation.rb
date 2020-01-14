@@ -1,10 +1,10 @@
-ActiveAdmin.register_page "Usuários" do
+ActiveAdmin.register_page "Perfis" do
   menu parent: "Dashboards"
 
   content title: proc {I18n.t("active_admin.dashboard")} do
     div class: "blank_slate_container", id: "dashboard_default_message" do
       span class: "blank_slate" do
-        span "Usuários".upcase
+        span "Estatísticas dos Perfis".upcase
       end
     end
     columns do
@@ -13,11 +13,26 @@ ActiveAdmin.register_page "Usuários" do
           render partial: 'dashboards/profiles/evaluation_type'
         end
       end
-    end
-    columns do
       column do
         panel "Por Quantidade de Avaliações" do
           render partial: 'dashboards/profiles/evaluation_count'
+        end
+      end
+    end
+    columns do
+      column do
+        panel "Por Perfil com Acessos entre 10 e 25" do
+          render partial: 'dashboards/visits/per_page_profile_greater_than', locals: {number_accesses_min: 10, number_accesses_max: 25}
+        end
+      end
+      column do
+        panel "Por Perfil com Acessos entre 25 e 50" do
+          render partial: 'dashboards/visits/per_page_profile_greater_than', locals: {number_accesses_min: 25, number_accesses_max: 50}
+        end
+      end
+      column do
+        panel "Por Perfil com Acessos entre 50 e 100" do
+          render partial: 'dashboards/visits/per_page_profile_greater_than', locals: {number_accesses_min: 50, number_accesses_max: 100}
         end
       end
     end
