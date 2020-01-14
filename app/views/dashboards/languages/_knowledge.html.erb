@@ -1,4 +1,4 @@
 <%= javascript_include_tag "https://www.google.com/jsapi" %>
 <%= javascript_include_tag "chartkick" %>
 
-<%= column_chart Knowledge.joins(:language).order("languages.description": :asc).group("languages.description").count.sort_by{|e| e.last }.reverse %>
+<%= column_chart Knowledge.joins(:language).order("languages.description": :asc).group("languages.description").count.sort_by{|e| e.last }.reverse.first(50) %>
