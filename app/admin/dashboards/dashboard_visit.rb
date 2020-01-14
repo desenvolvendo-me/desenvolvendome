@@ -4,7 +4,7 @@ ActiveAdmin.register_page "Visitas" do
   content title: proc {I18n.t("active_admin.dashboard")} do
     div class: "blank_slate_container", id: "dashboard_default_message" do
       span class: "blank_slate" do
-        span "Páginas".upcase
+        span "Estatísticas das Páginas".upcase
       end
     end
     columns do
