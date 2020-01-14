@@ -32,7 +32,7 @@ class Profile < ApplicationRecord
 
   def score
     number = 0
-    bytes = self[:score]
+    bytes = self[:score].to_i
     kilobytes = (bytes / 1024)
     megabytes = (kilobytes / 1024)
     gigabytes = (megabytes / 1024)
