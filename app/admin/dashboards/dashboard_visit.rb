@@ -55,12 +55,5 @@ ActiveAdmin.register_page "Visitas" do
         end
       end
     end
-    columns do
-      column do
-        panel "Por Profiles com Acessos > 25" do
-          render partial: 'dashboards/visits/per_page_profile_greater_than'
-        end
-      end
-    end
   end
 end
