@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
-    @contacts = Contact.all.page params[:page]
+    @contacts = Contact.all.order(created_at: :desc).page params[:page]
   end
 
   def create
