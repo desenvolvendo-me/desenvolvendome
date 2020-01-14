@@ -20,7 +20,7 @@ ActiveAdmin.register_page "Visitas" do
       end
     end
     columns do
-      column do
+      column span: 2 do
         panel "Visitantes por Dia" do
           render partial: 'dashboards/visits/per_day'
         end
@@ -32,7 +32,7 @@ ActiveAdmin.register_page "Visitas" do
       end
     end
     columns do
-      column do
+      column span: 2 do
         panel "Acessos por Dia" do
          render partial: 'dashboards/events/per_day'
         end

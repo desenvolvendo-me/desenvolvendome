@@ -30,7 +30,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
     columns do
-      column do
+      column span: 2 do
         panel "Usuários por Dia" do
           render partial: 'dashboards/users/per_day'
         end
@@ -42,7 +42,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
     columns do
-      column do
+      column span: 2 do
         panel "Interesses por Dia" do
           render partial: 'dashboards/interests/per_day'
         end
@@ -54,7 +54,7 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
     columns do
-      column do
+      column span: 2 do
         panel "Contatos por Dia" do
           render partial: 'dashboards/contacts/per_day'
         end
