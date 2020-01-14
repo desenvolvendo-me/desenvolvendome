@@ -155,7 +155,7 @@ ActiveRecord::Schema.define(version: 2020_01_10_183908) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "repositories", id: :bigint, default: -> { "nextval('projects_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "repositories", force: :cascade do |t|
     t.integer "github_id"
     t.string "name"
     t.boolean "fork"
