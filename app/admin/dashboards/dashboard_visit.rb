@@ -21,12 +21,34 @@ ActiveAdmin.register_page "Visitas" do
     end
     columns do
       column do
-        panel "Por Todas" do
-          render partial: 'dashboards/visits/per_page'
+        panel "Visitantes por Dia" do
+          render partial: 'dashboards/visits/per_day'
+        end
+      end
+      column do
+        panel "Visitantes por Mês" do
+         render partial: 'dashboards/visits/per_month'
         end
       end
     end
     columns do
+      column do
+        panel "Acessos por Dia" do
+         render partial: 'dashboards/events/per_day'
+        end
+      end
+      column do
+        panel "Acessos por Mês" do
+         render partial: 'dashboards/events/per_month'
+        end
+      end
+    end
+    columns do
+      column do
+        panel "Por Todas" do
+          render partial: 'dashboards/visits/per_page'
+        end
+      end
       column do
         panel "Por Venda" do
           render partial: 'dashboards/visits/per_page_sales'
