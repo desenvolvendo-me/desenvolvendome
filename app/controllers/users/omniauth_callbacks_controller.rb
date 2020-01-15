@@ -2,7 +2,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def github
     @user = User.from_omniauth(request.env["omniauth.auth"])
     if @user.persisted?
-      GenerateProfileJob.perform_later(@user.login)
+
+      sign_in @user
+
+      unless @user.profile
+        GenerateProfileJob.perform_later(@user.login)
+      end
 
       redirect_to user_path(@user.login)
     else

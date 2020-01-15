@@ -7,6 +7,14 @@ class UsersController < ApplicationController
   def show
   end
 
+  def rule
+  end
+
+  def reimport
+    GenerateProfileJob.perform_later(current_user.login)
+    redirect_to user_path(current_user.login)
+  end
+
   private
 
   def set_user

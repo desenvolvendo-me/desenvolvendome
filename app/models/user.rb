@@ -42,7 +42,6 @@ class User < ApplicationRecord
   validates_presence_of :login, :email
 
   def self.from_omniauth(auth)
-    reimport(auth)
     where(login: auth.info.nickname).first_or_create do |user|
       user.login = auth.info.nickname
       user.email = auth.info.email
@@ -54,7 +53,6 @@ class User < ApplicationRecord
     end
   end
 
-  before_validation :set_default_password
   before_update :start_processing
 
   def after_import_save(record)
@@ -70,22 +68,9 @@ class User < ApplicationRecord
   end
 
   private
-
-  def self.reimport(auth)
-    user = User.find_by_login(auth.info.nickname)
-    if user
-      user.update(provider: nil, uid: nil)
-      user.try(:profile).try(:destroy)
-      user.try(:repositories).try(:destroy_all)
-    end
-  end
-
   def start_processing
     self.profile = Profile.new unless self.profile
     self.profile.update(processing: repositories_count)
   end
 
-  def set_default_password
-    self.password = "12345678"
-  end
 end

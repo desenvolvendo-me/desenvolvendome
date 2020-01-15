@@ -30,6 +30,16 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
+            <%= link_to "Perfis", compare_new_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Rankings", rankings_path, class: "nav-link" %>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-0">
+          <li class="nav-item">
             <%= link_to new_user_path, class: 'nav-link' do %>
               <div class="btn btn-outline-light btn-small text-uppercase">Conheça-se Agora</div>
             <% end %>
@@ -37,16 +47,23 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <%= link_to "Perfis", compare_new_path, class: "nav-link" %>
-          </li>
-
-          <li class="nav-item">
-            <%= link_to "Rankings", rankings_path, class: "nav-link" %>
-          </li>
-
-          <li class="nav-item">
             <%= link_to "Contato", new_contact_path, class: "nav-link" %>
           </li>
+
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Perfil", user_path(current_user.login), class: "nav-link" %>
+            </li>
+            <%= link_to destroy_user_session_path, :method => 'delete', class: "fa- nav-link" do %>
+              Sair <i class="fa fa-sign-out"></i>
+            <% end %>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to user_github_omniauth_authorize_path, class: "nav-link" do %>
+                Entrar <i class="fa fa-sign-in"></i>
+            <% end %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
