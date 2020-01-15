@@ -18,11 +18,16 @@ shell> rake profile:update[user_login]         # Update Profile
 shell> rake profile:update_all                 # Update All Profile
 ```
 
-## Deploy
-### Digital Ocean
+## Digital Ocean
+### Deploy
 ```
 shell> cap production deploy
 ```
+### Rollback
+```
+shell> cap production deploy:rollback
+```
+PS: Tomar cuidado com as alterações das migration
 
 #QUALIDADE
 
