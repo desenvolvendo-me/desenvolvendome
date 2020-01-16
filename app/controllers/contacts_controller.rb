@@ -1,5 +1,9 @@
 class ContactsController < ApplicationController
 
+  def show
+    @contact = Contact.find(params[:id])
+  end
+
   def new
     @contact = Contact.new
     @contacts = Contact.all.order(created_at: :desc).page params[:page]
