@@ -9,6 +9,13 @@ ActiveAdmin.register_page "Perfis" do
     end
     columns do
       column do
+        panel "Por Visitas por Login" do
+          render partial: 'dashboards/profiles/login_visit'
+        end
+      end
+    end
+    columns do
+      column do
         panel "Por Tipo de Nível" do
           render partial: 'dashboards/profiles/evaluation_type'
         end
@@ -36,6 +43,5 @@ ActiveAdmin.register_page "Perfis" do
         end
       end
     end
-
   end
 end
