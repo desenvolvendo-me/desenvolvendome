@@ -16,9 +16,12 @@ class Github::Importation::Commit < Github::Importation
   def get_contributions(repository)
     get_commits(repository).each do |contribuidor|
       if contribuidor['login'] == @user.login
-        return contribuidor ? contribuidor['contributions'] : 0
+        return contribuidor ? contribuidor['contributions'].to_i : 0
+      else
+        return 0
       end
     end
+    return 0
   end
 
   def get_commits(repository)
