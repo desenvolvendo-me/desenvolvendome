@@ -36,6 +36,7 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_many :repositories, dependent: :destroy
+  has_many :visits, class_name: "Ahoy::Visit"
 
   enum office: [:fullstack, :frontend, :backend, :devops]
 
