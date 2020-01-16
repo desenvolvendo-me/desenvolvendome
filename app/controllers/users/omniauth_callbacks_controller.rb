@@ -4,6 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.persisted?
 
       sign_in @user
+      ahoy.authenticate(@user)
 
       unless @user.profile
         GenerateProfileJob.perform_later(@user.login)
