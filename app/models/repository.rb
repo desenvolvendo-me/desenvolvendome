@@ -23,6 +23,7 @@
 
 
 class Repository < ApplicationRecord
+  paginates_per 12
   belongs_to :user, optional: true
   has_many :technologies, dependent: :destroy
 
