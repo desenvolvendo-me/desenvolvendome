@@ -54,6 +54,9 @@
             <li class="nav-item">
               <%= link_to "Perfil", user_path(current_user.login), class: "nav-link" %>
             </li>
+            <li class="nav-item">
+              <%= link_to "Projetos", repositories_path, class: "nav-link" %>
+            </li>
             <%= link_to destroy_user_session_path, :method => 'delete', class: "fa- nav-link" do %>
               Sair <i class="fa fa-sign-out"></i>
             <% end %>
@@ -61,7 +64,7 @@
             <li class="nav-item">
               <%= link_to user_github_omniauth_authorize_path, class: "nav-link" do %>
                 Entrar <i class="fa fa-sign-in"></i>
-            <% end %>
+              <% end %>
             </li>
           <% end %>
         </ul>
@@ -82,7 +85,8 @@
     </p>
   </div>
   <div class="col-md-12">
-    <p>&copy; 2019 DesenvolvendoMe, <%= "#{`git describe --tags --abbrev=0`}" %>. &middot; <a href="#">Privacidade</a> &middot; <a href="#">Termos</a></p>
+    <p>&copy; 2019 DesenvolvendoMe, <%= "#{`git describe --tags --abbrev=0`}" %>. &middot;
+      <a href="#">Privacidade</a> &middot; <a href="#">Termos</a></p>
   </div>
 </footer>
 
