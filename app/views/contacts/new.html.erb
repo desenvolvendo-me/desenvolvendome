@@ -33,7 +33,7 @@
         <% @contacts.each do |contact| %>
           <div class="list-group-item list-group-item-action flex-column align-items-start mb-2">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1"><%= truncate(contact.name.to_s.titlecase, length: 25) %></h5>
+              <h5 class="mb-1"><%= image_tag contact.gravatar_url, :class => "gravatar-new rounded-circle" %> <%= truncate(contact.name.to_s.titlecase, length: 25) %></h5>
               <small><%= enum_i18n(Contact, "contact_type", contact.contact_type) %>
                 : <%= l(contact.created_at, format: :short) %></small>
             </div>

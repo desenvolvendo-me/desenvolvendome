@@ -13,6 +13,9 @@
 #
 
 class Contact < ApplicationRecord
+  include Gravtastic
+  gravtastic
+
   paginates_per 5
 
   enum contact_type: [:doubt, :critical, :suggestion, :improvement]
