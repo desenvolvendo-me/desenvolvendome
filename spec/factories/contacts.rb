@@ -14,9 +14,10 @@
 
 FactoryBot.define do
   factory :contact do
-    name { "MyString" }
-    email { "MyString" }
-    contact_type { 1 }
-    description { "MyString" }
+    name {Faker::Name.name}
+    email {Faker::Internet.email}
+    contact_type {[:doubt, :critical, :suggestion, :improvement].sample}
+    description {Faker::Lorem.question(word_count: [5, 10, 20, 30].sample)}
+    response {Faker::Lorem.question(word_count: [3, 5, 10].sample) if [true, false].sample}
   end
 end

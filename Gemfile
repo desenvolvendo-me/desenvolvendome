@@ -28,6 +28,7 @@ gem "sentry-raven"
 gem 'kaminari'
 gem 'ransack'
 gem "ahoy_matey"
+gem 'gravtastic'
 
 #Admin
 gem 'activeadmin'

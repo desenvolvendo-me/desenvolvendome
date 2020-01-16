@@ -4,7 +4,7 @@
   <div class="center-block">
     <div class="col-md-12">
       <h3 class="text-light text-center text-uppercase">
-        <%= image_tag "evaluation/started.png", size: "50x50", class: "profile-image" %>
+        <%= image_tag "evaluation/started.png", size: "50x50", class: "profile-image rounded-circle" %>
         Iniciados
       </h3>
       <div class="row justify-content-center">
@@ -17,13 +17,13 @@
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="justify-content-between">
                   <% if profile.user %>
-                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
-                    <div class="h4 text-center"><%= truncate(profile.user.try(:name), length: 20) %></div>
+                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image rounded-circle" %>
+                    <div class="h4 text-center"><%= profile.user.try(:name) ? truncate(profile.user.try(:name), length: 20) : "?" %></div>
                     <div class="h6 text-center">
                       <a href="https://github.com/<%= profile.user.try(:login) %>" title="<%= profile.user.try(:login) %>" target="_new">@<%= profile.user.try(:login) %></a>
                     </div>
                   <% else %>
-                    <%= image_tag "user.png", size: "150x150", class: "profile-image" %>
+                    <%= image_tag "user.png", size: "150x150", class: "profile-image rounded-circle" %>
                   <% end %>
                   <% if profile.user.try(:profile).try(:evaluation) %>
                     <div class="h6 text-center"><%= "#{profile.try(:evaluation).try(:level)}º nível" %></div>

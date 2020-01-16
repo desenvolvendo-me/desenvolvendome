@@ -13,7 +13,7 @@
                 </button>
                 <div class="justify-content-between">
                   <% if profile.user.avatar %>
-                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
+                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image rounded-circle" %>
                   <% end %>
                   <h5 class="mb-1"><%= "@#{profile.user.login}" %></h5>
                   <% if profile %>
@@ -39,7 +39,7 @@
                 </button>
                 <div class="justify-content-between">
                   <% if profile.user.avatar %>
-                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
+                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image rounded-circle" %>
                   <% end %>
                   <h5 class="mb-1"><%= "@#{profile.user.login}" %></h5>
                   <% if profile %>
@@ -65,7 +65,7 @@
                 </button>
                 <div class="justify-content-between">
                   <% if profile.user.avatar %>
-                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image" %>
+                    <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image rounded-circle" %>
                   <% end %>
                   <h5 class="mb-1"><%= "@#{profile.user.login}" %></h5>
                   <% if profile %>
