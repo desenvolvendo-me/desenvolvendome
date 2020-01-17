@@ -42,14 +42,16 @@
           </li>
         </ul>
 
-        <ul class="navbar-nav ml-0">
-          <li class="nav-item">
-            <%= link_to new_user_path, class: 'nav-link' do %>
+        <% unless current_user %>
+          <ul class="navbar-nav ml-0">
+            <li class="nav-item">
+              <%= link_to new_user_path, class: 'nav-link' do %>
+                <div class="btn btn-outline-light btn-small text-uppercase">Conheça-se Agora</div>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
 
-              <div class="btn btn-outline-light btn-small text-uppercase"> <i class="fab fa-github"></i> Conheça-se Agora <i class="fas fa-cloud-download-alt"></i></div>
-            <% end %>
-          </li>
-        </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <%= link_to new_contact_path, class: "nav-link" do %>
