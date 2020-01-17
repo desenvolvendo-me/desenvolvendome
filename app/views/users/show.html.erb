@@ -52,7 +52,7 @@
     </div>
     <% unless current_user %>
       <div class="d-flex justify-content-end">
-        <%= link_to "O Mercado de TI está mudando. Clique Aqui", new_interest_path, class: "btn btn-danger", target: "_blank" %>
+        <%= render 'call_to_actions/interest' %>
       </div>
     <% end %>
     <% if @user.try(:profile) %>
