@@ -37,7 +37,7 @@
               <% end %>
             </div>
             <div class="h4 text-center"><%= enum_i18n(Evaluation, "evaluation_type", @user.profile.try(:evaluation).try(:evaluation_type)) %></div>
-            <div class="h6 text-center"><%= "#{@user.profile.try(:evaluation).try(:level)}º nível" %></div>
+            <div class="h6 text-center"><%= "#{@user.profile.try(:evaluation).try(:level)}º Nível" %> <i class="fas fa-trophy"></i></div>
           <% else %>
             <%= image_tag "evaluation/default.png", size: "150x150", class: "profile-image rounded-circle" %>
             <div class="progress">
@@ -55,7 +55,7 @@
           <div class="row">
             <div class="col-md-12 text-center">
               <%= link_to reimport_user_path, class: "btn btn-outline-info", method: :post do %>
-                <i class="fab fa-github"></i> &nbsp; Reimportar
+                <i class="fab fa-github"></i> Reimportar <i class="fas fa-cloud-download-alt"></i>
               <% end %>
             </div>
           </div>
@@ -64,7 +64,8 @@
         <div class="row">
           <div class="col-md-12">
             <% if @user.try(:profile) %>
-              <div class="btn btn-primary btn-lg btn-block">XP <%= @user.profile.score %></div>
+              <div class="btn btn-primary btn-lg btn-block"><i class="fa fa-arrow-circle-up"></i>
+                XP <%= @user.profile.score %></div>
             <% else %>
               <div class="btn btn-info btn-lg btn-block">?</div>
             <% end %>
@@ -86,13 +87,17 @@
         <hr class="featurette-divider">
         <div class="row">
           <div class="col-md-12">
+            <div class="text-center mb-4">
+              <div class="h3 text-default text-uppercase text-uppercase">
+                seus projetos <i class="fas fa-laptop"></i>
+              </div>
+            </div>
             <div class="text-center">
-              <div class="h3">Projetos</div>
               <div class="row">
                 <div class="col-md-4">
                   <div class="list-group">
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
-                      <small><%= image_tag "evaluation/started.png", size: "30x30" %></small>
+                      <small><%= image_tag "evaluation/started.png", size: "20x20" %></small>
                       <div class="h5 mb-1">Você tem
                         <strong><%= @user.repositories.where("commits_count < 50").count %></strong>
                         projeto(s)
@@ -110,7 +115,7 @@
                 <div class="col-md-4">
                   <div class="list-group">
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
-                      <small><%= image_tag "evaluation/novice.png", size: "30x30" %></small>
+                      <small><%= image_tag "evaluation/novice.png", size: "20x20" %></small>
                       <div class="h5" class="mb-1">Você
                         tem
                         <strong><%= @user.repositories.where("commits_count > 50 and commits_count < 100").count %></strong>
@@ -129,7 +134,7 @@
                 <div class="col-md-4">
                   <div class="list-group">
                     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
-                      <small><%= image_tag "evaluation/knight.png", size: "30x30" %></small>
+                      <small><%= image_tag "evaluation/knight.png", size: "20x20" %></small>
                       <div class="h5" class="mb-1">Você tem
                         <strong><%= @user.repositories.where("commits_count > 100").count %></strong>
                         projeto(s)
@@ -150,9 +155,14 @@
         </div>
         <hr class="featurette-divider">
         <div class="row">
-          <div class="col-md-12 ">
+          <div class="col-md-12">
+            <div class="text-center mb-4">
+              <div class="h3 text-default text-uppercase text-uppercase">
+                suas linguagens / tecnologias
+                <i class="fas fa-file-code"></i>
+              </div>
+            </div>
             <div class="text-center">
-              <div class="h3">Linguagens</div>
               <div class="row">
                 <div class="col-md-3">
                   <div class="text-center">
@@ -163,11 +173,11 @@
                       <a class="list-group-item d-flex justify-content-between align-items-center mb-1">
                         <strong>
                           <% if asset_exists? "language/basic/#{knowledge.language.description.downcase}.png" %>
-                            <%= image_tag "language/basic/#{knowledge.language.description.downcase}.png", size: "30x30" %>
+                            <%= image_tag "language/basic/#{knowledge.language.description.downcase}.png", size: "20x20" %>
+                            <%= knowledge.language.description %>
                           <% else %>
-                            <%= image_tag "language/empty.png", size: "30x30" %>
+                            <%= image_tag "language/empty.png", size: "20x20" %>
                           <% end %>
-                          <%= knowledge.language.description %>
                         </strong>
                         <div class="col-md-4">
                           <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
@@ -183,11 +193,11 @@
                       <a class="list-group-item d-flex justify-content-between align-items-center mb-1">
                         <strong>
                           <% if asset_exists? "language/normal/#{knowledge.language.description.downcase}.png" %>
-                            <%= image_tag "language/normal/#{knowledge.language.description.downcase}.png", size: "30x30" %>
+                            <%= image_tag "language/normal/#{knowledge.language.description.downcase}.png", size: "20x20" %>
+                            <%= knowledge.language.description %>
                           <% else %>
-                            <%= image_tag "language/empty.png", size: "30x30" %>
+                            <%= image_tag "language/empty.png", size: "20x20" %>
                           <% end %>
-                          <%= knowledge.language.description %>
                         </strong>
                         <div class="col-md-4">
                           <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
@@ -203,11 +213,11 @@
                       <a class="list-group-item d-flex justify-content-between align-items-center mb-1">
                         <strong>
                           <% if asset_exists? "language/rare/#{knowledge.language.description.downcase}.png" %>
-                            <%= image_tag "language/rare/#{knowledge.language.description.downcase}.png", size: "30x30" %>
+                            <%= image_tag "language/rare/#{knowledge.language.description.downcase}.png", size: "20x20" %>
+                            <%= knowledge.language.description %>
                           <% else %>
-                            <%= image_tag "language/empty.png", size: "30x30" %>
+                            <%= image_tag "language/empty.png", size: "20x20" %>
                           <% end %>
-                          <%= knowledge.language.description %>
                         </strong>
                         <div class="col-md-4">
                           <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
@@ -223,11 +233,11 @@
                       <a class="list-group-item d-flex justify-content-between align-items-center mb-1">
                         <strong>
                           <% if asset_exists? "language/special/#{knowledge.language.description.downcase}.png" %>
-                            <%= image_tag "language/special/#{knowledge.language.description.downcase}.png", size: "30x30" %>
+                            <%= image_tag "language/special/#{knowledge.language.description.downcase}.png", size: "20x20" %>
+                            <%= knowledge.language.description %>
                           <% else %>
-                            <%= image_tag "language/empty.png", size: "30x30" %>
+                            <%= image_tag "language/empty.png", size: "20x20" %>
                           <% end %>
-                          <%= knowledge.language.description %>
                         </strong>
                         <div class="col-md-4">
                           <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
@@ -243,7 +253,7 @@
         <hr class="featurette-divider">
         <div class="row">
           <div class="col-md-12 text-center">
-            <div class="h3">Seu XP é <%= @user.profile.score %>!</div>
+            <div class="h3">Seu <i class="fas fa-arrow-circle-up"></i> XP é <%= @user.profile.score %>!</div>
           </div>
         </div>
         <hr class="featurette-divider">
