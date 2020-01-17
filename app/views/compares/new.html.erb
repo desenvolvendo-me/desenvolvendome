@@ -1,34 +1,5 @@
 <div class="container container-intests-new">
   <div class="center-block">
-    <div class="col-md-9 mx-auto">
-      <div class="card card-signin">
-        <% if flash[:notice] %>
-          <div class="alert alert-danger" role="alert">
-            <%= flash[:notice].html_safe %>
-          </div>
-        <% end %>
-        <div class="col-md-12">
-          <%= simple_form_for @compare, html: {class: 'simple_form form-inline'} do |f| %>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="text" id="compare_login_1" name="compare[login_1]" placeholder="Login Github" class="form-control"/>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="text" id="compare_login_2" name="compare[login_2]" placeholder="Login Github" class="form-control"/>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <hr class="featurette-divider">
-
-              <%= f.button :submit, "COMPARAR", class: "btn btn-primary btn-block" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <hr class="featurette-divider">
     <div class="col-md-12 mx-auto">
       <div class="card card-signin">
         <div class="col-md-12 mx-auto">
@@ -53,10 +24,10 @@
         <%= page_entries_info @users %>
       </div>
       <div class="row">
-        <% @users.each do |user| %>
+        <% @users.where.not(id: current_user.try(:id)).each do |user| %>
           <div class="col-md-3 text-center">
-            <%= link_to user_path(user.login) do %>
-              <div class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+              <%= link_to user_path(user.login) do %>
                 <div class="justify-content-between">
                   <% if user %>
                     <%= image_tag user.avatar, size: "150x150", class: "profile-image rounded-circle" %>
@@ -70,8 +41,13 @@
                   <div class="h4 text-center"><%= user.profile.try(:evaluation).try(:evaluation_type) ? enum_i18n(Evaluation, "evaluation_type", user.profile.try(:evaluation).try(:evaluation_type)) : "?" %></div>
                   <div class="h6 text-center"><%= user.profile.try(:evaluation).try(:level) ? "#{user.profile.try(:evaluation).try(:level)}º nível" : "?" %></div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+              <% if current_user %>
+                <%= link_to compare_path(user: current_user.login, compared: user.login), class: "btn btn-warning" do %>
+                  <i class="fas fa-not-equal"> Comparar</i>
+                <% end %>
+              <% end %>
+            </div>
             <br>
           </div>
         <% end %>

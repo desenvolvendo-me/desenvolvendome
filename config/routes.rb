@@ -155,7 +155,7 @@ Rails.application.routes.draw do
   #Compare
   get "compare", to: "compares#new", as: "compare_new"
   post "compare", to: "compares#create", as: "compares"
-  get "profile/:login_1/compare/:login_2", to: "compares#show", as: "compare"
+  get "profile/:user/compare/:compared", to: "compares#show", as: "compare"
 
   #POC
   get 'vuejs/index'

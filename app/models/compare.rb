@@ -10,6 +10,7 @@
 #  user_id            :integer
 #
 
+#TODO: Remover comparations_count
 class Compare < ApplicationRecord
   belongs_to :user
   belongs_to :compared, class_name: "User"
