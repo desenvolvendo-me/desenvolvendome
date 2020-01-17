@@ -1,4 +1,7 @@
-<div class="container container-intests-new">
+<div class="container container-intests-new" xmlns="http://www.w3.org/1999/html">
+  <div class="col-md-12 text-center">
+    <div class="h2 text-default text-uppercase text-uppercase"><i class="fa fa-laptop"></i> projetos</div>
+  </div>
   <div class="center-block">
     <div class="col-md-12 mx-auto">
       <div class="card card-signin">
@@ -26,20 +29,28 @@
             <%#= link_to repository_path(repository.name) do %>
             <div class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">
+                <h5 class="mb-1 text-primary h3">
                   <%= repository.name %>
                 </h5>
-                <small><%= repository.commits_count.to_i %> <%= repository.commits_count.to_i == 1 ? "commit" : "commits" %></small>
+                <small>
+                  <i class="fa fa-coffee"></i> <%= repository.commits_count.to_i %> <%= repository.commits_count.to_i == 1 ? "commit" : "commits" %>
+                  <i class="fa fa-star"></i> <%= repository.stargazers_count.to_i %> <%= repository.stargazers_count.to_i == 1 ? "start" : "stars" %>
+                </small>
               </div>
-              <p class="mb-1">
-                <% if asset_exists? "language/#{knowledge_type(repository.principal_technology)}/#{repository.principal_technology.to_s.downcase}.png" %>
-                  <%= image_tag "language/#{knowledge_type(repository.principal_technology)}/#{repository.principal_technology.to_s.downcase}.png", size: "30x30" %>
-                <% else %>
-                  <%= image_tag "language/empty.png", size: "30x30" %>
-                <% end %>
-                <%= repository.principal_technology.to_s %>
-              </p>
-              <small class="text-success"><%= repository.technologies.joins(:language).order(exercise: :desc).pluck("languages.description").join(", ") %></small>
+              <div class="d-flex w-100 justify-content-between">
+                <small>
+                  <% if asset_exists? "language/#{knowledge_type(repository.principal_technology)}/#{repository.principal_technology.to_s.downcase}.png" %>
+                    <%= image_tag "language/#{knowledge_type(repository.principal_technology)}/#{repository.principal_technology.to_s.downcase}.png", size: "20x20" %>
+                    <%= repository.principal_technology.to_s %>
+                  <% else %>
+                    <%= image_tag "language/empty.png", size: "20x20" %>
+                  <% end %>
+                </small>
+                <small class="text-success"><%= repository.technologies.joins(:language).order(exercise: :desc).pluck("languages.description").join(", ") %></small>
+                <small>
+                  <i class="fa fa-code-fork"></i> <%= repository.forks_count.to_i %> <%= repository.forks_count.to_i == 1 ? "fork" : "forks" %>
+                </small>
+              </div>
             </div>
             <%# end %>
             <br>
