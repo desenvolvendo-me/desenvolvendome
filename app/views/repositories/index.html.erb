@@ -39,7 +39,7 @@
                 <% end %>
                 <%= repository.principal_technology.to_s %>
               </p>
-              <small class="text-success"><%= repository.technologies.joins(:language).pluck("languages.description").join(", ") %></small>
+              <small class="text-success"><%= repository.technologies.joins(:language).order(exercise: :desc).pluck("languages.description").join(", ") %></small>
             </div>
             <%# end %>
             <br>
