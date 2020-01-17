@@ -30,40 +30,51 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to "Perfis", compare_new_path, class: "nav-link" %>
+            <%= link_to compare_new_path, class: "nav-link" do %>
+              <i class="fas fa-users"> Perfis</i>
+            <% end %>
           </li>
 
           <li class="nav-item">
-            <%= link_to "Rankings", rankings_path, class: "nav-link" %>
+            <%= link_to rankings_path, class: "nav-link" do %>
+              <i class="fas fa-sort-numeric-up"> Rankings</i>
+            <% end %>
           </li>
         </ul>
 
         <ul class="navbar-nav ml-0">
           <li class="nav-item">
             <%= link_to new_user_path, class: 'nav-link' do %>
-              <div class="btn btn-outline-light btn-small text-uppercase">Conheça-se Agora</div>
+
+              <div class="btn btn-outline-light btn-small text-uppercase"> <i class="fab fa-github"></i> Conheça-se Agora <i class="fas fa-cloud-download-alt"></i></div>
             <% end %>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <%= link_to "Contato", new_contact_path, class: "nav-link" %>
+            <%= link_to new_contact_path, class: "nav-link" do %>
+              <i class="fas fa-envelope"> Contato</i>
+            <% end %>
           </li>
 
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "Perfil", user_path(current_user.login), class: "nav-link" %>
+              <%= link_to user_path(current_user.login), class: "nav-link" do %>
+                <i class="fas fa-user"> Perfil</i>
+              <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "Projetos", repositories_path, class: "nav-link" %>
+              <%= link_to repositories_path, class: "nav-link" do %>
+                <i class="fas fa-laptop"> Projetos</i>
+              <% end %>
             </li>
             <%= link_to destroy_user_session_path, :method => 'delete', class: "fa- nav-link" do %>
-              Sair <i class="fa fa-sign-out"></i>
+              <i class="fas fa-sign-out-alt"> Sair</i>
             <% end %>
           <% else %>
             <li class="nav-item">
               <%= link_to user_github_omniauth_authorize_path, class: "nav-link" do %>
-                Entrar <i class="fa fa-sign-in"></i>
+                <i class="fas fa-sign-in-alt"> Entrar</i>
               <% end %>
             </li>
           <% end %>
