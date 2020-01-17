@@ -24,7 +24,7 @@
         <%= page_entries_info @users %>
       </div>
       <div class="row">
-        <% @users.where.not(id: current_user.id).each do |user| %>
+        <% @users.where.not(id: current_user.try(:id)).each do |user| %>
           <div class="col-md-3 text-center">
             <div class="list-group-item list-group-item-action flex-column align-items-start">
               <%= link_to user_path(user.login) do %>

@@ -50,6 +50,11 @@
         </div>
       </div>
     </div>
+    <% unless current_user %>
+      <div class="d-flex justify-content-end">
+        <%= link_to "O Mercado de TI está mudando. Clique Aqui", new_interest_path, class: "btn btn-danger", target: "_blank" %>
+      </div>
+    <% end %>
     <% if @user.try(:profile) %>
       <% if progress_bar(@user) == 100 %>
         <% if @user == current_user %>
@@ -253,25 +258,17 @@
         </div>
         <hr class="featurette-divider">
         <div class="row">
-          <div class="col-md-6 text-center">
-            <p class="alert-danger">O MERCADO DE TI ESTÁ MUDANDO. E BEM RÁPIDO!</p>
-            <p>Acreditamos que você deveria se preparar para ele.</p>
-            <p><%= link_to "Saiba Mais", new_interest_path, class: "btn btn-lg btn-primary", target: "_blank" %></p>
+          <div class="col-md-12 text-center">
+            <div id="nota" class="alert-info">NOTA</div>
           </div>
-          <div class="col-md-6">
-            <div class="col-md-12 text-center">
-              <div id="nota" class="alert-info">NOTA</div>
-            </div>
-            <div class="col-md-12">
-              <p>Ainda não levamos em consideração a Relevância e a Qualidade do código, somente a Quantidade. Nosso
-                objetivo é disponibilizar na versão v1.1 e v1.2 respectivamente, hoje estamos na
-                <%= "#{`git describe --tags --abbrev=0`}" %></p>
-            </div>
-            <div class="col-md-12 text-center">
-              <%= link_to "Dúvidas, Críticas e Sugestões", new_contact_path, class: "btn btn-lg btn-primary" %>
-            </div>
+          <div class="col-md-12 text-center mb-2">
+            <span>Ainda não levamos em consideração a Relevância e a Qualidade do código, somente a Quantidade.</span><br>
+            <span>Nosso objetivo é disponibilizar na versão v1.1 e v1.2 respectivamente, hoje estamos na
+              <%= "#{`git describe --tags --abbrev=0`}" %></span>
           </div>
-        </div>
+          <div class="col-md-12 text-center">
+            <%= link_to "Dúvidas, Críticas e Sugestões", new_contact_path, class: "btn btn-lg btn-primary" %>
+          </div>
         </div>
       <% end %>
     <% else %>
@@ -279,5 +276,5 @@
         <h2>Precione F5 para acompanhar o processamento</h2>
       </div>
     <% end %>
-    </div>
+  </div>
 </div>
