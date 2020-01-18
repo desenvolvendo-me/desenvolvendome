@@ -142,6 +142,7 @@ Rails.application.routes.draw do
   post "reimport", to: "users#reimport", as: "reimport_user"
   get "profile/:id", to: "users#show", as: "user"
   get "projects", to: "repositories#index", as: "repositories"
+  get "knowledges", to: "knowledges#index", as: "knowledges"
 
   #Ranking
   get "rankings", to: "profiles#index"

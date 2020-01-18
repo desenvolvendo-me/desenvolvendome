@@ -1,0 +1,57 @@
+<div class="container container-intests-new" xmlns="http://www.w3.org/1999/html">
+  <div class="col-md-12 text-center">
+    <div class="h2 text-default text-uppercase">
+      <i class="fa fa-laptop"> seus conhecimento</i>
+    </div>
+  </div>
+  <div class="center-block">
+    <div class="col-md-12 mx-auto">
+      <div class="card card-signin">
+        <div class="col-md-12 mx-auto">
+          <%= search_form_for @q, class: "simple_form form-inline" do |f| %>
+            <div class="row">
+              <%= f.select :language_description_eq, options_from_collection_for_select(Language.joins(knowledges: [profile: :user]).where("users.id = ?", current_user.id), "description", "description"), {:include_blank => true}, class: "form-control mr-2" %>
+              <%= f.submit "Pesquisar", class: "form-control mr-2 btn btn-success" %>
+              <%= link_to "Cancelar", request.path, class: "form-control mr-2 btn btn-info" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row justify-content-center">
+        <%= paginate @knowledges %>
+      </div>
+      <div class="row justify-content-center">
+        <%= page_entries_info @knowledges %>
+      </div>
+      <div class="row">
+        <% @knowledges.order(level: :desc).each do |knowledge| %>
+          <div class="col-md-6 text-center">
+            <%#= link_to knowledge_path(knowledge.name) do %>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 text-primary h3">
+                  <% if asset_exists? "language/#{knowledge_type(knowledge.language.description)}/#{knowledge.language.description.to_s.downcase}.png" %>
+                    <%= image_tag "language/#{knowledge_type(knowledge.language.description)}/#{knowledge.language.description.to_s.downcase}.png", size: "30x30" %>
+                    <%= knowledge.language.description.to_s %>
+                  <% else %>
+                    <%= image_tag "language/empty.png", size: "30x30" %>
+                    <%= knowledge.language.description.to_s %>
+                <% end %>
+                </h5>
+                <small>
+                  <i class="fa fa-trophy"></i> <%= knowledge.level.to_i %> nível
+                </small>
+              </div>
+            </div>
+            <%# end %>
+            <br>
+          </div>
+        <% end %>
+      </div>
+      <div class="row justify-content-center">
+        <%= paginate @knowledges %>
+      </div>
+    </div>
+  </div>
+</div>
