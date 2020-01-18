@@ -173,5 +173,6 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
+  mount Ahoy::Engine => "/ahoy"
 
 end

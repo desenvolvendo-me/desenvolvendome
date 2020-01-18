@@ -8,12 +8,21 @@
     <div class="col-md-12 mx-auto">
       <div class="card card-signin">
         <div class="col-md-12 mx-auto">
-          <%= search_form_for @q, class: "simple_form form-inline" do |f| %>
+          <%= search_form_for @q do |f| %>
             <div class="row">
-              <%= f.search_field :name_cont, placeholder: "Nome", class: "form-control mr-2" %>
-              <%= f.select :technologies_language_description_eq, options_from_collection_for_select(Language.joins(knowledges: [profile: :user]).where("users.id = ?", current_user.id), "description", "description", @q.principal_technology_eq), {:include_blank => true}, class: "form-control mr-2" %>
-              <%= f.submit "Pesquisar", class: "form-control mr-2 btn btn-success" %>
-              <%= link_to "Cancelar", request.path, class: "form-control mr-2 btn btn-info" %>
+              <div class="col-md-3">
+                <%= f.search_field :name_cont, placeholder: "Nome", class: "form-control mb-1 mr-1" %>
+              </div>
+              <div class="col-md-3">
+                <%= f.select :technologies_language_description_eq, options_from_collection_for_select(Language.joins(knowledges: [profile: :user]).where("users.id = ?", current_user.id), "description", "description", @q.technologies_language_description_eq), {:include_blank => true, prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
+              </div>
+              <div class="col"></div>
+              <div class="col-md-2">
+                <%= f.submit "Pesquisar", class: "form-control mb-1 mr-1 btn btn-success" %>
+              </div>
+              <div class="col-md-2">
+                <%= link_to "Cancelar", request.path, class: "form-control mb-1 mr-1 btn btn-info" %>
+              </div>
             </div>
           <% end %>
         </div>
@@ -27,19 +36,15 @@
       </div>
       <div class="row">
         <% @repositories.order(commits_count: :desc).each do |repository| %>
-          <div class="col-md-6 text-center">
+          <div class="col-md-4 text-center">
             <%#= link_to repository_path(repository.name) do %>
             <div class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1 text-primary h3">
-                  <%= repository.name %>
-                </h5>
                 <small>
                   <i class="fa fa-coffee"></i> <%= repository.commits_count.to_i %> <%= repository.commits_count.to_i == 1 ? "commit" : "commits" %>
                   <i class="fa fa-star"></i> <%= repository.stargazers_count.to_i %> <%= repository.stargazers_count.to_i == 1 ? "start" : "stars" %>
+                  <i class="fa fa-code-fork"></i> <%= repository.forks_count.to_i %> <%= repository.forks_count.to_i == 1 ? "fork" : "forks" %>
                 </small>
-              </div>
-              <div class="d-flex w-100 justify-content-between">
                 <small>
                   <% if asset_exists? "language/#{knowledge_type(repository.principal_technology)}/#{repository.principal_technology.to_s.downcase}.png" %>
                     <%= image_tag "language/#{knowledge_type(repository.principal_technology)}/#{repository.principal_technology.to_s.downcase}.png", size: "20x20" %>
@@ -48,9 +53,15 @@
                     <%= image_tag "language/empty.png", size: "20x20" %>
                   <% end %>
                 </small>
-                <small class="text-success"><%= repository.technologies.joins(:language).order(exercise: :desc).pluck("languages.description").join(", ") %></small>
-                <small>
-                  <i class="fa fa-code-fork"></i> <%= repository.forks_count.to_i %> <%= repository.forks_count.to_i == 1 ? "fork" : "forks" %>
+              </div>
+              <div class="d-flex w-100 justify-content-between">
+                <div class="text-primary">
+                  <%= repository.name %>
+                </div>
+              </div>
+              <div class="d-flex w-100 justify-content-end">
+                <small class="text-success">
+                  <%= repository.technologies.joins(:language).order(exercise: :desc).pluck("languages.description").join(", ") %>
                 </small>
               </div>
             </div>
