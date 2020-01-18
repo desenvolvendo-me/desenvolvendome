@@ -11,6 +11,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
+    @contacts = Contact.all.order(created_at: :desc).page params[:page]
     #TODO: Adicionar email agradeçendo o contato
     respond_to do |format|
       if @contact.save
