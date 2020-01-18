@@ -10,7 +10,7 @@
         <div class="col-md-12 mx-auto">
           <%= search_form_for @q, class: "simple_form form-inline" do |f| %>
             <div class="row">
-              <%= f.select :language_description_eq, options_from_collection_for_select(Language.joins(knowledges: [profile: :user]).where("users.id = ?", current_user.id), "description", "description", @q.language_description_eq), {:include_blank => true}, class: "form-control mb-1 mr-1" %>
+              <%= f.select :language_description_eq, options_from_collection_for_select(Language.joins(knowledges: [profile: :user]).where("users.id = ?", current_user.id), "description", "description", @q.language_description_eq), {:include_blank => true, prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
               <%= f.submit "Pesquisar", class: "form-control mb-1 mr-1 btn btn-success" %>
               <%= link_to "Cancelar", request.path, class: "form-control mb-1 mr-1 btn btn-info" %>
             </div>
