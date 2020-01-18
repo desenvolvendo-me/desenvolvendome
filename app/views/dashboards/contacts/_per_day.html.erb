@@ -1,4 +1,4 @@
 <%= javascript_include_tag "https://www.google.com/jsapi" %>
 <%= javascript_include_tag "chartkick" %>
 
-<%= line_chart Contact.group_by_day(:created_at).count %>
+<%= line_chart Contact.where(created_at: 1.month.ago.beginning_of_month..Date.today.at_end_of_month).group_by_day(:created_at).count %>

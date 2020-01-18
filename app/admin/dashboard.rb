@@ -31,36 +31,36 @@ ActiveAdmin.register_page "Dashboard" do
     end
     columns do
       column span: 2 do
-        panel "Usuários por Dia" do
+        panel "Usuários por Dia (Mês Anterior e Atual)" do
           render partial: 'dashboards/users/per_day'
         end
       end
       column do
-        panel "Usuários por Mês" do
+        panel "Usuários por Mês (3 meses)" do
           render partial: 'dashboards/users/per_month'
         end
       end
     end
     columns do
       column span: 2 do
-        panel "Interesses por Dia" do
+        panel "Interesses por Dia (Mês Anterior e Atual)" do
           render partial: 'dashboards/interests/per_day'
         end
       end
       column do
-        panel "Interesses por Mês" do
+        panel "Interesses por Mês (3 meses)" do
           render partial: 'dashboards/interests/per_month'
         end
       end
     end
     columns do
       column span: 2 do
-        panel "Contatos por Dia" do
+        panel "Contatos por Dia (Mês Anterior e Atual)" do
           render partial: 'dashboards/contacts/per_day'
         end
       end
       column do
-        panel "Contatos por Mês" do
+        panel "Contatos por Mês (3 meses)" do
           render partial: 'dashboards/contacts/per_month'
         end
       end
