@@ -40,6 +40,7 @@ class Profile::Rating::Know
   end
 
   def set_knowledge_type(language)
+    knowledge_type = :unknown
     knowledge_type = :basic if SETTINGS[:languages][:basic].include? language.description
     knowledge_type = :normal if SETTINGS[:languages][:normal].include? language.description
     knowledge_type = :rare if SETTINGS[:languages][:rare].include? language.description

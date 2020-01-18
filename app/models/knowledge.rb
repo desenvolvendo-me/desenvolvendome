@@ -24,5 +24,5 @@ class Knowledge < ApplicationRecord
   scope :ordered_by_level, -> {order(level: :desc)}
   scope :ordered_by_language, -> { includes(:language).order('languages.description DESC')}
 
-  enum knowledge_type: [:basic, :normal, :rare, :special]
+  enum knowledge_type: [:basic, :normal, :rare, :special, :unknown]
 end

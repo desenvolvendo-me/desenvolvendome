@@ -183,6 +183,7 @@
                             <%= knowledge.language.description %>
                           <% else %>
                             <%= image_tag "language/empty.png", size: "20x20" %>
+                            <%= knowledge.language.description %>
                           <% end %>
                         </strong>
                         <div class="col-md-4">
@@ -203,6 +204,7 @@
                             <%= knowledge.language.description %>
                           <% else %>
                             <%= image_tag "language/empty.png", size: "20x20" %>
+                            <%= knowledge.language.description %>
                           <% end %>
                         </strong>
                         <div class="col-md-4">
@@ -223,6 +225,7 @@
                             <%= knowledge.language.description %>
                           <% else %>
                             <%= image_tag "language/empty.png", size: "20x20" %>
+                            <%= knowledge.language.description %>
                           <% end %>
                         </strong>
                         <div class="col-md-4">
@@ -243,7 +246,24 @@
                             <%= knowledge.language.description %>
                           <% else %>
                             <%= image_tag "language/empty.png", size: "20x20" %>
+                            <%= knowledge.language.description %>
                           <% end %>
+                        </strong>
+                        <div class="col-md-4">
+                          <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
+                        </div>
+                      </a>
+                    <% end %>
+                  </ul>
+                </div>
+                <div class="col-md-12">
+                  <div class="h5"><%= image_tag "language/empty.png", size: "30x30" %>Desconhecidos</div>
+                  <ul class="list-group">
+                    <% @user.profile.knowledges.where(knowledge_type: :unknown).ordered_by_level.each do |knowledge| %>
+                      <a class="list-group-item d-flex justify-content-between align-items-center mb-1">
+                        <strong>
+                          <%= image_tag "language/empty.png", size: "20x20" %>
+                          <%= knowledge.language.description %>
                         </strong>
                         <div class="col-md-4">
                           <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
