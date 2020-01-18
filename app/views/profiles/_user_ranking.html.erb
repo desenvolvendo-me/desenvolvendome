@@ -1,0 +1,39 @@
+<div class="list-group-item list-group-item-action flex-column align-items-start mb-2">
+  <div class="d-flex w-100 justify-content-between">
+    <span class="btn btn-<%= ["primary", "success", "info"][index] %>"><h4><%= index + 1 %>º</h4></span>
+    <% if profile %>
+      <div>
+        <i class="fa fa-arrow-circle-up"> XP <%= profile.score %></i>
+      </div>
+    <% else %>
+      <div>
+        <i class="fa fa-arrow-circle-up"> ? </i>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to user_path(profile.user.login) do %>
+    <div class="d-flex w-100 justify-content-center">
+      <% if profile.user.avatar %>
+        <%= image_tag profile.user.avatar, size: "150x150", class: "profile-image rounded-circle" %>
+      <% end %>
+    </div>
+    <div class="d-flex w-100 justify-content-start">
+      <div class="h4"><%= profile.user.try(:name) ? truncate(profile.user.try(:name), length: 20) : "?" %></div>
+    </div>
+  <% end %>
+  <div class="d-flex w-100 justify-content-end">
+    <div class="h6">
+      <%= link_to "https://github.com/#{profile.user.try(:login)}", target: "_blank" do %>
+        <i class="fab fa-github"></i>
+        <%= profile.user.try(:login) ? "@#{profile.user.try(:login)}" : "?" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="d-flex w-100 justify-content-center">
+    <% if current_user %>
+      <%= link_to compare_path(user: current_user.login, compared: profile.user.login), class: "btn btn-outline-warning" do %>
+        <i class="fas fa-not-equal"> Comparar</i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
