@@ -10,10 +10,10 @@
         <div class="col-md-12 mx-auto">
           <%= search_form_for @q, class: "simple_form form-inline" do |f| %>
             <div class="row">
-              <%= f.search_field :name_cont, placeholder: "Nome", class: "form-control mr-2" %>
-              <%= f.select :technologies_language_description_eq, options_from_collection_for_select(Language.joins(knowledges: [profile: :user]).where("users.id = ?", current_user.id), "description", "description", @q.technologies_language_description_eq), {:include_blank => true}, class: "form-control mr-2" %>
-              <%= f.submit "Pesquisar", class: "form-control mr-2 btn btn-success" %>
-              <%= link_to "Cancelar", request.path, class: "form-control mr-2 btn btn-info" %>
+              <%= f.search_field :name_cont, placeholder: "Nome", class: "form-control mb-1" %>
+              <%= f.select :technologies_language_description_eq, options_from_collection_for_select(Language.joins(knowledges: [profile: :user]).where("users.id = ?", current_user.id), "description", "description", @q.technologies_language_description_eq), {:include_blank => true}, class: "form-control mb-1" %>
+              <%= f.submit "Pesquisar", class: "form-control mb-1 btn btn-success" %>
+              <%= link_to "Cancelar", request.path, class: "form-control mb-1 btn btn-info" %>
             </div>
           <% end %>
         </div>
@@ -32,7 +32,7 @@
             <div class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1 text-primary h3">
-                  <%= repository.name %>
+                  <%= truncate(repository.name, length: 20) %>
                 </h5>
                 <small>
                   <i class="fa fa-coffee"></i> <%= repository.commits_count.to_i %> <%= repository.commits_count.to_i == 1 ? "commit" : "commits" %>
@@ -48,7 +48,9 @@
                     <%= image_tag "language/empty.png", size: "20x20" %>
                   <% end %>
                 </small>
-                <small class="text-success"><%= repository.technologies.joins(:language).order(exercise: :desc).pluck("languages.description").join(", ") %></small>
+                <small class="text-success">
+                  <%= repository.technologies.joins(:language).order(exercise: :desc).pluck("languages.description").join(", ") %>
+                </small>
                 <small>
                   <i class="fa fa-code-fork"></i> <%= repository.forks_count.to_i %> <%= repository.forks_count.to_i == 1 ? "fork" : "forks" %>
                 </small>
