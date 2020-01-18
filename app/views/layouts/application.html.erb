@@ -28,6 +28,16 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
+        <% unless current_user %>
+          <ul class="navbar-nav ml-0">
+            <li class="nav-item">
+              <%= link_to new_user_path, class: 'nav-link' do %>
+                <div class="btn btn-outline-light btn-small text-uppercase">Conheça-se Agora</div>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
+
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <%= link_to compare_new_path, class: "nav-link" do %>
@@ -42,23 +52,7 @@
           </li>
         </ul>
 
-        <% unless current_user %>
-          <ul class="navbar-nav ml-0">
-            <li class="nav-item">
-              <%= link_to new_user_path, class: 'nav-link' do %>
-                <div class="btn btn-outline-light btn-small text-uppercase">Conheça-se Agora</div>
-              <% end %>
-            </li>
-          </ul>
-        <% end %>
-
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <%= link_to new_contact_path, class: "nav-link" do %>
-              <i class="fas fa-envelope"> Contato</i>
-            <% end %>
-          </li>
-
           <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to user_path(current_user.login), class: "nav-link" do %>
@@ -85,6 +79,11 @@
               <% end %>
             </li>
           <% end %>
+          <li class="nav-item">
+            <%= link_to new_contact_path, class: "nav-link" do %>
+              <i class="fas fa-envelope"> Contato</i>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
