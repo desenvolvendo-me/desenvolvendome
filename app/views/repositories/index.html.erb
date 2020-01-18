@@ -31,15 +31,11 @@
             <%#= link_to repository_path(repository.name) do %>
             <div class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1 text-primary h3">
-                  <%= truncate(repository.name, length: 20) %>
-                </h5>
                 <small>
                   <i class="fa fa-coffee"></i> <%= repository.commits_count.to_i %> <%= repository.commits_count.to_i == 1 ? "commit" : "commits" %>
                   <i class="fa fa-star"></i> <%= repository.stargazers_count.to_i %> <%= repository.stargazers_count.to_i == 1 ? "start" : "stars" %>
+                  <i class="fa fa-code-fork"></i> <%= repository.forks_count.to_i %> <%= repository.forks_count.to_i == 1 ? "fork" : "forks" %>
                 </small>
-              </div>
-              <div class="d-flex w-100 justify-content-between">
                 <small>
                   <% if asset_exists? "language/#{knowledge_type(repository.principal_technology)}/#{repository.principal_technology.to_s.downcase}.png" %>
                     <%= image_tag "language/#{knowledge_type(repository.principal_technology)}/#{repository.principal_technology.to_s.downcase}.png", size: "20x20" %>
@@ -48,11 +44,15 @@
                     <%= image_tag "language/empty.png", size: "20x20" %>
                   <% end %>
                 </small>
+              </div>
+              <div class="d-flex w-100 justify-content-between">
+                <div class="mb-1 text-primary">
+                  <%= repository.name %>
+                </div>
+              </div>
+              <div class="d-flex w-100 justify-content-end">
                 <small class="text-success">
                   <%= repository.technologies.joins(:language).order(exercise: :desc).pluck("languages.description").join(", ") %>
-                </small>
-                <small>
-                  <i class="fa fa-code-fork"></i> <%= repository.forks_count.to_i %> <%= repository.forks_count.to_i == 1 ? "fork" : "forks" %>
                 </small>
               </div>
             </div>
