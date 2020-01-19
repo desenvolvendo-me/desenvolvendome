@@ -1,0 +1,33 @@
+<% if current_user %>
+  <%= link_to knowledges_path(q: {language_description_eq: knowledge.language.description}) do %>
+    <div class="list-group-item d-flex justify-content-between align-items-center mb-1">
+      <strong>
+        <% if asset_exists? "language/#{knowledge_type}/#{knowledge.language.description.downcase}.png" %>
+          <%= image_tag "language/#{knowledge_type}/#{knowledge.language.description.downcase}.png", size: "20x20" %>
+          <%= knowledge.language.description %>
+        <% else %>
+          <%= image_tag "language/empty.png", size: "20x20" %>
+          <%= knowledge.language.description %>
+        <% end %>
+      </strong>
+      <div class="col-md-4">
+        <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="list-group-item d-flex justify-content-between align-items-center mb-1">
+    <strong>
+      <% if asset_exists? "language/#{knowledge_type}/#{knowledge.language.description.downcase}.png" %>
+        <%= image_tag "language/#{knowledge_type}/#{knowledge.language.description.downcase}.png", size: "20x20" %>
+        <%= knowledge.language.description %>
+      <% else %>
+        <%= image_tag "language/empty.png", size: "20x20" %>
+        <%= knowledge.language.description %>
+      <% end %>
+    </strong>
+    <div class="col-md-4">
+      <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
+    </div>
+  </div>
+<% end %>
