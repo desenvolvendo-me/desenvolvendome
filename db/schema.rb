@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_10_183908) do
+ActiveRecord::Schema.define(version: 2020_01_19_141157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,6 +144,8 @@ ActiveRecord::Schema.define(version: 2020_01_10_183908) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "knowledge_type"
+    t.integer "rarity"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -155,7 +157,7 @@ ActiveRecord::Schema.define(version: 2020_01_10_183908) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "repositories", id: :bigint, default: -> { "nextval('projects_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "repositories", id: :bigint, force: :cascade do |t|
     t.integer "github_id"
     t.string "name"
     t.boolean "fork"
