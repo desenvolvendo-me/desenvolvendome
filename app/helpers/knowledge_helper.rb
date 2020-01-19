@@ -5,7 +5,7 @@ module KnowledgeHelper
     profile_count_with_knowledge = Profile.joins(:knowledges).where("knowledges.language_id": language.id).count
     percentage = ((profile_count_with_knowledge.to_f / profile_count.to_f) * 100).round(2)
 
-    "<strong class='#{percentage < 20 ? "text-success" : "text-danger"}'>#{percentage}%</strong> dos perfis também conhecem".html_safe
+    "<strong class='#{percentage < 20 ? "text-success" : "text-danger"}'>#{percentage}%</strong> dos perfis conhecem".html_safe
   end
 
   def people_higher_level(knowledge)

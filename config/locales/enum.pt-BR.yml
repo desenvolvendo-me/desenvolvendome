@@ -12,3 +12,16 @@ pt-BR:
           started: "Iniciado"
           novice: "Aprendiz"
           knight: "Cavaleiro"
+      language:
+        rarities:
+          very_low: "Muito Baixa"
+          low: "Baixa"
+          medium:  "Média"
+          high: "Alta"
+          very_high: "Muito Alta"
+        knowledge_types:
+          basic: "Básico"
+          normal: "Normal"
+          rare: "Raro"
+          special: "Especial"
+          unknown: "Desconhecido"

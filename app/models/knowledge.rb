@@ -23,7 +23,34 @@ class Knowledge < ApplicationRecord
   belongs_to :language, optional: true
 
   scope :ordered_by_level, -> {order(level: :desc)}
-  scope :ordered_by_language, -> { includes(:language).order('languages.description DESC')}
+  scope :ordered_by_language, -> {includes(:language).order('languages.description DESC')}
 
   enum knowledge_type: [:basic, :normal, :rare, :special, :unknown]
+
+  after_save :calc_language_rarity
+
+  private
+
+  def calc_language_rarity
+    return nil unless self.language.present?
+    total_profile = Profile.count
+    language_all_knowledge = Language.joins(:knowledges).where(id: self.language.id).group(:description).order('COUNT(knowledges.id) DESC').count[self.language.description]
+
+    percente = (language_all_knowledge.to_f / total_profile.to_f) * 100
+
+    case (percente)
+    when 90.0..100.0
+      rarity = :very_low
+    when 70.0..89.0
+      rarity = :low
+    when 30.0..69.0
+      rarity = :medium
+    when 10.0..29.0
+      rarity = :high
+    when 0.0..9.0
+      rarity = :very_high
+    end
+
+    self.language.update!(rarity: rarity)
+  end
 end

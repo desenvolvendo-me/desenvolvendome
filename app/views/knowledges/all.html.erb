@@ -43,29 +43,7 @@
       <div class="row">
         <% @languages.each do |language| %>
           <div class="col-md-4 text-center">
-            <%#= link_to knowledge_path(name) do %>
-            <div class="list-group-item list-group-item-action flex-column align-items-start">
-              <div class="d-flex w-100 justify-content-between">
-                <small>
-                  <div class="text-primary h3">
-                    <% if asset_exists? "language/#{knowledge_type(language.description)}/#{language.description.to_s.downcase}.png" %>
-                      <%= image_tag "language/#{knowledge_type(language.description)}/#{language.description.to_s.downcase}.png", size: "30x30" %>
-                      <%= language.description.to_s %>
-                    <% else %>
-                      <%= image_tag "language/empty.png", size: "30x30" %>
-                      <%= language.description.to_s %>
-                    <% end %>
-                  </div>
-                </small>
-              </div>
-              <div class="d-flex w-100 justify-content-between">
-                <small>
-                  <%= people_same_knowledge(language) %>
-                </small>
-              </div>
-            </div>
-            <%# end %>
-            <br>
+            <%= render 'language_card', language: language, knowledge: nil %>
           </div>
         <% end %>
       </div>

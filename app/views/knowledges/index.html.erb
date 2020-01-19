@@ -33,38 +33,8 @@
       </div>
       <div class="row">
         <% @knowledges.order(level: :desc).each do |knowledge| %>
-          <div class="col-md-6 text-center">
-            <%#= link_to knowledge_path(knowledge.name) do %>
-            <div class="list-group-item list-group-item-action flex-column align-items-start">
-              <div class="d-flex w-100 justify-content-between">
-                <small>
-                  <div class="text-primary h3">
-                    <% if asset_exists? "language/#{knowledge_type(knowledge.language.description)}/#{knowledge.language.description.to_s.downcase}.png" %>
-                      <%= image_tag "language/#{knowledge_type(knowledge.language.description)}/#{knowledge.language.description.to_s.downcase}.png", size: "30x30" %>
-                      <%= knowledge.language.description.to_s %>
-                    <% else %>
-                      <%= image_tag "language/empty.png", size: "30x30" %>
-                      <%= knowledge.language.description.to_s %>
-                    <% end %>
-                  </div>
-                </small>
-                <small>
-                  <i class="fa fa-trophy"></i> Seu nível é <strong><%= knowledge.level.to_i %></strong>
-                </small>
-              </div>
-              <div class="d-flex w-100 justify-content-between">
-                <small>
-                  <%= people_same_knowledge(knowledge) %>
-                </small>
-              </div>
-              <div class="d-flex w-100 justify-content-between">
-                <small>
-                  <%= people_higher_level(knowledge) %>
-                </small>
-              </div>
-            </div>
-            <%# end %>
-            <br>
+          <div class="col-md-4 text-center">
+            <%= render 'language_card', language: knowledge.language, knowledge: knowledge %>
           </div>
         <% end %>
       </div>
