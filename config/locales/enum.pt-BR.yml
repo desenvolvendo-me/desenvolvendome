@@ -14,11 +14,11 @@ pt-BR:
           knight: "Cavaleiro"
       language:
         rarities:
-          very_low: "Muito Baixo"
-          low: "Baixo"
-          medium:  "Médio"
-          high: "Alto"
-          very_high: "Muito Alto"
+          very_low: "Muito Baixa"
+          low: "Baixa"
+          medium:  "Média"
+          high: "Alta"
+          very_high: "Muito Alta"
         knowledge_types:
           basic: "Básico"
           normal: "Normal"
