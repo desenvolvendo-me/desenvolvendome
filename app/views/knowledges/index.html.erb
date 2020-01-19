@@ -9,7 +9,7 @@
       <div class="card card-signin">
         <div class="col-md-12">
           <%= search_form_for @q do |f| %>
-            <div class="row">
+            <div class="row justify-content-center">
               <div class="col-md-3">
                 <%= f.select :language_description_eq, options_from_collection_for_select(Language.joins(knowledges: [profile: :user]).where("users.id = ?", current_user.id).order(description: :asc), "description", "description", @q.language_description_eq), {:include_blank => true, prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
               </div>
@@ -21,7 +21,8 @@
                 <%= f.select :language_rarity_eq,
                              Language.rarities.to_a.map {|w| [enum_i18n(Language, "rarity", w[0]), w[1]]}, {:include_blank => true, prompt: 'Raridade'}, class: "form-control mb-1 mr-1" %>
               </div>
-              <div class="col"></div>
+            </div>
+            <div class="row justify-content-center">
               <div class="col-md-2">
                 <%= f.submit "Pesquisar", class: "form-control mb-1 mr-1 btn btn-success" %>
               </div>
