@@ -20,7 +20,15 @@
           <%= search_form_for @q, url: all_knowledges_path do |f| %>
             <div class="row">
               <div class="col-md-3">
-                <%= f.select :description_eq, options_from_collection_for_select(Language.order(description: :desc), "description", "description", @q.description_eq), {:include_blank => true, prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
+                <%= f.select :description_eq, options_from_collection_for_select(Language.order(description: :asc), "description", "description", @q.description_eq), {:include_blank => true, prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
+              </div>
+              <div class="col-md-2">
+                <%= f.select :knowledge_type_eq,
+                             Language.knowledge_types.to_a.map {|w| [enum_i18n(Language, "knowledge_type", w[0]), w[1]]}, {:include_blank => true, prompt: 'Tipo'}, class: "form-control mb-1 mr-1" %>
+              </div>
+              <div class="col-md-2">
+                <%= f.select :rarity_eq,
+                             Language.rarities.to_a.map {|w| [enum_i18n(Language, "rarity", w[0]), w[1]]}, {:include_blank => true, prompt: 'Raridade'}, class: "form-control mb-1 mr-1" %>
               </div>
               <div class="col"></div>
               <div class="col-md-2">
