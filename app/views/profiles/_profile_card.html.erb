@@ -1,0 +1,41 @@
+<div class="list-group-item list-group-item-action flex-column align-items-start mb-2">
+  <%= link_to user_path(profile.user.login) do %>
+    <div class="d-flex w-100 justify-content-between">
+      <% unless type.eql? "ranking" %>
+        <div class="h6 text-center">
+          <strong><%= profile.try(:evaluation).try(:evaluation_type) ? enum_i18n(Evaluation, "evaluation_type", profile.try(:evaluation).try(:evaluation_type)) : "?" %></strong>
+        </div>
+      <% else %>
+        <span class="btn btn-<%= index <= 2 ? ["primary", "success", "info"][index] : "secondary" %>"><h4><%= index + 1 %>º</h4></span>
+      <% end %>
+      <div class="h6 text-center">
+        <i class="fas fa-trophy"> <%= profile.try(:evaluation).try(:level) ? "#{profile.try(:evaluation).try(:level)}º nível" : "?" %></i>
+      </div>
+    </div>
+    <div class="d-flex w-100 justify-content-center">
+      <%= image_tag profile.user.avatar, size: "150x150", class: "rounded-circle" %>
+    </div>
+    <div class="d-flex w-100 justify-content-start">
+      <div class="h4"><%= profile.user.try(:name) ? truncate(profile.user.try(:name), length: 18) : "?" %></div>
+    </div>
+  <% end %>
+
+  <div class="d-flex w-100 justify-content-end">
+    <div class="h6">
+      <%= link_to "https://github.com/#{profile.user.try(:login)}", target: "_blank" do %>
+        <i class="fab fa-github"></i>
+        <%= profile.user.try(:login) ? "@#{profile.user.try(:login)}" : "?" %>
+      <% end %>
+    </div>
+  </div>
+  <% if current_user %>
+    <div class="d-flex w-100 justify-content-center mb-2">
+      <%= link_to compare_path(user: current_profile.user.login, compared: profile.user.login), class: "btn btn-outline-warning" do %>
+        <i class="fas fa-not-equal"> Comparar</i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+

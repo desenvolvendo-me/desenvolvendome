@@ -1,0 +1,13 @@
+<div class="row justify-content-center">
+  <%= paginate @profiles %>
+</div>
+<div class="row">
+  <% @profiles.each_with_index do |profile, index| %>
+    <div class="col-md-3 text-center">
+      <%= render 'profile_card', type: "normal", profile: profile, index: index %>
+    </div>
+  <% end %>
+</div>
+<div class="row justify-content-center">
+  <%= paginate @profiles %>
+</div>
