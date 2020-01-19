@@ -47,7 +47,7 @@
             <div class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="d-flex w-100 justify-content-between">
                 <small>
-                  <div class="text-primary h4">
+                  <div class="text-primary h6">
                     <% if asset_exists? "language/#{knowledge_type(language.description)}/#{language.description.to_s.downcase}.png" %>
                       <%= image_tag "language/#{knowledge_type(language.description)}/#{language.description.to_s.downcase}.png", size: "30x30" %>
                       <%= language.description.to_s %>
@@ -57,15 +57,16 @@
                     <% end %>
                   </div>
                 </small>
-              </div>
-              <div class="d-flex w-100 justify-content-between">
                 <small>
                   <%= people_same_knowledge(language) %>
                 </small>
               </div>
-              <div class="d-flex w-100 justify-content-end">
+              <div class="d-flex w-100 justify-content-between">
                 <small>
-                  <i class="far fa-gem"> Raridade: <%= enum_i18n(Language, "rarity", language.rarity) %></i>
+                  <i class="fas fa-gem"> <%= enum_i18n(Language, "rarity", language.rarity) %></i>
+                </small>
+                <small>
+                  <i class="fas fa-dollar-sign"> <%= enum_i18n(Language, "knowledge_type", language.knowledge_type) %></i>
                 </small>
               </div>
             </div>

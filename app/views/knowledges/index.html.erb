@@ -33,8 +33,7 @@
       </div>
       <div class="row">
         <% @knowledges.order(level: :desc).each do |knowledge| %>
-          <div class="col-md-6 text-center">
-            <%#= link_to knowledge_path(knowledge.name) do %>
+          <div class="col-md-4 text-center">
             <div class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="d-flex w-100 justify-content-between">
                 <small>
@@ -54,17 +53,26 @@
               </div>
               <div class="d-flex w-100 justify-content-between">
                 <small>
-                  <%= people_same_knowledge(knowledge) %>
+                  <%= people_higher_level(knowledge) %>
                 </small>
               </div>
               <div class="d-flex w-100 justify-content-between">
                 <small>
-                  <%= people_higher_level(knowledge) %>
+                  <i class="fas fa-gem"> Raridade: <%= enum_i18n(Language, "rarity", knowledge.language.rarity) %></i>
+                </small>
+              </div>
+              <div class="d-flex w-100 justify-content-between">
+                <small>
+                  <%= people_same_knowledge(knowledge.language) %>
+                </small>
+              </div>
+              <div class="d-flex w-100 justify-content-between">
+                <small>
+                  <i class="fas fa-dollar-sign"> Tipo de
+                    Conhecimento: <%= enum_i18n(Language, "knowledge_type", knowledge.language.knowledge_type) %></i>
                 </small>
               </div>
             </div>
-            <%# end %>
-            <br>
           </div>
         <% end %>
       </div>
