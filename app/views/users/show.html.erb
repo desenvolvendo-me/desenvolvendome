@@ -176,7 +176,7 @@
                   </div>
                   <ul class="list-group">
                     <% @user.profile.knowledges.where(knowledge_type: :basic).ordered_by_level.each do |knowledge| %>
-                      <%= render 'language', knowledge: knowledge, knowledge_type: "basic" %>
+                      <%= render 'language', knowledge: knowledge, knowledge_type: "basic", user: @user %>
                     <% end %>
                   </ul>
                 </div>
@@ -184,7 +184,7 @@
                   <div class="h5"><%= image_tag "language/normal/default.png", size: "30x30" %>Normais</div>
                   <ul class="list-group">
                     <% @user.profile.knowledges.where(knowledge_type: :normal).ordered_by_level.each do |knowledge| %>
-                      <%= render 'language', knowledge: knowledge, knowledge_type: "normal" %>
+                      <%= render 'language', knowledge: knowledge, knowledge_type: "normal", user: @user %>
                   <% end %>
                   </ul>
                 </div>
@@ -192,7 +192,7 @@
                   <div class="h5"><%= image_tag "language/rare/default.png", size: "30x30" %>Raras</div>
                   <ul class="list-group">
                     <% @user.profile.knowledges.where(knowledge_type: :rare).ordered_by_level.each do |knowledge| %>
-                      <%= render 'language', knowledge: knowledge, knowledge_type: "rare" %>
+                      <%= render 'language', knowledge: knowledge, knowledge_type: "rare", user: @user %>
                   <% end %>
                   </ul>
                 </div>
@@ -200,7 +200,7 @@
                   <div class="h5"><%= image_tag "language/special/default.png", size: "30x30" %>Especiais</div>
                   <ul class="list-group">
                     <% @user.profile.knowledges.where(knowledge_type: :special).ordered_by_level.each do |knowledge| %>
-                      <%= render 'language', knowledge: knowledge, knowledge_type: "special" %>
+                      <%= render 'language', knowledge: knowledge, knowledge_type: "special", user: @user %>
                   <% end %>
                   </ul>
                 </div>
@@ -208,7 +208,7 @@
                   <div class="h5"><%= image_tag "language/empty.png", size: "30x30" %>Menos Conhecidas</div>
                   <ul class="list-group">
                     <% @user.profile.knowledges.where(knowledge_type: :unknown).ordered_by_level.each do |knowledge| %>
-                      <%= render 'language', knowledge: knowledge, knowledge_type: "unknown" %>
+                      <%= render 'language', knowledge: knowledge, knowledge_type: "unknown", user: @user %>
                   <% end %>
                   </ul>
                 </div>
