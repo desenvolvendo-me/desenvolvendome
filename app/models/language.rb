@@ -9,6 +9,7 @@
 #
 
 class Language < ApplicationRecord
+  paginates_per 24
   has_many :knowledges
   has_many :technologies
 end
