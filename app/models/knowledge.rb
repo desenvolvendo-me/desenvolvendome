@@ -38,7 +38,7 @@ class Knowledge < ApplicationRecord
 
     percente = (language_all_knowledge.to_f / total_profile.to_f) * 100
 
-    case (percente)
+    case (percente.round(1))
     when 90.0..100.0
       rarity = :very_low
     when 70.0..89.9
