@@ -7,7 +7,8 @@ class Profile::Rating::Know
           basic: ["HTML", "CSS", "JavaScript", "Shell", "PowerShell"],
           normal: ["Java", "Python", "Ruby", "PHP", "C#", "TypeScript"],
           rare: ["C", "C++", "Groovy", "Dockerfile", "Vue"],
-          special: ["Swift", "Objective-C ", "Kotlin", "Go", "Elixir", "Erlang"]}
+          special: ["Swift", "Objective-C ", "Kotlin", "Go", "Elixir", "Erlang"]
+      }
   }
 
   def initialize(user)
