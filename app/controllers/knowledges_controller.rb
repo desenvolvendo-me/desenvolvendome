@@ -5,4 +5,9 @@ class KnowledgesController < ApplicationController
     @knowledges = @q.result(distinct: true).page params[:page]
   end
 
+  def all
+    @q = Knowledge.ransack(params[:q])
+    @knowledges = @q.result(distinct: true).page params[:page]
+  end
+
 end

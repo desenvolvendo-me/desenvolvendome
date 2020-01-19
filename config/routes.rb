@@ -141,11 +141,13 @@ Rails.application.routes.draw do
   #Profile
   post "reimport", to: "users#reimport", as: "reimport_user"
   get "profile/:id", to: "users#show", as: "user"
+  #TODO: Refatoring names, ex: my_projects e my_knowledges
   get "projects", to: "repositories#index", as: "repositories"
   get "knowledges", to: "knowledges#index", as: "knowledges"
+  get "all_knowledges", to: "knowledges#all", as: "all_knowledges"
 
   #Ranking
-  get "rankings", to: "profiles#index"
+  get "rankings", to: "profiles#index", as: :rankings
   get "rankings/starteds", to: "profiles#starteds", as: "starteds"
   get "rankings/novices", to: "profiles#novices", as: "novices"
   get "rankings/knights", to: "profiles#knights", as: "knights"

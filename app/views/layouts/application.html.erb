@@ -40,14 +40,18 @@
 
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
+            <%= link_to rankings_path, class: "nav-link" do %>
+              <i class="fas fa-sort-numeric-up"> Rankings</i>
+            <% end %>
+          </li>
+          <li class="nav-item">
             <%= link_to compare_new_path, class: "nav-link" do %>
               <i class="fas fa-users"> Perfis</i>
             <% end %>
           </li>
-
           <li class="nav-item">
-            <%= link_to rankings_path, class: "nav-link" do %>
-              <i class="fas fa-sort-numeric-up"> Rankings</i>
+            <%= link_to all_knowledges_path, class: "nav-link" do %>
+              <i class="fas fa-file-code"> Conhecimentos</i>
             <% end %>
           </li>
         </ul>
@@ -56,22 +60,27 @@
           <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to user_path(current_user.login), class: "nav-link" do %>
-                <i class="fas fa-user"> Perfil</i>
+                <i class="fas fa-user"> Meu Perfil</i>
               <% end %>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-database"> Meus Dados</i>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <%= link_to repositories_path, class: "dropdown-item" do %>
+                  <i class="fas fa-laptop"> Projetos</i>
+                <% end %>
+                <%= link_to knowledges_path, class: "dropdown-item" do %>
+                  <i class="fas fa-file-code"> Conhecimentos</i>
+                <% end %>
+              </div>
             </li>
             <li class="nav-item">
-              <%= link_to repositories_path, class: "nav-link" do %>
-                <i class="fas fa-laptop"> Projetos</i>
+              <%= link_to destroy_user_session_path, :method => 'delete', class: "fa- nav-link" do %>
+                <i class="fas fa-sign-out-alt"> Sair</i>
               <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to knowledges_path, class: "nav-link" do %>
-                <i class="fas fa-file-code"> Conhecimentos</i>
-              <% end %>
-            </li>
-            <%= link_to destroy_user_session_path, :method => 'delete', class: "fa- nav-link" do %>
-              <i class="fas fa-sign-out-alt"> Sair</i>
-            <% end %>
           <% else %>
             <li class="nav-item">
               <%= link_to user_github_omniauth_authorize_path, class: "nav-link" do %>
