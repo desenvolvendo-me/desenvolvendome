@@ -41,13 +41,13 @@ class Knowledge < ApplicationRecord
     case (percente)
     when 90.0..100.0
       rarity = :very_low
-    when 70.0..89.0
+    when 70.0..89.9
       rarity = :low
-    when 30.0..69.0
+    when 30.0..69.9
       rarity = :medium
-    when 10.0..29.0
+    when 10.0..29.9
       rarity = :high
-    when 0.0..9.0
+    when 0.0..9.9
       rarity = :very_high
     end
 
