@@ -30,7 +30,7 @@
   </div>
   <% if current_user %>
     <div class="d-flex w-100 justify-content-center mb-2">
-      <%= link_to compare_path(user: current_profile.user.login, compared: profile.user.login), class: "btn btn-outline-warning" do %>
+      <%= link_to compare_path(user: current_user.login, compared: profile.user.login), class: "btn btn-outline-warning" do %>
         <i class="fas fa-not-equal"> Comparar</i>
       <% end %>
     </div>
