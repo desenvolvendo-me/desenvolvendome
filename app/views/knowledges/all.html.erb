@@ -1,0 +1,68 @@
+<div class="container container-intests-new" xmlns="http://www.w3.org/1999/html">
+  <div class="col-md-12 text-center">
+    <div class="h2 text-default text-uppercase">
+      <i class="fa fa-laptop"> todos conhecimentos</i>
+    </div>
+  </div>
+  <div class="center-block">
+    <div class="col-md-12 mx-auto">
+      <div class="card card-signin">
+        <div class="col-md-12">
+          <%= search_form_for @q, url: all_knowledges_path do |f| %>
+            <div class="row">
+              <div class="col-md-3">
+                <%= f.select :description_eq, options_from_collection_for_select(Language.order(description: :desc), "description", "description", @q.description_eq), {:include_blank => true, prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
+              </div>
+              <div class="col"></div>
+              <div class="col-md-2">
+                <%= f.submit "Pesquisar", class: "form-control mb-1 mr-1 btn btn-success" %>
+              </div>
+              <div class="col-md-2">
+                <%= link_to "Cancelar", request.path, class: "form-control mb-1 mr-1 btn btn-info" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row justify-content-center">
+        <%= paginate @languages %>
+      </div>
+      <div class="row justify-content-center">
+        <%= page_entries_info @languages %>
+      </div>
+      <div class="row">
+        <% @languages.each do |language| %>
+          <div class="col-md-4 text-center">
+            <%#= link_to knowledge_path(name) do %>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <small>
+                  <div class="text-primary h3">
+                    <% if asset_exists? "language/#{knowledge_type(language.description)}/#{language.description.to_s.downcase}.png" %>
+                      <%= image_tag "language/#{knowledge_type(language.description)}/#{language.description.to_s.downcase}.png", size: "30x30" %>
+                      <%= language.description.to_s %>
+                    <% else %>
+                      <%= image_tag "language/empty.png", size: "30x30" %>
+                      <%= language.description.to_s %>
+                    <% end %>
+                  </div>
+                </small>
+              </div>
+              <div class="d-flex w-100 justify-content-between">
+                <small>
+                  <%= people_same_knowledge(language) %>
+                </small>
+              </div>
+            </div>
+            <%# end %>
+            <br>
+          </div>
+        <% end %>
+      </div>
+      <div class="row justify-content-center">
+        <%= paginate @languages %>
+      </div>
+    </div>
+  </div>
+</div>
