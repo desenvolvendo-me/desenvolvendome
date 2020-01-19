@@ -18,6 +18,7 @@
 #
 
 class Knowledge < ApplicationRecord
+  paginates_per 12
   belongs_to :profile, optional: true
   belongs_to :language, optional: true
 
