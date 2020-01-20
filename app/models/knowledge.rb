@@ -18,7 +18,9 @@
 #
 
 class Knowledge < ApplicationRecord
+  audited only: [:experience, :knowledge_type, :level, :language_id]
   paginates_per 12
+
   belongs_to :profile, optional: true
   belongs_to :language, optional: true
 
