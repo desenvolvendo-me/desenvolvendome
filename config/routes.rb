@@ -145,6 +145,7 @@ Rails.application.routes.draw do
   get "projects", to: "repositories#index", as: "repositories"
   get "knowledges", to: "knowledges#index", as: "knowledges"
   get "all_knowledges", to: "knowledges#all", as: "all_knowledges"
+  get "historic", to: "users#historic", as: "historic"
 
   #Ranking
   get "rankings", to: "profiles#index", as: :rankings
