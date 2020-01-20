@@ -88,6 +88,8 @@ GEM
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     ast (2.4.0)
+    audited (4.9.0)
+      activerecord (>= 4.2, < 6.1)
     aws-eventstream (1.0.3)
     aws-partitions (1.207.0)
     aws-sdk-core (3.65.1)
@@ -537,6 +539,7 @@ DEPENDENCIES
   activeadmin_sidekiq_stats
   ahoy_matey
   annotate
+  audited (~> 4.9)
   aws-sdk-s3
   better_errors
   binding_of_caller

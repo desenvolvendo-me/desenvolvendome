@@ -29,6 +29,7 @@ gem 'kaminari'
 gem 'ransack'
 gem "ahoy_matey"
 gem 'gravtastic'
+gem "audited", "~> 4.9"
 
 #Admin
 gem 'activeadmin'
