@@ -14,7 +14,7 @@
                 <%= f.search_field :name_cont, placeholder: "Nome", class: "form-control mb-1 mr-1" %>
               </div>
               <div class="col-md-3">
-                <%= f.select :principal_technology_or_technologies_language_description_eq, options_from_collection_for_select(Language.joins(knowledges: [profile: :user]).where("users.id = ?", current_user.id), "description", "description", @q.principal_technology_or_technologies_language_description_eq), {:include_blank => true, prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
+                <%= f.select :principal_technology_or_technologies_language_description_eq, options_from_collection_for_select(Language.joins(knowledges: [profile: :user]).where("users.id = ?", current_user.id), "description", "description", @q.principal_technology_or_technologies_language_description_eq), {prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
               </div>
             </div>
             <div class="row justify-content-center">
