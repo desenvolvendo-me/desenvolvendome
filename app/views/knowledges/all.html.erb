@@ -1,5 +1,4 @@
-<%= javascript_include_tag "https://www.google.com/jsapi" %>
-<%= javascript_include_tag "chartkick" %>
+
 
 <div class="container container-intests-new" xmlns="http://www.w3.org/1999/html">
   <div class="col-md-12 text-center">
@@ -7,12 +6,7 @@
       <i class="fa fa-laptop"> todos conhecimentos</i>
     </div>
   </div>
-  <div class="col-md-12 text-center">
-    <div class="h5 text-default text-uppercase">
-      <%= column_chart Knowledge.joins(:language).order("languages.description": :asc).group("languages.description").count.sort_by {|e| e.last}.reverse.first(20), ytitle: "Quantidade de Uso", label: "Quantidade" %>
-      <i class="fas fa-chart-bar"> Top 20 Conhecimentos</i>
-    </div>
-  </div>
+  <%= render 'top_20_knowledge' %>
   <div class="center-block">
     <div class="col-md-12 mx-auto">
       <div class="card card-signin">
