@@ -8,7 +8,7 @@
           <h3 class="text-default text-uppercase text-uppercase">iniciados</h3>
           <h3 class="text-info text-uppercase text-uppercase"><%= link_to "Veja Todos", starteds_path, class: "btn btn-info" %></h3>
           <% Profile.evaluation(evaluation_type: :started, limit: 10).order(xp: :desc).each_with_index do |profile, index| %>
-            <%= render 'profile_card', type: "ranking", profile: profile, index: index %>
+            <%= render 'profiles/profile_card', type: "ranking", profile: profile, index: index %>
           <% end %>
           <h3 class="text-info text-uppercase text-uppercase"><%= link_to "Veja Todos", starteds_path, class: "btn btn-info" %></h3>
         </div>
@@ -17,7 +17,7 @@
           <h3 class="text-default text-uppercase text-uppercase">aprendizes</h3>
           <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", novices_path, class: "btn btn-info" %></h3>
           <% Profile.evaluation(evaluation_type: :novice, limit: 10).order(xp: :desc).each_with_index do |profile, index| %>
-            <%= render 'profile_card', type: "ranking", profile: profile, index: index %>
+            <%= render 'profiles/profile_card', type: "ranking", profile: profile, index: index %>
           <% end %>
           <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", novices_path, class: "btn btn-info" %></h3>
         </div>
@@ -26,7 +26,7 @@
           <h3 class="text-default text-uppercase text-uppercase">cavaleiros</h3>
           <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", knights_path, class: "btn btn-info" %></h3>
           <% Profile.evaluation(evaluation_type: :knight, limit: 10).order(xp: :desc).each_with_index do |profile, index| %>
-            <%= render 'profile_card', type: "ranking", profile: profile, index: index %>
+            <%= render 'profiles/profile_card', type: "ranking", profile: profile, index: index %>
           <% end %>
           <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", knights_path, class: "btn btn-info" %></h3>
         </div>

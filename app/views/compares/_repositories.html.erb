@@ -11,14 +11,14 @@
                   <% if number_small_projects(user) != 0 %>
                     <div class="h5 mb-1">Você tem
                       <strong><%= number_small_projects(user) %></strong>
-                      <%= "projeto".pluralize(number_small_projects(user)) %>
+                      <%= "repositório".pluralize(number_small_projects(user)) %>
                     </div>
                     <small class="text-muted">
                       <%= "pequeno".pluralize(number_small_projects(user)) %>
                     </small>
                   <% else %>
                     <div class="h5 mb-1">
-                      Você não tem projetos
+                      Você não tem repositórios
                     </div>
                     <small class="text-muted">
                       pequenos
@@ -34,14 +34,14 @@
                   <% if number_medium_projects(user) != 0 %>
                     <div class="h5 mb-1">Você tem
                       <strong><%= number_medium_projects(user) %></strong>
-                      <%= "projeto".pluralize(number_medium_projects(user)) %>
+                      <%= "repositório".pluralize(number_medium_projects(user)) %>
                     </div>
                     <small class="text-muted">
                       <%= "médio".pluralize(number_medium_projects(user)) %>
                     </small>
                   <% else %>
                     <div class="h5 mb-1">
-                      Você não tem projetos
+                      Você não tem repositórios
                     </div>
                     <small class="text-muted">
                       médios
@@ -57,14 +57,14 @@
                   <% if number_large_projects(user) != 0 %>
                     <div class="h5 mb-1">Você tem
                       <strong><%= number_large_projects(user) %></strong>
-                      <%= "projeto".pluralize(number_large_projects(user)) %>
+                      <%= "repositório".pluralize(number_large_projects(user)) %>
                     </div>
                     <small class="text-muted">
                       <%= "grande".pluralize(number_large_projects(user)) %>
                     </small>
                   <% else %>
                     <div class="h5 mb-1">
-                      Você não tem projetos
+                      Você não tem repositórios
                     </div>
                     <small class="text-muted">
                       grandes

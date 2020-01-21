@@ -1,11 +1,6 @@
 #TODO: Factoring esse controller
 class ComparesController < ApplicationController
 
-  def new
-    @q = User.order(created_at: :desc).ransack(params[:q])
-    @users = @q.result(distinct: true).includes(:profile).page params[:page]
-  end
-
   def show
     @user = User.find_by_login(params[:user])
     @compared = User.find_by_login(params[:compared])

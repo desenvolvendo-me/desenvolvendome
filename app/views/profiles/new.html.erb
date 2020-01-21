@@ -3,7 +3,7 @@
     <div class="col-md-12 mx-auto">
       <div class="card card-signin">
         <div class="col-md-12 mx-auto">
-          <%= search_form_for @q, url: compare_new_path do |f| %>
+          <%= search_form_for @q, url: new_profiles_path do |f| %>
             <div class="row justify-content-center">
               <div class="col-md-3">
                 <%= f.search_field :name_or_login_cont, placeholder: "Nome ou Login Github", class: "form-control mb-1 mr-1" %>

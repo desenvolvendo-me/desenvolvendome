@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
-  def new
-  end
+
 
   def show
   end

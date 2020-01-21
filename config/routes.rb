@@ -133,31 +133,30 @@ Rails.application.routes.draw do
   resources :interests, except: [:show, :edit, :destroy, :update]
   get "interest", to: "interests#show", as: "interest"
 
-
   #Analyze
   get "analyze", to: "users#new", as: "new_user"
   post "analyze", to: "users#create", as: "users"
 
   #Profile
-  post "reimport", to: "users#reimport", as: "reimport_user"
+  get "profiles", to: "profiles#new", as: "new_profiles"
   get "profile/:id", to: "users#show", as: "user"
-  #TODO: Refatoring names, ex: my_projects e my_knowledges
-  get "projects", to: "repositories#index", as: "repositories"
+  get "historic", to: "users#historic", as: "historic"
+  get "repositories/:login", to: "repositories#user", as: "user_repositories"
   get "knowledges", to: "knowledges#index", as: "knowledges"
   get "knowledges/:login", to: "knowledges#user", as: "user_knowledges"
-  get "historic", to: "users#historic", as: "historic"
+
+  post "reimport", to: "users#reimport", as: "reimport_user"
 
   #Ranking
-  get "rankings", to: "profiles#index", as: :rankings
-  get "rankings/starteds", to: "profiles#starteds", as: "starteds"
-  get "rankings/novices", to: "profiles#novices", as: "novices"
-  get "rankings/knights", to: "profiles#knights", as: "knights"
+  get "rankings", to: "rankings#index", as: :rankings
+  get "rankings/starteds", to: "rankings#starteds", as: "starteds"
+  get "rankings/novices", to: "rankings#novices", as: "novices"
+  get "rankings/knights", to: "rankings#knights", as: "knights"
 
   #Rule
   get "rule", to: "users#rule", as: "rule_user"
 
   #Compare
-  get "compare", to: "compares#new", as: "compare_new"
   post "compare", to: "compares#create", as: "compares"
   get "profile/:user/compare/:compared", to: "compares#show", as: "compare"
 
