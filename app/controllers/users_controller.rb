@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   def rule
   end
 
+  def historic
+    @user = current_user
+  end
+
   def reimport
     GenerateProfileJob.perform_later(current_user.login)
     redirect_to user_path(current_user.login)

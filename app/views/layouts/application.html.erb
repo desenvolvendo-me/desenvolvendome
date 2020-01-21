@@ -69,10 +69,13 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <%= link_to repositories_path, class: "dropdown-item" do %>
-                  <i class="fas fa-laptop"> Projetos</i>
+                  Meus Projetos <i class="fas fa-laptop"></i>
                 <% end %>
                 <%= link_to knowledges_path, class: "dropdown-item" do %>
-                  <i class="fas fa-file-code"> Conhecimentos</i>
+                  Meus Conhecimentos <i class="fas fa-file-code"></i>
+                <% end %>
+                <%= link_to historic_path, class: "dropdown-item" do %>
+                  Meu Histórico (beta) <i class="fas fa-history"></i>
                 <% end %>
               </div>
             </li>

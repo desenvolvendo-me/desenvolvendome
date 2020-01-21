@@ -1,0 +1,90 @@
+<div class="bg-perfil">
+</div>
+<div class="container profile">
+  <div class="center-block">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="image-container">
+          <% if @user %>
+            <% if @user.avatar %>
+              <%= image_tag @user.avatar, size: "150x150", class: "profile-image rounded-circle" %>
+            <% else %>
+              <%= image_tag "user.png", size: "150x150", class: "profile-image rounded-circle" %>
+            <% end %>
+            <div class="progress">
+              <% if @user.try(:profile) %>
+                <div class="progress-bar" role="progressbar" style="width: <%= progress_bar(@user) %>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Importado <%= number_to_percentage(progress_bar(@user), precision: 0) %></div>
+              <% end %>
+            </div>
+            <div class="h4 text-center"><%= @user.try(:name) %></div>
+            <div class="h6 text-center">
+              <a href="https://github.com/<%= @user.try(:login) %>" title="<%= @user.try(:login) %>" target="_new">@<%= @user.try(:login) %></a>
+            </div>
+          <% else %>
+            <%= image_tag "user.png", size: "150x150", class: "profile-image rounded-circle" %>
+          <% end %>
+        </div>
+        <div class="evaluation-container">
+          <% if @user.try(:profile).try(:evaluation) %>
+            <% if asset_exists? "evaluation/#{@user.profile.try(:evaluation).try(:evaluation_type)}.png" %>
+              <%= image_tag "evaluation/#{@user.profile.try(:evaluation).try(:evaluation_type)}.png", size: "150x150", class: "profile-image rounded-circle" %>
+            <% else %>
+              <%= image_tag "evaluation/default.png", size: "150x150", class: "profile-image rounded-circle" %>
+            <% end %>
+            <div class="progress">
+              <% if @user.try(:profile) %>
+                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= next_level_bar(@user)[:percentage] %>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><%= next_level_bar(@user)[:number] %></div>
+              <% end %>
+            </div>
+            <div class="h4 text-center"><%= enum_i18n(Evaluation, "evaluation_type", @user.profile.try(:evaluation).try(:evaluation_type)) %></div>
+            <div class="h6 text-center"><%= "#{@user.profile.try(:evaluation).try(:level)}º Nível" %>
+              <i class="fas fa-trophy"></i></div>
+          <% else %>
+            <%= image_tag "evaluation/default.png", size: "150x150", class: "profile-image rounded-circle" %>
+            <div class="progress">
+              <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">?</div>
+            </div>
+            <div class="h4 text-center">?</div>
+            <div class="h6 text-center">?º nível</div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% unless current_user %>
+      <div class="d-flex justify-content-end">
+        <%= render 'call_to_actions/interest' %>
+      </div>
+    <% end %>
+    <div class="row mt-2">
+      <div class="col"></div>
+      <div class="col-md-8">
+        <div class="main-timeline">
+          <% @user.profile.evaluation.audits.each do |audit_e| %>
+            <div class="timeline">
+              <a href="#" class="timeline-content">
+                <span class="timeline-year"><%= audit_e.created_at.strftime("%d/%m/%y") %></span>
+                <div class="timeline-icon">
+                  <i class="fa fa-rocket" aria-hidden="true"></i>
+                </div>
+                <div class="content">
+                  <h3 class="title"><%= audit_e.auditable_type.constantize.model_name.human %></h3>
+                  <p class="description">
+                    <% if audit_e.version.eql? 1 %>
+                      XP: <%= audit_e.audited_changes["score"].kind_of?(Array) ? audit_e.audited_changes["score"].to_a.last.to_i : audit_e.audited_changes["score"].to_i %>
+                      Evolução: <%= audit_e.audited_changes["evaluation_type"].kind_of?(Array) ? audit_e.audited_changes["evaluation_type"].to_a.last.to_i : audit_e.audited_changes["evaluation_type"] %>
+                      Nível: <%= audit_e.audited_changes["level"].kind_of?(Array) ? audit_e.audited_changes["level"].to_a.last.to_i : audit_e.audited_changes["level"] %>
+                    <% else %>
+                      "Entrou na comunidade DesenvolvendoMe"
+                    <% end %>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </p>
+                </div>
+              </a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+</div>
