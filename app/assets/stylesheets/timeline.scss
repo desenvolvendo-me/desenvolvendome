@@ -68,7 +68,7 @@ body {
 
 .main-timeline .timeline-year {
   color: #65c7d0;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: 600;
   display: inline-block;
   transform: translatey(-50%);
@@ -79,7 +79,7 @@ body {
 
 .main-timeline .timeline-icon {
   color: #65c7d0;
-  font-size: 70px;
+  font-size: 50px;
   display: inline-block;
   transform: translateY(-50%);
   position: absolute;
@@ -97,7 +97,7 @@ body {
 
 .main-timeline .title {
   color: #65c7d0;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   text-transform: uppercase;
   margin: 0 0 5px 0;
@@ -269,18 +269,18 @@ body {
     top: 9px;
     right: 9px;
   }
-  .main-timeline .timeline-icon{ font-size: 60px; }
-  .main-timeline .timeline-year{ font-size: 40px; }
+  .main-timeline .timeline-icon{ font-size: 30px; }
+  .main-timeline .timeline-year{ font-size: 20px; }
 }
 @media screen and (max-width:479px){
   .main-timeline .timeline-icon{
     font-size: 50px;
     transform:translateY(0);
-    top: 25%;
+    top: 15%;
     left: 10%;
   }
   .main-timeline .timeline-year{
-    font-size: 25px;
+    font-size: 15px;
     transform:translateY(0);
     top: 65%;
     left: 9%;

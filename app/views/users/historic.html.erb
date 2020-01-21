@@ -56,108 +56,35 @@
       </div>
     <% end %>
     <div class="row mt-2">
-      <div class="col">
+      <div class="col"></div>
+      <div class="col-md-8">
         <div class="main-timeline">
-          <div class="timeline">
-            <a href="#" class="timeline-content">
-              <span class="timeline-year">2018</span>
-              <div class="timeline-icon">
-                <i class="fa fa-rocket" aria-hidden="true"></i>
-              </div>
-              <div class="content">
-                <h3 class="title">Web Development</h3>
-                <p class="description">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                </p>
-              </div>
-            </a>
-          </div>
-          <div class="timeline">
-            <a href="#" class="timeline-content">
-              <span class="timeline-year">2017</span>
-              <div class="timeline-icon">
-                <i class="fa fa-users" aria-hidden="true"></i>
-              </div>
-              <div class="content">
-                <h3 class="title">JavaScript</h3>
-                <p class="description">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                </p>
-              </div>
-            </a>
-          </div>
-          <div class="timeline">
-            <a href="#" class="timeline-content">
-              <span class="timeline-year">2017</span>
-              <div class="timeline-icon">
-                <i class="fa fa-cog" aria-hidden="true"></i>
-              </div>
-              <div class="content">
-                <h3 class="title">Mongo DB</h3>
-                <p class="description">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                </p>
-              </div>
-            </a>
-          </div>
-          <div class="timeline">
-            <a href="#" class="timeline-content">
-              <span class="timeline-year">2017</span>
-              <div class="timeline-icon">
-                <i class="fa fa-heart" aria-hidden="true"></i>
-              </div>
-              <div class="content">
-                <h3 class="title">BlackPearl</h3>
-                <p class="description">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                </p>
-              </div>
-            </a>
-          </div>
-          <div class="timeline">
-            <a href="#" class="timeline-content">
-              <span class="timeline-year">2017</span>
-              <div class="timeline-icon">
-                <i class="fa fa-globe" aria-hidden="true"></i>
-              </div>
-              <div class="content">
-                <h3 class="title">Angular</h3>
-                <p class="description">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                </p>
-              </div>
-            </a>
-          </div>
-          <div class="timeline">
-            <a href="#" class="timeline-content">
-              <span class="timeline-year">2017</span>
-              <div class="timeline-icon">
-                <i class="fa fa-apple" aria-hidden="true"></i>
-              </div>
-              <div class="content">
-                <h3 class="title">Laravel</h3>
-                <p class="description">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                </p>
-              </div>
-            </a>
-          </div>
-          <div class="timeline">
-            <a href="#" class="timeline-content">
-              <span class="timeline-year">2017</span>
-              <div class="timeline-icon">
-                <i class="fa fa-edit" aria-hidden="true"></i>
-              </div>
-              <div class="content">
-                <h3 class="title">Creapure</h3>
-                <p class="description">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                </p>
-              </div>
-            </a>
-          </div>
+          <% @user.profile.evaluation.audits.each do |audit_e| %>
+            <div class="timeline">
+              <a href="#" class="timeline-content">
+                <span class="timeline-year"><%= audit_e.created_at.strftime("%d/%m/%y") %></span>
+                <div class="timeline-icon">
+                  <i class="fa fa-rocket" aria-hidden="true"></i>
+                </div>
+                <div class="content">
+                  <h3 class="title"><%= audit_e.auditable_type.constantize.model_name.human %></h3>
+                  <p class="description">
+                    <% if audit_e.version.eql? 1 %>
+                      XP: <%= audit_e.audited_changes["score"].kind_of?(Array) ? audit_e.audited_changes["score"].to_a.last.to_i : audit_e.audited_changes["score"].to_i %>
+                      Evolução: <%= audit_e.audited_changes["evaluation_type"].kind_of?(Array) ? audit_e.audited_changes["evaluation_type"].to_a.last.to_i : audit_e.audited_changes["evaluation_type"] %>
+                      Nível: <%= audit_e.audited_changes["level"].kind_of?(Array) ? audit_e.audited_changes["level"].to_a.last.to_i : audit_e.audited_changes["level"] %>
+                    <% else %>
+                      "Entrou na comunidade DesenvolvendoMe"
+                    <% end %>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </p>
+                </div>
+              </a>
+            </div>
+          <% end %>
         </div>
       </div>
+      <div class="col"></div>
     </div>
   </div>
 </div>
