@@ -7,17 +7,22 @@
             <div class="col-md-12">
               <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
-                  <small><%= image_tag "evaluation/started.png", size: "30x30" %></small>
-                  <div class="h5 mb-1">
-                    <strong><%= user.repositories.where("commits_count < 50").count %></strong>
-                    projeto(s)
-                  </div>
-                  <% if user %>
+                  <small><%= image_tag "evaluation/started.png", size: "20x20" %></small>
+                  <% if number_small_projects(user) != 0 %>
+                    <div class="h5 mb-1">Você tem
+                      <strong><%= number_small_projects(user) %></strong>
+                      <%= "projeto".pluralize(number_small_projects(user)) %>
+                    </div>
                     <small class="text-muted">
-                      com pouco código
+                      <%= "pequeno".pluralize(number_small_projects(user)) %>
                     </small>
                   <% else %>
-                    <small class="text-muted"> 0 projeto(s)</small>
+                    <div class="h5 mb-1">
+                      Você não tem projetos
+                    </div>
+                    <small class="text-muted">
+                      pequenos
+                    </small>
                   <% end %>
                 </a>
               </div>
@@ -25,17 +30,22 @@
             <div class="col-md-12">
               <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
-                  <small><%= image_tag "evaluation/novice.png", size: "30x30" %></small>
-                  <div class="h5" class="mb-1">
-                    <strong><%= user.repositories.where("commits_count > 50 and commits_count < 100").count %></strong>
-                    projeto(s)
-                  </div>
-                  <% if user %>
+                  <small><%= image_tag "evaluation/novice.png", size: "20x20" %></small>
+                  <% if number_medium_projects(user) != 0 %>
+                    <div class="h5 mb-1">Você tem
+                      <strong><%= number_medium_projects(user) %></strong>
+                      <%= "projeto".pluralize(number_medium_projects(user)) %>
+                    </div>
                     <small class="text-muted">
-                      com bastante código
+                      <%= "médio".pluralize(number_medium_projects(user)) %>
                     </small>
                   <% else %>
-                    <small class="text-muted"> 0 projeto(s)</small>
+                    <div class="h5 mb-1">
+                      Você não tem projetos
+                    </div>
+                    <small class="text-muted">
+                      médios
+                    </small>
                   <% end %>
                 </a>
               </div>
@@ -43,17 +53,22 @@
             <div class="col-md-12">
               <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
-                  <small><%= image_tag "evaluation/knight.png", size: "30x30" %></small>
-                  <div class="h5" class="mb-1">
-                    <strong><%= user.repositories.where("commits_count > 100").count %></strong>
-                    projeto(s)
-                  </div>
-                  <% if user %>
+                  <small><%= image_tag "evaluation/knight.png", size: "20x20" %></small>
+                  <% if number_large_projects(user) != 0 %>
+                    <div class="h5 mb-1">Você tem
+                      <strong><%= number_large_projects(user) %></strong>
+                      <%= "projeto".pluralize(number_large_projects(user)) %>
+                    </div>
                     <small class="text-muted">
-                      com muito código.
+                      <%= "grande".pluralize(number_large_projects(user)) %>
                     </small>
                   <% else %>
-                    <small class="text-muted"> 0 projeto(s)</small>
+                    <div class="h5 mb-1">
+                      Você não tem projetos
+                    </div>
+                    <small class="text-muted">
+                      grandes
+                    </small>
                   <% end %>
                 </a>
               </div>

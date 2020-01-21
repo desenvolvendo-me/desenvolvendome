@@ -7,19 +7,7 @@
             <div class="col-md-12">
               <div class="list-group">
                 <% user.profile.knowledges.where(knowledge_type: type.to_sym).ordered_by_language.each do |knowledge| %>
-                  <a class="list-group-item d-flex justify-content-between align-items-center mb-1">
-                    <strong>
-                      <% if asset_exists? "language/#{type}/#{knowledge.language.description.downcase}.png" %>
-                        <%= image_tag "language/#{type}/#{knowledge.language.description.downcase}.png", size: "20x20" %>
-                        <%= knowledge.language.description %>
-                    <% else %>
-                        <%= image_tag "language/empty.png", size: "30x30" %>
-                      <% end %>
-                    </strong>
-                    <div class="col-md-4">
-                      <span class="badge badge-primary badge-pill"><%= knowledge.level %>º nível</span>
-                    </div>
-                  </a>
+                  <%= render 'users/language', knowledge: knowledge, knowledge_type: type, user: user %>
                 <% end %>
               </div>
             </div>
