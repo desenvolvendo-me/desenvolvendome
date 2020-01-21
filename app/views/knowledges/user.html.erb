@@ -1,27 +1,25 @@
 
-
 <div class="container container-intests-new" xmlns="http://www.w3.org/1999/html">
   <div class="col-md-12 text-center">
     <div class="h2 text-default text-uppercase">
-      <i class="fa fa-laptop"> todos conhecimentos</i>
+      <i class="fa fa-laptop"> seus conhecimentos</i>
     </div>
   </div>
-  <%= render 'top_20_knowledge' %>
   <div class="center-block">
     <div class="col-md-12 mx-auto">
       <div class="card card-signin">
         <div class="col-md-12">
-          <%= search_form_for @q, url: all_knowledges_path do |f| %>
+          <%= search_form_for @q, url: user_knowledges_path do |f| %>
             <div class="row justify-content-center">
               <div class="col-md-3">
-                <%= f.select :description_eq, options_from_collection_for_select(Language.order(description: :asc), "description", "description", @q.description_eq), {prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
+                <%= f.select :language_description_eq, options_from_collection_for_select(Language.joins(knowledges: [profile: :user]).where("users.id = ?", current_user.id).order(description: :asc), "description", "description", @q.language_description_eq), {prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
               </div>
               <div class="col-md-2">
-                <%= f.select :knowledge_type_eq,
+                <%= f.select :language_knowledge_type_eq,
                              Language.knowledge_types.to_a.map {|w| [enum_i18n(Language, "knowledge_type", w[0]), w[1]]}, {prompt: 'Tipo'}, class: "form-control mb-1 mr-1" %>
               </div>
               <div class="col-md-2">
-                <%= f.select :rarity_eq,
+                <%= f.select :language_rarity_eq,
                              Language.rarities.to_a.map {|w| [enum_i18n(Language, "rarity", w[0]), w[1]]}, {prompt: 'Raridade'}, class: "form-control mb-1 mr-1" %>
               </div>
             </div>
@@ -38,20 +36,20 @@
       </div>
       <hr class="featurette-divider">
       <div class="row justify-content-center">
-        <%= paginate @languages %>
+        <%= paginate @knowledges %>
       </div>
       <div class="row justify-content-center">
-        <%= page_entries_info @languages %>
+        <%= page_entries_info @knowledges %>
       </div>
       <div class="row">
-        <% @languages.each do |language| %>
+        <% @knowledges.order(level: :desc).each do |knowledge| %>
           <div class="col-md-4 text-center">
-            <%= render 'language_card', language: language, knowledge: nil %>
+            <%= render 'language_card', language: knowledge.language, knowledge: knowledge %>
           </div>
         <% end %>
       </div>
       <div class="row justify-content-center">
-        <%= paginate @languages %>
+        <%= paginate @knowledges %>
       </div>
     </div>
   </div>

@@ -144,7 +144,7 @@ Rails.application.routes.draw do
   #TODO: Refatoring names, ex: my_projects e my_knowledges
   get "projects", to: "repositories#index", as: "repositories"
   get "knowledges", to: "knowledges#index", as: "knowledges"
-  get "all_knowledges", to: "knowledges#all", as: "all_knowledges"
+  get "knowledges/:login", to: "knowledges#user", as: "user_knowledges"
   get "historic", to: "users#historic", as: "historic"
 
   #Ranking
