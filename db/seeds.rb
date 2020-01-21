@@ -20,7 +20,7 @@ if true #true
   GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "desenvolvendome", email: "desenvolvendo@gmail.com").login)
 
   puts "Eu e Amigos"
-  GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "marcodotcastro", email: "marcodotcastro@gmail.com").login)
+  # GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "marcodotcastro", email: "marcodotcastro@gmail.com").login)
   # GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "MoacirPetry", email: "MoacirPetry@gmail.com").login)
   # GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "NickolasDev", email: "NickolasDev@gmail.com").login)
   # GenerateProfileJob.perform_later(FactoryBot.create(:user, login: "pvm", email: "pvm@gmail.com").login)

@@ -66,10 +66,11 @@ class User < ApplicationRecord
   end
 
   def level
-    "#{self.try(:profile).try(:evaluation).try(:evaluation_type).try(:capitalize)}, Lvl: #{self.try(:profile).try(:evaluation).try(:level)} XP: #{self.try(:profile).try(:score)}" if self.try(:profile)
+    "#{self.try(:profile).try(:evaluation).try(:evaluation_type).try(:capitalize)}, Lvl: #{self.try(:profile).try(:evaluation).try(:level)} XP: #{self.try(:profile).try(:evaluation).try(:xp)}" if self.try(:profile)
   end
 
   private
+
   def start_processing
     self.profile = Profile.new unless self.profile
     self.profile.update(processing: repositories_count)

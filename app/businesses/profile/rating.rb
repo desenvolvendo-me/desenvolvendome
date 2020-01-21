@@ -6,7 +6,7 @@ class Profile::Rating
 
   def run
     know
-    score
+    xp
   end
 
   private
@@ -15,8 +15,8 @@ class Profile::Rating
     Profile::Rating::Know.new(@user).run
   end
 
-  def score
-    Profile::Rating::Score.new(@user).run
+  def xp
+    Profile::Rating::Xp.new(@user).run
   end
 
 end

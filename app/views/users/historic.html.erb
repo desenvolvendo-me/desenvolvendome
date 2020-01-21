@@ -59,25 +59,28 @@
       <div class="col"></div>
       <div class="col-md-8">
         <div class="main-timeline">
-          <% @user.profile.evaluation.audits.each do |audit_e| %>
+          <% @user.profile.evaluation.audits.each do |audit| %>
             <div class="timeline">
               <a href="#" class="timeline-content">
-                <span class="timeline-year"><%= audit_e.created_at.strftime("%d/%m/%y") %></span>
+                <span class="timeline-year"><%= audit.created_at.strftime("%d/%m/%y") %></span>
                 <div class="timeline-icon">
                   <i class="fa fa-rocket" aria-hidden="true"></i>
                 </div>
                 <div class="content">
-                  <h3 class="title"><%= audit_e.auditable_type.constantize.model_name.human %></h3>
-                  <p class="description">
-                    <% if audit_e.version.eql? 1 %>
-                      XP: <%= audit_e.audited_changes["score"].kind_of?(Array) ? audit_e.audited_changes["score"].to_a.last.to_i : audit_e.audited_changes["score"].to_i %>
-                      Evolução: <%= audit_e.audited_changes["evaluation_type"].kind_of?(Array) ? audit_e.audited_changes["evaluation_type"].to_a.last.to_i : audit_e.audited_changes["evaluation_type"] %>
-                      Nível: <%= audit_e.audited_changes["level"].kind_of?(Array) ? audit_e.audited_changes["level"].to_a.last.to_i : audit_e.audited_changes["level"] %>
-                    <% else %>
-                      "Entrou na comunidade DesenvolvendoMe"
-                    <% end %>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  </p>
+                  <h3 class="title"><%= audit.auditable_type.constantize.model_name.human %></h3>
+                  <div class="row">
+                    <span><%= ("Evolução: " + get_audited_changes(audit, "evaluation_type")) if get_audited_changes(audit, "evaluation_type").size > 1 %></span>
+                  </div>
+                  <div class="row">
+                    <span><%= "Nível: " + get_audited_changes(audit, "level") if get_audited_changes(audit, "level").to_i != 0 %></span>
+                  </div>
+                  <div class="row">
+                    <span><%= "XP: " + get_audited_changes(audit, "xp") if get_audited_changes(audit, "xp").to_i != 0 %></span>
+                  </div>
+                  <div class="row">
+                    <span><%= "Bem vindo ao DesenvolvendoMe" if (get_audited_changes(audit, "xp").to_i == 0 and get_audited_changes(audit, "level").to_i == 0) %></span>
+                  </div>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
               </a>
             </div>

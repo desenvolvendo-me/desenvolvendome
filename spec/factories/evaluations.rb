@@ -5,6 +5,7 @@
 #  id              :bigint           not null, primary key
 #  evaluation_type :integer
 #  level           :integer
+#  xp              :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  profile_id      :bigint           not null

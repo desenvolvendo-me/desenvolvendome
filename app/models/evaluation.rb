@@ -5,6 +5,7 @@
 #  id              :bigint           not null, primary key
 #  evaluation_type :integer
 #  level           :integer
+#  xp              :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  profile_id      :bigint           not null
@@ -19,12 +20,26 @@
 #
 
 class Evaluation < ApplicationRecord
-  audited only: [:evaluation_type, :level]
+  audited only: [:xp, :evaluation_type, :level]
 
   belongs_to :profile
 
   enum evaluation_type: [:started, :novice, :knight]
 
   validates_presence_of :evaluation_type, :level
+
+  def xp
+    number = 0
+    bytes = self[:xp].to_i
+    kilobytes = (bytes / 1024)
+    megabytes = (kilobytes / 1024)
+    gigabytes = (megabytes / 1024)
+
+    number = bytes.to_f.round(2).to_s + "b" if bytes > 1
+    number = kilobytes.to_f.round(2).to_s + "kb" if kilobytes > 1
+    number = megabytes.to_f.round(2).to_s + "mb" if megabytes > 1
+    number = gigabytes.to_f.round(2).to_s + "gb" if gigabytes > 1
+    number
+  end
 
 end

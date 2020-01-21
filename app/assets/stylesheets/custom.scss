@@ -219,7 +219,7 @@ header > nav.navbar {
   margin: 0px;
 }
 
-.profile .score-title {
+.profile .xp-title {
   color: #8899a6;
   font-size: 10px;
   letter-spacing: 0.02em;
@@ -228,14 +228,14 @@ header > nav.navbar {
   transition: color 0.15s ease-in-out 0s;
 }
 
-.profile .score-value {
+.profile .xp-value {
   display: block;
   font-size: 18px;
   font-weight: 500;
   transition: color 0.15s ease-in-out 0s;
 }
 
-.profile .score-container {
+.profile .xp-container {
   margin-left: 12px;
   width: 126px;
 }

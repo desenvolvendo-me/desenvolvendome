@@ -2,6 +2,7 @@ class Profile::Generate
 
   def initialize(user)
     @user = user
+    user.profile.evaluation = Evaluation.new(evaluation_type: :started, level: 0) unless user.profile.evaluation
   end
 
   def run
