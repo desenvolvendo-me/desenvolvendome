@@ -2,9 +2,9 @@
   <div class="col-md-12 mx-auto">
     <h4 class="text-uppercase">guia: como turbinar meu portfólio</h4>
     <%= simple_form_for @interest, defaults: {input_html: {class: 'register-form'}} do |f| %>
-      <p class="card-title mt-3 text-center">Cadastre-se para Receber</p>
+      <p class="card-title mt-3 text-capitalize">cadastre-se para receber</p>
       <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control'} %>
-      <p class="card-title mt-3 text-center text-danger">Assim que estiver pronto lhe informamos</p>
+      <p class="card-title mt-3 text-capitalize text-danger">assim que estiver pronto lhe informamos</p>
       <br>
       <%= f.button :submit, "QUERO O GUIA!", class: "btn btn-primary btn-block" %>
     <% end %>
