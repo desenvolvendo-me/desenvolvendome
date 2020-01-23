@@ -1,3 +1,5 @@
+// TODO: componente counter duplicado
+
 (function ($) {
     $.fn.countTo = function (options) {
         options = options || {};

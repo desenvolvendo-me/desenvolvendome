@@ -244,12 +244,7 @@
 
     <div class="row featurette">
       <div class="col-md-12 text-center">
-        <h1 class="featurette-heading text-uppercase">veja quantos estão acelerando!</h1>
-        <div class="counter">
-          <i class="fa fa-coffee fa-4x"></i>
-          <h2 class="timer count-title count-number" data-to="<%= Profile.count %>" data-speed="1500"></h2>
-          <h3 class="count-text text-uppercase">usuários</h3>
-        </div>
+        <%= render 'quantos_aceleram' %>
         <p><%= link_to "entenda seu momento", new_user_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
       </div>
     </div>
