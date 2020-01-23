@@ -1,0 +1,29 @@
+.counter {
+    background-color: #ffffff;
+    padding: 20px 0;
+    border-radius: 5px;
+}
+
+.count-number {
+    font-size: 80px;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.count-title {
+    font-size: 80px;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.count-text {
+    font-size: 25px;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+}
