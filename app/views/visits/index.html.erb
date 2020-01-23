@@ -2,48 +2,17 @@
 
   <div class="carousel-container" id="carousel-container">
     <div id="myCarousel" class="carousel slide container" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Conhece suas Habilidades?</h1>
-              <p>Conhecer suas habilidades é o 1º passo para o sucesso.</p>
+              <h1>Quer Melhorar Suas Habilidades?</h1>
+              <p>Entenda Suas Habilidades com Relação ao Mercado e Acelere</p>
               <p><%= link_to "Saiba Mais", new_user_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
             </div>
           </div>
         </div>
-        <div class="carousel-item">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Conhece seu Mercado?</h1>
-              <p>Conhecer seu mercado é o 2º passo para o sucesso.</p>
-              <p><%= link_to "Saiba Mais", new_interest_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Sabe se Preparar?</h1>
-              <p>Saber se preparar é o 3º passo para o sucesso.</p>
-              <p><%= link_to "Saiba Mais", new_interest_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
-            </div>
-          </div>
-        </div>
       </div>
-      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Anterior</span>
-      </a>
-      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Próximo</span>
-      </a>
     </div>
   </div>
 
@@ -51,32 +20,32 @@
 
     <div class="row">
       <div class="col-md-12 text-center">
-        <h2 class="text-uppercase">Os 3 passos para o sucesso na TI</h2>
+        <h2 class="text-uppercase">Os 3 Passos Para Acelerar na Carreira</h2>
       </div>
       <div class="col-lg-4">
-        <%= icon('fas', 'chart-pie', class: "icone") %>
-        <h2>Conheça-se</h2>
-        <p>Saiba quais são as tecnologias que <strong>mais</strong> conhece e <strong>menos</strong> conhece.</p>
+        <%= icon('fas', 'wrench', class: "icone") %>
+        <h2>Escolha a Linguagem</h2>
+        <p>Esperimente <strong>JavaScript</strong>, <strong>PHP</strong>, <strong>Ruby</strong>, <strong>Python</strong>,
+          <strong>Java</strong> ou <strong>C#</strong>, entenda seu escosistemas e escolha.</p>
       </div>
       <div class="col-lg-4">
-        <%= icon('fas', 'chart-area', class: "icone") %>
-        <h2>Conheça seu Mercado</h2>
-        <p>Saiba quais são as tecnologias que o seu mercado <strong>mais</strong> solicita e <strong>menos</strong>
-          solicita.</p>
+        <%= icon('fas', 'screwdriver', class: "icone") %>
+        <h2>Escolha o Framework Web</h2>
+        <p>Pesquise a <strong>aceitação do mercado</strong>, o <strong>tamanho da comunidade</strong> e o
+          <strong>frequência das atualizações</strong>.</p>
       </div>
       <div class="col-lg-4">
         <%= icon('fas', 'brain', class: "icone") %>
-        <h2>Prepara-se</h2>
-        <p>Saiba como <strong>planejar</strong> sua carreira para <strong>alinhado</strong> com o seu mercado.</p>
+        <h2>Acelere o Apredizado</h2>
+        <p>Use <strong>ferramentas</strong>, <strong>metodologias</strong> e <strong>processos</strong> que auxiliem
+          na redução da curva de aprendizagem.</p>
       </div>
     </div>
-
-    <hr class="featurette-divider">
 
     <div class="row">
       <div class="col-md-12 text-center">
         <%= link_to new_user_path, class: 'nav-link' do %>
-          <div class="btn btn-primary btn-lg text-uppercase">Conheça-se Agora</div>
+          <div class="btn btn-primary btn-lg text-uppercase">entenda seu momento</div>
         <% end %>
       </div>
     </div>
@@ -85,7 +54,140 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading text-uppercase">Conheça-se</h2>
+        <h2 class="featurette-heading text-uppercase">Escolha a Linguagem</h2>
+        <p class="text-justify">
+          Nesse momento o mais importante é começar escolhendo uma linguagem de programação que poder:
+        <ul>
+          <li>Populares</li>
+          <ul>
+            <li><strong>JavaScript</strong></li>
+            <li><strong>PHP</strong></li>
+          </ul>
+          <li>Enterprises</li>
+          <ul>
+            <li><strong>Java</strong></li>
+            <li><strong>C#</strong></li>
+          </ul>
+          <li>Nichos</li>
+          <ul>
+            <li><strong>Ruby</strong></li>
+            <li><strong>Python</strong></li>
+          </ul>
+        </ul>
+        Não perca muito tempo estudando, estudo por no máximo 1 mês ou 40 horas e vá para prática real.
+        </p>
+      </div>
+      <div class="col-md-5">
+        <%= image_tag "escolha-a-linguagem.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded-circle" %>
+      </div>
+    </div>
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading text-uppercase">Escolha o Framework Web</h2>
+        <p class="text-justify">
+          Agora é hora de pensar no mercado presente e futuro, entender o que as empresas e o que as empresas novos
+          usam em seus stack, pois novos frameworks nascem a cada momento.
+
+          Cada linguagem tem seu framework mais populares, seguem alguns:
+        <ul>
+          <li>JavaScript</li>
+          <ul>
+            <li><strong>Express (Backend)</strong></li>
+            <li><strong>React JS (Frontend)</strong></li>
+          </ul>
+          <li>PHP</li>
+          <ul>
+            <li><strong>Laravel</strong></li>
+          </ul>
+          <li>Java</li>
+          <ul>
+            <li><strong>Spring</strong></li>
+          </ul>
+          <li>C#</li>
+          <ul>
+            <li><strong>DotNet</strong></li>
+          </ul>
+          <li>Ruby</li>
+          <ul>
+            <li><strong>Ruby on Rails</strong></li>
+          </ul>
+          <li>Python</li>
+          <ul>
+            <li><strong>Djang</strong></li>
+          </ul>
+        </ul>
+        Não perca muito tempo estudando, estudo por no máximo 2 meses ou 80 horas e vá para prática real.
+        </p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <%= image_tag "escolha-o-framework.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded-circle" %>
+      </div>
+    </div>
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading text-uppercase">Acelere o Apredizado</h2>
+        <p class="text-justify">
+          Entender no menor tempo o que é possível entregar com as tecnologias é o mais importante para o mercado.
+          <br>
+          <br>
+          O mercado não quer somente saber qual linguagem ou framework é a melhor, pois
+          <strong>o importante é saber em quanto tempo uma solução consegue ser entrege e em qual qualidade</strong>.
+          <br>
+          <br>
+          É muito importante ter ferramentas, metodologias e processos para <strong>acelerar seu apredizado e gerar mais
+          produtividade</strong>.
+          <br><br>
+          Para ficar mais claro vamos fazer uma analogia com o mercado de automóveis. Analigando as formas possível de
+          <strong>sair do ponto A e chegar ao ponto B</strong>:
+        <ul>
+          <li>
+            <strong>Ferramentas</strong>, qual a melhor?
+            <ul>
+              <li>Gol 1.0</li>
+              <li>HB20 1.6</li>
+              <li>Civic 2.0</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Metodologias</strong>, qual a melhor?
+            <ul>
+              <li>Motorista Comum</li>
+              <li>Taxista</li>
+              <li>Caminhoneiro</li>
+              <li>Piloto</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Processos</strong>, qual o melhor?
+            <ul>
+              <li>Lendo as Placas</li>
+              <li>Pedindo Informação</li>
+              <li>GPS</li>
+            </ul>
+          </li>
+        </ul>
+        Como poder perceber tudo depende de vários fatores.
+        </p>
+      </div>
+      <div class="col-md-5">
+        <%= image_tag "acelere-o-apredizado.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded-circle" %>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2 class="text-uppercase">o mercado está mudando</h2>
+      </div>
+    </div>
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading text-uppercase">O Mercado Hoje</h2>
         <p class="text-justify">
           Sabia que anualmente formam-se, nas faculdades brasileiras, mais de 77 mil alunos nos cursos
           da área de tecnologia da informação, <strong>porém somente 33% (26 mil) encontram trabalho no setor</strong>.
@@ -98,19 +200,8 @@
           <br>
           Ao <strong>conhecer-se permitirá tornar a entrada no mercado mais proativo e objetivo</strong> e não
           simplesmente esperar ser chamado com envio de currículo.
-        </p>
-      </div>
-      <div class="col-md-5">
-        <%= image_tag "se-conheca.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" %>
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading text-uppercase">Conheça o Mercado</h2>
-        <p class="text-justify">
+          <br>
+          <br>
           Atualmente existem mais de 19,5 mil empresas no setor de tecnologia brasileiro, <strong>onde 5,1 mil
           atuam no desenvolvimento de software, sendo 95% composto por micros e pequenas empresas</strong>.
           <br>
@@ -125,19 +216,9 @@
           escala rápido Assim,
           <strong>a tendência é que diminua drasticamente o número de empresas no setor de tecnologia focadas
             em desenvolvimento de software</strong>. Devido o mercado perceber o quanto a TI é estratégica para o
-          negócio e que é um risco a terceirização.</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <%= image_tag "conheca-o-mercado.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" %>
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading text-uppercase">Prepara-se</h2>
-        <p class="text-justify">
+          negócio e que é um risco a terceirização.
+          <br>
+          <br>
           Saiba que esse <strong>novo mercado é muito exigente na qualidade dos profissionais de TI</strong>. E essa
           exigência não é somente técnico, onde saber muito Javascript, Java, PHP, C#, Python ou Ruby, torna um
           profissional qualificado.
@@ -154,8 +235,8 @@
           um problema de Negócio, de Venda ou de Gestão, ou seja é saber que cada linha de código tem um porque maior.
         </p>
       </div>
-      <div class="col-md-5">
-        <%= image_tag "se-prepare.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" %>
+      <div class="col-md-5 order-md-1">
+        <%= image_tag "conheca-o-mercado.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded-circle" %>
       </div>
     </div>
 
@@ -163,23 +244,17 @@
 
     <div class="row featurette">
       <div class="col-md-12 text-center">
-        <h1 class="featurette-heading">Conheça-se Agora</h1>
-        <p class="text-center">
-          Em resumo, <strong>Conhecendo-se, Conhecendo seu Mercado e Preparando-se</strong> é possível trabalhar em qualquer empresa ou
-          startup.
-        </p>
-        <p class="text-center">
-          Ou quem sabe até mesmo <strong>criar a sua própria</strong>.
-        </p>
-        <p class="text-center">
-          Posso lhe garantir que é mais simples do que ser <strong>Full Stack Developer</strong>.
-        </p>
-        <p><%= link_to "Clique Aqui", new_user_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
+        <h1 class="featurette-heading text-uppercase">veja quantos estão acelerando!</h1>
+        <div class="counter">
+          <i class="fa fa-coffee fa-4x"></i>
+          <h2 class="timer count-title count-number" data-to="<%= Profile.count %>" data-speed="1500"></h2>
+          <h3 class="count-text text-uppercase">usuários</h3>
+        </div>
+        <p><%= link_to "entenda seu momento", new_user_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
       </div>
     </div>
-    <!-- /END THE FEATURETTES -->
 
-  </div><!-- /.container -->
+  </div>
 </main>
 <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>

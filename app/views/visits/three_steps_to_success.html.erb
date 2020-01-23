@@ -1,0 +1,296 @@
+<main role="main">
+
+  <div class="carousel-container" id="carousel-container">
+    <div id="myCarousel" class="carousel slide container" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Conhece suas Habilidades?</h1>
+              <p>Conhecer suas habilidades é o 1º passo para o sucesso.</p>
+              <p><%= link_to "Saiba Mais", new_user_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Conhece seu Mercado?</h1>
+              <p>Conhecer seu mercado é o 2º passo para o sucesso.</p>
+              <p><%= link_to "Saiba Mais", new_interest_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Sabe se Preparar?</h1>
+              <p>Saber se preparar é o 3º passo para o sucesso.</p>
+              <p><%= link_to "Saiba Mais", new_interest_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Próximo</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="container marketing">
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2 class="text-uppercase">Os 3 passos para o sucesso na TI</h2>
+      </div>
+      <div class="col-lg-4">
+        <%= icon('fas', 'chart-pie', class: "icone") %>
+        <h2>Conheça-se</h2>
+        <p>Saiba quais são as tecnologias que <strong>mais</strong> conhece e <strong>menos</strong> conhece.</p>
+      </div>
+      <div class="col-lg-4">
+        <%= icon('fas', 'chart-area', class: "icone") %>
+        <h2>Conheça seu Mercado</h2>
+        <p>Saiba quais são as tecnologias que o seu mercado <strong>mais</strong> solicita e <strong>menos</strong>
+          solicita.</p>
+      </div>
+      <div class="col-lg-4">
+        <%= icon('fas', 'brain', class: "icone") %>
+        <h2>Prepara-se</h2>
+        <p>Saiba como <strong>planejar</strong> sua carreira para <strong>alinhado</strong> com o seu mercado.</p>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <%= link_to new_user_path, class: 'nav-link' do %>
+          <div class="btn btn-primary btn-lg text-uppercase">Conheça-se Agora</div>
+        <% end %>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading text-uppercase">Conheça-se</h2>
+        <p class="text-justify">
+          Sabia que anualmente formam-se, nas faculdades brasileiras, mais de 77 mil alunos nos cursos
+          da área de tecnologia da informação, <strong>porém somente 33% (26 mil) encontram trabalho no setor</strong>.
+          <br>
+          <br>
+          Isso acontece principalmente por falta de conhecimento do mercado e a culpa não é do aluno, mas sim das
+          <strong>faculdades que não preparam os alunos para atender as demandas do mercado</strong>, as faculdades hoje
+          lutam para não trocar o Pascal e C, por Javascript e Python.
+          <br>
+          <br>
+          Ao <strong>conhecer-se permitirá tornar a entrada no mercado mais proativo e objetivo</strong> e não
+          simplesmente esperar ser chamado com envio de currículo.
+        </p>
+      </div>
+      <div class="col-md-5">
+        <%= image_tag "se-conheca.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" %>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading text-uppercase">Conheça o Mercado</h2>
+        <p class="text-justify">
+          Atualmente existem mais de 19,5 mil empresas no setor de tecnologia brasileiro, <strong>onde 5,1 mil
+          atuam no desenvolvimento de software, sendo 95% composto por micros e pequenas empresas</strong>.
+          <br>
+          <br>
+          O mais curioso é que no mercado de hoje
+          <strong> a cada dia nascem novas empresas com DNA de TI, as famosas startups, e nos dias de hoje já existem
+            mais 12 mil no Brasil (<a href="https://startupbase.com.br/home">fonte</a>)</strong>, sendo que 9 já
+          ultrapassaram os $1bi e se tornaram os primeiros unicórnios brasileiros.
+          <br>
+          <br>
+          Essa mudança no mercado nacional ocorre, pois já foi percebido que sem a TI no core business a empresa na
+          escala rápido Assim,
+          <strong>a tendência é que diminua drasticamente o número de empresas no setor de tecnologia focadas
+            em desenvolvimento de software</strong>. Devido o mercado perceber o quanto a TI é estratégica para o
+          negócio e que é um risco a terceirização.</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <%= image_tag "conheca-o-mercado.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" %>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading text-uppercase">Prepara-se</h2>
+        <p class="text-justify">
+          Saiba que esse <strong>novo mercado é muito exigente na qualidade dos profissionais de TI</strong>. E essa
+          exigência não é somente técnico, onde saber muito Javascript, Java, PHP, C#, Python ou Ruby, torna um
+          profissional qualificado.
+          <br>
+          <br>
+          Para essas novas empresas, o profissional de TI, além do conhecimento Técnico (tecnologias em
+          geral) <strong>é um grande diferencial entender do Negócio, de Venda e da Gestão</strong>, pois as conversas
+          sobre as demandas não são simples, e requer precisão e velocidade no entendimento para a mudança.
+          <br>
+          <br>
+          Lembrando que,
+          <strong>entender dessas outras área não significa ter um MBA ou 10 anos de experiência em cada uma
+            área</strong>. É simplesmente partipar de reuniões e conseguir colaborar com sua visão de tecnologia sobre
+          um problema de Negócio, de Venda ou de Gestão, ou seja é saber que cada linha de código tem um porque maior.
+        </p>
+      </div>
+      <div class="col-md-5">
+        <%= image_tag "se-prepare.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" %>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-12 text-center">
+        <h1 class="featurette-heading">Conheça-se Agora</h1>
+        <p class="text-center">
+          Em resumo, <strong>Conhecendo-se, Conhecendo seu Mercado e Preparando-se</strong> é possível trabalhar em qualquer empresa ou
+          startup.
+        </p>
+        <p class="text-center">
+          Ou quem sabe até mesmo <strong>criar a sua própria</strong>.
+        </p>
+        <p class="text-center">
+          Posso lhe garantir que é mais simples do que ser <strong>Full Stack Developer</strong>.
+        </p>
+        <p><%= link_to "Clique Aqui", new_user_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
+      </div>
+    </div>
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+</main>
+<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    particlesJS('carousel-container', {
+        "particles": {
+            "number": {
+                "value": 38,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+            },
+            "color": {
+                "value": "#ffffff"
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                },
+                "image": {
+                    "src": "img/github.svg",
+                    "width": 100,
+                    "height": 100
+                }
+            },
+            "opacity": {
+                "value": 0.5,
+                "random": false,
+                "anim": {
+                    "enable": false,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                    "enable": false,
+                    "speed": 40,
+                    "size_min": 0.1,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 150,
+                "color": "#ffffff",
+                "opacity": 0.4,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 3.1565905665290903,
+                "direction": "none",
+                "random": true,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "repulse"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 400,
+                    "line_linked": {
+                        "opacity": 1
+                    }
+                },
+                "bubble": {
+                    "distance": 400,
+                    "size": 40,
+                    "duration": 2,
+                    "opacity": 8,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 200,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+            }
+        },
+        "retina_detect": true
+    });
+</script>
