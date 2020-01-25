@@ -9,4 +9,9 @@ class ProfilesController < ApplicationController
   def show
   end
 
+  def hide
+    current_user.profile.update(hide: !current_user.profile.hide)
+    redirect_to user_path(current_user.login)
+  end
+
 end

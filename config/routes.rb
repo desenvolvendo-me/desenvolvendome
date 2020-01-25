@@ -140,8 +140,9 @@ Rails.application.routes.draw do
 
   #Profile
   get "profiles", to: "profiles#index", as: "profiles"
-  get "profile/:id", to: "users#show", as: "user"
-  get "historic", to: "users#historic", as: "historic"
+  get "profile/:id", to: "users#show", as: "user" #TODO: Refatorar, mover para profiles
+  get "hide/profile", to: "profiles#hide", as: "hide_profile"
+  get "historic", to: "users#historic", as: "historic" #TODO: Refatorar, criar controller
   get "repositories/:login", to: "repositories#user", as: "user_repositories"
   get "knowledges", to: "knowledges#index", as: "knowledges"
   get "knowledges/:login", to: "knowledges#user", as: "user_knowledges"

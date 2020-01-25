@@ -64,9 +64,11 @@
                 <%= link_to reimport_user_path, class: "btn btn-outline-info", method: :post do %>
                   <i class="fab fa-github"></i> Reimportar <i class="fas fa-cloud-download-alt"></i>
                 <% end %>
-                <% if current_user.profile.hide? %>
-                  <div class="btn btn-danger" disabled="true">
-                    <i class="fas fa-eye-slash"> Perfil Oculto</i>
+                <%= link_to hide_profile_path do %>
+                  <div class="btn btn-<%= current_user.profile.hide? ? "danger" : "success" %>">
+                    <i class="fas <%= current_user.profile.hide? ? "fa-eye-slash" : "fa-eye" %> %>fa-eye-slash">
+                      <%= current_user.profile.hide? ? "Perfil Oculto" : "Perfil Visível" %>
+                    </i>
                   </div>
                 <% end %>
               </div>
