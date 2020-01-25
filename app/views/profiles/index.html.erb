@@ -1,0 +1,57 @@
+<div class="container container-intests-new">
+  <div class="col-md-12 text-center">
+    <div class="h2 text-default text-uppercase">
+      <i class="fa fa-users"> perfis</i>
+    </div>
+  </div>
+  <div class="center-block">
+    <div class="col-md-12 mx-auto">
+      <div class="card card-signin">
+        <div class="col-md-12 mx-auto">
+          <%= search_form_for @q, url: profiles_path do |f| %>
+            <div class="row justify-content-center">
+              <div class="col-md-3">
+                <%= f.search_field :user_name_or_user_login_cont, placeholder: "Nome ou Login Github", class: "form-control mb-1 mr-1" %>
+              </div>
+              <div class="col-md-3">
+                <%= f.select :knowledges_language_description_eq, options_from_collection_for_select(@languages, "description", "description", @q.knowledges_language_description_eq), {prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
+              </div>
+              <div class="col-md-2">
+                <%= f.select :evaluation_evaluation_type_eq,
+                             Evaluation.evaluation_types.to_a.map {|w| [enum_i18n(Evaluation, "evaluation_type", w[0]), w[1]]}, {prompt: 'Evolução'}, class: "form-control mb-1 mr-1" %>
+              </div>
+              <div class="col-md-2">
+                <%= f.select :evaluation_level_eq, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], {prompt: 'Nível'}, class: "form-control mb-1 mr-1" %>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-md-2">
+                <%= f.submit "Pesquisar", class: "form-control mb-1 mr-1 btn btn-success" %>
+              </div>
+              <div class="col-md-2">
+                <%= link_to "Cancelar", request.path, class: "form-control mb-1 mr-1 btn btn-info" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row justify-content-center">
+        <%= paginate @profiles %>
+      </div>
+      <div class="row justify-content-center">
+        <%= page_entries_info @profiles %>
+      </div>
+      <div class="row">
+        <% @profiles.where.not(id: current_user.try(:profile).try(:id)).each do |profile| %>
+          <div class="col-md-3 mb-2">
+            <%= render 'profiles/profile_card', type: "normal", profile: profile, index: 0 %>
+          </div>
+        <% end %>
+      </div>
+      <div class="row justify-content-center">
+        <%= paginate @profiles %>
+      </div>
+    </div>
+  </div>
+</div>

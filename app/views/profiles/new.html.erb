@@ -1,56 +1,44 @@
-<div class="container container-intests-new">
-  <div class="col-md-12 text-center">
-    <div class="h2 text-default text-uppercase">
-      <i class="fa fa-users"> perfis</i>
-    </div>
-  </div>
-  <div class="center-block">
-    <div class="col-md-12 mx-auto">
-      <div class="card card-signin">
-        <div class="col-md-12 mx-auto">
-          <%= search_form_for @q, url: new_profiles_path do |f| %>
-            <div class="row justify-content-center">
-              <div class="col-md-3">
-                <%= f.search_field :name_or_login_cont, placeholder: "Nome ou Login Github", class: "form-control mb-1 mr-1" %>
-              </div>
-              <div class="col-md-3">
-                <%= f.select :profile_knowledges_language_description_eq, options_from_collection_for_select(Language.order(description: :asc), "description", "description", @q.profile_knowledges_language_description_eq), {prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
-              </div>
-              <div class="col-md-2">
-                <%= f.select :profile_evaluation_evaluation_type_eq,
-                             Evaluation.evaluation_types.to_a.map {|w| [enum_i18n(Evaluation, "evaluation_type", w[0]), w[1]]}, {prompt: 'Evolução'}, class: "form-control mb-1 mr-1" %>
-              </div>
-              <div class="col-md-2">
-                <%= f.select :profile_evaluation_level_eq, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], {prompt: 'Nível'}, class: "form-control mb-1 mr-1" %>
-              </div>
-            </div>
-            <div class="row justify-content-center">
-              <div class="col-md-2">
-                <%= f.submit "Pesquisar", class: "form-control mb-1 mr-1 btn btn-success" %>
-              </div>
-              <div class="col-md-2">
-                <%= link_to "Cancelar", request.path, class: "form-control mb-1 mr-1 btn btn-info" %>
-              </div>
-            </div>
-          <% end %>
+<div class="container container-intests-new mt-5">
+  <div class="col-md-12">
+    <div class="card card-signin">
+      <%= render 'call_to_actions/login_github', message: "Acesse e Analise suas Experiências e Habilidades" %>
+
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <h4>
+            <%= link_to rankings_path do %>
+              <i class="fas fa-sort-numeric-up"></i> Rankings
+            <% end %>
+          </h4>
+          <p>Descubra quem são os mais experiêncies na plataforma.</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <h4>
+            <%= link_to profiles_path do %>
+              <i class="fas fa-sort-numeric-up"></i> Perfis
+            <% end %>
+          </h4>
+          <p>Analise todos os perfis para conhecer o nível do mercado.</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <h4>
+            <%= link_to knowledges_path do %>
+              <i class="fas fa-sort-numeric-up"></i> Conhecimentos
+            <% end %>
+          </h4>
+          <p>Confira todos conhecimentos ofertados e seus níveis.</p>
         </div>
       </div>
       <hr class="featurette-divider">
-      <div class="row justify-content-center">
-        <%= paginate @users %>
+
+      <div class="col-md-12 text-center">
+        <%= render 'visits/quantos_aceleram' %>
       </div>
-      <div class="row justify-content-center">
-        <%= page_entries_info @users %>
-      </div>
-      <div class="row">
-        <% @users.where.not(id: current_user.try(:id)).each do |user| %>
-          <div class="col-md-3 mb-2">
-            <%= render 'profiles/profile_card', type: "normal", profile: user.profile, index: 0 %>
-          </div>
-        <% end %>
-      </div>
-      <div class="row justify-content-center">
-        <%= paginate @users %>
+
+      <hr class="featurette-divider">
+
+      <div class="col-md-12 text-center">
+        <%= link_to "Entenda o Jogo e as Regras", rule_path, class: "btn btn-lg btn-info text-uppercase", target: "_blank" %>
       </div>
     </div>
   </div>

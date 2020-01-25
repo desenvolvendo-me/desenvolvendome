@@ -8,7 +8,7 @@
             <div class="carousel-caption">
               <h1>Quer Melhorar Suas Habilidades?</h1>
               <p>Entenda a Oferta do Mercado e Acelere</p>
-              <p><%= link_to "Saiba Mais", new_user_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
+              <p><%= link_to "Saiba Mais", analyze_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@
 
     <div class="row">
       <div class="col-md-12 text-center">
-        <%= link_to new_user_path, class: 'nav-link' do %>
+        <%= link_to analyze_path, class: 'nav-link' do %>
           <div class="btn btn-primary btn-lg text-uppercase">entenda seu momento</div>
         <% end %>
       </div>
@@ -256,7 +256,7 @@
     <div class="row featurette">
       <div class="col-md-12 text-center">
         <%= render 'quantos_aceleram' %>
-        <p><%= link_to "entenda seu momento", new_user_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
+        <p><%= link_to "entenda seu momento", analyze_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
       </div>
     </div>
 

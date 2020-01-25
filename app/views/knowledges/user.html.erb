@@ -8,7 +8,7 @@
     <div class="col-md-12 mx-auto">
       <div class="card card-signin">
         <div class="col-md-12">
-          <%= search_form_for @q, url: user_knowledges_path do |f| %>
+          <%= search_form_for @q, url: knowledges_user_path do |f| %>
             <div class="row justify-content-center">
               <div class="col-md-3">
                 <%= f.select :language_description_eq, options_from_collection_for_select(Language.joins(knowledges: [profile: :user]).where("users.id = ?", current_user.id).order(description: :asc), "description", "description", @q.language_description_eq), {prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>

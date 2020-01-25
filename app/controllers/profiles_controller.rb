@@ -1,26 +1,32 @@
 class ProfilesController < ApplicationController
-
-  def new
-    @q = User.order(created_at: :desc).ransack(params[:q])
-    @users = @q.result(distinct: true).includes(:profile).page params[:page]
-  end
+  before_action :set_profile, only: [:show]
 
   def index
+    @q = Profile.joins(:user).ransack(params[:q])
+    @profiles = @q.result.not_hidden.order(created_at: :desc).page params[:page]
+    @languages = Language.joins(knowledges: :profile).where("profiles.id in (?)", @profiles.pluck(:id)).order(description: :asc).distinct
   end
 
   def show
   end
 
-  def starteds
-    @profiles = Profile.joins(:evaluation).where("evaluations.evaluation_type = ?", Evaluation.evaluation_types[:started]).order("evaluations.xp": :desc).page params[:page]
+  def hide
+    current_user.profile.update(hide: !current_user.profile.hide)
+    redirect_to profile_show_path(current_user.login)
   end
 
-  def novices
-    @profiles = Profile.joins(:evaluation).where("evaluations.evaluation_type = ?", Evaluation.evaluation_types[:novice]).order("evaluations.xp": :desc).page params[:page]
+  def rule
   end
 
-  def knights
-    @profiles = Profile.joins(:evaluation).where("evaluations.evaluation_type = ?", Evaluation.evaluation_types[:knight]).order("evaluations.xp": :desc).page params[:page]
+  def reimport
+    GenerateProfileJob.perform_later(current_user.login)
+    redirect_to profile_show_path(current_user.login)
+  end
+
+  private
+
+  def set_profile
+    @profile = Profile.joins(:user).where("users.login = ?", params[:id]).take
   end
 
 end

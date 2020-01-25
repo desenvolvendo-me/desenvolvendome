@@ -1,11 +1,5 @@
 class ContactsController < ApplicationController
 
-  def index
-    respond_to do |format|
-      format.html {redirect_to new_contact_path}
-    end
-  end
-
   def show
     @contact = Contact.find(params[:id])
   end

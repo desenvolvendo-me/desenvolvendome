@@ -3,7 +3,9 @@
 # Table name: profiles
 #
 #  id         :bigint           not null, primary key
+#  hide       :boolean
 #  processing :integer
+#  score      :float
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint
@@ -26,6 +28,14 @@ class Profile < ApplicationRecord
         .where("evaluations.evaluation_type = ?", Evaluation.evaluation_types[args[:evaluation_type]])
         .limit(args[:limit])
         .order("evaluations.xp": :desc)
+  }
+
+  scope :not_hidden, -> {
+    where(hide: false)
+  }
+
+  scope :hidden, -> {
+    where(hide: true)
   }
 
 end
