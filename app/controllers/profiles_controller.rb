@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :set_profile, only: [:show]
 
   def index
     @q = Profile.joins(:user).ransack(params[:q])
@@ -11,7 +12,21 @@ class ProfilesController < ApplicationController
 
   def hide
     current_user.profile.update(hide: !current_user.profile.hide)
-    redirect_to user_path(current_user.login)
+    redirect_to profile_show_path(current_user.login)
+  end
+
+  def rule
+  end
+
+  def reimport
+    GenerateProfileJob.perform_later(current_user.login)
+    redirect_to profile_show_path(current_user.login)
+  end
+
+  private
+
+  def set_profile
+    @profile = Profile.joins(:user).where("users.login = ?", params[:id]).take
   end
 
 end

@@ -1,5 +1,5 @@
 <div class="list-group-item list-group-item-action flex-column align-items-start mb-2">
-  <%= link_to user_path(profile.user.login) do %>
+  <%= link_to profile_show_path(profile.user.login) do %>
     <div class="d-flex w-100 justify-content-between">
       <% unless type.eql? "ranking" %>
         <div class="h6 text-center">

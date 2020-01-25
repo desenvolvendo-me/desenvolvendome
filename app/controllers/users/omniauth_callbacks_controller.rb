@@ -10,7 +10,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         GenerateProfileJob.perform_later(@user.login)
       end
 
-      redirect_to user_path(@user.login)
+      redirect_to profile_show_path(@user.login)
     else
       session["devise.github_data"] = request.env["omniauth.auth"]
       redirect_to root_path

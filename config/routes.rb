@@ -1,6 +1,50 @@
 # == Route Map
 #
 #                                Prefix Verb       URI Pattern                                                                              Controller#Action
+#                                  root GET        /                                                                                        visits#index
+#                      new_user_session GET        /users/sign_in(.:format)                                                                 devise/sessions#new
+#                          user_session POST       /users/sign_in(.:format)                                                                 devise/sessions#create
+#                  destroy_user_session DELETE     /users/sign_out(.:format)                                                                devise/sessions#destroy
+#        user_github_omniauth_authorize GET|POST   /users/auth/github(.:format)                                                             users/omniauth_callbacks#passthru
+#         user_github_omniauth_callback GET|POST   /users/auth/github/callback(.:format)                                                    users/omniauth_callbacks#github
+#                     new_user_password GET        /users/password/new(.:format)                                                            devise/passwords#new
+#                    edit_user_password GET        /users/password/edit(.:format)                                                           devise/passwords#edit
+#                         user_password PATCH      /users/password(.:format)                                                                devise/passwords#update
+#                                       PUT        /users/password(.:format)                                                                devise/passwords#update
+#                                       POST       /users/password(.:format)                                                                devise/passwords#create
+#                          visits_index GET        /visits/index(.:format)                                                                  visits#index
+#                        visits_privacy GET        /visits/privacy(.:format)                                                                visits#privacy
+#                              contacts GET        /contacts(.:format)                                                                      contacts#index
+#                                       POST       /contacts(.:format)                                                                      contacts#create
+#                           new_contact GET        /contacts/new(.:format)                                                                  contacts#new
+#                          edit_contact GET        /contacts/:id/edit(.:format)                                                             contacts#edit
+#                               contact GET        /contacts/:id(.:format)                                                                  contacts#show
+#                                       PATCH      /contacts/:id(.:format)                                                                  contacts#update
+#                                       PUT        /contacts/:id(.:format)                                                                  contacts#update
+#                                       DELETE     /contacts/:id(.:format)                                                                  contacts#destroy
+#                             interests GET        /interests(.:format)                                                                     interests#index
+#                                       POST       /interests(.:format)                                                                     interests#create
+#                          new_interest GET        /interests/new(.:format)                                                                 interests#new
+#                              interest GET        /interest(.:format)                                                                      interests#show
+#                              profiles GET        /profiles(.:format)                                                                      profiles#index
+#                          profile_show GET        /profile/:id(.:format)                                                                   profiles#show
+#                          hide_profile GET        /hide/profile(.:format)                                                                  profiles#hide
+#                               analyze GET        /analyze(.:format)                                                                       profiles#new
+#                                       POST       /analyze(.:format)                                                                       profiles#create
+#                              historic GET        /historic(.:format)                                                                      profiles#historic
+#                     repositories_user GET        /repositories/:login(.:format)                                                           repositories#user
+#                            knowledges GET        /knowledges(.:format)                                                                    knowledges#index
+#                       knowledges_user GET        /knowledges/:login(.:format)                                                             knowledges#user
+#                              reimport POST       /reimport(.:format)                                                                      profiles#reimport
+#                                  rule GET        /rule(.:format)                                                                          profiles#rule
+#                              rankings GET        /rankings(.:format)                                                                      rankings#index
+#                     rankings_starteds GET        /rankings/starteds(.:format)                                                             rankings#starteds
+#                      rankings_novices GET        /rankings/novices(.:format)                                                              rankings#novices
+#                      rankings_knights GET        /rankings/knights(.:format)                                                              rankings#knights
+#                                       GET        /profile/:user/compare/:compared(.:format)                                               compares#show
+#                               compare POST       /compare(.:format)                                                                       compares#create
+#                                       GET        /404(.:format)                                                                           errors#not_found
+#                                       GET        /500(.:format)                                                                           errors#internal_server_error
 #                new_admin_user_session GET        /admin/login(.:format)                                                                   active_admin/devise/sessions#new
 #                    admin_user_session POST       /admin/login(.:format)                                                                   active_admin/devise/sessions#create
 #            destroy_admin_user_session DELETE|GET /admin/logout(.:format)                                                                  active_admin/devise/sessions#destroy
@@ -41,54 +85,19 @@
 #                                       PATCH      /admin/admin_users/:id(.:format)                                                         admin/admin_users#update
 #                                       PUT        /admin/admin_users/:id(.:format)                                                         admin/admin_users#update
 #                                       DELETE     /admin/admin_users/:id(.:format)                                                         admin/admin_users#destroy
-#                        admin_usuarios GET        /admin/usuarios(.:format)                                                                admin/usuarios#index
+#                         admin_sidekiq GET        /admin/sidekiq(.:format)                                                                 admin/sidekiq#index
+#                         admin_visitas GET        /admin/visitas(.:format)                                                                 admin/visitas#index
+#                          admin_perfis GET        /admin/perfis(.:format)                                                                  admin/perfis#index
 #                      admin_linguagens GET        /admin/linguagens(.:format)                                                              admin/linguagens#index
 #                       admin_dashboard GET        /admin/dashboard(.:format)                                                               admin/dashboard#index
-#                         admin_sidekiq GET        /admin/sidekiq(.:format)                                                                 admin/sidekiq#index
 #                        admin_comments GET        /admin/comments(.:format)                                                                admin/comments#index
 #                                       POST       /admin/comments(.:format)                                                                admin/comments#create
 #                         admin_comment GET        /admin/comments/:id(.:format)                                                            admin/comments#show
 #                                       DELETE     /admin/comments/:id(.:format)                                                            admin/comments#destroy
-#                              contacts GET        /contacts(.:format)                                                                      contacts#index
-#                                       POST       /contacts(.:format)                                                                      contacts#create
-#                           new_contact GET        /contacts/new(.:format)                                                                  contacts#new
-#                          edit_contact GET        /contacts/:id/edit(.:format)                                                             contacts#edit
-#                               contact GET        /contacts/:id(.:format)                                                                  contacts#show
-#                                       PATCH      /contacts/:id(.:format)                                                                  contacts#update
-#                                       PUT        /contacts/:id(.:format)                                                                  contacts#update
-#                                       DELETE     /contacts/:id(.:format)                                                                  contacts#destroy
-#                                  root GET        /                                                                                        visits#index
-#                          visits_index GET        /visits/index(.:format)                                                                  visits#index
-#                             interests GET        /interests(.:format)                                                                     interests#index
-#                                       POST       /interests(.:format)                                                                     interests#create
-#                          new_interest GET        /interests/new(.:format)                                                                 interests#new
-#                              interest GET        /interest(.:format)                                                                      interests#show
-#                              rankings GET        /rankings(.:format)                                                                      profiles#index
-#                              starteds GET        /rankings/starteds(.:format)                                                             profiles#starteds
-#                               novices GET        /rankings/novices(.:format)                                                              profiles#novices
-#                               knights GET        /rankings/knights(.:format)                                                              profiles#knights
-#                              new_user GET        /analyze(.:format)                                                                       users#new
-#                             rule_user GET        /rule(.:format)                                                                          user#rule
-#                                 users POST       /analyze(.:format)                                                                       users#create
-#                                  user GET        /profile/:id(.:format)                                                                   users#show
-#                           compare_new GET        /compare(.:format)                                                                       compares#new
-#                              compares POST       /compare(.:format)                                                                       compares#create
-#                               compare GET        /profile/:login_1/compare/:login_2(.:format)                                             compares#show
+#                           sidekiq_web            /sidekiq                                                                                 Sidekiq::Web
+#                           ahoy_engine            /ahoy                                                                                    Ahoy::Engine
 #                           vuejs_index GET        /vuejs/index(.:format)                                                                   vuejs#index
 #                     letter_opener_web            /mail/inbox                                                                              LetterOpenerWeb::Engine
-#                           sidekiq_web            /sidekiq/admin                                                                           Sidekiq::Web
-#                      new_user_session GET        /users/sign_in(.:format)                                                                 devise/sessions#new
-#                          user_session POST       /users/sign_in(.:format)                                                                 devise/sessions#create
-#                  destroy_user_session DELETE     /users/sign_out(.:format)                                                                devise/sessions#destroy
-#        user_github_omniauth_authorize GET|POST   /users/auth/github(.:format)                                                             users/omniauth_callbacks#passthru
-#         user_github_omniauth_callback GET|POST   /users/auth/github/callback(.:format)                                                    users/omniauth_callbacks#github
-#                     new_user_password GET        /users/password/new(.:format)                                                            devise/passwords#new
-#                    edit_user_password GET        /users/password/edit(.:format)                                                           devise/passwords#edit
-#                         user_password PATCH      /users/password(.:format)                                                                devise/passwords#update
-#                                       PUT        /users/password(.:format)                                                                devise/passwords#update
-#                                       POST       /users/password(.:format)                                                                devise/passwords#create
-#                             not_found GET        /404(.:format)                                                                           errors#not_found
-#                       something_wrong GET        /500(.:format)                                                                           errors#internal_server_error
 #         rails_mandrill_inbound_emails POST       /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
 #         rails_postmark_inbound_emails POST       /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST       /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
@@ -109,6 +118,10 @@
 #             update_rails_disk_service PUT        /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
 #                  rails_direct_uploads POST       /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 # 
+# Routes for Ahoy::Engine:
+# visits POST /visits(.:format) ahoy/visits#create
+# events POST /events(.:format) ahoy/events#create
+# 
 # Routes for LetterOpenerWeb::Engine:
 # clear_letters DELETE /clear(.:format)                 letter_opener_web/letters#clear
 # delete_letter DELETE /:id(.:format)                   letter_opener_web/letters#destroy
@@ -118,59 +131,54 @@
 
 Rails.application.routes.draw do
 
-  #Users
-  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
-
   root 'visits#index'
 
-  #Visits
+  #Usuários
+  devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
+
+  #Visitantes
   get 'visits/index'
   get 'visits/privacy'
 
-  #Contacts
+  #Contato
   resources :contacts
 
-  #Interests
+  #Interesse
   resources :interests, except: [:show, :edit, :destroy, :update]
-  get "interest", to: "interests#show", as: "interest"
+  get "interest", to: "interests#show"
 
-  #Analyze
-  get "analyze", to: "users#new", as: "new_user"
-  post "analyze", to: "users#create", as: "users"
-
+  # TODO: Organizar resources, adicionando rota customizada somente onde precisar
   #Profile
-  get "profiles", to: "profiles#index", as: "profiles"
-  get "profile/:id", to: "users#show", as: "user" #TODO: Refatorar, mover para profiles
-  get "hide/profile", to: "profiles#hide", as: "hide_profile"
-  get "historic", to: "users#historic", as: "historic" #TODO: Refatorar, criar controller
-  get "repositories/:login", to: "repositories#user", as: "user_repositories"
-  get "knowledges", to: "knowledges#index", as: "knowledges"
-  get "knowledges/:login", to: "knowledges#user", as: "user_knowledges"
-
-  post "reimport", to: "users#reimport", as: "reimport_user"
+  get "profiles", to: "profiles#index"
+  get "profile/:id", to: "profiles#show", as: "profile_show"
+  get "hide/profile", to: "profiles#hide"
+  ##Analyze
+  get "analyze", to: "profiles#new"
+  post "analyze", to: "profiles#create"
+  get "historic", to: "profiles#historic" #TODO: Criar nova rota
+  ##Repositórios
+  get "repositories/:login", to: "repositories#user", as: "repositories_user"
+  ##Conhecimentos
+  get "knowledges", to: "knowledges#index"
+  get "knowledges/:login", to: "knowledges#user", as: "knowledges_user"
+  ##Reimportação
+  post "reimport", to: "profiles#reimport"
+  ##Rule
+  get "rule", to: "profiles#rule"
 
   #Ranking
-  get "rankings", to: "rankings#index", as: :rankings
-  get "rankings/starteds", to: "rankings#starteds", as: "starteds"
-  get "rankings/novices", to: "rankings#novices", as: "novices"
-  get "rankings/knights", to: "rankings#knights", as: "knights"
-
-  #Rule
-  get "rule", to: "users#rule", as: "rule_user"
+  get "rankings", to: "rankings#index"
+  get "rankings/starteds", to: "rankings#starteds"
+  get "rankings/novices", to: "rankings#novices"
+  get "rankings/knights", to: "rankings#knights"
 
   #Compare
-  post "compare", to: "compares#create", as: "compares"
-  get "profile/:user/compare/:compared", to: "compares#show", as: "compare"
-
-  #POC
-  get 'vuejs/index'
-
-  #Dev
-  mount LetterOpenerWeb::Engine, at: "/mail/inbox" if Rails.env.development?
+  get "profile/:user/compare/:compared", to: "compares#show"
+  post "compare", to: "compares#create"
 
   #Custom
-  get '/404', to: "errors#not_found", as: "not_found", :via => :all
-  get '/500', to: "errors#internal_server_error", as: "something_wrong", :via => :all
+  get '/404', to: "errors#not_found"
+  get '/500', to: "errors#internal_server_error"
 
   #Admin
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -178,5 +186,11 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
   mount Ahoy::Engine => "/ahoy"
+
+  #POC, view funcionando com vuejs
+  get 'vuejs/index'
+
+  #Dev, facilitar desenvolvimento com envio de email
+  mount LetterOpenerWeb::Engine, at: "/mail/inbox" if Rails.env.development?
 
 end
