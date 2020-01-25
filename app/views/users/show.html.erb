@@ -59,10 +59,17 @@
       <% if progress_bar(@user) == 100 %>
         <% if @user == current_user %>
           <div class="row">
-            <div class="col-md-12 text-center">
-              <%= link_to reimport_user_path, class: "btn btn-outline-info", method: :post do %>
-                <i class="fab fa-github"></i> Reimportar <i class="fas fa-cloud-download-alt"></i>
-              <% end %>
+            <div class="col-md-12">
+              <div class="row justify-content-between m-0">
+                <%= link_to reimport_user_path, class: "btn btn-outline-info", method: :post do %>
+                  <i class="fab fa-github"></i> Reimportar <i class="fas fa-cloud-download-alt"></i>
+                <% end %>
+                <% if current_user.profile.hide? %>
+                  <div class="btn btn-danger" disabled="true">
+                    <i class="fas fa-eye-slash"> Perfil Oculto</i>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>
@@ -199,7 +206,7 @@
                   <ul class="list-group">
                     <% @user.profile.knowledges.where(knowledge_type: :normal).ordered_by_level.each do |knowledge| %>
                       <%= render 'language', knowledge: knowledge, knowledge_type: "normal", user: @user %>
-                  <% end %>
+                    <% end %>
                   </ul>
                 </div>
                 <div class="col-md-3">
@@ -207,7 +214,7 @@
                   <ul class="list-group">
                     <% @user.profile.knowledges.where(knowledge_type: :rare).ordered_by_level.each do |knowledge| %>
                       <%= render 'language', knowledge: knowledge, knowledge_type: "rare", user: @user %>
-                  <% end %>
+                    <% end %>
                   </ul>
                 </div>
                 <div class="col-md-3">
@@ -215,7 +222,7 @@
                   <ul class="list-group">
                     <% @user.profile.knowledges.where(knowledge_type: :special).ordered_by_level.each do |knowledge| %>
                       <%= render 'language', knowledge: knowledge, knowledge_type: "special", user: @user %>
-                  <% end %>
+                    <% end %>
                   </ul>
                 </div>
                 <div class="col-md-12">
@@ -223,7 +230,7 @@
                   <ul class="list-group">
                     <% @user.profile.knowledges.where(knowledge_type: :unknown).ordered_by_level.each do |knowledge| %>
                       <%= render 'language', knowledge: knowledge, knowledge_type: "unknown", user: @user %>
-                  <% end %>
+                    <% end %>
                   </ul>
                 </div>
               </div>
