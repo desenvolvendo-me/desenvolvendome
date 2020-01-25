@@ -125,6 +125,7 @@ Rails.application.routes.draw do
 
   #Visits
   get 'visits/index'
+  get 'visits/privacy'
 
   #Contacts
   resources :contacts
