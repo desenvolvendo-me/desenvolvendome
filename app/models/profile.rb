@@ -31,7 +31,7 @@ class Profile < ApplicationRecord
   }
 
   scope :not_hidden, -> {
-    where(hide: false)
+    where(hide: [false, nil])
   }
 
   scope :hidden, -> {
