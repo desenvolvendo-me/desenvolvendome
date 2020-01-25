@@ -34,4 +34,8 @@ class Profile < ApplicationRecord
     where(hide: false)
   }
 
+  scope :hidden, -> {
+    where(hide: true)
+  }
+
 end
