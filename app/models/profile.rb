@@ -30,4 +30,8 @@ class Profile < ApplicationRecord
         .order("evaluations.xp": :desc)
   }
 
+  scope :not_hidden, -> {
+    where(hide: false)
+  }
+
 end
