@@ -14,7 +14,7 @@
                 <%= f.search_field :user_name_or_user_login_cont, placeholder: "Nome ou Login Github", class: "form-control mb-1 mr-1" %>
               </div>
               <div class="col-md-3">
-                <%= f.select :knowledges_language_description_eq, options_from_collection_for_select(Language.order(description: :asc), "description", "description", @q.knowledges_language_description_eq), {prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
+                <%= f.select :knowledges_language_description_eq, options_from_collection_for_select(@languages, "description", "description", @q.knowledges_language_description_eq), {prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
               </div>
               <div class="col-md-2">
                 <%= f.select :evaluation_evaluation_type_eq,
