@@ -1,11 +1,8 @@
 class ProfilesController < ApplicationController
 
-  def new
-    @q = User.order(created_at: :desc).ransack(params[:q])
-    @users = @q.result(distinct: true).includes(:profile).page params[:page]
-  end
-
   def index
+    @q = Profile.joins(:user).ransack(params[:q])
+    @profiles = @q.result(distinct: true).not_hidden.order(created_at: :desc).page params[:page]
   end
 
   def show

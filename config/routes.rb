@@ -139,7 +139,7 @@ Rails.application.routes.draw do
   post "analyze", to: "users#create", as: "users"
 
   #Profile
-  get "profiles", to: "profiles#new", as: "new_profiles"
+  get "profiles", to: "profiles#index", as: "profiles"
   get "profile/:id", to: "users#show", as: "user"
   get "historic", to: "users#historic", as: "historic"
   get "repositories/:login", to: "repositories#user", as: "user_repositories"
