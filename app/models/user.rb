@@ -69,6 +69,10 @@ class User < ApplicationRecord
     "#{self.try(:profile).try(:evaluation).try(:evaluation_type).try(:capitalize)}, Lvl: #{self.try(:profile).try(:evaluation).try(:level)} XP: #{self.try(:profile).try(:evaluation).try(:xp)}" if self.try(:profile)
   end
 
+  scope :empty_github, -> {
+    where(repositories_count: 0)
+  }
+
   private
 
   def start_processing

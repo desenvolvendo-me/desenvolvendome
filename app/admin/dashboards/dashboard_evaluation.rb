@@ -9,8 +9,13 @@ ActiveAdmin.register_page "Perfis" do
     end
     columns do
       column do
-        panel "Perfil Ocultos" do
+        panel "Ocultos" do
           Profile.hidden.count
+        end
+      end
+      column do
+        panel "Github Vazio" do
+          User.empty_github.count
         end
       end
     end
