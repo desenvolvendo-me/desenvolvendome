@@ -27,8 +27,15 @@ class Repository < ApplicationRecord
   belongs_to :user, optional: true
   has_many :technologies, dependent: :destroy
 
-
   after_save :update_processing
+
+  scope :with_contribution, -> {
+    where.not(commits_count: 0)
+  }
+
+  scope :no_contribution, -> {
+    where(commits_count: 0)
+  }
 
   private
 
