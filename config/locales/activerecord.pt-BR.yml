@@ -72,4 +72,9 @@ pt-BR:
         forks_count: "Número de Forks"
         stargazers_count: "Número de Estrelas"
         technologies: "Tecnologias"
+      language:
+        description: "Descrição"
+        knowledge_type: "Tipo de Conhecimento"
+        rarity: "Raridade"
+        created_at: "Criado Em"
 

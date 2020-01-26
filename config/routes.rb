@@ -173,7 +173,7 @@ Rails.application.routes.draw do
   get "rankings/knights", to: "rankings#knights"
 
   #Compare
-  get "profile/:user/compare/:compared", to: "compares#show"
+  get "profile/:user/compare/:compared", to: "compares#show", as: "compare_show"
   post "compare", to: "compares#create"
 
   #Custom

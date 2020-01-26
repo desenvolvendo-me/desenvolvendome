@@ -36,7 +36,7 @@
                 <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= next_level_bar(@profile.user)[:percentage] %>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><%= next_level_bar(@profile.user)[:number] %></div>
               <% end %>
             </div>
-            <div class="h4 text-center"><%= enum_i18n(Evaluation, "evaluation_type", @profile.try(:evaluation).try(:evaluation_type)) %></div>
+            <div class="h4 text-center"><%= Evaluation.human_enum_name(:evaluation_types, @profile.try(:evaluation).try(:evaluation_type)) %></div>
             <div class="h6 text-center"><%= "#{@profile.try(:evaluation).try(:level)}º Nível" %>
               <i class="fas fa-trophy"></i></div>
           <% else %>

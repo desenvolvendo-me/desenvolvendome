@@ -9,7 +9,7 @@ module AuditHelper
     end
 
     if ["evaluation_type"].include? attribute
-      attribute_value = enum_i18n(audit.auditable.class.name.constantize, attribute, audit.auditable.class.name.constantize.send(attribute.pluralize).keys[attribute_value])
+      attribute_value = audit.auditable.class.name.constantize.human_enum_name(attribute.pluralize, audit.auditable.class.name.constantize.send(attribute.pluralize).keys[attribute_value])
     else
       attribute_value = attribute_value.eql?(0) ? attribute_value.to_s : audit.auditable.send(attribute).to_s
     end
