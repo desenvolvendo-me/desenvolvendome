@@ -19,7 +19,9 @@ ActiveAdmin.register User do
     column :followers
     column :following
     column :evaluations_count
-    column :repositories_count
+    column :repositories_count  do |user|
+      "#{user.repositories.count} ( #{user.repositories.with_contribution.count}cc / #{user.repositories.no_contribution.count}sc )"
+    end
     column :created_at do |user|
       user.created_at.strftime("%d/%m/%y %H:%M")
     end
