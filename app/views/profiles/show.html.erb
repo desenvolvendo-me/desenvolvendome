@@ -117,6 +117,15 @@
               <div class="h3 text-default text-uppercase">
                 <i class="fa fa-laptop"> seus repositórios</i>
               </div>
+              <% if @profile.user == current_user %>
+                <% if @profile.user.repositories.no_contribution.count > 0 %>
+                  <small class="text-danger">
+                    Você tem <%= @profile.user.repositories.no_contribution.count %>
+                    <%= "repositório".pluralize(@profile.user.repositories.no_contribution.count) %>
+                    sem contribuição
+                  </small>
+                <% end %>
+              <% end %>
             </div>
             <div class="text-center">
               <div class="row">
