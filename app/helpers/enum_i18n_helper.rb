@@ -12,6 +12,6 @@ module EnumI18nHelper
   end
 
   def enum_i18n(class_name, enum, key)
-    I18n.t("activerecord.enums.#{class_name.model_name.i18n_key}.#{enum.to_s.pluralize}.#{key}")
+    I18n.t("activerecord.attributes.#{class_name.model_name.i18n_key}.#{enum.to_s.pluralize}.#{key}")
   end
 end
