@@ -1,6 +1,6 @@
 pt-BR:
   activerecord:
-    enums:
+    attributes:
       contact:
         contact_types:
           doubt: "Dúvida"
