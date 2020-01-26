@@ -4,9 +4,13 @@
       <h2 class="text-uppercase">entenda seu momento</h2>
     </div>
   </div>
-  <%= link_to visits_privacy_path do %>
-    <i class="fas fa-shield-alt"></i> Antes de Logar Leia Nossa Política de Privacidade
-  <% end %>
+  <div class="row">
+    <div class="col-md-12 mb-2">
+      <%= link_to visits_privacy_path do %>
+        <i class="fas fa-shield-alt"></i> Antes de Logar Leia Nossa Política de Privacidade
+      <% end %>
+    </div>
+  </div>
   <div class="row mb-2">
     <div class="col-md-12 mb-2">
       <%= link_to user_github_omniauth_authorize_path, class: "btn btn-lg btn-primary" do %>
@@ -20,4 +24,3 @@
     </div>
   </div>
 </div>
-<hr class="my-4">
