@@ -9,6 +9,13 @@ ActiveAdmin.register_page "Perfis" do
     end
     columns do
       column do
+        panel "Perfil Ocultos" do
+          Profile.hidden.count
+        end
+      end
+    end
+    columns do
+      column do
         panel "Por Visitas por Login" do
           render partial: 'dashboards/profiles/login_visit'
         end
