@@ -26,7 +26,7 @@
   <% end %>
   <div class="d-flex w-100 justify-content-between">
     <small>
-      <i class="fas fa-gem"> Raridade: <%= enum_i18n(Language, "rarity", language.rarity) %></i>
+      <i class="fas fa-gem"> Raridade: <%= Language.human_enum_name(:rarities, language.rarity) %></i>
     </small>
   </div>
   <div class="d-flex w-100 justify-content-between">
@@ -37,7 +37,7 @@
   <div class="d-flex w-100 justify-content-between">
     <small>
       <i class="fas fa-dollar-sign"> Tipo de
-        Conhecimento: <%= enum_i18n(Language, "knowledge_type", language.knowledge_type) %></i>
+        Conhecimento: <%= Language.human_enum_name(:knowledge_types, language.knowledge_type) %></i>
     </small>
   </div>
 </div>

@@ -1,5 +1,4 @@
 module EnumI18nHelper
-  #TODO: Analisar trocar por https://github.com/lucascaton/enumerate_it
 
   def enum_options_for_select(class_name, enum)
     class_name.send(enum.to_s.pluralize).map do |key, _|
@@ -7,11 +6,4 @@ module EnumI18nHelper
     end
   end
 
-  def enum_l(model, enum)
-    enum_i18n(model, enum, model.send(enum))
-  end
-
-  def enum_i18n(class_name, enum, key)
-    I18n.t("activerecord.attributes.#{class_name.model_name.i18n_key}.#{enum.to_s.pluralize}.#{key}")
-  end
 end

@@ -15,12 +15,10 @@
                 <%= f.select :description_eq, options_from_collection_for_select(Language.order(description: :asc), "description", "description", @q.description_eq), {prompt: 'Conhecimento'}, class: "form-control mb-1 mr-1" %>
               </div>
               <div class="col-md-2">
-                <%= f.select :knowledge_type_eq,
-                             Language.knowledge_types.to_a.map {|w| [enum_i18n(Language, "knowledge_type", w[0]), w[1]]}, {prompt: 'Tipo'}, class: "form-control mb-1 mr-1" %>
+                <%= f.select :knowledge_type_eq, Language.knowledge_types.to_a.map {|k, v| [Language.human_enum_name(:knowledge_types, k), v]}, {prompt: 'Tipo'}, class: "form-control mb-1 mr-1" %>
               </div>
               <div class="col-md-2">
-                <%= f.select :rarity_eq,
-                             Language.rarities.to_a.map {|w| [enum_i18n(Language, "rarity", w[0]), w[1]]}, {prompt: 'Raridade'}, class: "form-control mb-1 mr-1" %>
+                <%= f.select :rarity_eq, Language.rarities.to_a.map {|k, v| [Language.human_enum_name(:rarities, k), v]}, {prompt: 'Raridade'}, class: "form-control mb-1 mr-1" %>
               </div>
             </div>
             <div class="row justify-content-center">
