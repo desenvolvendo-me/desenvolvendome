@@ -42,9 +42,15 @@
             <div class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="d-flex w-100 justify-content-between">
                 <small>
-                  <i class="fa fa-coffee"></i> <%= repository.commits_count.to_i %> <%= repository.commits_count.to_i == 1 ? "commit" : "commits" %>
-                  <i class="fa fa-star"></i> <%= repository.stargazers_count.to_i %> <%= repository.stargazers_count.to_i == 1 ? "start" : "stars" %>
-                  <i class="fa fa-code-fork"></i> <%= repository.forks_count.to_i %> <%= repository.forks_count.to_i == 1 ? "fork" : "forks" %>
+                  <i class="fa fa-coffee">
+                    <% if repository.commits_count.eql? 0 %>
+                      <del class="text-danger"><%= repository.commits_count.to_i.to_s + " " + "commit".pluralize(repository.commits_count.to_i) %></del>
+                    <% else %>
+                      <%= repository.commits_count.to_i.to_s + " " + "commit".pluralize(repository.commits_count.to_i) %>
+                    <% end %>
+                  </i>
+                  <i class="fa fa-star"> <%= repository.stargazers_count.to_i.to_s + " " + "start".pluralize(repository.stargazers_count.to_i) %></i>
+                  <i class="fa fa-code-fork"> <%= repository.forks_count.to_i.to_s + " " + "fork".pluralize(repository.forks_count.to_i) %></i>
                 </small>
                 <small>
                   <% if asset_exists? "language/#{knowledge_type(repository.principal_technology)}/#{repository.principal_technology.to_s.downcase}.png" %>
@@ -57,7 +63,12 @@
               </div>
               <div class="d-flex w-100 justify-content-between">
                 <div class="text-primary">
-                  <%= repository.name %>
+                  <i class="fab fa-github"></i>
+                  <% if repository.commits_count.eql? 0 %>
+                    <del class="text-danger"><%= link_to repository.name, "https://github.com/#{current_user.login}/#{repository.name}", target: '_blank' %></del>
+                  <% else %>
+                    <%= link_to repository.name, "https://github.com/#{current_user.login}/#{repository.name}", target: '_blank' %>
+                  <% end %>
                 </div>
               </div>
               <div class="d-flex w-100 justify-content-end">
