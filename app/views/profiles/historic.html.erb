@@ -59,28 +59,17 @@
       <div class="col"></div>
       <div class="col-md-8">
         <div class="main-timeline">
-          <% @user.profile.evaluation.audits.each do |audit| %>
+          <% @user.profile.evaluation.versions.each do |version| %>
             <div class="timeline">
               <a href="#" class="timeline-content">
-                <span class="timeline-year"><%= audit.created_at.strftime("%d/%m/%y") %></span>
+                <span class="timeline-year"><%= version.created_at.strftime("%d/%m/%y") %></span>
                 <div class="timeline-icon">
                   <i class="fa fa-rocket" aria-hidden="true"></i>
                 </div>
                 <div class="content">
-                  <h3 class="title"><%= audit.auditable_type.constantize.model_name.human %></h3>
-                  <div class="row">
-                    <span><%= ("Evolução: " + get_audited_changes(audit, "evaluation_type")) if get_audited_changes(audit, "evaluation_type").size > 1 %></span>
-                  </div>
-                  <div class="row">
-                    <span><%= "Nível: " + get_audited_changes(audit, "level") if get_audited_changes(audit, "level").to_i != 0 %></span>
-                  </div>
-                  <div class="row">
-                    <span><%= "XP: " + get_audited_changes(audit, "xp") if get_audited_changes(audit, "xp").to_i != 0 %></span>
-                  </div>
-                  <div class="row">
-                    <span><%= "Bem vindo ao DesenvolvendoMe" if (get_audited_changes(audit, "xp").to_i == 0 and get_audited_changes(audit, "level").to_i == 0) %></span>
-                  </div>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <h3 class="title"><%= version.item_type.constantize.model_name.human %></h3>
+                  <p><%= version.changeset %></p>
+
                 </div>
               </a>
             </div>

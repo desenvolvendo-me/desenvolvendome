@@ -23,6 +23,10 @@ class ProfilesController < ApplicationController
     redirect_to profile_show_path(current_user.login)
   end
 
+  def historic
+    @user = current_user
+  end
+
   private
 
   def set_profile
