@@ -22,11 +22,11 @@ module DashboardHelper
     users_50_evaluations_most = User.order(:evaluations_count).take(50).pluck(:login, :evaluations_count)
 
     users_50 = []
-    users_50_visits_most.each do |vm50|
-      commom = users_50_evaluations_most.detect {|e| e.first == vm50.first}
+    users_50_evaluations_most.each do |vm50|
+      commom = users_50_visits_most.detect {|e| e.first == vm50.first}
       users_50.push([vm50.first, commom ? vm50.last * commom.last : vm50.last])
     end
-    users_50
+    users_50.sort_by {|e| e.last}.reverse
   end
 
   private
