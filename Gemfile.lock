@@ -232,6 +232,7 @@ GEM
       railties (>= 5.0, < 6.1)
       responders (>= 2, < 4)
     io-like (0.3.0)
+    jaro_winkler (1.5.4)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jmespath (1.4.0)
@@ -304,6 +305,7 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
     orm_adapter (0.5.0)
+    parallel (1.19.1)
     parser (2.6.4.0)
       ast (~> 2.4.0)
     path_expander (1.0.4)
@@ -424,7 +426,15 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.2)
+    rubocop (0.78.0)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.6)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 1.7)
     ruby-graphviz (1.2.4)
+    ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     ruby_parser (3.13.1)
       sexp_processor (~> 4.9)
@@ -502,6 +512,7 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    unicode-display_width (1.6.1)
     validates_email_format_of (1.6.3)
       i18n
     virtus (1.0.5)
@@ -580,6 +591,7 @@ DEPENDENCIES
   redis-rails
   rspec-benchmark
   rspec-rails (~> 3.8)
+  rubocop
   rubycritic
   sass-rails (~> 5.0)
   selenium-webdriver
