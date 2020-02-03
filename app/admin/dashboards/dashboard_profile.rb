@@ -21,8 +21,8 @@ ActiveAdmin.register_page "Perfis" do
     end
     columns do
       column do
-        panel "Por Visitas por Login" do
-          render partial: 'dashboards/profiles/login_visit'
+        panel "Por Engajamento" do
+          render partial: 'dashboards/profiles/engagement'
         end
       end
     end
