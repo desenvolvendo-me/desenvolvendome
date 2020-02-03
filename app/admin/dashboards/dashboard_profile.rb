@@ -21,8 +21,8 @@ ActiveAdmin.register_page "Perfis" do
     end
     columns do
       column do
-        panel "Por Visitas por Login" do
-          render partial: 'dashboards/profiles/login_visit'
+        panel "Por Engajamento" do
+          render partial: 'dashboards/profiles/engagement'
         end
       end
     end
@@ -40,18 +40,18 @@ ActiveAdmin.register_page "Perfis" do
     end
     columns do
       column do
-        panel "Com Acessos entre 10 e 25" do
-          render partial: 'dashboards/visits/per_page_profile_greater_than', locals: {number_accesses_min: 10, number_accesses_max: 25}
+        panel "Com Acessos entre 25 e 100" do
+          render partial: 'dashboards/profiles/per_page_profile_greater_than', locals: {number_accesses_min: 25, number_accesses_max: 100}
         end
       end
       column do
-        panel "Com Acessos entre 25 e 50" do
-          render partial: 'dashboards/visits/per_page_profile_greater_than', locals: {number_accesses_min: 25, number_accesses_max: 50}
+        panel "Com Acessos entre 101 e 250" do
+          render partial: 'dashboards/profiles/per_page_profile_greater_than', locals: {number_accesses_min: 101, number_accesses_max: 250}
         end
       end
       column do
-        panel "Com Acessos entre 50 e 100" do
-          render partial: 'dashboards/visits/per_page_profile_greater_than', locals: {number_accesses_min: 50, number_accesses_max: 100}
+        panel "Com Acessos entre 251 e 1000" do
+          render partial: 'dashboards/profiles/per_page_profile_greater_than', locals: {number_accesses_min: 251, number_accesses_max: 1000}
         end
       end
     end

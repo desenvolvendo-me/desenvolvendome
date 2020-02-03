@@ -18,7 +18,7 @@ gem 'omniauth-github'
 gem 'redis-rails'
 gem 'redis-rack'
 gem 'validates_email_format_of'
-
+gem "rubocop"
 gem 'simple_form'
 gem 'sidekiq'
 gem 'friendly_id', '~> 5.2.4'

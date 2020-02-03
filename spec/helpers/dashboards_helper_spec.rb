@@ -30,35 +30,18 @@
 
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-
-  before(:each) do
-    @user = create(:user, :with_repositories, :with_profile)
-  end
-
-  it "user" do
-    expect(@user.name).to eq("Marco")
-    expect(@user.login).to eq("marcodotcastro")
-    expect(@user.office).to eq("fullstack")
-    expect(@user.followers).to eq(0)
-    expect(@user.following).to eq(0)
-
-    expect(@user.repositories.count).to eq(2)
-    repository = @user.repositories.last
-    expect(repository.name).to eq("hello_world")
-
-    technology = repository.technologies.first
-    expect(technology.exercise).to eq(5500)
-    expect(technology.language.description).to eq("Portugol")
-  end
+RSpec.describe "Dashboard" do
 
   it "users_50" do
     users_50_visits_most = [["marcodotcastro", 1], ["phalmeida", 1], ["NickolasDev", 1], ["leonnleite", 1], ["pvm", 1], ["MoacirPetry", 1], ["andradee1", 3], ["desenvolvendome", 3]]
     users_50_evaluations_most = [["desenvolvendome", 6], ["marcodotcastro", 5]]
+    users_50 = []
+    users_50_visits_most.each do |vm50|
+      commom = users_50_evaluations_most.detect {|e| e.first == vm50.first}
+      users_50.push([vm50.first, commom ? vm50.last * commom.last : vm50.last])
+    end
 
-    users_50 = [["desenvolvendome", 18], ["marcodotcastro", 5]]
-
-    responde = users_50
+    responde = [["marcodotcastro", 5], ["phalmeida", 1], ["NickolasDev", 1], ["leonnleite", 1], ["pvm", 1], ["MoacirPetry", 1], ["andradee1", 3], ["desenvolvendome", 18]]
 
     expect(users_50).to eq(responde)
   end
