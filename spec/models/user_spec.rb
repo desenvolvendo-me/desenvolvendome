@@ -52,4 +52,15 @@ RSpec.describe User, type: :model do
     expect(technology.language.description).to eq("Portugol")
   end
 
+  it "users_50" do
+    users_50_visits_most = [["marcodotcastro", 1], ["phalmeida", 1], ["NickolasDev", 1], ["leonnleite", 1], ["pvm", 1], ["MoacirPetry", 1], ["andradee1", 3], ["desenvolvendome", 3]]
+    users_50_evaluations_most = [["desenvolvendome", 6], ["marcodotcastro", 5]]
+
+    users_50 = [["desenvolvendome", 18], ["marcodotcastro", 5]]
+
+    responde = users_50
+
+    expect(users_50).to eq(responde)
+  end
+
 end

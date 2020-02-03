@@ -17,6 +17,13 @@ module DashboardHelper
     events_between.sort_by {|e| e.last}.reverse
   end
 
+  def self.more_engaged
+    users_50_visits_most = Ahoy::Visit.joins(:user).group("users.login").count.sort_by{ |e| e.last }.reverse.take(50)
+    users_50_evaluations_most = User.order(:evaluations_count).take(50).pluck(:login, :evaluations_count)
+
+    users_50 = [["desenvolvendome", 18], ["marcodotcastro", 5]]
+  end
+
   private
 
   def self.events_page
