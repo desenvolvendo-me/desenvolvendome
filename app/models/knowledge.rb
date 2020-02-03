@@ -18,7 +18,6 @@
 #
 
 class Knowledge < ApplicationRecord
-  audited only: [:knowledge_type, :level]
   paginates_per 12
 
   belongs_to :profile, optional: true

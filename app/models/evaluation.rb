@@ -20,8 +20,6 @@
 #
 
 class Evaluation < ApplicationRecord
-  audited only: [:xp, :evaluation_type, :level]
-
   belongs_to :profile
 
   enum evaluation_type: [:started, :novice, :knight]
