@@ -29,6 +29,7 @@ gem 'kaminari'
 gem 'ransack'
 gem "ahoy_matey"
 gem 'gravtastic'
+gem 'paper_trail'
 
 #Admin
 gem 'activeadmin'
