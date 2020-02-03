@@ -18,7 +18,8 @@
 #
 
 class Knowledge < ApplicationRecord
-  audited only: [:knowledge_type, :level]
+  has_paper_trail only: [:level, :experience]
+
   paginates_per 12
 
   belongs_to :profile, optional: true

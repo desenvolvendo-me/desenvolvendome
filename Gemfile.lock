@@ -88,8 +88,6 @@ GEM
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     ast (2.4.0)
-    audited (4.9.0)
-      activerecord (>= 4.2, < 6.1)
     aws-eventstream (1.0.3)
     aws-partitions (1.207.0)
     aws-sdk-core (3.65.1)
@@ -304,6 +302,9 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
     orm_adapter (0.5.0)
+    paper_trail (10.3.1)
+      activerecord (>= 4.2)
+      request_store (~> 1.1)
     parser (2.6.4.0)
       ast (~> 2.4.0)
     path_expander (1.0.4)
@@ -395,6 +396,8 @@ GEM
       psych (~> 3.1.0)
       rainbow (>= 2.0, < 4.0)
     regexp_parser (1.6.0)
+    request_store (1.5.0)
+      rack (>= 1.4)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -539,7 +542,6 @@ DEPENDENCIES
   activeadmin_sidekiq_stats
   ahoy_matey
   annotate
-  audited (~> 4.9)
   aws-sdk-s3
   better_errors
   binding_of_caller
@@ -568,6 +570,7 @@ DEPENDENCIES
   letter_opener_web
   listen (>= 3.0.5, < 3.2)
   omniauth-github
+  paper_trail
   pg (>= 0.18, < 2.0)
   pry-byebug
   puma (~> 3.11)

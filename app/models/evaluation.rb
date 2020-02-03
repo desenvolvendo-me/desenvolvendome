@@ -20,8 +20,7 @@
 #
 
 class Evaluation < ApplicationRecord
-  audited only: [:xp, :evaluation_type, :level]
-
+  has_paper_trail only: [:xp, :level, :evaluation_type]
   belongs_to :profile
 
   enum evaluation_type: [:started, :novice, :knight]
