@@ -73,7 +73,7 @@ RSpec.describe "Profile::Evolution::Knight" do
       Profile::Evolution::Knight.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
-      expect(@user.profile.score).to eq("2.73kb")
+      expect(@user.profile.evaluation.xp).to eq("2.73kb")
     end
 
   end

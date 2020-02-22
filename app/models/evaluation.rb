@@ -30,9 +30,9 @@ class Evaluation < ApplicationRecord
   def xp
     number = 0
     bytes = self[:xp].to_i
-    kilobytes = (bytes / 1024)
-    megabytes = (kilobytes / 1024)
-    gigabytes = (megabytes / 1024)
+    kilobytes = (bytes.to_f / 1024)
+    megabytes = (kilobytes.to_f / 1024)
+    gigabytes = (megabytes.to_f / 1024)
 
     number = bytes.to_f.round(2).to_s + "b" if bytes > 1
     number = kilobytes.to_f.round(2).to_s + "kb" if kilobytes > 1
