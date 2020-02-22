@@ -21,9 +21,7 @@ ActiveAdmin.register User do
     column :evaluations_count do |user|
       link_to user.evaluations_count, historic_admin_path(user.login), target: "_blank"
     end
-    column :repositories_count  do |user|
-      "#{user.repositories.count} ( #{user.repositories.with_contribution.count}cc / #{user.repositories.no_contribution.count}sc )"
-    end
+    column :repositories_count
     column :created_at do |user|
       user.created_at.strftime("%d/%m/%y %H:%M")
     end
@@ -72,6 +70,32 @@ ActiveAdmin.register User do
         end
       end
 
+      panel "Evoluções" do
+        versions = user.profile.evaluation.versions.order(id: :asc)
+
+        paginated_collection(versions.page(params[:page]).per(15), download_links: false) do
+          table_for(versions, sortable: false) do
+            column "Versão" do |version|
+              version.index
+            end
+            column "Perfil" do |version|
+              if version.changeset.key? "evaluation_type"
+                (version.changeset["evaluation_type"].first.nil? ? "Dev Null" : Evaluation.human_enum_name(:evaluation_types, version.changeset["evaluation_type"].first.to_s)) + " >> " + Evaluation.human_enum_name(:evaluation_types, version.changeset["evaluation_type"].last.to_s)
+              end
+            end
+            column "Experiência" do |version|
+              if version.changeset.key? "xp"
+                (version.changeset["xp"].first.nil? ? "Dev Null" : version.changeset["xp"].first.to_s) + " >> " + version.changeset["xp"].last.to_s
+              end
+            end
+            column "Nível" do |version|
+              if version.changeset.key? "level"
+                (version.changeset["level"].first.nil? ? "Dev Null" : version.changeset["level"].first.to_i.to_s) + " >> " + version.changeset["level"].last.to_s
+              end
+            end
+          end
+        end
+      end
     end
   end
 
