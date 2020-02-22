@@ -156,7 +156,6 @@ Rails.application.routes.draw do
   get "analyze", to: "profiles#new"
   post "analyze", to: "profiles#create"
   get "historic/:login", to: "profiles#historic", as: :historic
-  get "historic/:login/admin", to: "profiles#historic_admin", as: :historic_admin
   ##Repositórios
   get "repositories/:login", to: "repositories#user", as: "repositories_user"
   ##Conhecimentos
