@@ -58,49 +58,7 @@
     <div class="row mt-2">
       <div class="col-md-12">
         <div class="container">
-          <div class="timeline">
-            <% @user.profile.evaluation.versions.group_by {|m| m.created_at.beginning_of_month}.each do |version| %>
-              <div class="timeline-month">
-                <%= l(version.first, format: :month) %>
-              </div>
-              <% version.last.sort_by {|v| v.created_at}.reverse.each do |version_m| %>
-                <div class="timeline-section">
-                  <div class="timeline-date">
-                    <%= l(version_m.created_at, format: :day) %>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <div class="timeline-box">
-                        <div class="box-title">
-                          <i class="fa fa-angle-double-up" aria-hidden="true"></i> Evolução
-                        </div>
-                        <div class="box-content">
-                          <% if version_m.changeset.key? "evaluation_type" %>
-                            <div class="box-item">
-                              <strong>Perfil</strong>: <%= Evaluation.human_enum_name(:evaluation_types, version_m.changeset["evaluation_type"].first.to_s) %>
-                              <i class="fa fa-angle-double-right"></i> <%= Evaluation.human_enum_name(:evaluation_types, version_m.changeset["evaluation_type"].last.to_s) %>
-                            </div>
-                          <% end %>
-                          <% if version_m.changeset.key? "xp" %>
-                            <div class="box-item">
-                              <strong>Experiência</strong>: <%= version_m.changeset["xp"].first.to_s %>
-                              <i class="fa fa-angle-double-right"></i> <%= version_m.changeset["xp"].last.to_s %>
-                            </div>
-                          <% end %>
-                          <% if version_m.changeset.key? "level" %>
-                            <div class="box-item">
-                              <strong>Nível</strong>: <%= version_m.changeset["level"].first.to_s %>
-                              <i class="fa fa-angle-double-right"></i> <%= version_m.changeset["level"].last.to_s %>
-                            </div>
-                          <% end %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
+          <%= render 'timeline', user: @user %>
         </div>
       </div>
     </div>

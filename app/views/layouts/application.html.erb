@@ -77,7 +77,7 @@
                   Meus Conhecimentos <i class="fas fa-file-code"></i>
                 <% end %>
                 <% if Rails.env.development? %>
-                  <%= link_to historic_path, class: "dropdown-item" do %>
+                  <%= link_to historic_path(current_user.login), class: "dropdown-item" do %>
                     Meu Histórico (beta) <i class="fas fa-history"></i>
                   <% end %>
                 <% end %>

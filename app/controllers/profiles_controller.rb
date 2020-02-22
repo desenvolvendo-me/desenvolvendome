@@ -27,6 +27,10 @@ class ProfilesController < ApplicationController
     @user = current_user
   end
 
+  def historic_admin
+    @user = User.find_by_login(params[:login])
+  end
+
   private
 
   def set_profile

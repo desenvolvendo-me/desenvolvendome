@@ -18,7 +18,9 @@ ActiveAdmin.register User do
     column :email
     column :followers
     column :following
-    column :evaluations_count
+    column :evaluations_count do |user|
+      link_to user.evaluations_count, historic_admin_path(user.login), target: "_blank"
+    end
     column :repositories_count  do |user|
       "#{user.repositories.count} ( #{user.repositories.with_contribution.count}cc / #{user.repositories.no_contribution.count}sc )"
     end

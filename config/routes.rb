@@ -155,7 +155,8 @@ Rails.application.routes.draw do
   ##Analyze
   get "analyze", to: "profiles#new"
   post "analyze", to: "profiles#create"
-  get "historic", to: "profiles#historic" #TODO: Criar nova rota
+  get "historic/:login", to: "profiles#historic", as: :historic
+  get "historic/:login/admin", to: "profiles#historic_admin", as: :historic_admin
   ##Repositórios
   get "repositories/:login", to: "repositories#user", as: "repositories_user"
   ##Conhecimentos
