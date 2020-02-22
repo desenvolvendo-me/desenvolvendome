@@ -34,6 +34,8 @@ pt-BR:
       default: "%d/%m/%Y"
       long: "%d de %B de %Y"
       short: "%d de %B"
+      month: "%B de %Y"
+      day: "%d %H:%M"
     month_names:
       -
       - Janeiro
@@ -212,6 +214,8 @@ pt-BR:
       default: "%a, %d de %B de %Y, %H:%M:%S %z"
       long: "%d de %B de %Y, %H:%M"
       short: "%d de %B, %H:%M"
+      month: "%B de %Y"
+      day: "%d às %H:%M:%Shs"
     pm: ''
   merit:
     granted_badge: "concedido a medalha %{badge_name}"
