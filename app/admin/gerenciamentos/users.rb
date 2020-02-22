@@ -18,9 +18,7 @@ ActiveAdmin.register User do
     column :email
     column :followers
     column :following
-    column :evaluations_count do |user|
-      link_to user.evaluations_count, historic_admin_path(user.login), target: "_blank"
-    end
+    column :evaluations_count
     column :repositories_count
     column :created_at do |user|
       user.created_at.strftime("%d/%m/%y %H:%M")
