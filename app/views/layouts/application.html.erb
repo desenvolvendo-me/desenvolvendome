@@ -76,10 +76,8 @@
                 <%= link_to knowledges_user_path(current_user.login), class: "dropdown-item" do %>
                   Meus Conhecimentos <i class="fas fa-file-code"></i>
                 <% end %>
-                <% if Rails.env.development? %>
-                  <%= link_to historic_path(current_user.login), class: "dropdown-item" do %>
-                    Meu Histórico (beta) <i class="fas fa-history"></i>
-                  <% end %>
+                <%= link_to historic_path(current_user.login), class: "dropdown-item" do %>
+                  Meu Histórico (beta) <i class="fas fa-history"></i>
                 <% end %>
               </div>
             </li>
