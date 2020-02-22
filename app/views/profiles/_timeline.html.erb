@@ -6,7 +6,7 @@
     <% version.last.sort_by {|v| v.created_at}.reverse.each do |version_m| %>
       <div class="timeline-section">
         <div class="timeline-date">
-          <%= l(version_m.created_at, format: :day) %>
+          <%= get_version(version_m) %>
         </div>
         <div class="row">
           <div class="col-sm-4">
@@ -38,6 +38,7 @@
                   </div>
                 <% end %>
               </div>
+              <div class="box-footer">Dia <%= l(version_m.created_at, format: :day) %></div>
             </div>
           </div>
         </div>
