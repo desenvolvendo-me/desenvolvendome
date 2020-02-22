@@ -56,27 +56,36 @@
       </div>
     <% end %>
     <div class="row mt-2">
-      <div class="col"></div>
-      <div class="col-md-8">
-        <div class="main-timeline">
-          <% @user.profile.evaluation.versions.each do |version| %>
-            <div class="timeline">
-              <a href="#" class="timeline-content">
-                <span class="timeline-year"><%= version.created_at.strftime("%d/%m/%y") %></span>
-                <div class="timeline-icon">
-                  <i class="fa fa-rocket" aria-hidden="true"></i>
+      <div class="col-md-12">
+        <div class="container">
+          <div class="timeline">
+            <% @user.profile.evaluation.versions.each do |version| %>
+              <div class="timeline-month">
+                Agosto de 2018, v1.5
+              </div>
+              <div class="timeline-section">
+                <div class="timeline-date">
+                  Dia 23 as 21:05hs
                 </div>
-                <div class="content">
-                  <h3 class="title"><%= version.item_type.constantize.model_name.human %></h3>
-                  <p><%= version.changeset %></p>
-
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="timeline-box">
+                      <div class="box-title">
+                        <i class="fa fa-asterisk text-success" aria-hidden="true"></i> Profissional
+                      </div>
+                      <div class="box-content">
+                        <div class="box-item"><strong>Perfil</strong>: Iniciado</div>
+                        <div class="box-item"><strong>Experiência</strong>: 500xp</div>
+                        <div class="box-item"><strong>Nível</strong>: 2</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </a>
-            </div>
-          <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
-      <div class="col"></div>
     </div>
   </div>
 </div>
