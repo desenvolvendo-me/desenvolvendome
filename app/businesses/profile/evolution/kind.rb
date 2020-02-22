@@ -34,9 +34,9 @@ class Profile::Evolution::Kind
     evaludation = @user.profile.evaluation
 
     if evaludation
-      evaludation.update(level: level, evaluation_type: @settings[:role][:kind])
+      evaludation.update(level: level, evaluation_type: @settings[:role][:kind], xp: xp)
     else
-      Evaluation.create(level: level, evaluation_type: @settings[:role][:kind], profile: @user.profile)
+      Evaluation.create(level: level, evaluation_type: @settings[:role][:kind], xp: xp, profile: @user.profile)
     end
   end
 
@@ -54,6 +54,10 @@ class Profile::Evolution::Kind
 
   def max
     commits >= @settings[:role][:level_up][:commits]
+  end
+
+  def xp
+    @user.repositories.sum(:commits_count)
   end
 
 end

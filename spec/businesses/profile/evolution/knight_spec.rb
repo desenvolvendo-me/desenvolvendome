@@ -44,15 +44,14 @@ RSpec.describe "Profile::Evolution::Knight" do
 
   end
 
-  context "score" do
+  context "xp" do
     it "+ 314" do
       create(:repository, commits_count: 14, user: @user)
 
       Profile::Evolution::Knight.new(@user).run
-      Profile::Rating::Score.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
-      expect(@user.profile.score).to eq("314.0b")
+      expect(@user.profile.evaluation.xp).to eq("314.0b")
     end
 
     it "+ 633" do
@@ -60,10 +59,9 @@ RSpec.describe "Profile::Evolution::Knight" do
       create(:repository, commits_count: 233, user: @user)
 
       Profile::Evolution::Knight.new(@user).run
-      Profile::Rating::Score.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
-      expect(@user.profile.score).to eq("633.0b")
+      expect(@user.profile.evaluation.xp).to eq("633.0b")
     end
 
     it "+ 2799" do
@@ -73,7 +71,6 @@ RSpec.describe "Profile::Evolution::Knight" do
       create(:repository, commits_count: 499, user: @user)
 
       Profile::Evolution::Knight.new(@user).run
-      Profile::Rating::Score.new(@user).run
 
       expect(@user.profile.evaluation.evaluation_type).to eq("knight")
       expect(@user.profile.score).to eq("2.73kb")
