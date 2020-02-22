@@ -1,13 +1,13 @@
 <% if current_user %>
   <% if current_user == user %>
     <%= link_to knowledges_path(login: current_user.login, q: {language_description_eq: knowledge.language.description}) do %>
-      <%= render 'language_info', knowledge_type: knowledge_type, knowledge: knowledge %>
+      <%= render 'profiles/language_info', knowledge_type: knowledge_type, knowledge: knowledge %>
     <% end %>
   <% else %>
     <%= link_to knowledges_user_path(login: user.login, q: {description_eq: knowledge.language.description}) do %>
-      <%= render 'language_info', knowledge_type: knowledge_type, knowledge: knowledge %>
+      <%= render 'profiles/language_info', knowledge_type: knowledge_type, knowledge: knowledge %>
     <% end %>
   <% end %>
 <% else %>
-  <%= render 'language_info', knowledge_type: knowledge_type, knowledge: knowledge %>
+  <%= render 'profiles/language_info', knowledge_type: knowledge_type, knowledge: knowledge %>
 <% end %>
