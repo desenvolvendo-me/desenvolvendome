@@ -36,12 +36,18 @@
           <p>Confira todos conhecimentos ofertados e seus níveis.</p>
         </div>
       </div>
+
       <hr class="featurette-divider">
-
-      <div class="col-md-12 text-center">
-        <%= render 'visits/quantos_aceleram' %>
+      <div class="row featurette">
+        <div class="col-md-12 text-center">
+          <h1 class="featurette-heading text-uppercase">veja quantos estão acelerando!</h1>
+          <div class="counter">
+            <i class="fa fa-coffee fa-4x"></i>
+            <h3 class="timer count-title count-number"><%= Profile.count %></h3>
+            <h3 class="count-text text-uppercase">usuários</h3>
+          </div>
+        </div>
       </div>
-
       <hr class="featurette-divider">
 
       <div class="col-md-12 text-center">
