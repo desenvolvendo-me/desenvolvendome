@@ -50,17 +50,19 @@
         </div>
       </div>
     </div>
-    <% unless current_user %>
-      <div class="d-flex justify-content-end">
-        <%= render 'call_to_actions/interest' %>
-      </div>
-    <% end %>
-    <div class="row mt-2">
-      <div class="col-md-12">
-        <div class="container">
-          <%= render 'timeline', user: @user %>
+    <div class="row">
+      <div class="col">
+        <div class="d-flex justify-content-center">
+          <%= render 'call_to_actions/interest' %>
         </div>
       </div>
+    </div>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-md-8">
+        <%= render 'timeline', user: @user %>
+      </div>
+      <div class="col"></div>
     </div>
   </div>
 </div>
