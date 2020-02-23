@@ -104,7 +104,7 @@
   </nav>
 </header>
 
-<% unless ["visits#index", "compares#show", "profiles#show", "interests#new"].include? "#{controller_name}##{action_name}" %>
+<% unless ["visits#index", "compares#show", "profiles#show", "interests#new", "profiles#historic"].include? "#{controller_name}##{action_name}" %>
   <div class="container">
     <p class="mt-4 text-center">
       <%= render 'call_to_actions/interest' %>
