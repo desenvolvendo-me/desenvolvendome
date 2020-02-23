@@ -30,7 +30,7 @@ class ProfilesController < ApplicationController
   private
 
   def set_profile
-    @profile = Profile.joins(:user).where("users.login = ?", params[:id]).take
+    @profile = Profile.joins(:user).where("users.login = ?", params[:id]).take || Profile.new
   end
 
 end
