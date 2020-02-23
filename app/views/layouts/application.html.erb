@@ -104,7 +104,8 @@
   </nav>
 </header>
 
-<% unless ["visits#index", "compares#show", "profiles#show", "interests#new", "profiles#historic"].include? "#{controller_name}##{action_name}" %>
+<%#TODO: Adicionar no admin  %>
+<% if ["repositories#user", "knowledges#user"].include? "#{controller_name}##{action_name}" %>
   <div class="container">
     <p class="mt-4 text-center">
       <%= render 'call_to_actions/interest' %>
@@ -113,6 +114,15 @@
 <% end %>
 
 <%= yield %>
+
+<%#TODO: Adicionar no admin  %>
+<% if ["rankings#index", "profiles#index", "knowledges#index", "profiles#show"].include? "#{controller_name}##{action_name}" %>
+  <div class="container">
+    <p class="mt-4 text-center">
+      <%= render 'call_to_actions/interest' %>
+    </p>
+  </div>
+<% end %>
 
 <!-- FOOTER -->
 <footer class="container">
