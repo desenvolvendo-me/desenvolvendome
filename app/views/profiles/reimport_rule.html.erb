@@ -1,0 +1,43 @@
+<div class="container container-intests-new">
+  <div class="col-md-12 text-center">
+    <div class="h2 text-default text-uppercase">
+      <i class="fas fa-cloud-download-alt"></i> dicas para reimportação
+    </div>
+  </div>
+  <div class="center-block">
+    <div class="card card-signin">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1>Antes de Reimportar</h1>
+        </div>
+
+        <div class="col-md-12 justify-content-center">
+          <h5>Certifique-se de que fez um bom trabalho em seu portfólio:</h5>
+          <ul>
+            <li>Segue algumas dicas que vamos aumentar a quatilidade:</li>
+            <ul>
+              <li>Espefique as Funcionalidades</li>
+              <ul>
+                <li>
+                  Crie Issues: as issues são usadas para reportar bugs, problemas e possíveis soluções. Um exemplo
+                  prático:
+                  <%= image_tag("issues.png", size: "400x400", class: "img-fluid") %>
+                </li>
+              </ul>
+
+              <li>Planeje as Releases</li>
+              <li>Crie Pull Requests</li>
+              <li>Atualize o Readme e Changelog</li>
+              <li>Crie Tags</li>
+              <li>Atualize a Wiki</li>
+            </ul>
+          </ul>
+          <h5>Como sei que é muito trabalho solicito aguarde <strong>1 dia, ou seja reimporte no
+            dia <%= l(current_user.minimum_evaluation_period, format: :day) %></strong></h5>
+          <h5>Bom treino, guerreiro!</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
