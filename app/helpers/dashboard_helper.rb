@@ -1,13 +1,13 @@
 module DashboardHelper
 
   def self.per_page
-    events_without_profile = events_page.delete_if {|k, v| k.include?("profile")}
-    events_without_sale = events_without_profile.delete_if {|k, v| k.include?("interest")}
+    events_without_profile = concat_pages(events_page)
+    events_without_sale = events_without_profile.delete_if {|k, v| k.eql?("interest")}.delete_if {|k, v| k.eql?("interests")}
     events_without_sale.sort_by {|e| e.last}.reverse
   end
 
   def self.per_page_sale
-    events_only_sale = events_page.delete_if {|k, v| k.exclude?("interests/new")}
+    events_only_sale =  concat_pages(events_page).delete_if {|k, v| k.exclude?("interests")}
     events_only_sale
   end
 
@@ -33,6 +33,21 @@ module DashboardHelper
 
   def self.events_page
     Ahoy::Event.group("properties -> 'page'").count
+  end
+
+  def self.concat_pages(events_page)
+    events = {}
+
+    events_page.each do |k, v|
+      page = k.split("/")[1].to_s
+      if events.has_key? page
+        events[page] += v
+      else
+        events[page] = v
+      end
+    end
+
+    events.delete_if {|k, v| k.include?(".")}.delete_if {|k, v| !k.present?}
   end
 
 end

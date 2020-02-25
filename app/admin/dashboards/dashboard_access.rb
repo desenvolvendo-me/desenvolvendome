@@ -17,12 +17,12 @@ ActiveAdmin.register_page "Acessos" do
     columns do
       column span: 2 do
         panel "Por Todas" do
-          render partial: 'dashboards/visits/per_page'
+          render partial: 'dashboards/events/per_page'
         end
       end
       column do
         panel "Por Venda" do
-          render partial: 'dashboards/visits/per_page_sales'
+          render partial: 'dashboards/events/per_page_sales'
         end
       end
     end
