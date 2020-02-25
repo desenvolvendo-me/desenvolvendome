@@ -2,5 +2,5 @@
 <%= javascript_include_tag "chartkick" %>
 
 
-<%= line_chart Ahoy::Event.where(time: Date.today.beginning_of_month..Date.today.at_end_of_month).group_by_day(:time).count, label: "Acessos", xtitle: "Mês Atual", ytitle: "Acessos"  %>
-<%= line_chart Ahoy::Event.where(time: (Date.today - 1.month).beginning_of_month..(Date.today - 1.month).at_end_of_month).group_by_day(:time).count, colors: ["#b00", "#666"], label: "Acessos", xtitle: "Mês Anterior", ytitle: "Acessos"  %>
+<%= line_chart Ahoy::Event.where(time: Date.today.beginning_of_month..Date.today).group_by_day(:time).count, label: "Acessos", xtitle: "Mês Atual", ytitle: "Acessos"  %>
+<%= line_chart Ahoy::Event.where(time: (Date.today - 1.month).beginning_of_month..(Date.today - 1.month)).group_by_day(:time).count, colors: ["#b00", "#666"], label: "Acessos", xtitle: "Mês Anterior", ytitle: "Acessos"  %>
