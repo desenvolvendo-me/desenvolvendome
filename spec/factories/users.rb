@@ -7,6 +7,7 @@
 #  bio                    :string
 #  email                  :string
 #  encrypted_password     :string           default(""), not null
+#  evaluation_last        :datetime
 #  evaluations_count      :integer
 #  followers              :integer
 #  following              :integer

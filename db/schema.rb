@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_03_130406) do
+ActiveRecord::Schema.define(version: 2020_02_25_171319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,7 +159,7 @@ ActiveRecord::Schema.define(version: 2020_02_03_130406) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "repositories", id: :bigint, force: :cascade do |t|
+  create_table "repositories", id: :bigint, default: -> { "nextval('projects_id_seq'::regclass)" }, force: :cascade do |t|
     t.integer "github_id"
     t.string "name"
     t.boolean "fork"
@@ -214,6 +214,7 @@ ActiveRecord::Schema.define(version: 2020_02_03_130406) do
     t.datetime "remember_created_at"
     t.string "provider"
     t.string "uid"
+    t.datetime "evaluation_last"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

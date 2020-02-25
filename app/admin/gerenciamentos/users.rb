@@ -23,6 +23,9 @@ ActiveAdmin.register User do
     column :created_at do |user|
       user.created_at.strftime("%d/%m/%y %H:%M")
     end
+    column :evaluation_last do |user|
+      user.evaluation_last.strftime("%d/%m/%y %H:%M")
+    end
     actions
   end
 
@@ -44,6 +47,9 @@ ActiveAdmin.register User do
       row :following
       row :created_at do |user|
         user.created_at.strftime("%d/%m/%y %H:%M")
+      end
+      row :evaluation_last do |user|
+        user.evaluation_last.strftime("%d/%m/%y %H:%M")
       end
 
       panel "Repositórios" do

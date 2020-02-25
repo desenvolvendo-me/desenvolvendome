@@ -7,6 +7,7 @@
 #  bio                    :string
 #  email                  :string
 #  encrypted_password     :string           default(""), not null
+#  evaluation_last        :datetime
 #  evaluations_count      :integer
 #  followers              :integer
 #  following              :integer
@@ -56,6 +57,7 @@ class User < ApplicationRecord
   end
 
   before_update :start_processing
+  before_create :set_evaluation_last
 
   def after_import_save(record)
     GenerateProfileJob.perform_later(record[:login])
@@ -67,6 +69,14 @@ class User < ApplicationRecord
 
   def level
     "#{self.try(:profile).try(:evaluation).try(:evaluation_type).try(:capitalize)}, Lvl: #{self.try(:profile).try(:evaluation).try(:level)} XP: #{self.try(:profile).try(:evaluation).try(:xp)}" if self.try(:profile)
+  end
+
+  def can_evaluation?
+    DateTime.now >= minimum_evaluation_period
+  end
+
+  def minimum_evaluation_period
+    evaluation_last + 1.day
   end
 
   scope :empty_github, -> {
