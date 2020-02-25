@@ -26,6 +26,8 @@ module DesenvolvendoMe
       g.factory_bot dir: "spec/factories"
     end
 
+    config.time_zone = "America/Sao_Paulo"
+    config.active_record.default_timezone = :local # Or :utc
     config.enforce_available_locales = true
     config.i18n.default_locale = "pt-BR"
     config.autoload_paths << Rails.root.join('lib', 'app/businesses')
