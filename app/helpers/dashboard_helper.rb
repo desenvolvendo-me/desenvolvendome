@@ -7,8 +7,13 @@ module DashboardHelper
   end
 
   def self.per_page_sale
-    events_only_sale =  concat_pages(events_page).delete_if {|k, v| k.exclude?("interests")}
+    events_only_sale = concat_pages(events_page).delete_if {|k, v| k.exclude?("interests")}
     events_only_sale
+  end
+
+  def self.per_user
+    visits_greater_than = 1
+    visits.delete_if {|k, v| v < visits_greater_than}.sort_by {|e| e.last}.reverse
   end
 
   def self.per_page_profile_between(number_accesses_min, number_accesses_max)
@@ -33,6 +38,10 @@ module DashboardHelper
 
   def self.events_page
     Ahoy::Event.group("properties -> 'page'").count
+  end
+
+  def self.visits
+    Ahoy::Visit.joins(:user).group("users.login").count
   end
 
   def self.concat_pages(events_page)
