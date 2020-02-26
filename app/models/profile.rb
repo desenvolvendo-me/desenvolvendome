@@ -47,7 +47,7 @@ class Profile < ApplicationRecord
     novice = 50..100
     knight = 100..300
 
-    user.repositories.where(commits_count: instance_eval(evaluation.evaluation_type)).order(commits_count: :desc).last(3)
+    user.repositories.where(commits_count: instance_eval(evaluation.evaluation_type)).order(commits_count: :desc).first(3)
   end
 
 
