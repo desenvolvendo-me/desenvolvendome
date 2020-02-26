@@ -20,7 +20,7 @@ gem 'redis-rack'
 gem 'validates_email_format_of'
 gem "rubocop"
 gem 'simple_form'
-gem 'sidekiq'
+gem 'sidekiq', '< 6'
 gem 'friendly_id', '~> 5.2.4'
 gem 'faraday'
 gem 'dotenv'
