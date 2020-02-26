@@ -56,8 +56,7 @@ class User < ApplicationRecord
     end
   end
 
-  before_update :start_processing
-  before_create :set_evaluation_last
+  before_update :start_processing, :set_evaluation_last
 
   def after_import_save(record)
     GenerateProfileJob.perform_later(record[:login])
@@ -86,8 +85,12 @@ class User < ApplicationRecord
   private
 
   def start_processing
-    self.profile = Profile.new unless self.profile
-    self.profile.update(processing: repositories_count)
+    profile = Profile.new unless profile
+    profile.update(processing: repositories_count)
+  end
+
+  def set_evaluation_last
+    update_column("evaluation_last", DateTime.now)
   end
 
 end
