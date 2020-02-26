@@ -42,4 +42,13 @@ class Profile < ApplicationRecord
     "#{Evaluation.human_enum_name(:evaluation_types, self.try(:evaluation).try(:evaluation_type))} com Lvl #{self.try(:evaluation).try(:level)} e Xp #{self.try(:evaluation).try(:xp)}"
   end
 
+  def repositories_to_work
+    started = 0..50
+    novice = 50..100
+    knight = 100..300
+
+    user.repositories.where(commits_count: instance_eval(evaluation.evaluation_type)).order(commits_count: :desc).last(3)
+  end
+
+
 end

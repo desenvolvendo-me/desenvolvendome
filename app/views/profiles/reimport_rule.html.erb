@@ -26,7 +26,16 @@
             <li>Atualize a Wiki</li>
           </ul>
           <p>Essa dicas são para lhe colocar mais próximo do dia de uma empresa.</p>
-          <p>Como sei que é bastante trabalho vou aguardar você finalizar.</p>
+          <p>Para o seu perfil <strong><%= current_user.profile.level %></strong> recomendo trabalhar nesses projetos:
+          </p>
+          <ul>
+            <% current_user.profile.repositories_to_work.each do |repository| %>
+              <li><%= link_to repository.name, "https://github.com/#{repository.user.login}/#{repository.name}", target: "_blank"
+              %></li>
+            <% end %>
+          </ul>
+          <p>Se preferir pode começar outro do zero sem problema.</p>
+          <p>Como sei que é bastante trabalho vou aguardar você adicionar alguma evolução nos projetos.</p>
           <p>Volte em aproximadamente <strong><%= waiting_time %> horas</strong>, ou seja reimporte novamente no
             <strong> dia <%= l(current_user.minimum_evaluation_period, format: :day) %></strong></p>
           <p>Bom trabalho, guerreiro.</p>
