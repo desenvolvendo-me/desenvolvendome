@@ -38,4 +38,8 @@ class Profile < ApplicationRecord
     where(hide: true)
   }
 
+  def level
+    "#{Evaluation.human_enum_name(:evaluation_types, self.try(:evaluation).try(:evaluation_type))} com Lvl #{self.try(:evaluation).try(:level)} e Xp #{self.try(:evaluation).try(:xp)}"
+  end
+
 end
