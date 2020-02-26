@@ -2,7 +2,7 @@ module ProfileHelper
 
   def progress_bar(user)
     processing = (user.profile.processing.to_f / user.repositories_count.to_f)
-    return 100 if (processing == 1 or user.repositories_count.to_f == 0)
+    return 100 if (processing.abs == 1 or user.repositories_count.to_f == 0)
     (1 - processing) * 100
   end
 

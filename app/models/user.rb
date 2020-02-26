@@ -81,8 +81,8 @@ class User < ApplicationRecord
   private
 
   def start_processing
-    profile = Profile.new unless profile
-    profile.update(processing: repositories_count)
+    self.profile = Profile.new unless self.profile
+    self.profile.update(processing: self.repositories_count)
   end
 
   def set_evaluation_last
