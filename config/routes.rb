@@ -163,6 +163,7 @@ Rails.application.routes.draw do
   get "knowledges/:login", to: "knowledges#user", as: "knowledges_user"
   ##Reimportação
   post "reimport", to: "profiles#reimport"
+  get "reimport/rule", to: "profiles#reimport_rule"
   ##Rule
   get "rule", to: "profiles#rule"
 

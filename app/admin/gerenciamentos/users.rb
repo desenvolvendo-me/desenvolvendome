@@ -10,7 +10,7 @@ ActiveAdmin.register User do
   index do
     column :id
     column :level do |user|
-      link_to user.level, profile_show_path(user.login), target: "_blank"
+      link_to user.profile.level, profile_show_path(user.login), target: "_blank"
     end
     column :login do |user|
       link_to user.login, "https://github.com/#{user.login}", target: "_blank"
@@ -22,6 +22,9 @@ ActiveAdmin.register User do
     column :repositories_count
     column :created_at do |user|
       user.created_at.strftime("%d/%m/%y %H:%M")
+    end
+    column :evaluation_last do |user|
+      user.evaluation_last.strftime("%d/%m/%y %H:%M")
     end
     actions
   end
@@ -44,6 +47,9 @@ ActiveAdmin.register User do
       row :following
       row :created_at do |user|
         user.created_at.strftime("%d/%m/%y %H:%M")
+      end
+      row :evaluation_last do |user|
+        user.evaluation_last.strftime("%d/%m/%y %H:%M")
       end
 
       panel "Repositórios" do

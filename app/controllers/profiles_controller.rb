@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
     @languages = Language.joins(knowledges: :profile).where("profiles.id in (?)", @profiles.pluck(:id)).order(description: :asc).distinct
   end
 
-  def show
+  def show;
   end
 
   def hide
@@ -15,12 +15,19 @@ class ProfilesController < ApplicationController
     redirect_to profile_show_path(current_user.login)
   end
 
-  def rule
+  def rule;
   end
 
   def reimport
-    GenerateProfileJob.perform_later(current_user.login)
-    redirect_to profile_show_path(current_user.login)
+    if current_user.can_evaluation?
+      GenerateProfileJob.perform_later(current_user.login)
+      redirect_to profile_show_path(current_user.login)
+    else
+      redirect_to reimport_rule_path
+    end
+  end
+
+  def reimport_rule;
   end
 
   def historic

@@ -51,6 +51,7 @@ pt-BR:
         evaluations_count: "Avaliações"
         repositories_count: "Repositorios"
         created_at: "Criado Em"
+        evaluation_last: "Avaliado Em"
       evaluation:
         level: "Nível"
         evaluation_type: "Tipo"
