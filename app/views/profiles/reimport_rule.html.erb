@@ -37,7 +37,7 @@
               <a href="https://help.github.com/pt/github/writing-on-github/basic-writing-and-formatting-syntax" target="_blank">saiba mais</a>
             </li>
           </ul>
-          <p>Essa dicas são para lhe colocar mais próximo do dia de uma empresa.</p>
+          <p>Essa dicas são para lhe colocar mais próximo das boas práticas.</p>
           <p>Para o seu perfil <strong><%= current_user.profile.level %></strong> recomendo trabalhar nesses projetos:
           </p>
           <ul>
@@ -47,9 +47,9 @@
             <% end %>
           </ul>
           <p>Se preferir pode começar outro do zero sem problema.</p>
-          <p>Como sei que é bastante trabalho vou aguardar você adicionar alguma evolução nos projetos.</p>
-          <p>Volte em aproximadamente <strong><%= waiting_time %> horas</strong>, ou seja reimporte novamente no
-            <strong> dia <%= l(current_user.minimum_evaluation_period, format: :day) %></strong></p>
+          <p>Como sei que é bastante trabalho. Então vou aguardar você adicionar alguma evolução nos projetos.</p>
+          <p>Volte em aproximadamente <strong><%= waiting_time %> horas</strong>, mais precisamente no
+            <strong> dia <%= l(current_user.minimum_evaluation_period, format: :day) %> e reimporte novamente.</strong></p>
           <p>Bom trabalho, guerreiro.</p>
         </div>
       </div>
