@@ -24,7 +24,7 @@ ActiveAdmin.register User do
       user.created_at.strftime("%d/%m/%y %H:%M")
     end
     column :evaluation_last do |user|
-      user.evaluation_last.strftime("%d/%m/%y %H:%M")
+      user.try(:evaluation_last).try("strftime", "%d/%m/%y %H:%M")
     end
     actions
   end
