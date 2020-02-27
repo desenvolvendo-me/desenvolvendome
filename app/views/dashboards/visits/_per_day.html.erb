@@ -2,5 +2,5 @@
 <%= javascript_include_tag "chartkick" %>
 
 
-<%= line_chart Ahoy::Visit.joins(:user).where(started_at: Date.today.beginning_of_month..Date.today).group_by_day(:started_at).count, label: "Visitas", xtitle: "Mês Atual", ytitle: "Visitas"  %>
-<%= line_chart Ahoy::Visit.joins(:user).where(started_at: (Date.today - 1.month).beginning_of_month..(Date.today - 1.month)).group_by_day(:started_at).count, colors: ["#b00", "#666"], label: "Visitas", xtitle: "Mês Anterior", ytitle: "Visitas"  %>
+<%= line_chart Ahoy::Visit.joins(:user).where(started_at: Date.today.beginning_of_month..Date.today + 1.day).group_by_day(:started_at).count, label: "Visitas", xtitle: "Mês Atual", ytitle: "Visitas" %>
+<%= line_chart Ahoy::Visit.joins(:user).where(started_at: (Date.today - 1.month).beginning_of_month..(Date.today + 1.day - 1.month)).group_by_day(:started_at).count, colors: ["#b00", "#666"], label: "Visitas", xtitle: "Mês Anterior", ytitle: "Visitas" %>

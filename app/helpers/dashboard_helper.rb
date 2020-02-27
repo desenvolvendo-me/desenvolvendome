@@ -13,7 +13,7 @@ module DashboardHelper
 
   def self.per_user
     visits_greater_than = 1
-    visits.delete_if {|k, v| v < visits_greater_than}.sort_by {|e| e.last}.reverse
+    visits.delete_if {|k, v| v < visits_greater_than}.sort_by {|e| e.last}.reverse.first(100)
   end
 
   def self.per_page_profile_between(number_accesses_min, number_accesses_max)
