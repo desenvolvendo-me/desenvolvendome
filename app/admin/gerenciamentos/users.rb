@@ -36,7 +36,7 @@ ActiveAdmin.register User do
       end
       row :name
       row :level do |user|
-        link_to user.level, profile_show_path(user.login), target: "_blank"
+        link_to user.profile.level, profile_show_path(user.login), target: "_blank"
       end
       row :login do |user|
         link_to user.login, "https://github.com/#{user.login}", target: "_blank"
