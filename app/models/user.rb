@@ -71,7 +71,8 @@ class User < ApplicationRecord
   end
 
   def minimum_evaluation_period
-    evaluation_last + 1.day
+    bug_timezone = 3.hours #FIXME: ActiveRecord::Base.default_timezone must be :utc to use Groupdate
+    (evaluation_last + 1.day) + bug_timezone
   end
 
   scope :empty_github, -> {
