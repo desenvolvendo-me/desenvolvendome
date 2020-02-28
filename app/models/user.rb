@@ -63,7 +63,7 @@ class User < ApplicationRecord
   end
 
   def to_s
-    "#{self.created_at.strftime("%d/%m/%y %H:%M")}: #{level}"
+    login
   end
 
   def can_evaluation?
