@@ -3,5 +3,4 @@ Raven.configure do |config|
   config.environments = %w(development staging production)
   config.sanitize_fields = Rails.application.config.filter_parameters.map(&:to_s)
   config.async = lambda {|event| SentryJob.perform_later(event)}
-  config.excluded_exceptions = []
 end
