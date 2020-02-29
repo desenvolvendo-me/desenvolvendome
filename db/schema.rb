@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_171319) do
+ActiveRecord::Schema.define(version: 2020_02_29_133420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,15 @@ ActiveRecord::Schema.define(version: 2020_02_25_171319) do
     t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
   end
 
+  create_table "api_controls", force: :cascade do |t|
+    t.string "key"
+    t.integer "limit"
+    t.integer "consume"
+    t.datetime "reset"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "compares", force: :cascade do |t|
     t.integer "comparations_count"
     t.integer "user_id"
@@ -159,7 +168,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_171319) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "repositories", id: :bigint, default: -> { "nextval('projects_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "repositories", force: :cascade do |t|
     t.integer "github_id"
     t.string "name"
     t.boolean "fork"
@@ -172,7 +181,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_171319) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "principal_technology"
     t.date "pushed_at"
-    t.index ["user_id"], name: "index_projects_on_user_id"
+    t.index ["user_id"], name: "index_repositories_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|

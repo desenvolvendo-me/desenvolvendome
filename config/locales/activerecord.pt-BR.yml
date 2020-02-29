@@ -40,6 +40,9 @@ pt-BR:
       contact:
         one: "Contato"
         other: "Contatos"
+      api_control:
+        one: "Controle de API"
+        other: "Controle de APIs"
     attributes:
       user:
         name: "Nome"
@@ -78,4 +81,9 @@ pt-BR:
         knowledge_type: "Tipo de Conhecimento"
         rarity: "Raridade"
         created_at: "Criado Em"
-
+      api_control:
+        key: "Chave"
+        limit: "Limite"
+        consume: "Consumo"
+        reset: "Reinicia o Limite"
+        description: "Observação"
