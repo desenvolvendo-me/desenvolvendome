@@ -14,12 +14,16 @@ class Github::Importation::User < Github::Importation
                  bio: user['bio'],
                  followers: user['followers'],
                  following: user['following'],
-                 repositories_count: user['public_repos']
+                 repositories_count: limit_repositories_count
     )
   end
 
   def get_user
     @github.user(@user.login)
+  end
+
+  def limit_repositories_count
+    50
   end
 
 end
