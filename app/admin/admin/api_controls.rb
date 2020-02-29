@@ -11,6 +11,7 @@ ActiveAdmin.register ApiControl do
     column :limit
     column :consume
     column :reset
+    column :description
     actions
   end
 

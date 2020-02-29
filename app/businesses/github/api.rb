@@ -46,7 +46,7 @@ class Github::Api
   private
 
   def update_rate_limit(response)
-    @api_control.update(limit: response.headers["x-ratelimit-limit"].to_i, consume: response.headers["x-ratelimit-remaining"].to_i, reset: DateTime.strptime(response.headers["x-ratelimit-reset"],'%s'))
+    @api_control.update(limit: response.headers["x-ratelimit-limit"].to_i, consume: response.headers["x-ratelimit-remaining"].to_i, reset: DateTime.strptime(response.headers["x-ratelimit-reset"],'%s'), description: "O Github disponiliza 5000 request por hora.")
   end
 
 end

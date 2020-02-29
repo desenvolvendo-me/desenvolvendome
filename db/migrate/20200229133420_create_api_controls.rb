@@ -5,6 +5,7 @@ class CreateApiControls < ActiveRecord::Migration[6.0]
       t.integer :limit
       t.integer :consume
       t.datetime :reset
+      t.text :description
 
       t.timestamps
     end
