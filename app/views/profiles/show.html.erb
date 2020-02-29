@@ -64,6 +64,11 @@
                 <%= link_to reimport_path, class: "btn btn-outline-info", method: :post do %>
                   <i class="fab fa-github"></i> Reimportar <i class="fas fa-cloud-download-alt"></i>
                 <% end %>
+                <% if flash[:notice] %>
+                  <div class="btn btn-success" role="alert">
+                    <%= flash[:notice].html_safe %> <i class="fas fa-cloud-upload-alt"></i>
+                  </div>
+                <% end %>
                 <%= link_to hide_profile_path do %>
                   <div class="btn btn-<%= current_user.profile.hide? ? "danger" : "success" %>">
                     <i class="fas <%= current_user.profile.hide? ? "fa-eye-slash" : "fa-eye" %> %>fa-eye-slash">
