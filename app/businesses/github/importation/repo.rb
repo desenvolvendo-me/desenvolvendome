@@ -34,6 +34,7 @@ class Github::Importation::Repo < Github::Importation
                         fork: repo['fork'],
                         forks_count: repo['forks_count'],
                         stargazers_count: repo['stargazers_count'],
+                        pushed_at: repo['pushed_at'].to_date,
                         size: repo['size'], user: @user)
 
     else
@@ -43,6 +44,7 @@ class Github::Importation::Repo < Github::Importation
                         fork: repo['fork'],
                         forks_count: repo['forks_count'],
                         stargazers_count: repo['stargazers_count'],
+                        pushed_at: repo['pushed_at'].to_date,
                         size: repo['size'], user: @user)
     end
   end
