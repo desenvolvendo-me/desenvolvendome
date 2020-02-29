@@ -4,6 +4,7 @@ require "capistrano/scm/git"
 require 'capistrano/rails'
 require 'capistrano/rvm'
 require 'capistrano/puma'
+require 'capistrano/rake'
 
 install_plugin Capistrano::SCM::Git
 install_plugin Capistrano::Puma
