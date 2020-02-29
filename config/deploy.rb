@@ -33,6 +33,15 @@ namespace :puma do
   before :start, :make_dirs
 end
 
+namespace :sidekiq do
+  desc 'Sidekiq restart'
+  task :restart do
+    on roles(:app) do
+      execute :rake, 'sidekiq:restart'
+    end
+  end
+end
+
 namespace :deploy do
   desc "Make sure local git is in sync with remote."
   task :check_revision do
@@ -60,8 +69,9 @@ namespace :deploy do
     end
   end
 
-  before :starting,     :check_revision
-  after  :finishing,    :compile_assets
-  after  :finishing,    :cleanup
-  after  :finishing,    :restart
+  before :starting, :check_revision
+  after :finishing, :compile_assets
+  after :finishing, :cleanup
+  after :finishing, :restart
+  after :finishing, 'sidekiq:restart'
 end
