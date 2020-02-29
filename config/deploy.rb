@@ -37,6 +37,7 @@ namespace :sidekiq do
   desc 'Sidekiq restart'
   task :restart do
     on roles(:app) do
+      execute "cd #{deploy_to}/current"
       execute :rake, 'sidekiq:restart'
     end
   end
