@@ -15,8 +15,8 @@ class Github::Api
     JSON.parse(response.body)
   end
 
-  def repos(login, page)
-    response = @connect.get "/users/#{login}/repos?page=#{page + 1}&per_page=100&access_token=#{@github_api_key}"
+  def repos(login, repositories_count)
+    response = @connect.get "/users/#{login}/repos?per_page=#{repositories_count}&sort=pushed&access_token=#{@github_api_key}"
     update_rate_limit(response)
     JSON.parse(response.body)
   end
@@ -46,7 +46,7 @@ class Github::Api
   private
 
   def update_rate_limit(response)
-    @api_control.update(limit: response.headers["x-ratelimit-limit"].to_i, consume: response.headers["x-ratelimit-remaining"].to_i, reset: DateTime.strptime(response.headers["x-ratelimit-reset"],'%s'), description: "O Github disponiliza 5000 request por hora.")
+    @api_control.update(limit: response.headers["x-ratelimit-limit"].to_i, consume: response.headers["x-ratelimit-remaining"].to_i, reset: DateTime.strptime(response.headers["x-ratelimit-reset"], '%s'), description: "O Github disponiliza 5000 request por hora.")
   end
 
 end
