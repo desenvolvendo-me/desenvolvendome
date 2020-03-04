@@ -15,7 +15,7 @@ ActiveAdmin.register_page "Acessos" do
       end
     end
     columns do
-      column span: 2 do
+      column do
         panel "Por Todas" do
           render partial: 'dashboards/events/per_page'
         end
