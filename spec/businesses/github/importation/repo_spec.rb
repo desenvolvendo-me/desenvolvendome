@@ -17,14 +17,6 @@ RSpec.describe "Github::Importation::Repo" do
       expect(repository.principal_technology).to eq("Ruby")
     end
 
-    it "php-blog create" do
-      Github::Importation::Repo.new.run(@user)
-
-      repository = @user.repositories.first
-      expect(repository.name).to eq("php-blog")
-      expect(repository.principal_technology).to eq("PHP")
-    end
-
   end
 
 end

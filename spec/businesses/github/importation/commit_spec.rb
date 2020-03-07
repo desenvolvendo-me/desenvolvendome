@@ -14,7 +14,7 @@ RSpec.describe "Github::Importation::Commit" do
       Github::Importation::Commit.new.run(@user)
 
       repository = @user.repositories.last
-      expect(repository.commits_count).to eq(1)
+      expect(repository.commits_count).to eq(8)
     end
 
   end

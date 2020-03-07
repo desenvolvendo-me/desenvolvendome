@@ -25,20 +25,6 @@ RSpec.describe "Github::Importation::Lang" do
       expect(technology.language.description).to eq("CSS")
     end
 
-    it "langs php-blog" do
-      Github::Importation::Lang.new.run(@user)
-
-      repository = @user.repositories.first
-      expect(repository.name).to eq("php-blog")
-      expect(repository.principal_technology).to eq("PHP")
-
-      technology = repository.technologies.first
-      expect(technology.language.description).to eq("PHP")
-
-      technology = repository.technologies.last
-      expect(technology.language.description).to eq("CSS")
-    end
-
   end
 
 end
