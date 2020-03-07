@@ -37,7 +37,6 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
   has_many :repositories, dependent: :destroy
-  has_many :contributors
   has_many :visits, class_name: "Ahoy::Visit"
   has_many :events, class_name: "Ahoy::Event"
 
@@ -79,6 +78,10 @@ class User < ApplicationRecord
   scope :empty_github, -> {
     where(repositories_count: 0)
   }
+
+  def contributors
+    Contributor.where(login: login)
+  end
 
   private
 
