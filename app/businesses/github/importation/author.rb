@@ -1,4 +1,4 @@
-class Github::Importation::User < Github::Importation
+class Github::Importation::Author < Github::Importation
 
   def run(user)
     @user = user

@@ -4,7 +4,7 @@ RSpec.describe "Github::Importation::Repo" do
 
   before(:each) do
     @user = create(:user, login: "desenvolvendome")
-    Github::Importation::User.new.run(@user)
+    Github::Importation::Author.new.run(@user)
   end
 
   context "run" do

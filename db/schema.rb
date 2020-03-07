@@ -134,13 +134,12 @@ ActiveRecord::Schema.define(version: 2020_03_07_183823) do
 
   create_table "contributors", force: :cascade do |t|
     t.bigint "repository_id", null: false
-    t.bigint "user_id", null: false
+    t.string "login", null: false
     t.bigint "contribution_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["contribution_id"], name: "index_contributors_on_contribution_id"
     t.index ["repository_id"], name: "index_contributors_on_repository_id"
-    t.index ["user_id"], name: "index_contributors_on_user_id"
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -261,6 +260,5 @@ ActiveRecord::Schema.define(version: 2020_03_07_183823) do
 
   add_foreign_key "contributors", "contributions"
   add_foreign_key "contributors", "repositories"
-  add_foreign_key "contributors", "users"
   add_foreign_key "evaluations", "profiles"
 end

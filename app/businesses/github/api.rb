@@ -27,6 +27,7 @@ class Github::Api
     JSON.parse(response.body)
   end
 
+  #TODO: Remover
   def commits(login, repo)
     response = @connect.get "/repos/#{login}/#{repo}/contributors?access_token=#{@github_api_key}"
     update_rate_limit(response)
@@ -35,6 +36,12 @@ class Github::Api
     else
       []
     end
+  end
+
+  def contributors(login, repo)
+    response = @connect.get "/repos/#{login}/#{repo}/stats/contributors?access_token=#{@github_api_key}"
+    update_rate_limit(response)
+    JSON.parse(response.body)
   end
 
   def languages(login, repo)

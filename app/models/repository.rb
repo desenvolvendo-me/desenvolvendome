@@ -26,6 +26,7 @@ class Repository < ApplicationRecord
   paginates_per 12
   belongs_to :user, optional: true
   has_many :technologies, dependent: :destroy
+  has_many :contributors
 
   after_save :update_processing
 
@@ -36,6 +37,10 @@ class Repository < ApplicationRecord
   scope :no_contribution, -> {
     where(commits_count: 0)
   }
+
+  def contributions_count
+    8
+  end
 
   private
 
