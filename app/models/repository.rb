@@ -27,7 +27,7 @@ class Repository < ApplicationRecord
 
   belongs_to :user, optional: true
   has_many :technologies, dependent: :destroy
-  has_many :contributors
+  has_many :contributors, dependent: :destroy
 
   after_save :update_processing
 
