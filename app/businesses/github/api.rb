@@ -41,7 +41,11 @@ class Github::Api
   def contributors(login, repo)
     response = @connect.get "/repos/#{login}/#{repo}/stats/contributors?access_token=#{@github_api_key}"
     update_rate_limit(response)
-    JSON.parse(response.body)
+    if response.status.eql? 200
+      JSON.parse(response.body)
+    else
+      []
+    end
   end
 
   def languages(login, repo)
