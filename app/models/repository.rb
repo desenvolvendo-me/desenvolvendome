@@ -24,6 +24,7 @@
 
 class Repository < ApplicationRecord
   paginates_per 12
+
   belongs_to :user, optional: true
   has_many :technologies, dependent: :destroy
   has_many :contributors
@@ -38,8 +39,17 @@ class Repository < ApplicationRecord
     where(commits_count: 0)
   }
 
-  def contributions_count
-    8
+
+  def commits_count
+    contributors.joins(:contribution).where(login: user.login).sum(:commits)
+  end
+
+  def additions_count
+    contributors.joins(:contribution).where(login: user.login).sum(:additions)
+  end
+
+  def deletions_count
+    contributors.joins(:contribution).where(login: user.login).sum(:deletions)
   end
 
   private

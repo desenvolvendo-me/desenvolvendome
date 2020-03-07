@@ -10,7 +10,7 @@ RSpec.describe "Github::Importation::Commit" do
 
   context "run" do
 
-    it "ruby-blog commit desenvolvendome" do
+    it "ruby-blog commits" do
       Github::Importation::Commit.new.run(@user)
 
       repository = @user.repositories.last
@@ -18,6 +18,21 @@ RSpec.describe "Github::Importation::Commit" do
       expect(repository.commits_count).to eq(8)
     end
 
+    it "ruby-blog additions" do
+      Github::Importation::Commit.new.run(@user)
+
+      repository = @user.repositories.last
+
+      expect(repository.additions_count).to eq(6)
+    end
+
+    it "ruby-blog deletions" do
+      Github::Importation::Commit.new.run(@user)
+
+      repository = @user.repositories.last
+
+      expect(repository.deletions_count).to eq(27)
+    end
   end
 
 end
