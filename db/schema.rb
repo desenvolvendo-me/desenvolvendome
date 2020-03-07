@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_29_133420) do
+ActiveRecord::Schema.define(version: 2020_03_07_183823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2020_02_29_133420) do
     t.datetime "reset"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "description"
   end
 
   create_table "compares", force: :cascade do |t|
@@ -120,6 +121,26 @@ ActiveRecord::Schema.define(version: 2020_02_29_133420) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "response"
+  end
+
+  create_table "contributions", force: :cascade do |t|
+    t.datetime "period"
+    t.integer "additions"
+    t.integer "deletions"
+    t.integer "commits"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "contributors", force: :cascade do |t|
+    t.bigint "repository_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "contribution_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["contribution_id"], name: "index_contributors_on_contribution_id"
+    t.index ["repository_id"], name: "index_contributors_on_repository_id"
+    t.index ["user_id"], name: "index_contributors_on_user_id"
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -181,7 +202,7 @@ ActiveRecord::Schema.define(version: 2020_02_29_133420) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "principal_technology"
     t.date "pushed_at"
-    t.index ["user_id"], name: "index_repositories_on_user_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -238,5 +259,8 @@ ActiveRecord::Schema.define(version: 2020_02_29_133420) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "contributors", "contributions"
+  add_foreign_key "contributors", "repositories"
+  add_foreign_key "contributors", "users"
   add_foreign_key "evaluations", "profiles"
 end
