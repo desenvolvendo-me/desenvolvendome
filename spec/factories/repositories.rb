@@ -25,7 +25,7 @@ FactoryBot.define do
   factory :repository do
     github_id {1}
     name {"hello_world"}
-    commits_count{15}
+    commits_count {15}
     fork {false}
     size {330}
     forks_count {1}
@@ -39,6 +39,25 @@ FactoryBot.define do
         create(:technology, repository: repository, exercise: 1000, language: create(:language, description: "Abap"))
         create(:technology, repository: repository, exercise: 1500, language: create(:language, description: "COBOL"))
       end
+    end
+
+    trait :small do
+      after(:create) do |repository|
+        technologies = [{exercise: 1000, language: "Ruby"}, {exercise: 1000, language: "HTML"}, {exercise: 1000, language: "CSS"}, {exercise: 1000, language: "Javascript"}]
+        technologies.each do |technology|
+          language = create(:language, description: technology[:language])
+          create(:technology, repository: repository, exercise: technology[:exercise], language: language)
+        end
+      end
+    end
+
+    trait :medium do
+    end
+
+    trait :big do
+    end
+
+    trait :professional do
     end
 
   end
