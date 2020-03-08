@@ -57,7 +57,14 @@ class Profile::Evolution::Kind
   end
 
   def xp
-    @user.repositories.sum(:commits_count)
+    commits = @user.contributors.joins(:contribution).sum(:commits)
+    additions = @user.contributors.joins(:contribution).sum(:additions)
+    deletions = @user.contributors.joins(:contribution).sum(:deletions)
+
+    works = (additions + deletions)
+    quality = commits.to_f / (additions + deletions).to_f
+
+    works * quality
   end
 
 end

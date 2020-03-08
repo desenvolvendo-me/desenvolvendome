@@ -7,7 +7,6 @@
 #  updated_at      :datetime         not null
 #  contribution_id :bigint           not null
 #  repository_id   :bigint           not null
-#  user_id         :bigint           not null
 #
 # Indexes
 #
@@ -25,7 +24,6 @@
 FactoryBot.define do
   factory :contributor do
     repository { nil }
-    user { nil }
     contribution { nil }
   end
 end
