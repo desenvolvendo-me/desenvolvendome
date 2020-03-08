@@ -128,17 +128,17 @@ ActiveRecord::Schema.define(version: 2020_03_07_183823) do
     t.integer "additions"
     t.integer "deletions"
     t.integer "commits"
+    t.bigint "contributor_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["contributor_id"], name: "index_contributions_on_contributor_id"
   end
 
   create_table "contributors", force: :cascade do |t|
+    t.string "login"
     t.bigint "repository_id", null: false
-    t.string "login", null: false
-    t.bigint "contribution_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["contribution_id"], name: "index_contributors_on_contribution_id"
     t.index ["repository_id"], name: "index_contributors_on_repository_id"
   end
 
@@ -258,7 +258,7 @@ ActiveRecord::Schema.define(version: 2020_03_07_183823) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
-  add_foreign_key "contributors", "contributions"
+  add_foreign_key "contributions", "contributors"
   add_foreign_key "contributors", "repositories"
   add_foreign_key "evaluations", "profiles"
 end

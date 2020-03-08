@@ -5,6 +5,8 @@ class CreateContributions < ActiveRecord::Migration[6.0]
       t.integer :additions
       t.integer :deletions
       t.integer :commits
+      t.references :contributor, null: false, foreign_key: true
+
 
       t.timestamps
     end
