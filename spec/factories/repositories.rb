@@ -10,6 +10,7 @@
 #  principal_technology :string
 #  pushed_at            :date
 #  size                 :integer
+#  size_type            :integer
 #  stargazers_count     :integer
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null

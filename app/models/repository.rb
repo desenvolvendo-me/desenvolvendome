@@ -10,6 +10,7 @@
 #  principal_technology :string
 #  pushed_at            :date
 #  size                 :integer
+#  size_type            :integer
 #  stargazers_count     :integer
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
@@ -28,6 +29,8 @@ class Repository < ApplicationRecord
   belongs_to :user, optional: true
   has_many :technologies, dependent: :destroy
   has_many :contributors, dependent: :destroy
+
+  enum size_type: [:small, :medium, :big, :professional]
 
   after_save :update_processing
 
