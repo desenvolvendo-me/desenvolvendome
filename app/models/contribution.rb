@@ -23,7 +23,7 @@
 class Contribution < ApplicationRecord
   belongs_to :contributor
 
-  before_create :set_repository_size_type
+  after_create :set_repository_size_type
 
   private
 
