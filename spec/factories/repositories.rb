@@ -44,10 +44,13 @@ FactoryBot.define do
     trait :small do
       after(:create) do |repository|
         technologies = [{exercise: 1000, language: "Ruby"}, {exercise: 1000, language: "HTML"}, {exercise: 1000, language: "CSS"}, {exercise: 1000, language: "Javascript"}]
+
         technologies.each do |technology|
           language = create(:language, description: technology[:language])
           create(:technology, repository: repository, exercise: technology[:exercise], language: language)
         end
+
+        create(:contributor, :with_contributions, repository: repository, login: repository.user.login)
       end
     end
 
