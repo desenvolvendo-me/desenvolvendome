@@ -46,6 +46,27 @@ RSpec.describe 'Profile::Evolution::Started' do
 
   context 'xp' do
 
+    context 'minimo semanal' do
+
+      it '+ 10' do
+        create(:contribution, additions: 50, deletions: 5, commits: 5, period: '01/01/2020'.to_datetime, contributor: @contributor)
+
+        Profile::Evolution::Started.new(@user).run
+
+        expect(@user.profile.evaluation.started?).to be_truthy
+        expect(@user.profile.evaluation.xp).to eq(10)
+      end
+
+      it '+ 10' do
+        create(:contribution, additions: 50, deletions: 6, commits: 12, period: '01/01/2020'.to_datetime, contributor: @contributor)
+
+        Profile::Evolution::Started.new(@user).run
+
+        expect(@user.profile.evaluation.started?).to be_truthy
+        expect(@user.profile.evaluation.xp).to eq(10)
+      end
+    end
+
     context '1 mês' do
 
       it '+ 0' do
