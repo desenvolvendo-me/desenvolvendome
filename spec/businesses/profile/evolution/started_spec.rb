@@ -67,59 +67,10 @@ RSpec.describe 'Profile::Evolution::Started' do
       end
     end
 
-    context '1 mês' do
-
-      it '+ 0' do
-        create(:contribution, additions: 1, deletions: 0, commits: 1, period: '01/01/2020'.to_datetime, contributor: @contributor)
-
-        Profile::Evolution::Started.new(@user).run
-
-        expect(@user.profile.evaluation.started?).to be_truthy
-        expect(@user.profile.evaluation.xp).to eq(0)
-      end
-
-      it '+ 1' do
-        create(:contribution, additions: 5, deletions: 0, commits: 1, period: '07/01/2020'.to_datetime, contributor: @contributor)
-
-        Profile::Evolution::Started.new(@user).run
-
-        expect(@user.profile.evaluation.started?).to be_truthy
-        expect(@user.profile.evaluation.xp).to eq(1)
-      end
-
-      it '+ 3' do
-        create(:contribution, additions: 25, deletions: 0, commits: 1, period: '14/01/2020'.to_datetime, contributor: @contributor)
-
-        Profile::Evolution::Started.new(@user).run
-
-        expect(@user.profile.evaluation.started?).to be_truthy
-        expect(@user.profile.evaluation.xp).to eq(3)
-      end
-
-      it '+ 5' do
-        create(:contribution, additions: 50, deletions: 0, commits: 1, period: '21/01/2020'.to_datetime, contributor: @contributor)
-
-        Profile::Evolution::Started.new(@user).run
-
-        expect(@user.profile.evaluation.started?).to be_truthy
-        expect(@user.profile.evaluation.xp).to eq(5)
-      end
-
-    end
-
-    context '2 mês' do
-
-      it '+ 8' do
-        create(:contribution, additions: 75, deletions: 3, commits: 4, period: '01/01/2020'.to_datetime, contributor: @contributor)
-
-        Profile::Evolution::Started.new(@user).run
-
-        expect(@user.profile.evaluation.started?).to be_truthy
-        expect(@user.profile.evaluation.xp).to eq(8)
-      end
+    context 'mês' do
 
       it '+ 10' do
-        create(:contribution, additions: 100, deletions: 4, commits: 5, period: '07/01/2020'.to_datetime, contributor: @contributor)
+        create(:contribution, additions: 50, deletions: 5, commits: 6, period: '01/01/2020'.to_datetime, contributor: @contributor)
 
         Profile::Evolution::Started.new(@user).run
 
@@ -127,62 +78,44 @@ RSpec.describe 'Profile::Evolution::Started' do
         expect(@user.profile.evaluation.xp).to eq(10)
       end
 
-      it '+ 13' do
-        create(:contribution, additions: 125, deletions: 5, commits: 6, period: '14/01/2020'.to_datetime, contributor: @contributor)
+      it '+ 12' do
+        create(:contribution, additions: 75, deletions: 10, commits: 1, period: '07/01/2020'.to_datetime, contributor: @contributor)
 
         Profile::Evolution::Started.new(@user).run
 
         expect(@user.profile.evaluation.started?).to be_truthy
-        expect(@user.profile.evaluation.xp).to eq(13)
+        expect(@user.profile.evaluation.xp).to eq(12)
       end
 
-      it '+ 16' do
-        create(:contribution, additions: 150, deletions: 6, commits: 7, period: '21/01/2020'.to_datetime, contributor: @contributor)
+      it '+ 17' do
+        create(:contribution, additions: 100, deletions: 15, commits: 2, period: '14/01/2020'.to_datetime, contributor: @contributor)
 
         Profile::Evolution::Started.new(@user).run
 
         expect(@user.profile.evaluation.started?).to be_truthy
-        expect(@user.profile.evaluation.xp).to eq(16)
+        expect(@user.profile.evaluation.xp).to eq(17)
+      end
+
+      it '+ 14' do
+        create(:contribution, additions: 125, deletions: 20, commits: 2, period: '21/01/2020'.to_datetime, contributor: @contributor)
+
+        Profile::Evolution::Started.new(@user).run
+
+        expect(@user.profile.evaluation.started?).to be_truthy
+        expect(@user.profile.evaluation.xp).to eq(14)
       end
 
     end
 
-    context '3 mês' do
+    context 'máxima semanal' do
 
-      it '+ 18' do
-        create(:contribution, additions: 175, deletions: 7, commits: 8, period: '01/01/2020'.to_datetime, contributor: @contributor)
-
-        Profile::Evolution::Started.new(@user).run
-
-        expect(@user.profile.evaluation.started?).to be_truthy
-        expect(@user.profile.evaluation.xp).to eq(18)
-      end
-
-      it '+ 21' do
-        create(:contribution, additions: 200, deletions: 8, commits: 9, period: '07/01/2020'.to_datetime, contributor: @contributor)
+      it '+ 78' do
+        create(:contribution, additions: 325, deletions: 60, commits: 30, period: '01/01/2020'.to_datetime, contributor: @contributor)
 
         Profile::Evolution::Started.new(@user).run
 
         expect(@user.profile.evaluation.started?).to be_truthy
-        expect(@user.profile.evaluation.xp).to eq(21)
-      end
-
-      it '+ 23' do
-        create(:contribution, additions: 225, deletions: 9, commits: 10, period: '14/01/2020'.to_datetime, contributor: @contributor)
-
-        Profile::Evolution::Started.new(@user).run
-
-        expect(@user.profile.evaluation.started?).to be_truthy
-        expect(@user.profile.evaluation.xp).to eq(23)
-      end
-
-      it '+ 26' do
-        create(:contribution, additions: 250, deletions: 10, commits: 11, period: '21/01/2020'.to_datetime, contributor: @contributor)
-
-        Profile::Evolution::Started.new(@user).run
-
-        expect(@user.profile.evaluation.started?).to be_truthy
-        expect(@user.profile.evaluation.xp).to eq(26)
+        expect(@user.profile.evaluation.xp).to eq(78)
       end
 
     end
