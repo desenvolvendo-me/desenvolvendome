@@ -12,13 +12,13 @@ class Profile::Evolution::Kind
   end
 
   def level
-    lv = @settings[:min_level] + ((commits - @settings[:role][:commits_preview]) / @settings[:role][:calc]) unless level_up?
+    lv = levels(xp) unless level_up?
     lv = @settings[:max_level] if max
     lv
   end
 
   def level_up?
-    (repositories >= @settings[:role][:level_up][:repositories] and commits >= @settings[:role][:level_up][:commits])
+    (repositories >= @settings[:role][:level_up][:repositories] and commits >= @settings[:role][:level_up][:xp])
   end
 
   def next_level
@@ -40,20 +40,16 @@ class Profile::Evolution::Kind
     end
   end
 
-  def commits
-    @user.repositories.sum(:commits_count)
-  end
-
   def repositories
     @user.repositories.where("commits_count >= #{@settings[:role][:repository_size]}").count
   end
 
   def xp_next_level
-    @settings[:role][:calc] - (commits % @settings[:role][:calc])
+    @settings[:role][:calc] - (xp % @settings[:role][:calc])
   end
 
   def max
-    commits >= @settings[:role][:level_up][:commits]
+    xp >= @settings[:role][:level_up][:xp]
   end
 
   def xp
@@ -89,6 +85,33 @@ class Profile::Evolution::Kind
 
   def weekly_minimum(additions, deletions)
     ((additions > 50) and (deletions > 5))
+  end
+
+  def levels(xp)
+    # level_atual * 25 + level_anterior
+    case xp
+    when 0..24
+      1
+    when 25..74
+      2
+    when 75..149
+      3
+    when 150..249
+      4
+    when 250..374
+      5
+    when 375..524
+      6
+    when 525..699
+      7
+    when 700..899
+      8
+    when 900..1125
+      9
+    else
+      10
+    end
+
   end
 
 end
