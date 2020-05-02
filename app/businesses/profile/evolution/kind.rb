@@ -57,11 +57,21 @@ class Profile::Evolution::Kind
   end
 
   def xp
-    commits = @user.contributors.joins(:contributions).sum(:commits)
-    additions = @user.contributors.joins(:contributions).sum(:additions)
-    deletions = @user.contributors.joins(:contributions).sum(:deletions)
+    commits = 0
+    additions = 0
+    deletions = 0
+    quality = 0
 
-    quality = (commits.to_f / (additions + deletions).to_f) * 1000
+    contributor_ids = @user.contributors.pluck(:id)
+
+    Contribution.where(contributor_id: contributor_ids).group_by(&:period).each do |period, contributions|
+      contributions.each do |contribution|
+        commits += contribution.commits
+        additions += contribution.additions
+        deletions += contribution.deletions
+      end
+      quality += ((commits.to_f * (additions + deletions).to_f)/commits.to_f) / 10
+    end
 
     quality.round
   end
