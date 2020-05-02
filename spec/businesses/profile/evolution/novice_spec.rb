@@ -49,18 +49,4 @@ RSpec.describe "Profile::Evolution::Novice" do
 
   end
 
-  context "xp" do
-    it "+ 15" do
-      repository = create(:repository, commits_count: 13, user: @user)
-      contributor = create(:contributor, login: @user.login, repository: repository)
-      create(:contribution, additions: 50, deletions: 0, commits: 1, contributor: contributor)
-      create(:contribution, additions: 75, deletions: 10, commits: 1, contributor: contributor)
-
-      Profile::Evolution::Novice.new(@user).run
-
-      expect(@user.profile.evaluation.novice?).to be_truthy
-      expect(@user.profile.evaluation.xp).to eq(15)
-    end
-  end
-
 end
