@@ -70,9 +70,13 @@ class Profile::Evolution::Kind
         additions += contribution.additions
         deletions += contribution.deletions
       end
-      quality += ((commits.to_f * (additions + deletions).to_f)/commits.to_f) / 10
+      quality += calculate(commits, additions, deletions)
     end
 
     quality.round
+  end
+
+  def calculate(commits, additions, deletions)
+    (commits.to_f / (additions + deletions).to_f) * 1000
   end
 end
