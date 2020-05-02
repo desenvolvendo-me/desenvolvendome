@@ -77,6 +77,9 @@ class Profile::Evolution::Kind
   end
 
   def calculate(commits, additions, deletions)
+    return 10 if ((additions >= 50) and (deletions >= 5))
+    return 10 if ((additions + deletions) / commits) < 5
+
     (commits.to_f / (additions + deletions).to_f) * 1000
   end
 end
