@@ -57,14 +57,12 @@ class Profile::Evolution::Kind
   end
 
   def xp
-    commits = @user.contributors.joins(:contribution).sum(:commits)
-    additions = @user.contributors.joins(:contribution).sum(:additions)
-    deletions = @user.contributors.joins(:contribution).sum(:deletions)
+    commits = @user.contributors.joins(:contributions).sum(:commits)
+    additions = @user.contributors.joins(:contributions).sum(:additions)
+    deletions = @user.contributors.joins(:contributions).sum(:deletions)
 
-    works = (additions + deletions)
-    quality = commits.to_f / (additions + deletions).to_f
+    quality = (commits.to_f / (additions + deletions).to_f) * 1000
 
-    works * quality
+    quality.round
   end
-
 end
