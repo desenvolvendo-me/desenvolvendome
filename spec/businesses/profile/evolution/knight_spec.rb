@@ -45,35 +45,19 @@ RSpec.describe "Profile::Evolution::Knight" do
   end
 
   context "xp" do
-    it "+ 314" do
-      create(:repository, commits_count: 14, user: @user)
+    it "+ 57" do
+      repository = create(:repository, commits_count: 13, user: @user)
+      contributor = create(:contributor, login: @user.login, repository: repository)
+      create(:contribution, additions: 20, deletions: 4, commits: 1, contributor: contributor)
+      create(:contribution, additions: 15, deletions: 0, commits: 1, contributor: contributor)
+      create(:contribution, additions: 10, deletions: 3, commits: 1, contributor: contributor)
+      create(:contribution, additions: 25, deletions: 5, commits: 1, contributor: contributor)
+      create(:contribution, additions: 5, deletions: 1, commits: 1, contributor: contributor)
 
       Profile::Evolution::Knight.new(@user).run
 
-      expect(@user.profile.evaluation.evaluation_type).to eq("knight")
-      expect(@user.profile.evaluation.xp).to eq("314.0b")
-    end
-
-    it "+ 633" do
-      create(:repository, commits_count: 100, user: @user)
-      create(:repository, commits_count: 233, user: @user)
-
-      Profile::Evolution::Knight.new(@user).run
-
-      expect(@user.profile.evaluation.evaluation_type).to eq("knight")
-      expect(@user.profile.evaluation.xp).to eq("633.0b")
-    end
-
-    it "+ 2799" do
-      create(:repository, commits_count: 1000, user: @user)
-      create(:repository, commits_count: 500, user: @user)
-      create(:repository, commits_count: 500, user: @user)
-      create(:repository, commits_count: 499, user: @user)
-
-      Profile::Evolution::Knight.new(@user).run
-
-      expect(@user.profile.evaluation.evaluation_type).to eq("knight")
-      expect(@user.profile.evaluation.xp).to eq("2.73kb")
+      expect(@user.profile.evaluation.knight?).to be_truthy
+      expect(@user.profile.evaluation.xp).to eq(57)
     end
 
   end
