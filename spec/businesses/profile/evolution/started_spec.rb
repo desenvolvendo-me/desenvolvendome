@@ -32,7 +32,7 @@ RSpec.describe 'Profile::Evolution::Started' do
 
     it '8' do
       10.times do |n|
-        create(:contribution, additions: 325, deletions: 60, commits: 30, period: "#{n+1}/01/2020".to_datetime, contributor: @contributor)
+        create(:contribution, additions: 325, deletions: 60, commits: 30, period: "01/01/2020".to_date + (n+1).week, contributor: @contributor)
       end
 
       Profile::Evolution::Started.new(@user).run
@@ -44,7 +44,7 @@ RSpec.describe 'Profile::Evolution::Started' do
 
     it '10' do
       10.times do |n|
-        create(:contribution, additions: 1200, deletions: 200, commits: 193, period: "#{n+1}/01/2020".to_datetime, contributor: @contributor)
+        create(:contribution, additions: 1200, deletions: 200, commits: 193, period: "01/01/2020".to_date + (n+1).week, contributor: @contributor)
       end
 
       Profile::Evolution::Started.new(@user).run
