@@ -77,9 +77,18 @@ class Profile::Evolution::Kind
   end
 
   def calculate(commits, additions, deletions)
-    return 10 unless ((additions > 50) and (deletions > 5))
-    return 10 if ((additions + deletions) / commits) < 5
+    return 10 unless weekly_minimum(additions, deletions)
+    return 10 if proportion_minimal(additions, commits, deletions)
 
     (commits.to_f / (additions + deletions).to_f) * 1000
   end
+
+  def proportion_minimal(additions, commits, deletions)
+    ((additions + deletions) / commits) < 5
+  end
+
+  def weekly_minimum(additions, deletions)
+    ((additions > 50) and (deletions > 5))
+  end
+
 end
