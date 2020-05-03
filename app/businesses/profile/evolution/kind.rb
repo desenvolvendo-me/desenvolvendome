@@ -75,7 +75,7 @@ class Profile::Evolution::Kind
       quality += calculate(commits, additions, deletions)
     end
 
-    quality.round + @user.profile.evaluation.xp.to_i
+    quality.round
   end
 
   def calculate(commits, additions, deletions)
