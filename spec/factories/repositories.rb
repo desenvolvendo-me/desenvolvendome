@@ -19,7 +19,7 @@
 #
 # Indexes
 #
-#  index_projects_on_user_id  (user_id)
+#  index_repositories_on_user_id  (user_id)
 #
 
 FactoryBot.define do
