@@ -41,12 +41,6 @@ class Profile::Evolution::Kind
   end
 
   def repositories
-    # contributor_ids = @user.contributors.pluck(:id)
-    #
-    # Contribution.where(contributor_id: contributor_ids).group_by(&:period).each do |period, contributions|
-    #
-    # end
-
     @user.repositories.where("commits_count >= #{@settings[:role][:repository_size]}").count
   end
 
