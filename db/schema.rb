@@ -100,14 +100,14 @@ ActiveRecord::Schema.define(version: 2020_03_08_151642) do
     t.integer "limit"
     t.integer "consume"
     t.datetime "reset"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "description"
   end
 
   create_table "compares", force: :cascade do |t|
     t.integer "comparations_count"
-    t.integer "user_id"
+    t.integer "login"
     t.integer "compared_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -202,7 +202,7 @@ ActiveRecord::Schema.define(version: 2020_03_08_151642) do
     t.string "principal_technology"
     t.date "pushed_at"
     t.integer "size_type"
-    t.index ["user_id"], name: "index_projects_on_user_id"
+    t.index ["user_id"], name: "index_repositories_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
