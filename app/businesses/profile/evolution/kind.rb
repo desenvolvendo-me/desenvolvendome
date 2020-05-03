@@ -18,7 +18,7 @@ class Profile::Evolution::Kind
   end
 
   def level_up?
-    (repositories >= @settings[:role][:level_up][:repositories] and commits >= @settings[:role][:level_up][:xp])
+    (repositories >= @settings[:role][:level_up][:repositories] and xp >= @settings[:role][:level_up][:xp])
   end
 
   def next_level
@@ -41,6 +41,12 @@ class Profile::Evolution::Kind
   end
 
   def repositories
+    # contributor_ids = @user.contributors.pluck(:id)
+    #
+    # Contribution.where(contributor_id: contributor_ids).group_by(&:period).each do |period, contributions|
+    #
+    # end
+
     @user.repositories.where("commits_count >= #{@settings[:role][:repository_size]}").count
   end
 
@@ -69,7 +75,7 @@ class Profile::Evolution::Kind
       quality += calculate(commits, additions, deletions)
     end
 
-    quality.round
+    quality.round + @user.profile.evaluation.xp.to_i
   end
 
   def calculate(commits, additions, deletions)
