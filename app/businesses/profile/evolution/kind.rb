@@ -88,30 +88,19 @@ class Profile::Evolution::Kind
   end
 
   def levels(xp)
-    # level_atual * 25 + level_anterior
-    case xp
-    when 0..24
-      1
-    when 25..74
-      2
-    when 75..149
-      3
-    when 150..249
-      4
-    when 250..374
-      5
-    when 375..524
-      6
-    when 525..699
-      7
-    when 700..899
-      8
-    when 900..1125
-      9
-    else
-      10
+    # Xp = [(Nível Atual * 50) + Nível Anterior] - Evolução
+    level = 1
+    previous_level = 0
+    @settings[:max_level].times do |l|
+      previous_level += (@settings[:role][:calc] * (l - 1))
+      minimum_xp = (@settings[:role][:calc] + previous_level) - @settings[:role][:commits_preview]
+      max_xp = (((@settings[:role][:calc] * (l + 1)) - 1) + previous_level) - @settings[:role][:commits_preview]
+      if xp.between?(minimum_xp, max_xp)
+        level = l
+        break
+      end
     end
-
+    level
   end
 
 end
