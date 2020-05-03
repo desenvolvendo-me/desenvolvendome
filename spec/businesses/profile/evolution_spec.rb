@@ -46,8 +46,8 @@ RSpec.describe "Profile::Evolution" do
       Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
-      expect(@user.profile.evaluation.xp).to eq(390)
-      expect(@user.profile.evaluation.level).to eq(6)
+      expect(@user.profile.evaluation.xp).to eq(312)
+      expect(@user.profile.evaluation.level).to eq(5)
     end
 
     it 'novice' do
@@ -90,7 +90,7 @@ RSpec.describe "Profile::Evolution" do
       Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.novice?).to be_truthy
-      expect(@user.profile.evaluation.xp).to eq(1636)
+      expect(@user.profile.evaluation.xp).to eq(1558)
       expect(@user.profile.evaluation.level).to eq(3)
     end
 
