@@ -49,7 +49,7 @@ class Profile::Evolution::Kind
   end
 
   def max
-    xp >= @settings[:role][:level_up][:xp]
+    (xp - @settings[:role][:commits_preview]) >= @settings[:role][:level_up][:xp]
   end
 
   def xp
@@ -88,14 +88,14 @@ class Profile::Evolution::Kind
   end
 
   def levels(xp)
-    # Xp = [(Nível Atual * 50) + Nível Anterior] - Evolução
+    # Xp = [(Nível Atual * 50) + Nível Anterior] - Máxima Evolução Anterior
     level = 1
-    previous_level = 0
+    minimum_xp = 0
     @settings[:max_level].times do |l|
-      previous_level += (@settings[:role][:calc] * (l - 1))
-      minimum_xp = (@settings[:role][:calc] + previous_level) - @settings[:role][:commits_preview]
-      max_xp = (((@settings[:role][:calc] * (l + 1)) - 1) + previous_level) - @settings[:role][:commits_preview]
-      if xp.between?(minimum_xp, max_xp)
+      l += 1
+      minimum_xp += (@settings[:role][:calc] * l) - @settings[:role][:calc]
+      max_xp = (((@settings[:role][:calc] * l) - 1) + minimum_xp)
+      if (xp - @settings[:role][:commits_preview]).between?(minimum_xp, max_xp)
         level = l
         break
       end
