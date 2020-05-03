@@ -44,15 +44,15 @@ class Repository < ApplicationRecord
 
 
   def commits_count
-    contributors.joins(:contribution).where(login: user.login).sum(:commits)
+    contributors.joins(:contributions).where(login: user.login).sum(:commits)
   end
 
   def additions_count
-    contributors.joins(:contribution).where(login: user.login).sum(:additions)
+    contributors.joins(:contributions).where(login: user.login).sum(:additions)
   end
 
   def deletions_count
-    contributors.joins(:contribution).where(login: user.login).sum(:deletions)
+    contributors.joins(:contributions).where(login: user.login).sum(:deletions)
   end
 
   private

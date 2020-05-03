@@ -10,7 +10,7 @@ class Github::Importation::Commit < Github::Importation
   def import
     @user.repositories.each do |repository|
       get_contributions(repository)
-      contributors = Contributor.joins(:contribution).where(login: @user.login)
+      contributors = Contributor.joins(:contributions).where(login: @user.login)
       repository.update(commits_count: contributors.sum(:commits))
     end
   end
@@ -24,7 +24,7 @@ class Github::Importation::Commit < Github::Importation
             additions: week['a'],
             deletions: week['d']
         )
-        Contributor.create(login: contributor["author"]["login"], repository: repository, contribution: contribution)
+        Contributor.create(login: contributor["author"]["login"], repository: repository, contributions: [contribution])
       end
     end
   end
