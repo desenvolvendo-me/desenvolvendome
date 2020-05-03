@@ -16,7 +16,6 @@ class Github::Importation::Repo < Github::Importation
 
   def get_repos(repositories_count)
     @github.repos(@user.login, repositories_count).each.with_index do |repo, index|
-      Rails.logger.info "User: #{@user.login}, Repository: #{repo['name']}, #{index + 1} to #{repositories_count}"
       set_repository(repo)
     end
   end
