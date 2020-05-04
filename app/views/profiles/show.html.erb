@@ -11,11 +11,6 @@
             <% else %>
               <%= image_tag "user.png", size: "150x150", class: "profile-image rounded-circle" %>
             <% end %>
-            <div class="progress">
-              <% if @profile.user.try(:profile) %>
-                <div class="progress-bar" role="progressbar" style="width: <%= progress_bar(@profile.user) %>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Importado <%= number_to_percentage(progress_bar(@profile.user), precision: 0) %></div>
-              <% end %>
-            </div>
             <div class="h4 text-center"><%= @profile.user.try(:name) %></div>
             <div class="h6 text-center">
               <a href="https://github.com/<%= @profile.user.try(:login) %>" title="<%= @profile.user.try(:login) %>" target="_new">@<%= @profile.user.try(:login) %></a>
@@ -31,19 +26,11 @@
             <% else %>
               <%= image_tag "evaluation/default.png", size: "150x150", class: "profile-image rounded-circle" %>
             <% end %>
-            <div class="progress">
-              <% if @profile.user.try(:profile) %>
-                <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= next_level_bar(@profile.user)[:percentage] %>%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><%= next_level_bar(@profile.user)[:number] %></div>
-              <% end %>
-            </div>
             <div class="h4 text-center"><%= Evaluation.human_enum_name(:evaluation_types, @profile.try(:evaluation).try(:evaluation_type)) %></div>
             <div class="h6 text-center"><%= "#{@profile.try(:evaluation).try(:level)}º Nível" %>
               <i class="fas fa-trophy"></i></div>
           <% else %>
             <%= image_tag "evaluation/default.png", size: "150x150", class: "profile-image rounded-circle" %>
-            <div class="progress">
-              <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">?</div>
-            </div>
             <div class="h4 text-center">?</div>
             <div class="h6 text-center">?º nível</div>
           <% end %>
@@ -56,231 +43,217 @@
       </div>
     <% end %>
     <% if @profile.user.try(:profile) %>
-      <% if progress_bar(@profile.user) == 100 %>
-        <% if @profile.user == current_user %>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="row justify-content-between m-0">
-                <%= link_to reimport_path, class: "btn btn-outline-info", method: :post do %>
-                  <i class="fab fa-github"></i> Reimportar <i class="fas fa-cloud-download-alt"></i>
-                <% end %>
-                <% if flash[:notice] %>
-                  <div class="btn btn-success" role="alert">
-                    <%= flash[:notice].html_safe %> <i class="fas fa-cloud-upload-alt"></i>
-                  </div>
-                <% end %>
-                <%= link_to hide_profile_path do %>
-                  <div class="btn btn-<%= current_user.profile.hide? ? "danger" : "success" %>">
-                    <i class="fas <%= current_user.profile.hide? ? "fa-eye-slash" : "fa-eye" %> %>fa-eye-slash">
-                      <%= current_user.profile.hide? ? "Perfil Oculto" : "Perfil Visível" %>
-                    </i>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-        <hr class="featurette-divider">
+      <% if @profile.user == current_user %>
         <div class="row">
           <div class="col-md-12">
-            <% if @profile.user.try(:profile) %>
-              <div class="btn btn-primary btn-lg btn-block">
-                <i class="fa fa-arrow-circle-up"> XP <%= @profile.try(:evaluation).try(:xp) %></i>
-              </div>
-            <% else %>
-              <div class="btn btn-info btn-lg btn-block">?</div>
-            <% end %>
-          </div>
-        </div>
-        <hr class="featurette-divider">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="text-center">
-              <div class="text-info">
-                <%= link_to visits_privacy_path do %>
-                  <i class="fas fa-shield-alt"></i>Leia Nossa Política de Privacidade
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr class="featurette-divider">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="text-center">
-              <div class="text-info">
-                A experiência é medida com base na quantidade de código criado. Não gostou? Leia a nota
-                <a href="#nota">clique aqui</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr class="featurette-divider">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="text-center mb-4">
-              <div class="h3 text-default text-uppercase">
-                <i class="fa fa-laptop"> seus repositórios</i>
-              </div>
-              <% if @profile.user == current_user %>
-                <% if @profile.user.repositories.no_contribution.count > 0 %>
-                  <small class="text-danger">
-                    Você tem <%= @profile.user.repositories.no_contribution.count %>
-                    <%= "repositório".pluralize(@profile.user.repositories.no_contribution.count) %>
-                    sem contribuição
-                  </small>
-                <% end %>
+            <div class="row justify-content-between m-0">
+              <%= link_to hide_profile_path do %>
+                <div class="btn btn-<%= current_user.profile.hide? ? "danger" : "success" %>">
+                  <i class="fas <%= current_user.profile.hide? ? "fa-eye-slash" : "fa-eye" %> %>fa-eye-slash">
+                    <%= current_user.profile.hide? ? "Perfil Oculto" : "Perfil Visível" %>
+                  </i>
+                </div>
               <% end %>
             </div>
-            <div class="text-center">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
-                      <small><%= image_tag "evaluation/started.png", size: "20x20" %></small>
-                      <% if number_small_projects(@profile.user) != 0 %>
-                        <div class="h5 mb-1">Você tem
-                          <strong><%= number_small_projects(@profile.user) %></strong>
-                          <%= "repositório".pluralize(number_small_projects(@profile.user)) %>
-                        </div>
-                        <small class="text-muted">
-                          <%= "pequeno".pluralize(number_small_projects(@profile.user)) %>
-                        </small>
-                      <% else %>
-                        <div class="h5 mb-1">
-                          Você não tem repositórios
-                        </div>
-                        <small class="text-muted">
-                          pequenos
-                        </small>
-                      <% end %>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
-                      <small><%= image_tag "evaluation/novice.png", size: "20x20" %></small>
-                      <% if number_medium_projects(@profile.user) != 0 %>
-                        <div class="h5 mb-1">Você tem
-                          <strong><%= number_medium_projects(@profile.user) %></strong>
-                          <%= "repositório".pluralize(number_medium_projects(@profile.user)) %>
-                        </div>
-                        <small class="text-muted">
-                          <%= "médio".pluralize(number_medium_projects(@profile.user)) %>
-                        </small>
-                      <% else %>
-                        <div class="h5 mb-1">
-                          Você não tem repositórios
-                        </div>
-                        <small class="text-muted">
-                          médios
-                        </small>
-                      <% end %>
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
-                      <small><%= image_tag "evaluation/knight.png", size: "20x20" %></small>
-                      <% if number_large_projects(@profile.user) != 0 %>
-                        <div class="h5 mb-1">Você tem
-                          <strong><%= number_large_projects(@profile.user) %></strong>
-                          <%= "repositório".pluralize(number_large_projects(@profile.user)) %>
-                        </div>
-                        <small class="text-muted">
-                          <%= "grande".pluralize(number_large_projects(@profile.user)) %>
-                        </small>
-                      <% else %>
-                        <div class="h5 mb-1">
-                          Você não tem repositórios
-                        </div>
-                        <small class="text-muted">
-                          grandes
-                        </small>
-                      <% end %>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr class="featurette-divider">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="text-center mb-4">
-              <div class="h3 text-default text-uppercase">
-                <i class="fa fa-file-code"> seus conhecimentos</i>
-              </div>
-            </div>
-            <div class="text-center">
-              <div class="row">
-                <div class="col-md-3">
-                  <div class="text-center">
-                    <div class="h5"><%= image_tag "language/basic/default.png", size: "30x30" %>Básicas</div>
-                  </div>
-                  <ul class="list-group">
-                    <% @profile.knowledges.where(knowledge_type: :basic).ordered_by_level.each do |knowledge| %>
-                      <%= render 'language', knowledge: knowledge, knowledge_type: "basic", user: @profile.user %>
-                    <% end %>
-                  </ul>
-                </div>
-                <div class="col-md-3">
-                  <div class="h5"><%= image_tag "language/normal/default.png", size: "30x30" %>Normais</div>
-                  <ul class="list-group">
-                    <% @profile.knowledges.where(knowledge_type: :normal).ordered_by_level.each do |knowledge| %>
-                      <%= render 'language', knowledge: knowledge, knowledge_type: "normal", user: @profile.user %>
-                    <% end %>
-                  </ul>
-                </div>
-                <div class="col-md-3">
-                  <div class="h5"><%= image_tag "language/rare/default.png", size: "30x30" %>Raras</div>
-                  <ul class="list-group">
-                    <% @profile.knowledges.where(knowledge_type: :rare).ordered_by_level.each do |knowledge| %>
-                      <%= render 'language', knowledge: knowledge, knowledge_type: "rare", user: @profile.user %>
-                    <% end %>
-                  </ul>
-                </div>
-                <div class="col-md-3">
-                  <div class="h5"><%= image_tag "language/special/default.png", size: "30x30" %>Especiais</div>
-                  <ul class="list-group">
-                    <% @profile.knowledges.where(knowledge_type: :special).ordered_by_level.each do |knowledge| %>
-                      <%= render 'language', knowledge: knowledge, knowledge_type: "special", user: @profile.user %>
-                    <% end %>
-                  </ul>
-                </div>
-                <div class="col-md-12">
-                  <div class="h5"><%= image_tag "language/empty.png", size: "30x30" %>Menos Conhecidas</div>
-                  <ul class="list-group">
-                    <% @profile.knowledges.where(knowledge_type: :unknown).ordered_by_level.each do |knowledge| %>
-                      <%= render 'language', knowledge: knowledge, knowledge_type: "unknown", user: @profile.user %>
-                    <% end %>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr class="featurette-divider">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <div id="nota" class="alert-info">NOTA</div>
-          </div>
-          <div class="col-md-12 text-center mb-2">
-            <span>Ainda não levamos em consideração a Relevância e a Qualidade do código, somente a Quantidade.</span><br>
-            <span>Nosso objetivo é disponibilizar na versão v1.1 e v1.2 respectivamente, hoje estamos na
-              <%= "#{`git describe --tags --abbrev=0`}" %></span>
-          </div>
-          <div class="col-md-12 text-center">
-            <%= link_to "Dúvidas, Críticas e Sugestões", new_contact_path, class: "btn btn-lg btn-primary" %>
           </div>
         </div>
       <% end %>
-    <% else %>
-      <div class="text-center">
-        <h2>Precione F5 para acompanhar o processamento</h2>
+      <hr class="featurette-divider">
+      <div class="row">
+        <div class="col-md-12">
+          <% if @profile.user.try(:profile) %>
+            <div class="btn btn-primary btn-lg btn-block">
+              <i class="fa fa-arrow-circle-up"> XP <%= @profile.try(:evaluation).try(:xp) %></i>
+            </div>
+          <% else %>
+            <div class="btn btn-info btn-lg btn-block">?</div>
+          <% end %>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-center">
+            <div class="text-info">
+              <%= link_to visits_privacy_path do %>
+                <i class="fas fa-shield-alt"></i>Leia Nossa Política de Privacidade
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-center">
+            <div class="text-info">
+              A experiência é medida com base na quantidade de código criado. Não gostou? Leia a nota
+              <a href="#nota">clique aqui</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-center mb-4">
+            <div class="h3 text-default text-uppercase">
+              <i class="fa fa-laptop"> seus repositórios</i>
+            </div>
+            <% if @profile.user == current_user %>
+              <% if @profile.user.repositories.no_contribution.count > 0 %>
+                <small class="text-danger">
+                  Você tem <%= @profile.user.repositories.no_contribution.count %>
+                  <%= "repositório".pluralize(@profile.user.repositories.no_contribution.count) %>
+                  sem contribuição
+                </small>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="text-center">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="list-group">
+                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
+                    <small><%= image_tag "evaluation/started.png", size: "20x20" %></small>
+                    <% if number_small_projects(@profile.user) != 0 %>
+                      <div class="h5 mb-1">Você tem
+                        <strong><%= number_small_projects(@profile.user) %></strong>
+                        <%= "repositório".pluralize(number_small_projects(@profile.user)) %>
+                      </div>
+                      <small class="text-muted">
+                        <%= "pequeno".pluralize(number_small_projects(@profile.user)) %>
+                      </small>
+                    <% else %>
+                      <div class="h5 mb-1">
+                        Você não tem repositórios
+                      </div>
+                      <small class="text-muted">
+                        pequenos
+                      </small>
+                    <% end %>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="list-group">
+                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
+                    <small><%= image_tag "evaluation/novice.png", size: "20x20" %></small>
+                    <% if number_medium_projects(@profile.user) != 0 %>
+                      <div class="h5 mb-1">Você tem
+                        <strong><%= number_medium_projects(@profile.user) %></strong>
+                        <%= "repositório".pluralize(number_medium_projects(@profile.user)) %>
+                      </div>
+                      <small class="text-muted">
+                        <%= "médio".pluralize(number_medium_projects(@profile.user)) %>
+                      </small>
+                    <% else %>
+                      <div class="h5 mb-1">
+                        Você não tem repositórios
+                      </div>
+                      <small class="text-muted">
+                        médios
+                      </small>
+                    <% end %>
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="list-group">
+                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
+                    <small><%= image_tag "evaluation/knight.png", size: "20x20" %></small>
+                    <% if number_large_projects(@profile.user) != 0 %>
+                      <div class="h5 mb-1">Você tem
+                        <strong><%= number_large_projects(@profile.user) %></strong>
+                        <%= "repositório".pluralize(number_large_projects(@profile.user)) %>
+                      </div>
+                      <small class="text-muted">
+                        <%= "grande".pluralize(number_large_projects(@profile.user)) %>
+                      </small>
+                    <% else %>
+                      <div class="h5 mb-1">
+                        Você não tem repositórios
+                      </div>
+                      <small class="text-muted">
+                        grandes
+                      </small>
+                    <% end %>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-center mb-4">
+            <div class="h3 text-default text-uppercase">
+              <i class="fa fa-file-code"> seus conhecimentos</i>
+            </div>
+          </div>
+          <div class="text-center">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="text-center">
+                  <div class="h5"><%= image_tag "language/basic/default.png", size: "30x30" %>Básicas</div>
+                </div>
+                <ul class="list-group">
+                  <% @profile.knowledges.where(knowledge_type: :basic).ordered_by_level.each do |knowledge| %>
+                    <%= render 'language', knowledge: knowledge, knowledge_type: "basic", user: @profile.user %>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <div class="h5"><%= image_tag "language/normal/default.png", size: "30x30" %>Normais</div>
+                <ul class="list-group">
+                  <% @profile.knowledges.where(knowledge_type: :normal).ordered_by_level.each do |knowledge| %>
+                    <%= render 'language', knowledge: knowledge, knowledge_type: "normal", user: @profile.user %>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <div class="h5"><%= image_tag "language/rare/default.png", size: "30x30" %>Raras</div>
+                <ul class="list-group">
+                  <% @profile.knowledges.where(knowledge_type: :rare).ordered_by_level.each do |knowledge| %>
+                    <%= render 'language', knowledge: knowledge, knowledge_type: "rare", user: @profile.user %>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <div class="h5"><%= image_tag "language/special/default.png", size: "30x30" %>Especiais</div>
+                <ul class="list-group">
+                  <% @profile.knowledges.where(knowledge_type: :special).ordered_by_level.each do |knowledge| %>
+                    <%= render 'language', knowledge: knowledge, knowledge_type: "special", user: @profile.user %>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="col-md-12">
+                <div class="h5"><%= image_tag "language/empty.png", size: "30x30" %>Menos Conhecidas</div>
+                <ul class="list-group">
+                  <% @profile.knowledges.where(knowledge_type: :unknown).ordered_by_level.each do |knowledge| %>
+                    <%= render 'language', knowledge: knowledge, knowledge_type: "unknown", user: @profile.user %>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <div id="nota" class="alert-info">NOTA</div>
+        </div>
+        <div class="col-md-12 text-center mb-2">
+          <span>Ainda não levamos em consideração a Relevância e a Qualidade do código, somente a Quantidade.</span><br>
+          <span>Nosso objetivo é disponibilizar na versão v1.1 e v1.2 respectivamente, hoje estamos na
+            <%= "#{`git describe --tags --abbrev=0`}" %></span>
+        </div>
+        <div class="col-md-12 text-center">
+          <%= link_to "Dúvidas, Críticas e Sugestões", new_contact_path, class: "btn btn-lg btn-primary" %>
+        </div>
       </div>
     <% end %>
   </div>
