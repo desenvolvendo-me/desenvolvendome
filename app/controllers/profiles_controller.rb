@@ -18,11 +18,6 @@ class ProfilesController < ApplicationController
   def rule;
   end
 
-  def reimport
-    GenerateProfileJob.perform_later(current_user.login)
-    redirect_to repositories_user_path(current_user.login), notice: 'Reimportação Envia com Sucesso'
-  end
-
   def reimport_rule;
   end
 

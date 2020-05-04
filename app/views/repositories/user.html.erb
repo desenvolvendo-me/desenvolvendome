@@ -36,7 +36,7 @@
         <%= page_entries_info @repositories %>
       </div>
       <div class="row justify-content-center">
-        <%= link_to reimport_path, class: "btn btn-outline-info", method: :post do %>
+        <%= link_to reimport_repositories_path, class: "btn btn-outline-info", method: :post do %>
           <i class="fab fa-github"></i> Atualizar Repositórios <i class="fas fa-cloud-download-alt"></i>
         <% end %>
       </div>
@@ -87,8 +87,10 @@
                   <%= repository.technologies.joins(:language).order(exercise: :desc).pluck("languages.description").join(", ") %>
                 </small>
               </div>
+              <%= link_to reimport_repository_path(repository: repository.id), class: "btn btn-outline-info", method: :post do %>
+                <i class="fab fa-github"></i> Analisar Repositório <i class="fas fa-cloud-download-alt"></i>
+              <% end %>
             </div>
-            <%# end %>
             <br>
           </div>
         <% end %>
