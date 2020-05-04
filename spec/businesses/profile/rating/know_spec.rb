@@ -6,7 +6,7 @@ RSpec.describe "Profile::Rating::Know" do
     @user = create(:user, :with_profile)
   end
 
-  context "knowledge type" do
+  xcontext "knowledge type" do
 
     it "basic" do
       repository = create(:repository, commits_count: 15, user: @user)
@@ -54,7 +54,7 @@ RSpec.describe "Profile::Rating::Know" do
 
   end
 
-  context "knowledge level" do
+  xcontext "knowledge level" do
 
     it "1" do
       repository = create(:repository, commits_count: 25, user: @user)
@@ -99,6 +99,5 @@ RSpec.describe "Profile::Rating::Know" do
     end
 
   end
-
 
 end

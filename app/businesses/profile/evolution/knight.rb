@@ -5,12 +5,12 @@ class Profile::Evolution::Knight < Profile::Evolution::Kind
       max_level: 10,
       role: {
           kind: :knight,
-          calc: 300,
+          calc: 100,
           repository_size: 500,
-          commits_preview: 300,
+          commits_preview: 2750,
           level_up: {
               repositories: 3,
-              commits: 3000
+              xp: 5500
           }
       }
   }

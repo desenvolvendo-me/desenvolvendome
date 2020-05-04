@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_29_133420) do
+ActiveRecord::Schema.define(version: 2020_03_08_151642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,13 +100,14 @@ ActiveRecord::Schema.define(version: 2020_02_29_133420) do
     t.integer "limit"
     t.integer "consume"
     t.datetime "reset"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "compares", force: :cascade do |t|
     t.integer "comparations_count"
-    t.integer "user_id"
+    t.integer "login"
     t.integer "compared_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -120,6 +121,25 @@ ActiveRecord::Schema.define(version: 2020_02_29_133420) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "response"
+  end
+
+  create_table "contributions", force: :cascade do |t|
+    t.datetime "period"
+    t.integer "additions"
+    t.integer "deletions"
+    t.integer "commits"
+    t.bigint "contributor_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["contributor_id"], name: "index_contributions_on_contributor_id"
+  end
+
+  create_table "contributors", force: :cascade do |t|
+    t.string "login"
+    t.bigint "repository_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["repository_id"], name: "index_contributors_on_repository_id"
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -181,6 +201,7 @@ ActiveRecord::Schema.define(version: 2020_02_29_133420) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "principal_technology"
     t.date "pushed_at"
+    t.integer "size_type"
     t.index ["user_id"], name: "index_repositories_on_user_id"
   end
 
@@ -238,5 +259,7 @@ ActiveRecord::Schema.define(version: 2020_02_29_133420) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "contributions", "contributors"
+  add_foreign_key "contributors", "repositories"
   add_foreign_key "evaluations", "profiles"
 end

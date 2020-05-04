@@ -9,23 +9,24 @@ class Github::Importation::Commit < Github::Importation
 
   def import
     @user.repositories.each do |repository|
-      repository.update(commits_count: get_contributions(repository))
+      get_contributions(repository)
+      contributors = Contributor.joins(:contributions).where(login: @user.login)
+      repository.update(commits_count: contributors.sum(:commits))
     end
   end
 
   def get_contributions(repository)
-    get_commits(repository).each do |contribuidor|
-      if contribuidor['login'] == @user.login
-        return contribuidor ? contribuidor['contributions'].to_i : 0
-      else
-        return 0
+    @github.contributors(repository.user.login, repository.name).each do |contributor|
+      contributor["weeks"].each do |week|
+        contribution = Contribution.create(
+            period: DateTime.strptime(week['w'].to_s, '%s'),
+            commits: week['c'],
+            additions: week['a'],
+            deletions: week['d']
+        )
+        Contributor.create(login: contributor["author"]["login"], repository: repository, contributions: [contribution])
       end
     end
-    return 0
-  end
-
-  def get_commits(repository)
-    @github.commits(@user.login, repository.name)
   end
 
 end

@@ -20,7 +20,6 @@
 #
 
 class Evaluation < ApplicationRecord
-  include ConvertXpToByte
   has_paper_trail only: [:xp, :level, :evaluation_type]
   belongs_to :profile
 

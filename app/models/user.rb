@@ -79,6 +79,10 @@ class User < ApplicationRecord
     where(repositories_count: 0)
   }
 
+  def contributors
+    Contributor.where(login: login)
+  end
+
   private
 
   def start_processing

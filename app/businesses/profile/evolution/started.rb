@@ -5,12 +5,12 @@ class Profile::Evolution::Started < Profile::Evolution::Kind
       max_level: 10,
       role: {
           kind: :started,
-          calc: 15,
+          calc: 25,
           repository_size: 50,
           commits_preview: 0,
           level_up: {
               repositories: 3,
-              commits: 150
+              xp: 1375
           }
       }
   }

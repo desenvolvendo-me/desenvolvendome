@@ -5,12 +5,12 @@ class Profile::Evolution::Novice < Profile::Evolution::Kind
       max_level: 10,
       role: {
           kind: :novice,
-          calc: 30,
+          calc: 50,
           repository_size: 100,
-          commits_preview: 150,
+          commits_preview: 1375,
           level_up: {
               repositories: 3,
-              commits: 300
+              xp: 2750
           }
       }
   }
