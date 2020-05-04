@@ -1,8 +1,8 @@
 class ImportationsController < ApplicationController
 
   def repository
-    if !current_user.can_evaluation?
-      GenerateProfileJob.perform_later(current_user.login)
+    if current_user.can_evaluation?
+      EvaluationRepositoryJob.perform_later(params[:repository])
       redirect_to repositories_user_path(current_user.login), notice: 'Reimportação Envia com Sucesso'
     else
       redirect_to reimport_rule_path
@@ -11,7 +11,7 @@ class ImportationsController < ApplicationController
 
   def repositories
     if current_user.can_evaluation?
-      GenerateProfileJob.perform_later(current_user.login)
+      LoadRepositoriesJob.perform_later(current_user.login)
       redirect_to repositories_user_path(current_user.login), notice: 'Reimportação Envia com Sucesso'
     else
       redirect_to reimport_rule_path

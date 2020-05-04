@@ -1,10 +1,11 @@
-class GenerateProfileJob < ApplicationJob
-  queue_as :profile
+class EvaluationRepositoryJob < ApplicationJob
+  queue_as :evaluation_repository
 
-  def perform(login)
-    user = User.find_by_login(login)
+  def perform(repository)
+    repository = Repository.find(repository)
+    user = User.find_by_login(repository.user.login)
 
-    import_github(user)
+    import_github(repository)
     profile_generate(user)
     #NOTE: Não será enviado email ainda
     # send_profile(user)
@@ -12,9 +13,7 @@ class GenerateProfileJob < ApplicationJob
   end
 
   def import_github(user)
-    Github::Importation.new.author user
-    Github::Importation.new.reposities(user)
-
+    Github::Importation.new.contributions user
   end
 
   def profile_generate(user)
