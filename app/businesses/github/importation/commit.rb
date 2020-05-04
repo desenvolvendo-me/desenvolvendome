@@ -1,18 +1,16 @@
 class Github::Importation::Commit < Github::Importation
 
-  def run(user)
-    @user = user
+  def run(repository)
+    @repository = repository
     import
   end
 
   private
 
   def import
-    @user.repositories.each do |repository|
-      get_contributions(repository)
-      contributors = Contributor.joins(:contributions).where(login: @user.login)
-      repository.update(commits_count: contributors.sum(:commits))
-    end
+    get_contributions(@repository)
+    contributors = Contributor.joins(:contributions).where(login: @repository.user.login)
+    @repository.update(commits_count: contributors.sum(:commits))
   end
 
   def get_contributions(repository)

@@ -12,7 +12,9 @@ class GenerateProfileJob < ApplicationJob
   end
 
   def import_github(user)
-    Github::Importation.new.run user
+    Github::Importation.new.author user
+    Github::Importation.new.reposities(user)
+
   end
 
   def profile_generate(user)
