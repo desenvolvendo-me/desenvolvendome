@@ -43,16 +43,35 @@ RSpec.describe "Github::Importation" do
     expect(repository.commits_count).to eq(8)
   end
 
+  context "erros" do
+    it "desenvolvendome" do
+      user = create(:user, :with_profile, login: "desenvolvendome")
+      repository = create(:repository, name: "ruby-blog", user: user)
 
-  it "desenvolvendome" do
-    user = create(:user, :with_profile, login: "desenvolvendome")
-    repository = create(:repository, name: "ruby-blog", user: user)
+      Github::Importation.new.contributions(repository)
+      Github::Importation.new.contributions(repository)
 
-    Github::Importation.new.contributions(repository)
-    Github::Importation.new.contributions(repository)
+      expect(repository.contributors.count).to eq(2)
+      expect(repository.commits_count).to eq(8)
+    end
 
-    expect(repository.contributors.count).to eq(2)
-    expect(repository.commits_count).to eq(8)
+    it "marcodotcastro" do
+      user = create(:user, :with_profile, login: "marcodotcastro")
+      repository = create(:repository, name: "curriculum", user: user)
+
+      Github::Importation.new.contributions(repository)
+
+      Profile::Evolution.new(user).run
+
+      repository = create(:repository, name: "dev.me", user: user)
+
+      Github::Importation.new.contributions(repository)
+
+      Profile::Evolution.new(user).run
+
+      expect(user.profile.evaluation.xp).to eq(40)
+    end
   end
+
 
 end

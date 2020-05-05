@@ -53,14 +53,15 @@ class Profile::Evolution::Kind
   end
 
   def xp
-    commits = 0
-    additions = 0
-    deletions = 0
     quality = 0
 
     contributor_ids = @user.contributors.pluck(:id)
 
     Contribution.where(contributor_id: contributor_ids).group_by(&:period).each do |period, contributions|
+      commits = 0
+      additions = 0
+      deletions = 0
+
       contributions.each do |contribution|
         commits += contribution.commits
         additions += contribution.additions
@@ -73,10 +74,16 @@ class Profile::Evolution::Kind
   end
 
   def calculate(commits, additions, deletions)
+    return 0 if (commits + additions + deletions).eql?(0)
     return 10 unless weekly_minimum(additions, deletions)
     return 10 if proportion_minimal(additions, commits, deletions)
+    return 50 if commit_minimun(commits)
 
     (commits.to_f / (additions + deletions).to_f) * 1000
+  end
+
+  def commit_minimun(commits)
+    commits > 25
   end
 
   def proportion_minimal(additions, commits, deletions)
