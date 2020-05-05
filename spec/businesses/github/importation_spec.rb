@@ -43,4 +43,16 @@ RSpec.describe "Github::Importation" do
     expect(repository.commits_count).to eq(8)
   end
 
+
+  it "desenvolvendome" do
+    user = create(:user, :with_profile, login: "desenvolvendome")
+    repository = create(:repository, name: "ruby-blog", user: user)
+
+    Github::Importation.new.contributions(repository)
+    Github::Importation.new.contributions(repository)
+
+    expect(repository.contributors.count).to eq(2)
+    expect(repository.commits_count).to eq(8)
+  end
+
 end
