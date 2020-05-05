@@ -59,7 +59,7 @@ class User < ApplicationRecord
   before_update :start_processing, :set_evaluation_last
 
   def after_import_save(record)
-    GenerateProfileJob.perform_later(record[:login])
+    LoadRepositoriesJob.perform_later(record[:login])
   end
 
   def to_s

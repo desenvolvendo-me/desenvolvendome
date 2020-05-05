@@ -104,7 +104,7 @@ ActiveAdmin.register User do
   end
 
   member_action :reimport, method: :get do
-    GenerateProfileJob.perform_later(resource.login)
+    LoadRepositoriesJob.perform_later(resource.login)
 
     redirect_to resource_path(resource), notice: "Reimportação iniciada para #{resource.login}"
   end

@@ -7,7 +7,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       ahoy.authenticate(@user)
 
       unless @user.profile
-        GenerateProfileJob.perform_later(@user.login)
+        LoadRepositoriesJob.perform_later(@user.login)
       end
 
       redirect_to profile_show_path(@user.login)
