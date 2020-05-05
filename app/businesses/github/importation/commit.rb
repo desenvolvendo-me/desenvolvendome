@@ -19,13 +19,17 @@ class Github::Importation::Commit < Github::Importation
     if contributores_github.count < MAX_CONTRIBUTOR_PER_REPOSITORY
       contributores_github.each do |contributor_github|
         contributor_github["weeks"].each do |week|
-          period = DateTime.strptime(week['w'].to_s, '%s')
-          contributor = Contributor.find_or_create_by(login: contributor_github["author"]["login"], repository_id: repository.id)
-          unless contributor.contributions.where(period: period).any?
-            Contribution.create(period: period, commits: week['c'], additions: week['a'], deletions: week['d'], contributor: contributor)
-          end
+          create_contribution(contributor_github, repository, week)
         end
       end
+    end
+  end
+
+  def create_contribution(contributor_github, repository, week)
+    period = DateTime.strptime(week['w'].to_s, '%s')
+    contributor = Contributor.find_or_create_by(login: contributor_github["author"]["login"], repository_id: repository.id)
+    unless contributor.contributions.where(period: period).any?
+      Contribution.create(period: period, commits: week['c'], additions: week['a'], deletions: week['d'], contributor: contributor)
     end
   end
 
