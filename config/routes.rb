@@ -31,17 +31,19 @@
 #                          hide_profile GET        /hide/profile(.:format)                                                                  profiles#hide
 #                               analyze GET        /analyze(.:format)                                                                       profiles#new
 #                                       POST       /analyze(.:format)                                                                       profiles#create
-#                              historic GET        /historic(.:format)                                                                      profiles#historic
+#                              historic GET        /historic/:login(.:format)                                                               profiles#historic
 #                     repositories_user GET        /repositories/:login(.:format)                                                           repositories#user
+#                 reimport_repositories POST       /reimport_repositories(.:format)                                                         importations#repositories
+#                   reimport_repository POST       /reimport_repository(.:format)                                                           importations#repository
 #                            knowledges GET        /knowledges(.:format)                                                                    knowledges#index
 #                       knowledges_user GET        /knowledges/:login(.:format)                                                             knowledges#user
-#                              reimport POST       /reimport(.:format)                                                                      profiles#reimport
+#                         reimport_rule GET        /reimport/rule(.:format)                                                                 profiles#reimport_rule
 #                                  rule GET        /rule(.:format)                                                                          profiles#rule
 #                              rankings GET        /rankings(.:format)                                                                      rankings#index
 #                     rankings_starteds GET        /rankings/starteds(.:format)                                                             rankings#starteds
 #                      rankings_novices GET        /rankings/novices(.:format)                                                              rankings#novices
 #                      rankings_knights GET        /rankings/knights(.:format)                                                              rankings#knights
-#                                       GET        /profile/:user/compare/:compared(.:format)                                               compares#show
+#                          compare_show GET        /profile/:user/compare/:compared(.:format)                                               compares#show
 #                               compare POST       /compare(.:format)                                                                       compares#create
 #                                       GET        /404(.:format)                                                                           errors#not_found
 #                                       GET        /500(.:format)                                                                           errors#internal_server_error
@@ -54,6 +56,15 @@
 #                                       PUT        /admin/password(.:format)                                                                active_admin/devise/passwords#update
 #                                       POST       /admin/password(.:format)                                                                active_admin/devise/passwords#create
 #                            admin_root GET        /admin(.:format)                                                                         admin/dashboard#index
+#                          admin_perfis GET        /admin/perfis(.:format)                                                                  admin/perfis#index
+#                         admin_visitas GET        /admin/visitas(.:format)                                                                 admin/visitas#index
+#                      admin_linguagens GET        /admin/linguagens(.:format)                                                              admin/linguagens#index
+#                         admin_acessos GET        /admin/acessos(.:format)                                                                 admin/acessos#index
+#                       admin_dashboard GET        /admin/dashboard(.:format)                                                               admin/dashboard#index
+#                   reimport_admin_user GET        /admin/users/:id/reimport(.:format)                                                      admin/users#reimport
+#              batch_action_admin_users POST       /admin/users/batch_action(.:format)                                                      admin/users#batch_action
+#                           admin_users GET        /admin/users(.:format)                                                                   admin/users#index
+#                            admin_user GET        /admin/users/:id(.:format)                                                               admin/users#show
 #          batch_action_admin_interests POST       /admin/interests/batch_action(.:format)                                                  admin/interests#batch_action
 #                       admin_interests GET        /admin/interests(.:format)                                                               admin/interests#index
 #                                       POST       /admin/interests(.:format)                                                               admin/interests#create
@@ -63,10 +74,6 @@
 #                                       PATCH      /admin/interests/:id(.:format)                                                           admin/interests#update
 #                                       PUT        /admin/interests/:id(.:format)                                                           admin/interests#update
 #                                       DELETE     /admin/interests/:id(.:format)                                                           admin/interests#destroy
-#                   reimport_admin_user GET        /admin/users/:id/reimport(.:format)                                                      admin/users#reimport
-#              batch_action_admin_users POST       /admin/users/batch_action(.:format)                                                      admin/users#batch_action
-#                           admin_users GET        /admin/users(.:format)                                                                   admin/users#index
-#                            admin_user GET        /admin/users/:id(.:format)                                                               admin/users#show
 #           batch_action_admin_contacts POST       /admin/contacts/batch_action(.:format)                                                   admin/contacts#batch_action
 #                        admin_contacts GET        /admin/contacts(.:format)                                                                admin/contacts#index
 #                                       POST       /admin/contacts(.:format)                                                                admin/contacts#create
@@ -76,6 +83,14 @@
 #                                       PATCH      /admin/contacts/:id(.:format)                                                            admin/contacts#update
 #                                       PUT        /admin/contacts/:id(.:format)                                                            admin/contacts#update
 #                                       DELETE     /admin/contacts/:id(.:format)                                                            admin/contacts#destroy
+#          batch_action_admin_languages POST       /admin/languages/batch_action(.:format)                                                  admin/languages#batch_action
+#                       admin_languages GET        /admin/languages(.:format)                                                               admin/languages#index
+#                   edit_admin_language GET        /admin/languages/:id/edit(.:format)                                                      admin/languages#edit
+#                        admin_language GET        /admin/languages/:id(.:format)                                                           admin/languages#show
+#                         admin_sidekiq GET        /admin/sidekiq(.:format)                                                                 admin/sidekiq#index
+#       batch_action_admin_api_controls POST       /admin/api_controls/batch_action(.:format)                                               admin/api_controls#batch_action
+#                    admin_api_controls GET        /admin/api_controls(.:format)                                                            admin/api_controls#index
+#                     admin_api_control GET        /admin/api_controls/:id(.:format)                                                        admin/api_controls#show
 #        batch_action_admin_admin_users POST       /admin/admin_users/batch_action(.:format)                                                admin/admin_users#batch_action
 #                     admin_admin_users GET        /admin/admin_users(.:format)                                                             admin/admin_users#index
 #                                       POST       /admin/admin_users(.:format)                                                             admin/admin_users#create
@@ -85,11 +100,6 @@
 #                                       PATCH      /admin/admin_users/:id(.:format)                                                         admin/admin_users#update
 #                                       PUT        /admin/admin_users/:id(.:format)                                                         admin/admin_users#update
 #                                       DELETE     /admin/admin_users/:id(.:format)                                                         admin/admin_users#destroy
-#                         admin_sidekiq GET        /admin/sidekiq(.:format)                                                                 admin/sidekiq#index
-#                         admin_visitas GET        /admin/visitas(.:format)                                                                 admin/visitas#index
-#                          admin_perfis GET        /admin/perfis(.:format)                                                                  admin/perfis#index
-#                      admin_linguagens GET        /admin/linguagens(.:format)                                                              admin/linguagens#index
-#                       admin_dashboard GET        /admin/dashboard(.:format)                                                               admin/dashboard#index
 #                        admin_comments GET        /admin/comments(.:format)                                                                admin/comments#index
 #                                       POST       /admin/comments(.:format)                                                                admin/comments#create
 #                         admin_comment GET        /admin/comments/:id(.:format)                                                            admin/comments#show
@@ -158,11 +168,13 @@ Rails.application.routes.draw do
   get "historic/:login", to: "profiles#historic", as: :historic
   ##Repositórios
   get "repositories/:login", to: "repositories#user", as: "repositories_user"
+  ##Importação
+  post "reimport_repositories", to: "importations#repositories"
+  post "reimport_repository", to: "importations#repository"
   ##Conhecimentos
   get "knowledges", to: "knowledges#index"
   get "knowledges/:login", to: "knowledges#user", as: "knowledges_user"
   ##Reimportação
-  post "reimport", to: "profiles#reimport"
   get "reimport/rule", to: "profiles#reimport_rule"
   ##Rule
   get "rule", to: "profiles#rule"

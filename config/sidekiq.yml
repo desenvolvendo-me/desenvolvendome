@@ -2,4 +2,5 @@
 :concurrency: 10
 :queues:
   - sentry
-  - profile
+  - evaluation_repository
+  - load_repositories

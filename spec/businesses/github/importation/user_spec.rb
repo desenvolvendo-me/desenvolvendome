@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe "Github::Importation::User" do
+RSpec.describe "Github::Importation::Author" do
 
   before(:each) do
     @user = create(:user, login: "desenvolvendome")
   end
 
   it "user" do
-    Github::Importation::User.new.run(@user)
+    Github::Importation::Author.new.run(@user)
 
     expect(@user.name).to eq("Desenvolvendo Me")
     expect(@user.login).to eq("desenvolvendome")

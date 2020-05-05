@@ -1,31 +1,36 @@
 class Github::Importation::Commit < Github::Importation
+  MAX_CONTRIBUTOR_PER_REPOSITORY = 5
 
-  def run(user)
-    @user = user
+  def run(repository)
+    @repository = repository
     import
   end
 
   private
 
   def import
-    @user.repositories.each do |repository|
-      repository.update(commits_count: get_contributions(repository))
-    end
+    get_contributions(@repository)
+    contributors = Contributor.joins(:contributions).where(login: @repository.user.login)
+    @repository.update(commits_count: contributors.sum(:commits))
   end
 
   def get_contributions(repository)
-    get_commits(repository).each do |contribuidor|
-      if contribuidor['login'] == @user.login
-        return contribuidor ? contribuidor['contributions'].to_i : 0
-      else
-        return 0
+    contributores_github = @github.contributors(repository.user.login, repository.name)
+    if contributores_github.count < MAX_CONTRIBUTOR_PER_REPOSITORY
+      contributores_github.each do |contributor_github|
+        contributor_github["weeks"].each do |week|
+          create_contribution(contributor_github, repository, week)
+        end
       end
     end
-    return 0
   end
 
-  def get_commits(repository)
-    @github.commits(@user.login, repository.name)
+  def create_contribution(contributor_github, repository, week)
+    period = DateTime.strptime(week['w'].to_s, '%s')
+    contributor = Contributor.find_or_create_by(login: contributor_github["author"]["login"], repository_id: repository.id)
+    unless contributor.contributions.where(period: period).any?
+      Contribution.create(period: period, commits: week['c'], additions: week['a'], deletions: week['d'], contributor: contributor)
+    end
   end
 
 end

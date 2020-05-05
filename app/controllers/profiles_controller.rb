@@ -18,15 +18,6 @@ class ProfilesController < ApplicationController
   def rule;
   end
 
-  def reimport
-    if current_user.can_evaluation?
-      GenerateProfileJob.perform_later(current_user.login)
-      redirect_to profile_show_path(current_user.login), notice: 'Reimportação Envia com Sucesso'
-    else
-      redirect_to reimport_rule_path
-    end
-  end
-
   def reimport_rule;
   end
 

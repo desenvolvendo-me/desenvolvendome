@@ -11,21 +11,16 @@ class Github::Importation::Repo < Github::Importation
   private
 
   def import
-    pages, repositories_count = calc_pages
-    pages.times do |page|
-      get_repos(page, repositories_count)
-    end
+    get_repos(@user.repositories_count)
   end
 
-  def get_repos(page, repositories_count)
-    @github.repos(@user.login, page).each.with_index do |repo, index|
-      Rails.logger.info "User: #{@user.login}, Repository: #{repo['name']}, #{index + 1} to #{repositories_count}"
+  def get_repos(repositories_count)
+    @github.repos(@user.login, repositories_count).each.with_index do |repo, index|
       set_repository(repo)
     end
   end
 
   def set_repository(repo)
-    repo = get_repo(repo)
     repository = Repository.find_by(github_id: repo['id'])
     if repository
       repository.update(github_id: repo['id'],
@@ -34,6 +29,7 @@ class Github::Importation::Repo < Github::Importation
                         fork: repo['fork'],
                         forks_count: repo['forks_count'],
                         stargazers_count: repo['stargazers_count'],
+                        pushed_at: repo['pushed_at'].to_date,
                         size: repo['size'], user: @user)
 
     else
@@ -43,18 +39,9 @@ class Github::Importation::Repo < Github::Importation
                         fork: repo['fork'],
                         forks_count: repo['forks_count'],
                         stargazers_count: repo['stargazers_count'],
+                        pushed_at: repo['pushed_at'].to_date,
                         size: repo['size'], user: @user)
     end
-  end
-
-  def calc_pages
-    repositories_count = @user.repositories_count
-    pages = (repositories_count / 100) + 1
-    return pages, repositories_count
-  end
-
-  def get_repo(repo)
-    @github.repo(@user.login, repo['name'])
   end
 
 end
