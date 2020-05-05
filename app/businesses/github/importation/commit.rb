@@ -1,4 +1,5 @@
 class Github::Importation::Commit < Github::Importation
+  MAX_CONTRIBUTOR_PER_REPOSITORY = 5
 
   def run(repository)
     @repository = repository
@@ -14,12 +15,15 @@ class Github::Importation::Commit < Github::Importation
   end
 
   def get_contributions(repository)
-    @github.contributors(repository.user.login, repository.name).each do |contributor_github|
-      contributor_github["weeks"].each do |week|
-        period = DateTime.strptime(week['w'].to_s, '%s')
-        contributor = Contributor.find_or_create_by(login: contributor_github["author"]["login"], repository_id: repository.id)
-        unless contributor.contributions.where(period: period).any?
-          Contribution.create(period: period, commits: week['c'], additions: week['a'], deletions: week['d'], contributor: contributor)
+    contributores_github = @github.contributors(repository.user.login, repository.name)
+    if contributores_github.count < MAX_CONTRIBUTOR_PER_REPOSITORY
+      contributores_github.each do |contributor_github|
+        contributor_github["weeks"].each do |week|
+          period = DateTime.strptime(week['w'].to_s, '%s')
+          contributor = Contributor.find_or_create_by(login: contributor_github["author"]["login"], repository_id: repository.id)
+          unless contributor.contributions.where(period: period).any?
+            Contribution.create(period: period, commits: week['c'], additions: week['a'], deletions: week['d'], contributor: contributor)
+          end
         end
       end
     end
