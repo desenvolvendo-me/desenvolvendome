@@ -1,4 +1,5 @@
 require 'benchmark'
+require "csv"
 
 namespace :profile do
 
@@ -44,5 +45,20 @@ namespace :profile do
       end
     end
   end
+
+  desc "Import Users"
+  task import_csv: :environment do
+    Benchmark.bm do |x|
+      x.report {
+        filename = Rails.root + 'tmp/users.csv'
+        CSV.foreach(filename) do |row|
+          user = User.create(login: row[0], email: row[1], password: Devise.friendly_token[0, 20])
+          LoadRepositoriesJob.perform_later(user.login)
+        end
+      }
+    end
+    puts "Import Users"
+  end
+
 
 end
