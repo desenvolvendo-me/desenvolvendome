@@ -17,7 +17,7 @@
 class Profile < ApplicationRecord
   include ActionView::Helpers::NumberHelper
 
-  paginates_per 25
+  paginates_per 24
 
   belongs_to :user, optional: true
   has_many :knowledges, dependent: :destroy
