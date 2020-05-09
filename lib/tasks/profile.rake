@@ -52,7 +52,7 @@ namespace :profile do
       x.report {
         filename = Rails.root + 'tmp/users.csv'
         CSV.foreach(filename) do |row|
-          user = User.create(login: row[0], email: row[1], password: Devise.friendly_token[0, 20])
+          user = User.create(login: row[2], email: row[10], password: Devise.friendly_token[0, 20])
           LoadRepositoriesJob.perform_later(user.login)
         end
       }
@@ -60,8 +60,8 @@ namespace :profile do
     puts "Import Users"
   end
 
-  desc "Evalution Repositories"
-  task evalution_repositories: :environment do
+  desc "Evaluation Repositories"
+  task evaluation_repositories: :environment do
     Benchmark.bm do |x|
       x.report {
         Repository.all.each do |repository|
@@ -69,7 +69,7 @@ namespace :profile do
         end
       }
     end
-    puts "Import Users"
+    puts "Evaluation Respositorios"
   end
 
 end
