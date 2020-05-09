@@ -29,7 +29,10 @@ class Github::Importation::Commit < Github::Importation
     period = DateTime.strptime(week['w'].to_s, '%s')
     contributor = Contributor.find_or_create_by(login: contributor_github["author"]["login"], repository_id: repository.id)
     unless contributor.contributions.where(period: period).any?
-      Contribution.create(period: period, commits: week['c'], additions: week['a'], deletions: week['d'], contributor: contributor)
+      work_in_week = week['c'] + week['a'] + week['d']
+      unless work_in_week.eql?(0)
+        Contribution.create(period: period, commits: week['c'], additions: week['a'], deletions: week['d'], contributor: contributor)
+      end
     end
   end
 
