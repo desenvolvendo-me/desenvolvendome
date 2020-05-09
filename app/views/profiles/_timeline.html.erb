@@ -7,19 +7,20 @@
       <span class="timeline-label">
           <span class="label label-info"><%= get_version(version_m) %></span>
       </span>
-      <% if version_m.changeset.key? "xp" %>
+      <% if version_m.changeset.key? "evaluation_type" %>
         <div class="timeline-item">
-          <div class="timeline-point timeline-point-primary">
+          <div class="timeline-point timeline-point-success">
             <i class="fa fa-star"></i>
           </div>
-          <div class="timeline-event timeline-event-primary">
+          <div class="timeline-event timeline-event-success">
             <div class="timeline-body">
               <p>
-                Experiência
+                Perfil
               </p>
               <p>
-                <%= version_m.changeset["xp"].first.nil? ? "Dev Null" : version_m.changeset["xp"].first.to_s %>
-                <i class="fa fa-angle-double-right"></i> <%= version_m.changeset["xp"].last.to_s %>
+                <%= version_m.changeset["evaluation_type"].first.nil? ? "Dev Null" : Evaluation.human_enum_name(:evaluation_types, version_m.changeset["evaluation_type"].first.to_s) %>
+                <i class="fa fa-angle-double-right"></i>
+                <%= Evaluation.human_enum_name(:evaluation_types, version_m.changeset["evaluation_type"].last.to_s) %>
               </p>
             </div>
           </div>
@@ -44,20 +45,19 @@
           </div>
         </div>
       <% end %>
-      <% if version_m.changeset.key? "evaluation_type" %>
+      <% if version_m.changeset.key? "xp" %>
         <div class="timeline-item">
-          <div class="timeline-point timeline-point-success">
+          <div class="timeline-point timeline-point-primary">
             <i class="fa fa-star"></i>
           </div>
-          <div class="timeline-event timeline-event-success">
+          <div class="timeline-event timeline-event-primary">
             <div class="timeline-body">
               <p>
-                Perfil
+                Experiência
               </p>
               <p>
-                <%= version_m.changeset["evaluation_type"].first.nil? ? "Dev Null" : Evaluation.human_enum_name(:evaluation_types, version_m.changeset["evaluation_type"].first.to_s) %>
-                <i class="fa fa-angle-double-right"></i>
-                <%= Evaluation.human_enum_name(:evaluation_types, version_m.changeset["evaluation_type"].last.to_s) %>
+                <%= version_m.changeset["xp"].first.nil? ? "Dev Null" : version_m.changeset["xp"].first.to_s %>
+                <i class="fa fa-angle-double-right"></i> <%= version_m.changeset["xp"].last.to_s %>
               </p>
             </div>
           </div>
