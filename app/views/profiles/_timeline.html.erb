@@ -1,5 +1,5 @@
 <div class="timeline">
-  <% user.profile.evaluation.versions.group_by { |m| m.created_at.beginning_of_month }.each do |version| %>
+  <% user.profile.evaluation.versions.reverse.group_by { |m| m.created_at.beginning_of_month }.each do |version| %>
         <span class="timeline-label">
           <span class="label label-primary"><%= l(version.first, format: :month) %></span>
         </span>
@@ -13,17 +13,14 @@
             <i class="fa fa-star"></i>
           </div>
           <div class="timeline-event timeline-event-primary">
-            <div class="timeline-heading">
-              <h4>Experiência</h4>
-            </div>
             <div class="timeline-body">
+              <p>
+                Experiência
+              </p>
               <p>
                 <%= version_m.changeset["xp"].first.nil? ? "Dev Null" : version_m.changeset["xp"].first.to_s %>
                 <i class="fa fa-angle-double-right"></i> <%= version_m.changeset["xp"].last.to_s %>
               </p>
-            </div>
-            <div class="timeline-footer">
-              <p class="text-right"> Dia <%= l(version_m.created_at, format: :day) %></p>
             </div>
           </div>
         </div>
@@ -34,18 +31,15 @@
             <i class="fa fa-star"></i>
           </div>
           <div class="timeline-event timeline-event-info">
-            <div class="timeline-heading">
-              <h4>Level</h4>
-            </div>
             <div class="timeline-body">
+              <p>
+                Level
+              </p>
               <p>
                 <%= version_m.changeset["level"].first.nil? ? "Dev Null" : version_m.changeset["level"].first.to_i.to_s %>
                 <i class="fa fa-angle-double-right"></i>
                 <%= version_m.changeset["level"].last.to_s %>
               </p>
-            </div>
-            <div class="timeline-footer">
-              <p class="text-right"> Dia <%= l(version_m.created_at, format: :day) %></p>
             </div>
           </div>
         </div>
@@ -56,18 +50,15 @@
             <i class="fa fa-star"></i>
           </div>
           <div class="timeline-event timeline-event-success">
-            <div class="timeline-heading">
-              <h4>Perfil</h4>
-            </div>
             <div class="timeline-body">
+              <p>
+                Perfil
+              </p>
               <p>
                 <%= version_m.changeset["evaluation_type"].first.nil? ? "Dev Null" : Evaluation.human_enum_name(:evaluation_types, version_m.changeset["evaluation_type"].first.to_s) %>
                 <i class="fa fa-angle-double-right"></i>
                 <%= Evaluation.human_enum_name(:evaluation_types, version_m.changeset["evaluation_type"].last.to_s) %>
               </p>
-            </div>
-            <div class="timeline-footer">
-              <p class="text-right"> Dia <%= l(version_m.created_at, format: :day) %></p>
             </div>
           </div>
         </div>
