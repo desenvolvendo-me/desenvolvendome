@@ -55,7 +55,7 @@ ActiveAdmin.register User do
       panel "Repositórios" do
         repositories = user.repositories.where.not(commits_count: [nil, 0]).order(commits_count: :desc)
         paginated_collection(repositories.page(params[:page]).per(15), download_links: false) do
-          table_for(repositories, sortable: false) do
+          table_for(collection, sortable: false) do
             column :name do |repository|
               link_to repository.name, "https://github.com/#{repository.user.login}/#{repository.name}", target: "_blank"
             end
@@ -75,10 +75,10 @@ ActiveAdmin.register User do
       end
 
       panel "Evoluções" do
-        versions = user.profile.evaluation.versions.order(id: :asc)
+        versions = user.profile.evaluation.versions
 
         paginated_collection(versions.page(params[:page]).per(15), download_links: false) do
-          table_for(versions, sortable: false) do
+          table_for(collection, sortable: false) do
             column "Versão" do |version|
               version.index
             end

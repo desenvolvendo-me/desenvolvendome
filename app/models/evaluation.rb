@@ -27,4 +27,8 @@ class Evaluation < ApplicationRecord
 
   validates_presence_of :evaluation_type, :level
 
+  has_paper_trail versions: {
+      scope: -> { order("id desc") }
+  }
+
 end
