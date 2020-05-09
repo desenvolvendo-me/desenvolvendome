@@ -48,9 +48,9 @@ class Profile::Evolution::Kind
   end
 
   def calculating_xp
-    quality = 0
+    xp_calculated = 0
 
-    @user.practices_per_week.each do |period, contributions|
+    @user.practices_per_week_not_calculated.each do |period, contributions|
       commits = 0
       additions = 0
       deletions = 0
@@ -63,13 +63,14 @@ class Profile::Evolution::Kind
         contribution.update(calculated: true)
       end
 
-      quality += calculate(commits, additions, deletions)
+      xp_calculated = calculate(commits, additions, deletions)
 
-      @evaluation.update(evaluation_type: @settings[:role][:kind], xp: quality.round, level: level(quality.round))
+      xp_calculated += @evaluation.xp
+      @evaluation.update(evaluation_type: @settings[:role][:kind], xp: xp_calculated.round, level: level(xp_calculated.round))
 
     end
 
-    quality.round
+    xp_calculated.round
   end
 
   def calculate(commits, additions, deletions)
