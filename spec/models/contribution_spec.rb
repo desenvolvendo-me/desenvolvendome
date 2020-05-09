@@ -4,6 +4,7 @@
 #
 #  id             :bigint           not null, primary key
 #  additions      :integer
+#  calculated     :boolean
 #  commits        :integer
 #  deletions      :integer
 #  period         :datetime

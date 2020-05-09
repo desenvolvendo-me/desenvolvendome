@@ -5,6 +5,7 @@
 #  id              :bigint           not null, primary key
 #  evaluation_type :integer
 #  level           :integer
+#  period          :date
 #  xp              :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -23,5 +24,6 @@ FactoryBot.define do
   factory :evaluation do
     level {1}
     evaluation_type {:started}
+    xp {0}
   end
 end
