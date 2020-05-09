@@ -12,7 +12,7 @@ class LoadRepositoriesJob < ApplicationJob
   end
 
   def import_github(user)
-    Github::Importation.new.author user
+    Github::Importation.new.author(user)
     Github::Importation.new.reposities(user)
   end
 
