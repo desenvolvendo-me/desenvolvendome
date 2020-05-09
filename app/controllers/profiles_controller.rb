@@ -22,7 +22,7 @@ class ProfilesController < ApplicationController
   end
 
   def historic
-    @user = current_user
+    @user = User.last
   end
 
   private
