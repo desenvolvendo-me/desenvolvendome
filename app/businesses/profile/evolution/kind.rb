@@ -12,8 +12,8 @@ class Profile::Evolution::Kind
     create_evaluation unless level_up?
   end
 
-  def level
-    lv = levels(@evaluation.xp) unless level_up?
+  def level(xp)
+    lv = levels(xp) unless level_up?
     lv = @settings[:max_level] if max
     lv
   end
@@ -65,8 +65,7 @@ class Profile::Evolution::Kind
 
       quality += calculate(commits, additions, deletions)
 
-      @evaluation.update(evaluation_type: @settings[:role][:kind], xp: quality.round)
-      @evaluation.update(level: level)
+      @evaluation.update(evaluation_type: @settings[:role][:kind], xp: quality.round, level: level(quality.round))
 
     end
 
