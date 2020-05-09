@@ -65,7 +65,7 @@ class Profile::Evolution::Kind
 
       quality += calculate(commits, additions, deletions)
 
-      @evaluation.update(evaluation_type: @settings[:role][:kind], xp: quality.round, period: period)
+      @evaluation.update(evaluation_type: @settings[:role][:kind], xp: quality.round)
       @evaluation.update(level: level)
 
     end
