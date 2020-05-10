@@ -12,8 +12,10 @@ class Profile::Evolution
 
   def run
     born_to_started
-    evolve_into_novice if @started.level_up?
-    evolve_into_knight if @novice.level_up?
+    @started.level_up
+    evolve_into_novice
+    @novice.level_up
+    evolve_into_knight
   end
 
   private

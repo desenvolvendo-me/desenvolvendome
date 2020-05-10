@@ -1,7 +1,7 @@
 class ImportationsController < ApplicationController
 
   def repository
-    if current_user.can_evaluation?
+    if !current_user.can_evaluation?
       EvaluationRepositoryJob.perform_later(params[:repository])
       redirect_to repositories_user_path(current_user.login), notice: 'Reimportação Envia com Sucesso'
     else

@@ -66,6 +66,14 @@ class User < ApplicationRecord
     login
   end
 
+  def practices_per_week
+    Contribution.joins(contributor: [repository: :user]).where(users: {login: self.login}).order(:period).group_by(&:period)
+  end
+
+  def practices_per_week_not_calculated
+    Contribution.joins(contributor: [repository: :user]).where(calculated: nil).where(users: {login: self.login}).order(:period).group_by(&:period)
+  end
+
   def can_evaluation?
     DateTime.now >= minimum_evaluation_period
   end

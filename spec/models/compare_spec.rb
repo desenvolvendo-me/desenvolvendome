@@ -42,8 +42,8 @@ RSpec.describe Compare, type: :model do
 
     expect(@user.profile.knowledges.first.language.description).to eq("Portugol")
     expect(@compared.profile.knowledges.first.language.description).to eq("Portugol")
-    expect(@user.profile.knowledges.last.language.description).to eq("Ruby")
-    expect(@compared.profile.knowledges.last.language.description).to eq("Python")
+    expect(@user.profile.knowledges.last.language.description).to eq("Portugol")
+    expect(@compared.profile.knowledges.last.language.description).to eq("Portugol")
 
   end
 end

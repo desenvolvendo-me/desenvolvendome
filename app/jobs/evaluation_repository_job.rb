@@ -12,8 +12,8 @@ class EvaluationRepositoryJob < ApplicationJob
     evaluations_count(user)
   end
 
-  def import_github(user)
-    Github::Importation.new.contributions user
+  def import_github(repository)
+    Github::Importation.new.contributions(repository)
   end
 
   def profile_generate(user)

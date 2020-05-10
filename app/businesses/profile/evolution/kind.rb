@@ -5,20 +5,25 @@ class Profile::Evolution::Kind
   def initialize(user, settings)
     @settings = settings
     @user = user
+    @evaluation = @user.profile.evaluation
   end
 
   def run
-    create_evaluation unless level_up?
+    create_evaluation
   end
 
-  def level
-    lv = levels(xp) unless level_up?
+  def level(xp)
+    lv = levels(xp)
     lv = @settings[:max_level] if max
     lv
   end
 
-  def level_up?
-    (repositories >= @settings[:role][:level_up][:repositories] and xp >= @settings[:role][:level_up][:xp])
+  def level_up
+    if (repositories >= @settings[:role][:level_up][:repositories]) and (@evaluation.xp >= @settings[:role][:level_up][:xp])
+      evaluation_type = "novice" if @evaluation.started?
+      evaluation_type = "knight" if @evaluation.novice?
+      @evaluation.update(evaluation_type: evaluation_type) unless @evaluation.knight?
+    end
   end
 
   def next_level
@@ -31,13 +36,7 @@ class Profile::Evolution::Kind
   private
 
   def create_evaluation
-    evaludation = @user.profile.evaluation
-
-    if evaludation
-      evaludation.update(level: level, evaluation_type: @settings[:role][:kind], xp: xp)
-    else
-      Evaluation.create(level: level, evaluation_type: @settings[:role][:kind], xp: xp, profile: @user.profile)
-    end
+    calculating_xp
   end
 
   def repositories
@@ -45,19 +44,17 @@ class Profile::Evolution::Kind
   end
 
   def xp_next_level
-    @settings[:role][:calc] - (xp % @settings[:role][:calc])
+    @settings[:role][:calc] - (@evaluation.xp % @settings[:role][:calc])
   end
 
   def max
-    (xp - @settings[:role][:commits_preview]) >= @settings[:role][:level_up][:xp]
+    (@evaluation.xp - @settings[:role][:commits_preview]) >= @settings[:role][:level_up][:xp]
   end
 
-  def xp
-    quality = 0
+  def calculating_xp
+    xp_calculated = 0
 
-    contributor_ids = @user.contributors.pluck(:id)
-
-    Contribution.where(contributor_id: contributor_ids).group_by(&:period).each do |period, contributions|
+    @user.practices_per_week_not_calculated.each do |period, contributions|
       commits = 0
       additions = 0
       deletions = 0
@@ -66,24 +63,35 @@ class Profile::Evolution::Kind
         commits += contribution.commits
         additions += contribution.additions
         deletions += contribution.deletions
+
+        contribution.update(calculated: true)
       end
-      quality += calculate(commits, additions, deletions)
+
+      xp_calculated = calculate(commits, additions, deletions)
+
+      xp_calculated += @evaluation.xp
+      @evaluation.update(xp: xp_calculated.round, level: level(xp_calculated.round))
+
     end
 
-    quality.round
+    xp_calculated.round
   end
 
   def calculate(commits, additions, deletions)
     return 0 if (commits + additions + deletions).eql?(0)
     return 10 unless weekly_minimum(additions, deletions)
     return 10 if proportion_minimal(additions, commits, deletions)
-    return 50 if commit_minimun(commits)
+    if commit_minimun(commits)
+      return 10 if @evaluation.started?
+      return 25 if @evaluation.novice?
+      return 50 if @evaluation.knight?
+    end
 
     (commits.to_f / (additions + deletions).to_f) * 1000
   end
 
   def commit_minimun(commits)
-    commits > 25
+    commits < 25
   end
 
   def proportion_minimal(additions, commits, deletions)
@@ -95,7 +103,9 @@ class Profile::Evolution::Kind
   end
 
   def levels(xp)
-    # Xp = [(Nível Atual * 50) + Nível Anterior] - Máxima Evolução Anterior
+    # Xp = [(Nível Atual * Classe XP) + Nível Anterior] - Máxima Evolução Anterior
+    return 10 if max
+
     level = 1
     minimum_xp = 0
     @settings[:max_level].times do |l|

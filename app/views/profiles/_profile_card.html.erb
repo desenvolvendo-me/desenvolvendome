@@ -3,7 +3,11 @@
     <div class="d-flex w-100 justify-content-between">
       <% unless type.eql? "ranking" %>
         <div class="h6 text-center">
-          <strong><%= Evaluation.human_enum_name(:evaluation_types, profile.try(:evaluation).try(:evaluation_type)) %></strong>
+          <% if profile.try(:evaluation).try(:evaluation_type) %>
+            <strong><%= Evaluation.human_enum_name(:evaluation_types, profile.try(:evaluation).try(:evaluation_type)) %></strong>
+          <% else %>
+          <strong>Iniciado</strong>
+          <% end %>
         </div>
       <% else %>
         <span class="btn btn-<%= index <= 2 ? ["primary", "success", "info"][index] : "secondary" %>"><h4><%= index + 1 %>
@@ -14,7 +18,11 @@
       </div>
     </div>
     <div class="d-flex w-100 justify-content-center">
-      <%= image_tag profile.user.avatar, size: "150x150", class: "rounded-circle" %>
+      <% if profile.user.avatar %>
+        <%= image_tag profile.user.avatar, size: "150x150", class: "rounded-circle" %>
+      <% else %>
+        <%= image_tag 'user.png', size: "150x150", class: "rounded-circle" %>
+    <% end %>
     </div>
     <div class="d-flex w-100 justify-content-start">
       <div class="h4"><%= profile.user.try(:name) ? truncate(profile.user.try(:name), length: 18) : "?" %></div>

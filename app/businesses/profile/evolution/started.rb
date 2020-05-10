@@ -19,4 +19,8 @@ class Profile::Evolution::Started < Profile::Evolution::Kind
     super(user, SETTINGS)
   end
 
+  def settings
+    SETTINGS
+  end
+
 end

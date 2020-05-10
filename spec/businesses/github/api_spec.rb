@@ -20,7 +20,7 @@ RSpec.describe "Github::Api" do
 
     repositories = @api_github.repos(login, 0)
 
-    expect(repositories[0]['name']).to eq("ruby-blog")
+    expect(repositories[1]['name']).to eq("ruby-blog")
   end
 
   it "repository" do
