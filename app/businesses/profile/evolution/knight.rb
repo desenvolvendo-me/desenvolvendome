@@ -19,8 +19,4 @@ class Profile::Evolution::Knight < Profile::Evolution::Kind
     super(user, SETTINGS)
   end
 
-  def level_up
-    false
-  end
-
 end

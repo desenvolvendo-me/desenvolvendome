@@ -22,7 +22,11 @@ RSpec.describe 'Profile::Evolution::Kind' do
     @contributor = create(:contributor, login: @user.login, repository: repository)
   end
 
-  context 'xp' do
+  context 'level' do  end
+  context 'level_up' do  end
+  context 'next_level' do  end
+
+  context 'calculating_xp' do
 
     context 'minimo semanal' do
 
@@ -76,5 +80,14 @@ RSpec.describe 'Profile::Evolution::Kind' do
     end
 
   end
+
+  context 'repositories' do  end
+  context 'xp_next_level' do  end
+  context 'max' do  end
+  context 'calculate' do  end
+  context 'commit_minimun' do  end
+  context 'proportion_minimal' do  end
+  context 'weekly_minimum' do  end
+  context 'levels' do  end
 
 end
