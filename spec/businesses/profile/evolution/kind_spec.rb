@@ -22,9 +22,17 @@ RSpec.describe 'Profile::Evolution::Kind' do
     @contributor = create(:contributor, login: @user.login, repository: repository)
   end
 
-  context 'level' do  end
-  context 'level_up' do  end
-  context 'next_level' do  end
+  context 'level' do
+    pending "pendente #{__FILE__}"
+  end
+
+  context 'level_up' do
+    pending "pendente #{__FILE__}"
+  end
+
+  context 'next_level' do
+    pending "pendente #{__FILE__}"
+  end
 
   context 'calculating_xp' do
 
@@ -81,13 +89,36 @@ RSpec.describe 'Profile::Evolution::Kind' do
 
   end
 
-  context 'repositories' do  end
-  context 'xp_next_level' do  end
-  context 'max' do  end
-  context 'calculate' do  end
-  context 'commit_minimun' do  end
-  context 'proportion_minimal' do  end
-  context 'weekly_minimum' do  end
-  context 'levels' do  end
+  context 'repositories' do
+    pending "pendente #{__FILE__}"
+  end
+  context 'xp_next_level' do
+    pending "pendente #{__FILE__}"
+  end
+
+  context 'max' do
+    pending "pendente #{__FILE__}"
+  end
+
+  context 'calculate' do
+    pending "pendente #{__FILE__}"
+  end
+
+  context 'commit_minimun' do
+    pending "pendente #{__FILE__}"
+  end
+
+  context 'proportion_minimal' do
+    pending "pendente #{__FILE__}"
+  end
+
+  context 'weekly_minimum' do
+    pending "pendente #{__FILE__}"
+  end
+
+  context 'levels' do
+    pending "pendente #{__FILE__}"
+  end
+
 
 end
