@@ -26,7 +26,7 @@ RSpec.describe "Profile::Evolution" do
       expect(@user.profile.evaluation.started?).to be_truthy
       expect(@user.profile.evaluation.xp).to eq(78)
       expect(@user.profile.evaluation.level).to eq(3)
-      expect(@user.profile.evaluation.versions.count).to eq(3)
+      expect(@user.profile.evaluation.versions.count).to eq(2)
 
       repository = create(:repository, commits_count: 40, user: @user)
       @contributor = create(:contributor, login: @user.login, repository: repository)
@@ -49,7 +49,7 @@ RSpec.describe "Profile::Evolution" do
       expect(@user.profile.evaluation.started?).to be_truthy
       expect(@user.profile.evaluation.xp).to eq(312)
       expect(@user.profile.evaluation.level).to eq(5)
-      expect(@user.profile.evaluation.versions.count).to eq(8)
+      expect(@user.profile.evaluation.versions.count).to eq(5)
     end
 
     it 'novice' do
@@ -65,7 +65,7 @@ RSpec.describe "Profile::Evolution" do
       expect(@user.profile.evaluation.started?).to be_truthy
       expect(@user.profile.evaluation.xp).to eq(78)
       expect(@user.profile.evaluation.level).to eq(3)
-      expect(@user.profile.evaluation.versions.count).to eq(3)
+      expect(@user.profile.evaluation.versions.count).to eq(2)
 
       # Novice
 
@@ -93,9 +93,9 @@ RSpec.describe "Profile::Evolution" do
       Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.novice?).to be_truthy
-      expect(@user.profile.evaluation.xp).to eq(1558)
-      expect(@user.profile.evaluation.level).to eq(3)
-      expect(@user.profile.evaluation.versions.count).to eq(52)
+      expect(@user.profile.evaluation.level).to eq(10)
+      expect(@user.profile.evaluation.xp).to eq(1560)
+      expect(@user.profile.evaluation.versions.count).to eq(22)
 
     end
 
@@ -111,7 +111,7 @@ RSpec.describe "Profile::Evolution" do
       expect(@user.profile.evaluation.started?).to be_truthy
       expect(@user.profile.evaluation.xp).to eq(78)
       expect(@user.profile.evaluation.level).to eq(3)
-      expect(@user.profile.evaluation.versions.count).to eq(3)
+      expect(@user.profile.evaluation.versions.count).to eq(2)
 
       # Novice
 
@@ -139,9 +139,9 @@ RSpec.describe "Profile::Evolution" do
       Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.novice?).to be_truthy
-      expect(@user.profile.evaluation.xp).to eq(1558)
-      expect(@user.profile.evaluation.level).to eq(3)
-      expect(@user.profile.evaluation.versions.count).to eq(52)
+      expect(@user.profile.evaluation.xp).to eq(1560)
+      expect(@user.profile.evaluation.level).to eq(10)
+      expect(@user.profile.evaluation.versions.count).to eq(22)
 
       # Knight
 
@@ -169,9 +169,9 @@ RSpec.describe "Profile::Evolution" do
       Profile::Evolution.new(@user).run
 
       expect(@user.profile.evaluation.knight?).to be_truthy
-      expect(@user.profile.evaluation.xp).to eq(4208)
-      expect(@user.profile.evaluation.level).to eq(5)
-      expect(@user.profile.evaluation.versions.count).to eq(156)
+      expect(@user.profile.evaluation.xp).to eq(4212)
+      expect(@user.profile.evaluation.level).to eq(10)
+      expect(@user.profile.evaluation.versions.count).to eq(57)
 
     end
 

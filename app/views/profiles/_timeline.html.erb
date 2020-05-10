@@ -1,47 +1,68 @@
 <div class="timeline">
-  <% user.profile.evaluation.versions.group_by {|m| m.created_at.beginning_of_month}.each do |version| %>
-    <div class="timeline-month">
-      <%= l(version.first, format: :month) %>
-    </div>
-    <% version.last.sort_by {|v| v.created_at}.reverse.each do |version_m| %>
-      <div class="timeline-section">
-        <div class="timeline-date">
-          <%= get_version(version_m) %>
-        </div>
-        <div class="row">
-          <div class="col-lg-6 col-md-8 col-sm-12">
-            <div class="timeline-box">
-              <div class="box-title">
-                <i class="fa fa-angle-double-up" aria-hidden="true"></i> Dia <%= l(version_m.created_at, format: :day) %>
-              </div>
-              <div class="box-content">
-                <% if version_m.changeset.key? "evaluation_type" %>
-                  <div class="box-item">
-                    <strong>Perfil:</strong>
-                    <%= version_m.changeset["evaluation_type"].first.nil? ? "Dev Null" : Evaluation.human_enum_name(:evaluation_types, version_m.changeset["evaluation_type"].first.to_s) %>
-                    <i class="fa fa-angle-double-right"></i>
-                    <%= Evaluation.human_enum_name(:evaluation_types, version_m.changeset["evaluation_type"].last.to_s) %>
-                  </div>
-                <% end %>
-                <% if version_m.changeset.key? "xp" %>
-                  <div class="box-item">
-                    <strong>Experiência:</strong>
-                    <%= version_m.changeset["xp"].first.nil? ? "Dev Null" : version_m.changeset["xp"].first.to_s %>
-                    <i class="fa fa-angle-double-right"></i> <%= version_m.changeset["xp"].last.to_s %>
-                  </div>
-                <% end %>
-                <% if version_m.changeset.key? "level" %>
-                  <div class="box-item">
-                    <strong>Nível:</strong>
-                    <%= version_m.changeset["level"].first.nil? ? "Dev Null" : version_m.changeset["level"].first.to_i.to_s %>
-                    <i class="fa fa-angle-double-right"></i> <%= version_m.changeset["level"].last.to_s %>
-                  </div>
-                <% end %>
-              </div>
+  <% user.profile.evaluation.versions.reverse.group_by { |m| m.created_at.beginning_of_month }.each do |version| %>
+        <span class="timeline-label">
+          <span class="label label-primary"><%= l(version.first, format: :month) %></span>
+        </span>
+    <% version.last.sort_by { |v| v.created_at }.reverse.each do |version_m| %>
+      <span class="timeline-label">
+          <span class="label label-info"><%= get_version(version_m) %></span>
+      </span>
+      <% if version_m.changeset.key? "evaluation_type" %>
+        <div class="timeline-item">
+          <div class="timeline-point timeline-point-success">
+            <i class="fa fa-star"></i>
+          </div>
+          <div class="timeline-event timeline-event-success">
+            <div class="timeline-body">
+              <p>
+                Perfil
+              </p>
+              <p>
+                <%= version_m.changeset["evaluation_type"].first.nil? ? "Dev Null" : Evaluation.human_enum_name(:evaluation_types, version_m.changeset["evaluation_type"].first.to_s) %>
+                <i class="fa fa-angle-double-right"></i>
+                <%= Evaluation.human_enum_name(:evaluation_types, version_m.changeset["evaluation_type"].last.to_s) %>
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
+      <% if version_m.changeset.key? "level" %>
+        <div class="timeline-item">
+          <div class="timeline-point timeline-point-info">
+            <i class="fa fa-star"></i>
+          </div>
+          <div class="timeline-event timeline-event-info">
+            <div class="timeline-body">
+              <p>
+                Level
+              </p>
+              <p>
+                <%= version_m.changeset["level"].first.nil? ? "Dev Null" : version_m.changeset["level"].first.to_i.to_s %>
+                <i class="fa fa-angle-double-right"></i>
+                <%= version_m.changeset["level"].last.to_s %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% if version_m.changeset.key? "xp" %>
+        <div class="timeline-item">
+          <div class="timeline-point timeline-point-primary">
+            <i class="fa fa-star"></i>
+          </div>
+          <div class="timeline-event timeline-event-primary">
+            <div class="timeline-body">
+              <p>
+                Experiência
+              </p>
+              <p>
+                <%= version_m.changeset["xp"].first.nil? ? "Dev Null" : version_m.changeset["xp"].first.to_s %>
+                <i class="fa fa-angle-double-right"></i> <%= version_m.changeset["xp"].last.to_s %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>
