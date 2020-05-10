@@ -56,7 +56,7 @@ group :production do
 end
 
 group :development, :test, :production do
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 4.0'
   gem 'database_cleaner'
   gem 'binding_of_caller'
   gem 'annotate'

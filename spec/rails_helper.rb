@@ -33,6 +33,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.include Warden::Test::Helpers
+  config.include Devise::Test::ControllerHelpers, type: :controller
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
