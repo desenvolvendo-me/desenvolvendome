@@ -56,7 +56,7 @@ group :production do
 end
 
 group :development, :test, :production do
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 4.0'
   gem 'database_cleaner'
   gem 'binding_of_caller'
   gem 'annotate'
@@ -65,7 +65,7 @@ group :development, :test, :production do
   gem 'ffaker'
   gem 'faker'
   gem 'cpf_faker'
-  gem 'rubycritic'
+  gem 'rubycritic', require: false
   gem 'simplecov'
 end
 
