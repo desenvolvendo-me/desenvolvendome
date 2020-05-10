@@ -6,7 +6,7 @@ RSpec.describe "Profile::Generate" do
     @user = create(:user, login: "desenvolvendome")
   end
 
-  context  do
+  context "user real" do
 
     it "repositorio first and last" do
       Github::Importation.new.author(@user)
@@ -20,11 +20,11 @@ RSpec.describe "Profile::Generate" do
       Profile::Generate.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
-      expect(@user.profile.evaluation.xp).to eq(90)
-      expect(@user.profile.evaluation.level).to eq(3)
+      expect(@user.profile.evaluation.xp).to eq(50)
+      expect(@user.profile.evaluation.level).to eq(2)
       expect(@user.profile.evaluation.versions.count).to eq(6)
       expect(@user.profile.evaluation.versions.first.changeset).to eq({"level" => [nil, 0], "evaluation_type" => [nil, "started"], "xp" => [nil, 0]})
-      expect(@user.profile.evaluation.versions.last.changeset).to eq({"xp" => [80, 90]})
+      expect(@user.profile.evaluation.versions.last.changeset).to eq({"xp" => [40, 50]})
     end
 
     it "repositorio last and first" do
@@ -39,11 +39,11 @@ RSpec.describe "Profile::Generate" do
       Profile::Generate.new(@user).run
 
       expect(@user.profile.evaluation.started?).to be_truthy
-      expect(@user.profile.evaluation.xp).to eq(90)
-      expect(@user.profile.evaluation.level).to eq(3)
+      expect(@user.profile.evaluation.xp).to eq(50)
+      expect(@user.profile.evaluation.level).to eq(2)
       expect(@user.profile.evaluation.versions.count).to eq(6)
       expect(@user.profile.evaluation.versions.first.changeset).to eq({"level" => [nil, 0], "evaluation_type" => [nil, "started"], "xp" => [nil, 0]})
-      expect(@user.profile.evaluation.versions.last.changeset).to eq({"level"=>[2, 3], "xp"=>[40, 90]})
+      expect(@user.profile.evaluation.versions.last.changeset).to eq("xp"=>[40, 50])
     end
 
   end
