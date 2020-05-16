@@ -2,7 +2,7 @@ ActiveAdmin.register User do
   menu priority: 1
   menu parent: "Gerenciamento"
 
-  actions :index, :show
+  actions :index, :show, :import_csv
 
   filter :name
   filter :login
@@ -29,6 +29,12 @@ ActiveAdmin.register User do
     end
     column :evaluation_last do |user|
       user.try(:evaluation_last).try("strftime", "%d/%m/%y %H:%M")
+    end
+    column :reimport do |user|
+      link_to 'Reimportar', reimport_admin_user_path(user)
+    end
+    column :reevaluation do |user|
+      link_to 'Reavaliar', reevaluation_admin_user_path(user)
     end
     actions
   end
