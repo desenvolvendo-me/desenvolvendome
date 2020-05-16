@@ -18,6 +18,18 @@ class Profile::Evolution
     evolve_into_knight
   end
 
+  def reset_user
+    @user.repositories.each(&:destroy)
+    reset_evaluation
+  end
+
+  def reset_evaluation
+    @user.profile.try(:evaluation).try(:destroy)
+    @user.contributors.each do |contributor|
+      contributor.contributions.destroy_all
+    end
+  end
+
   private
 
   def born_to_started

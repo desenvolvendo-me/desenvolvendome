@@ -19,7 +19,7 @@
 
 class Contributor < ApplicationRecord
   belongs_to :repository
-  has_many :contributions
+  has_many :contributions, dependent: :destroy
 
   def set_repository_size_type
     works = contributions.sum(:additions) + contributions.sum(:deletions)
