@@ -10,7 +10,11 @@ ActiveAdmin.register User do
   index do
     column :id
     column :level do |user|
-      link_to user.profile.level, profile_show_path(user.login), target: "_blank"
+      if user.profile
+        link_to user.try(:profile).try(:level), profile_show_path(user.login), target: "_blank"
+      else
+        link_to "Em Importação", profile_show_path(user.login), target: "_blank"
+      end
     end
     column :login do |user|
       link_to user.login, "https://github.com/#{user.login}", target: "_blank"
@@ -36,7 +40,7 @@ ActiveAdmin.register User do
       end
       row :name
       row :level do |user|
-        link_to user.profile.level, profile_show_path(user.login), target: "_blank"
+        link_to user.try(:profile).try(:level), profile_show_path(user.login), target: "_blank"
       end
       row :login do |user|
         link_to user.login, "https://github.com/#{user.login}", target: "_blank"
@@ -49,7 +53,7 @@ ActiveAdmin.register User do
         user.created_at.strftime("%d/%m/%y %H:%M")
       end
       row :evaluation_last do |user|
-        user.evaluation_last.strftime("%d/%m/%y %H:%M")
+        user.try(:evaluation_last).try("strftime", "%d/%m/%y %H:%M")
       end
 
       panel "Repositórios" do
@@ -78,7 +82,7 @@ ActiveAdmin.register User do
       end
 
       panel "Evoluções" do
-        versions = user.profile.try(:evaluation).try(:versions)
+        versions = user.try(:profile).try(:evaluation).try(:versions)
 
         paginated_collection(versions.page(params[:page]).per(15), download_links: false) do
           table_for(collection, sortable: false) do
@@ -125,7 +129,7 @@ ActiveAdmin.register User do
   end
 
   action_item :view, only: :show do
-    link_to 'Reimportar', reimport_admin_user_path(user) if user.profile.evaluation
+    link_to 'Reimportar', reimport_admin_user_path(user) if user.try(:profile).try(:evaluation)
   end
 
   action_item :view, only: :show do

@@ -24,7 +24,7 @@ class Profile::Evolution
   end
 
   def reset_evaluation
-    @user.profile.evaluation.destroy
+    @user.profile.try(:evaluation).try(:destroy)
     @user.contributors.each do |contributor|
       contributor.contributions.destroy_all
     end
