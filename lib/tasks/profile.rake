@@ -32,4 +32,16 @@ namespace :profile do
     puts "Import Users"
   end
 
+  desc "Evaluation Repositories"
+  task evaluation_repositories: :environment do
+    Benchmark.bm do |x|
+      x.report {
+        User.all.each do |user|
+          EvaluationRepositoriesJob.perform_later(user.login)
+        end
+      }
+    end
+    puts "Evaluation Respositorios"
+  end
+
 end
