@@ -55,6 +55,8 @@ pt-BR:
         repositories_count: "Repositorios"
         created_at: "Criado Em"
         evaluation_last: "Avaliado Em"
+        reimport: "Reimportar"
+        reevaluation: "Reavaliar"
       evaluation:
         level: "Nível"
         evaluation_type: "Tipo"
