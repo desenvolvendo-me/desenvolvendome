@@ -2,7 +2,7 @@ ActiveAdmin.register User do
   menu priority: 1
   menu parent: "Gerenciamento"
 
-  actions :index, :show
+  actions :index, :show, :import_csv
 
   filter :name
   filter :login
@@ -10,7 +10,11 @@ ActiveAdmin.register User do
   index do
     column :id
     column :level do |user|
-      link_to user.profile.level, profile_show_path(user.login), target: "_blank"
+      if user.profile
+        link_to user.try(:profile).try(:level), profile_show_path(user.login), target: "_blank"
+      else
+        link_to "Em Importação", profile_show_path(user.login), target: "_blank"
+      end
     end
     column :login do |user|
       link_to user.login, "https://github.com/#{user.login}", target: "_blank"
@@ -26,17 +30,23 @@ ActiveAdmin.register User do
     column :evaluation_last do |user|
       user.try(:evaluation_last).try("strftime", "%d/%m/%y %H:%M")
     end
+    column :reimport do |user|
+      link_to 'Reimportar', reimport_admin_user_path(user)
+    end
+    column :reevaluation do |user|
+      link_to 'Reavaliar', reevaluation_admin_user_path(user)
+    end
     actions
   end
 
-  show title: proc {|p| "Usuário: #{p.name ? p.name : p.login}"} do
+  show title: proc { |p| "Usuário: #{p.name ? p.name : p.login}" } do
     attributes_table title: "Usuário" do
       row :avatar do |user|
         image_tag user.avatar, size: "50x50"
       end
       row :name
       row :level do |user|
-        link_to user.profile.level, profile_show_path(user.login), target: "_blank"
+        link_to user.try(:profile).try(:level), profile_show_path(user.login), target: "_blank"
       end
       row :login do |user|
         link_to user.login, "https://github.com/#{user.login}", target: "_blank"
@@ -49,11 +59,11 @@ ActiveAdmin.register User do
         user.created_at.strftime("%d/%m/%y %H:%M")
       end
       row :evaluation_last do |user|
-        user.evaluation_last.strftime("%d/%m/%y %H:%M")
+        user.try(:evaluation_last).try("strftime", "%d/%m/%y %H:%M")
       end
 
       panel "Repositórios" do
-        repositories = user.repositories.where.not(commits_count: [nil, 0]).order(commits_count: :desc)
+        repositories = user.repositories.order(commits_count: :desc)
         paginated_collection(repositories.page(params[:page]).per(15), download_links: false) do
           table_for(collection, sortable: false) do
             column :name do |repository|
@@ -70,12 +80,15 @@ ActiveAdmin.register User do
               end
               language
             end
+            column :actions do |repository|
+              link_to 'Reavaliar Repositório', reevaluation_admin_repository_path(repository)
+            end
           end
         end
       end
 
       panel "Evoluções" do
-        versions = user.profile.evaluation.versions
+        versions = user.try(:profile).try(:evaluation).try(:versions)
 
         paginated_collection(versions.page(params[:page]).per(15), download_links: false) do
           table_for(collection, sortable: false) do
@@ -98,19 +111,33 @@ ActiveAdmin.register User do
               end
             end
           end
-        end
+        end if versions
       end
     end
   end
 
   member_action :reimport, method: :get do
+    Profile::Evolution.new(resource).reset_user
+
     LoadRepositoriesJob.perform_later(resource.login)
 
     redirect_to resource_path(resource), notice: "Reimportação iniciada para #{resource.login}"
   end
 
+  member_action :reevaluation, method: :get do
+    Profile::Evolution.new(resource).reset_evaluation
+
+    EvaluationRepositoriesJob.perform_later(resource.login)
+
+    redirect_to admin_user_path(resource), notice: "Reavaliação iniciada para #{resource.login}"
+  end
+
   action_item :view, only: :show do
     link_to 'Reimportar', reimport_admin_user_path(user)
+  end
+
+  action_item :view, only: :show do
+    link_to 'Reavaliar', reevaluation_admin_user_path(user)
   end
 
 

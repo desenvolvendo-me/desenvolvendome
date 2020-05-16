@@ -1,7 +1,7 @@
-lock "~> 3.11.2"
+lock "~> 3.14.0"
 
 set :application, "desenvolvendome"
-set :repo_url, "git@github.com:marcodotcastro/desenvolvendome.git"
+set :repo_url, "git@github.com:desenvolvendo-me/desenvolvendome.git"
 
 set :deploy_to, "/var/www/desenvolvendome"
 

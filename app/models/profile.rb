@@ -39,7 +39,12 @@ class Profile < ApplicationRecord
   }
 
   def level
-    "#{Evaluation.human_enum_name(:evaluation_types, self.try(:evaluation).try(:evaluation_type))} com Lvl #{self.try(:evaluation).try(:level)} e Xp #{self.try(:evaluation).try(:xp)}"
+    evaluation_type = self.try(:evaluation).try(:evaluation_type)
+    evaluation_type = Evaluation.human_enum_name(:evaluation_types, evaluation_type)
+    evaluation_level = self.try(:evaluation).try(:level)
+    evaluation_xp = self.try(:evaluation).try(:xp)
+
+    evaluation_level.nil? ? "Em Avaliação" : "#{evaluation_type} com Lvl #{evaluation_level} e Xp #{evaluation_xp}"
   end
 
   def repositories_to_work
