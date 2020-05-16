@@ -121,15 +121,13 @@ ActiveAdmin.register User do
   member_action :reevaluation, method: :get do
     Profile::Evolution.new(resource).reset_evaluation
 
-    resource.repositories.each do |repository|
-      EvaluationRepositoryJob.perform_later(repository.id)
-    end
+    EvaluationRepositoriesJob.perform_later(resource.login)
 
     redirect_to admin_user_path(resource), notice: "Reavaliação iniciada para #{resource.login}"
   end
 
   action_item :view, only: :show do
-    link_to 'Reimportar', reimport_admin_user_path(user) if user.try(:profile).try(:evaluation)
+    link_to 'Reimportar', reimport_admin_user_path(user)
   end
 
   action_item :view, only: :show do
