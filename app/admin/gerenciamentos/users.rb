@@ -53,7 +53,7 @@ ActiveAdmin.register User do
       end
 
       panel "Repositórios" do
-        repositories = user.repositories.where.not(commits_count: [nil, 0]).order(commits_count: :desc)
+        repositories = user.repositories.order(commits_count: :desc)
         paginated_collection(repositories.page(params[:page]).per(15), download_links: false) do
           table_for(collection, sortable: false) do
             column :name do |repository|
@@ -69,6 +69,9 @@ ActiveAdmin.register User do
                 language.concat(tecnology.language.description, ", ")
               end
               language
+            end
+            column :actions do |repository|
+              link_to 'Reavaliar Repositório', reevaluation_admin_repository_path(repository)
             end
           end
         end
@@ -110,7 +113,7 @@ ActiveAdmin.register User do
   end
 
   action_item :view, only: :show do
-    link_to 'Reimportar', reimport_admin_user_path(user)
+    link_to 'Reimportar Repositórios', reimport_admin_user_path(user)
   end
 
 
