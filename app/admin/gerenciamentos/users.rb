@@ -29,7 +29,7 @@ ActiveAdmin.register User do
     actions
   end
 
-  show title: proc {|p| "Usuário: #{p.name ? p.name : p.login}"} do
+  show title: proc { |p| "Usuário: #{p.name ? p.name : p.login}" } do
     attributes_table title: "Usuário" do
       row :avatar do |user|
         image_tag user.avatar, size: "50x50"
@@ -107,13 +107,29 @@ ActiveAdmin.register User do
   end
 
   member_action :reimport, method: :get do
+    Profile::Evolution.new(resource).reset_user
+
     LoadRepositoriesJob.perform_later(resource.login)
 
     redirect_to resource_path(resource), notice: "Reimportação iniciada para #{resource.login}"
   end
 
+  member_action :reevaluation, method: :get do
+    Profile::Evolution.new(resource).reset_evaluation
+
+    resource.repositories.each do |repository|
+      EvaluationRepositoryJob.perform_later(repository.id)
+    end
+
+    redirect_to admin_user_path(resource), notice: "Reavaliação iniciada para #{resource.login}"
+  end
+
   action_item :view, only: :show do
-    link_to 'Reimportar Repositórios', reimport_admin_user_path(user)
+    link_to 'Reimportar', reimport_admin_user_path(user) if user.profile.evaluation
+  end
+
+  action_item :view, only: :show do
+    link_to 'Reavaliar', reevaluation_admin_user_path(user)
   end
 
 
