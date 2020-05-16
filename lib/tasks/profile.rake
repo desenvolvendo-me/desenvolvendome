@@ -3,36 +3,6 @@ require "csv"
 
 namespace :profile do
 
-  desc "Update Profile"
-  task :update, [:user_login] => :environment do |task, args|
-    Benchmark.bm do |x|
-      x.report {
-        user = User.find_by_login(args[:user_login])
-
-        if user
-          puts "Updated: #{user.login}"
-          Profile::Generate.new(user).run
-        else
-          puts "User: #{args[:user_login]} not exist"
-        end
-      }
-    end
-  end
-
-  desc "Update All Profile"
-  task update_all: :environment do
-    Benchmark.bm do |x|
-      x.report {
-        total = User.count
-        User.all.each_with_index do |user, index|
-          puts "Updated[#{index}/#{total}]: #{user.login}"
-          Profile::Generate.new(user).run
-        end
-      }
-    end
-    puts "Updated All"
-  end
-
   desc "Clear Duplicate User"
   task clean_duplicate: :environment do
     total = User.count
@@ -52,24 +22,14 @@ namespace :profile do
       x.report {
         filename = Rails.root + 'tmp/users.csv'
         CSV.foreach(filename) do |row|
-          user = User.create(login: row[2], email: row[10], password: Devise.friendly_token[0, 20])
-          LoadRepositoriesJob.perform_later(user.login)
+          unless User.find_by_login(row[2])
+            user = User.create(login: row[2], email: row[10], password: Devise.friendly_token[0, 20])
+            LoadRepositoriesJob.perform_later(user.login)
+          end
         end
       }
     end
     puts "Import Users"
-  end
-
-  desc "Evaluation Repositories"
-  task evaluation_repositories: :environment do
-    Benchmark.bm do |x|
-      x.report {
-        Repository.all.each do |repository|
-          EvaluationRepositoryJob.perform_later(repository.id)
-        end
-      }
-    end
-    puts "Evaluation Respositorios"
   end
 
 end
