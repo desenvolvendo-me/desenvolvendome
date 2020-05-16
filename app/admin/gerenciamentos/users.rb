@@ -75,7 +75,7 @@ ActiveAdmin.register User do
       end
 
       panel "Evoluções" do
-        versions = user.profile.evaluation.versions
+        versions = user.profile.try(:evaluation).try(:versions)
 
         paginated_collection(versions.page(params[:page]).per(15), download_links: false) do
           table_for(collection, sortable: false) do
@@ -98,7 +98,7 @@ ActiveAdmin.register User do
               end
             end
           end
-        end
+        end if versions
       end
     end
   end
