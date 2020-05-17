@@ -2,8 +2,6 @@ ActiveAdmin.register ApiControl do
   menu priority: 4
   menu parent: "Administração"
 
-  actions :index, :show
-
   index do
     selectable_column
     id_column

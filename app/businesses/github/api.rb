@@ -4,9 +4,9 @@ require 'json'
 class Github::Api
 
   def initialize(args = {})
-    @github_api_key = ENV["GITHUB_API_KEY"]
     @connect = Faraday.new(:url => 'https://api.github.com')
-    @api_control = ApiControl.find_or_create_by(key: @github_api_key)
+    @api_control = ApiControl.where("consume > 100").last
+    @github_api_key = @api_control ? @api_control.key : ApiControl.first.key
   end
 
   def user(login)
@@ -57,7 +57,7 @@ class Github::Api
   private
 
   def update_rate_limit(response)
-    @api_control.update(limit: response.headers["x-ratelimit-limit"].to_i, consume: response.headers["x-ratelimit-remaining"].to_i, reset: DateTime.strptime(response.headers["x-ratelimit-reset"], '%s'), description: "O Github disponiliza 5000 request por hora.")
+    @api_control.update(limit: response.headers["x-ratelimit-limit"].to_i, consume: response.headers["x-ratelimit-remaining"].to_i, reset: DateTime.strptime(response.headers["x-ratelimit-reset"], '%s'))
   end
 
 end
