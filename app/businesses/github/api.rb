@@ -5,8 +5,7 @@ class Github::Api
 
   def initialize(args = {})
     @connect = Faraday.new(:url => 'https://api.github.com')
-    @api_control = ApiControl.where("consume > 100").last
-    @github_api_key = @api_control ? @api_control.key : ApiControl.first.key
+    get_api_key
   end
 
   def user(login)
@@ -55,6 +54,12 @@ class Github::Api
   end
 
   private
+
+  def get_api_key
+    apis_keys = ApiControl.where("consume > 100")
+    @api_control = apis_keys.any? ? apis_keys.first : ApiControl.last
+    @github_api_key = @api_control.key
+  end
 
   def update_rate_limit(response)
     @api_control.update(limit: response.headers["x-ratelimit-limit"].to_i, consume: response.headers["x-ratelimit-remaining"].to_i, reset: DateTime.strptime(response.headers["x-ratelimit-reset"], '%s'))
