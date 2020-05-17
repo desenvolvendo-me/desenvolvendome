@@ -17,7 +17,6 @@ Video de Apresentação das Funcionalidades, clique na imagem
 ## Variáveis de Ambiente
 
 ### Github
--  ENV['GITHUB_API_KEY']
 -  ENV['GITHUB_CLIENT_ID']
 -  ENV['GITHUB_CLIENT_SECRET']
 

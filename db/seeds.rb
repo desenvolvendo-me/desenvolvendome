@@ -1,3 +1,6 @@
+ApiControl.create(key: "494c19aa5faf6d3be85107189a05b21636a564a5", description: "Chave do usuário marcodotcastro, limite de 5000 requests por hora")
+ApiControl.create(key: "573e78d71516da517d8a4df224e1c7c7bed28538", description: "Chave do usuário desenvolvendome, limite de 5000 requests por hora")
+
 Contact.destroy_all
 FactoryBot.create(:contact, name: "Marco Castro", email: "marcodotcastro@gmail.com")
 10.times do
