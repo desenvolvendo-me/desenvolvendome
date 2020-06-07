@@ -71,6 +71,28 @@ ActiveAdmin.register User do
         user.try(:evaluation_last).try("strftime", "%d/%m/%y %H:%M")
       end
 
+      panel "Conhecimentos" do
+        knowledges = user.profile.knowledges.order(level: :desc)
+        paginated_collection(knowledges.page(params[:page]).per(10), download_links: false) do
+          table_for(collection, sortable: false) do
+            column :language do |knowledge|
+              knowledge.language.description
+            end
+            column :level
+            column :experience
+            column :rarity do |repository|
+              Language.human_enum_name(:rarities, repository.language.rarity)
+            end
+            column :knowledge_type do |repository|
+              Language.human_enum_name(:knowledge_types, repository.language.knowledge_type)
+            end
+            column "Ações" do
+              link_to "Reavaliar Conhecimento"
+            end
+          end
+        end
+      end
+
       panel "Repositórios" do
         repositories = user.repositories.order(commits_count: :desc)
         paginated_collection(repositories.page(params[:page]).per(15), download_links: false) do
@@ -89,7 +111,7 @@ ActiveAdmin.register User do
               end
               language
             end
-            column :actions do |repository|
+            column "Ações" do |repository|
               link_to 'Reavaliar Repositório', reevaluation_admin_repository_path(repository)
             end
           end
