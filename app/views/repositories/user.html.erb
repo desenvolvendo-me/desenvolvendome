@@ -48,6 +48,16 @@
       </div>
       <hr class="featurette-divider">
       <div class="row">
+        <div class="col-md-12">
+          <div class="text-center">
+            <div class="text-success h5">
+              Para calcular seu Xp, escolha o repositório e clique em  <i class="fab fa-github"></i> Analisar Repositório <i class="fas fa-cloud-download-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row">
         <% @repositories.order(commits_count: :desc).each do |repository| %>
           <div class="col-md-4 text-center">
             <div class="list-group-item list-group-item-action flex-column align-items-start">

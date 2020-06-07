@@ -50,9 +50,14 @@
               <%= link_to hide_profile_path do %>
                 <div class="btn btn-<%= current_user.profile.hide? ? "danger" : "success" %>">
                   <i class="fas <%= current_user.profile.hide? ? "fa-eye-slash" : "fa-eye" %> %>fa-eye-slash">
-                    <%= current_user.profile.hide? ? "Perfil Oculto" : "Perfil Visível" %>
+                    <%= current_user.profile.hide? ? "Oculto" : "Visível" %>
                   </i>
                 </div>
+              <% end %>
+              <%= link_to hide_profile_path do %>
+                <%= link_to repositories_user_path(current_user.login), class: "btn btn-outline-info" do %>
+                  <i class="fab fa-github"></i> Calcular Xp <i class="fas fa-cloud-download-alt"></i>
+                <% end %>
               <% end %>
             </div>
           </div>
