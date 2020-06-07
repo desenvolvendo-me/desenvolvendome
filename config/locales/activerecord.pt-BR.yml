@@ -89,3 +89,10 @@ pt-BR:
         consume: "Consumo"
         reset: "Reinicia o Limite"
         description: "Observação"
+      knowledge:
+        experience: "Experiência"
+        knowledge_type: "Tipo de Conhecimento"
+        level: "Nível"
+        language: "Tecnologia"
+        rarity: "Raridade"
+
