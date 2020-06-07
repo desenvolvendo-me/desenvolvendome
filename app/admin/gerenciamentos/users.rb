@@ -119,7 +119,7 @@ ActiveAdmin.register User do
       end
 
       panel "Evoluções" do
-        versions = user.try(:profile).try(:evaluation).try(:versions).reorder('id DESC')
+        versions = user.try(:profile).try(:evaluation).try(:versions).try(:reorder, 'id DESC')
 
         paginated_collection(versions.page(params[:page]).per(15), download_links: false) do
           table_for(collection, sortable: false) do
