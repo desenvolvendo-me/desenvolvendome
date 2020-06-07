@@ -2,7 +2,7 @@ ActiveAdmin.register User do
   menu priority: 1
   menu parent: "Gerenciamento"
   permit_params :login, :email, :password
-  actions :index, :show, :new
+  actions :index, :show, :new, :create
 
   filter :name
   filter :login
@@ -72,7 +72,7 @@ ActiveAdmin.register User do
       end
 
       panel "Conhecimentos" do
-        knowledges = user.profile.knowledges.order(level: :desc)
+        knowledges = user.try(:profile).try(:knowledges).try(:order,level: :desc)
         paginated_collection(knowledges.page(params[:page]).per(10), download_links: false) do
           table_for(collection, sortable: false) do
             column :language do |knowledge|
@@ -90,7 +90,7 @@ ActiveAdmin.register User do
               link_to "Reavaliar Conhecimento"
             end
           end
-        end
+        end if knowledges
       end
 
       panel "Repositórios" do
