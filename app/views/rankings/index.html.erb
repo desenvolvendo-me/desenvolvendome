@@ -1,7 +1,7 @@
 <div class="container container-intests-new">
   <div class="col-md-12 text-center">
-    <div class="h2 text-default text-uppercase">
-      <i class="fa fa-sort-numeric-asc"> rankings</i>
+    <div class="h2 text-default">
+      <i class="fa fa-sort-numeric-asc"> Rankings</i>
     </div>
   </div>
   <div class="center-block">
@@ -9,31 +9,31 @@
       <div class="row">
         <div class="col"></div>
         <div class="col-md-3 text-center">
-          <h3 class="text-default text-uppercase text-uppercase">top 10</h3>
-          <h3 class="text-default text-uppercase text-uppercase">iniciados</h3>
-          <h3 class="text-info text-uppercase text-uppercase"><%= link_to "Veja Todos", rankings_starteds_path, class: "btn btn-info" %></h3>
+          <h3 class="text-default">Top 10</h3>
+          <h3 class="text-default">Iniciados</h3>
+          <h3 class="text-info"><%= link_to "Veja Todos", rankings_starteds_path, class: "btn btn-info" %></h3>
           <% @profiles.evaluation(evaluation_type: :started, limit: 10).order(xp: :desc).each_with_index do |profile, index| %>
             <%= render 'profiles/profile_card', type: "ranking", profile: profile, index: index %>
           <% end %>
-          <h3 class="text-info text-uppercase text-uppercase"><%= link_to "Veja Todos", rankings_starteds_path, class: "btn btn-info" %></h3>
+          <h3 class="text-info"><%= link_to "Veja Todos", rankings_starteds_path, class: "btn btn-info" %></h3>
         </div>
         <div class="col-md-3 text-center">
-          <h3 class="text-default text-uppercase text-uppercase">top 10</h3>
-          <h3 class="text-default text-uppercase text-uppercase">aprendizes</h3>
-          <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", rankings_novices_path, class: "btn btn-info" %></h3>
+          <h3 class="text-default">Top 10</h3>
+          <h3 class="text-default">Aprendizes</h3>
+          <h3 class="text-light"><%= link_to "Veja Todos", rankings_novices_path, class: "btn btn-info" %></h3>
           <% @profiles.evaluation(evaluation_type: :novice, limit: 10).order(xp: :desc).each_with_index do |profile, index| %>
             <%= render 'profiles/profile_card', type: "ranking", profile: profile, index: index %>
           <% end %>
-          <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", rankings_novices_path, class: "btn btn-info" %></h3>
+          <h3 class="text-light"><%= link_to "Veja Todos", rankings_novices_path, class: "btn btn-info" %></h3>
         </div>
         <div class="col-md-3 text-center">
-          <h3 class="text-default text-uppercase text-uppercase">top 10</h3>
-          <h3 class="text-default text-uppercase text-uppercase">cavaleiros</h3>
-          <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", rankings_knights_path, class: "btn btn-info" %></h3>
+          <h3 class="text-default">Top 10</h3>
+          <h3 class="text-default">Cavaleiros</h3>
+          <h3 class="text-light"><%= link_to "Veja Todos", rankings_knights_path, class: "btn btn-info" %></h3>
           <% @profiles.evaluation(evaluation_type: :knight, limit: 10).order(xp: :desc).each_with_index do |profile, index| %>
             <%= render 'profiles/profile_card', type: "ranking", profile: profile, index: index %>
           <% end %>
-          <h3 class="text-light text-uppercase text-uppercase"><%= link_to "Veja Todos", rankings_knights_path, class: "btn btn-info" %></h3>
+          <h3 class="text-light"><%= link_to "Veja Todos", rankings_knights_path, class: "btn btn-info" %></h3>
         </div>
         <div class="col"></div>
       </div>
