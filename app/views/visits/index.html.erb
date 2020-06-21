@@ -7,7 +7,7 @@
           <div class="container">
             <div class="carousel-caption">
               <h1>Eae Dev, blz? </h1>
-              <p>Aqui você consegue medir sua evolução como em um Game RPG.</p>
+              <p>Comece a medir sua evolução <strong>como em um Game RPG para se tornar um Dev10x</strong>.</p>
               <p><%= link_to "Saiba Mais", analyze_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
             </div>
           </div>
@@ -23,6 +23,7 @@
     <hr class="featurette-divider">
     <div class="row">
       <div class="col-md-12 text-center">
+        <h1>A Jornada</h1>
         <div class='embed-container'>
           <iframe width="1100" height="600" src="https://www.youtube.com/embed/9XAxSrlKaa4?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -32,25 +33,25 @@
     <hr class="featurette-divider">
     <div class="row">
       <div class="col-md-12 text-center">
-        <h2 class="text-uppercase">Os 3 Passos Para Acelerar na Carreira</h2>
+        <h1>Os 3 Fundamentos para Evolução</h1>
       </div>
       <div class="col-lg-4">
-        <%= icon('fas', 'wrench', class: "icone") %>
-        <h2>Escolha a Linguagem</h2>
-        <p>Experimente <strong>JavaScript</strong>, <strong>PHP</strong>, <strong>Ruby</strong>, <strong>Python</strong>,
-          <strong>Java</strong> ou <strong>C#</strong>, entenda seu ecossistemas e faça sua escolha.</p>
+        <%= image_tag('study', class: "icone") %>
+        <h2>Estudar</h2>
+        <p>O estudo atravéz das <strong>leituras e vídeos se adquire muita informação</strong> e isso é o início de toda
+          evolução.</p>
       </div>
       <div class="col-lg-4">
-        <%= icon('fas', 'screwdriver', class: "icone") %>
-        <h2>Escolha o Framework Web</h2>
-        <p>Pesquise a <strong>aceitação do mercado</strong>, o <strong>tamanho da comunidade</strong> e o
-          <strong>frequência das atualizações</strong>.</p>
+        <%= image_tag('training', class: "icone") %>
+        <h2>Treinar</h2>
+        <p>O treino <strong>com foco e disciplina</strong> toda informação cria raiz e se transforma em conhecimento.
+        </p>
       </div>
       <div class="col-lg-4">
-        <%= icon('fas', 'brain', class: "icone") %>
-        <h2>Acelere a Carreira</h2>
-        <p>Use <strong>ferramentas</strong> e <strong>metodologias</strong> para reduzir a
-          curva de aprendizagem e aumentar a produtividade.</p>
+        <%= image_tag('practice', class: "icone") %>
+        <h2>Executar</h2>
+        <p>A execução com uma base de <strong>conhecimentos, ferramentas e metodologias</strong> a produtividade evolui.
+        </p>
       </div>
     </div>
 
@@ -59,145 +60,7 @@
     <div class="row featurette">
       <div class="col-md-12 text-center">
         <%= render 'quantos_aceleram' %>
-        <p><%= link_to "entenda seu momento", analyze_path, class: "btn btn-lg btn-primary text-uppercase" %></p>
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading text-uppercase">PASSO 1) Escolha a Linguagem</h2>
-        <p class="text-justify">
-          Nesse momento o mais importante é começar. Escolha uma linguagem de programação e pratique:
-        </p>
-        <ul>
-          <li>Populares</li>
-          <ul>
-            <li><strong>JavaScript</strong></li>
-            <li><strong>PHP</strong></li>
-          </ul>
-          <li>Enterprises</li>
-          <ul>
-            <li><strong>Java</strong></li>
-            <li><strong>C#</strong></li>
-          </ul>
-          <li>Nichos</li>
-          <ul>
-            <li><strong>Ruby</strong></li>
-            <li><strong>Python</strong></li>
-          </ul>
-        </ul>
-        <code>
-          Dica: Não perca muito tempo estudando teoria, estudo por no máximo 1 mês ou 40 horas e vá para o campo de
-          batalha. Agora estude os problemas que encontra com a tecnologia.
-        </code>
-      </div>
-      <div class="col-md-5">
-        <%= image_tag "escolha-a-linguagem.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded-circle" %>
-      </div>
-    </div>
-
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading text-uppercase">PASSO 2) Escolha o Framework Web</h2>
-        <p class="text-justify">
-          Agora é hora de pensar no mercado presente e futuro, entender o que as empresas atuais e o que as empresas
-          novas necessitam.
-        </p>
-        <p>
-          Uma forma interessante é entender quais são as stack de tecnologias que são usadas em tipos de empresas, pois
-          novos frameworks nascem a cada momento.
-        </p>
-        <p>
-          Existe um site muito interessante para acompanhar essa stacks
-          <a href="https://stackshare.io/stacks">Stackshare</a>.
-        </p>
-        <p>Veja alguns dos framework mais populares por linguagem:</p>
-        <ul>
-          <li>JavaScript</li>
-          <ul>
-            <li><strong>Express (Backend)</strong></li>
-            <li><strong>React JS (Frontend)</strong></li>
-          </ul>
-          <li>PHP</li>
-          <ul>
-            <li><strong>Laravel</strong></li>
-          </ul>
-          <li>Java</li>
-          <ul>
-            <li><strong>Spring</strong></li>
-          </ul>
-          <li>C#</li>
-          <ul>
-            <li><strong>DotNet</strong></li>
-          </ul>
-          <li>Ruby</li>
-          <ul>
-            <li><strong>Ruby on Rails</strong></li>
-          </ul>
-          <li>Python</li>
-          <ul>
-            <li><strong>Django</strong></li>
-          </ul>
-        </ul>
-        <code>Dica: Não perca muito tempo estudando teoria, estude por no máximo 2 meses ou 80 horas e vá para prática.
-          Escolha um problema, mesmo que pequeno, e suba em um servidor (grátis) a solução. Exemplo de servidor:
-          <a href="https://www.heroku.com/pricing">Heroku</a>,
-          <a href="https://azure.microsoft.com/pt-br/free/">Azure</a>
-          ou
-          <a href="https://aws.amazon.com/pt/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=tier%2312monthsfree">AWS</a>.
-          Agora estude os problemas que encontra com a tecnologia.
-        </code>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <%= image_tag "escolha-o-framework.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded-circle" %>
-      </div>
-    </div>
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading text-uppercase">PASSO 3) Acelere a Carreira</h2>
-        <p class="text-justify">
-          Entender, no menor tempo possível, <strong>o que é que se pode entregar</strong> com as tecnologias aprendidas
-          é o
-          mais importante para o mercado.
-          <br>
-          <br>
-          O mercado não se importa muito com qual linguagem ou framework é a melhor, já que
-          <strong>o importante é saber em quanto tempo uma solução consegue ser entrege e em qual qualidade</strong>.
-          <br>
-          <br>
-          É muito importante ter ferramentas e metodologias para
-          <strong>acelerar seu apredizado e aumentar sua produtividade</strong>.
-          <br><br>
-          Seque um exemplo do que seria a ferramenta e metodologia comparando que o problema de dirigir, ou
-          seja <strong>sair do ponto A e chegar ao ponto B</strong>:
-        <ul>
-          <li>
-            <strong>Ferramentas</strong>
-            <ul>
-              <li>Gol 1.0</li>
-              <li>HB20 1.6</li>
-              <li>Civic 2.0</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Metodologias</strong>
-            <ul>
-              <li>Motorista Comum</li>
-              <li>Taxista</li>
-              <li>Caminhoneiro</li>
-              <li>Piloto de Corrida</li>
-            </ul>
-          </li>
-        </ul>
-        Como pode perceber todos levam do ponto A ao ponto B. Qual o melhor? Isso irá depender de vários fatores, pois
-        cada um tem suas vantagens e desvantagens dependendo de cada cenário.
-        </p>
-      </div>
-      <div class="col-md-5">
-        <%= image_tag "acelere-o-apredizado.jpg", size: "500x500", class: "bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded-circle" %>
+        <p><%= link_to "Entenda seu nível", analyze_path, class: "btn btn-lg btn-primary" %></p>
       </div>
     </div>
 
@@ -205,16 +68,15 @@
 
     <div class="row">
       <div class="col-md-12 text-center">
-        <h2 class="text-uppercase">o mercado está mudando</h2>
+        <h1>O mercado está mudando</h1>
       </div>
     </div>
-    <hr class="featurette-divider">
 
     <div class="row featurette">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading text-uppercase">O Mercado Hoje</h2>
+        <h2 class="featurette-heading">O Mercado Hoje</h2>
         <p class="text-justify">
-          Sabia que anualmente formam-se, nas faculdades brasileiras, mais de 77 mil alunos nos cursos
+          Saiba que anualmente formam-se, nas faculdades brasileiras, mais de 77 mil alunos nos cursos
           da área de tecnologia da informação, <strong>porém somente 33% (26 mil) encontram trabalho no setor</strong>.
           <br>
           <br>
@@ -237,15 +99,16 @@
           ultrapassaram os $1bi e se tornaram os primeiros unicórnios brasileiros.
           <br>
           <br>
-          Essa mudança no mercado nacional ocorre, pois já foi percebido que sem a TI no core business a empresa na
-          escala rápido Assim,
+          Essa mudança no mercado nacional ocorre, pois já foi percebido que sem a TI no Core Business permite a empresa
+          escalar rápido. Assim,
           <strong>a tendência é que diminua drasticamente o número de empresas no setor de tecnologia focadas
             em desenvolvimento de software</strong>. Devido o mercado perceber o quanto a TI é estratégica para o
           negócio e que é um risco a terceirização.
           <br>
           <br>
-          Saiba que esse <strong>novo mercado é muito exigente na qualidade dos profissionais de TI</strong>. E essa
-          exigência não é somente técnico, onde saber muito Javascript, Java, PHP, C#, Python ou Ruby, torna um
+          Com essa mudança esse
+          <strong>novo mercado se torna muito exigente na qualidade dos profissionais de TI</strong>. E essa
+          exigência não é somente técnico, onde conhecer somente linguagens de programação e frameworks, torna um
           profissional qualificado.
           <br>
           <br>
@@ -258,6 +121,10 @@
           <strong>entender dessas outras área não significa ter um MBA ou 10 anos de experiência em cada uma
             área</strong>. É simplesmente partipar de reuniões e conseguir colaborar com sua visão de tecnologia sobre
           um problema de Negócio, de Venda ou de Gestão, ou seja é saber que cada linha de código tem um porque maior.
+          <br>
+          <br>
+          Em resumo, conhecer as tecnologias é importante, porém <strong>boas práticas com o foco no produtividade é o que torna
+          um Desenvolvedor eficiente e eficaz</strong>. Esse é o rumo seguindo por Dev10x.
         </p>
       </div>
       <div class="col-md-5 order-md-1">
