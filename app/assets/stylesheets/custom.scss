@@ -34,7 +34,7 @@ header > nav.navbar {
   background-color: #7965cc;
   background-attachment: fixed;
   background-position: center;
-  // height: calc(100vh - 48px);
+  height: 300px;
   display: flex;
 }
 
@@ -53,7 +53,7 @@ header > nav.navbar {
 
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-  bottom: 3rem;
+  top: 50px;
   z-index: 10;
 }
 
