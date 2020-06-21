@@ -1,24 +1,24 @@
 <div class="row text-center">
   <div class="col-md-12">
-    <h1>Quer saber como evoluir para o nível Dev10x?</h1>
+    <h1>Quero mais informação para seguir o Rumo do Dev10x?</h1>
     <%= simple_form_for @interest, defaults: {input_html: {class: 'register-form'}} do |f| %>
       <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <p class="card-title mt-3 text-capitalize">cadastre-se para receber mais informação</p>
+        <div class="col-md-5">
+          <p class="card-title mt-3">Cadastre com email para receber mais informação.</p>
           <%= f.input :email, label: false, placeholder: "Email", input_html: {class: 'form-control'} %>
+          <%= f.button :submit, "Cadastrar!", class: "btn btn-primary btn-block" %>
         </div>
-        <div class="col-md-4"></div>
-
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <%= f.button :submit, "QUERO O GUIA!", class: "btn btn-primary btn-block" %>
+        <div class="col-md-2">
+          <h2>Ou</h2>
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-5">
+          <p class="card-title mt-3">Entre no telegram para receber mais informação.</p>
+          <div class="form-group">
+            <%= image_tag("telegram.png", size: "40x35") %>
+          </div>
+          <%= link_to "Entrar!", "https://t.me/desenvolvendome", class: "btn btn-primary btn-block" %>
+        </div>
       </div>
-    <% end %>
-    <%= link_to "https://t.me/desenvolvendome" do %>
-      Nosso telegram <%= image_tag("telegram.png", class: "icone") %> cadastre-se para receber mais informação.
     <% end %>
   </div>
 </div>
