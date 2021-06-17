@@ -37,6 +37,9 @@ gem 'activeadmin_sidekiq_stats'
 gem "chartkick", '~> 2.2.0'
 gem 'groupdate'
 
+gem 'ed25519', '>= 1.2', '< 2.0'
+gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
+
 #Analisar Necessidade
 # gem 'geocoder'
 # gem 'httparty'

@@ -1,7 +1,8 @@
-lock "~> 3.14.0"
+lock "~> 3.16.0"
 
 set :application, "desenvolvendome"
 set :repo_url, "git@github.com:desenvolvendo-me/desenvolvendome.git"
+set :ssh_options, { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa) }
 
 set :deploy_to, "/var/www/desenvolvendome"
 
