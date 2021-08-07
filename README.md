@@ -17,8 +17,20 @@ Video de Apresentação das Funcionalidades, clique na imagem
 ## Variáveis de Ambiente
 
 ### Github
--  ENV['GITHUB_CLIENT_ID']
--  ENV['GITHUB_CLIENT_SECRET']
+#### Adicionar o Github Client
+```
+ENV['GITHUB_CLIENT_ID']
+ENV['GITHUB_CLIENT_SECRET']
+```
+#### Onde pegar o Github Client
+![github clinete](./docs/images/github_client.png)
+
+#### Adicionar Access Token no banco de dados
+```
+ApiControl.create(key: [ACCESS_TOKEN], description: "Chave do usuário marcodotcastro, limite de 5000 requests por hora")
+```
+#### Onde pegar o Github Access Token para API
+![github clinete](./docs/images/github_client.png)
 
 ## Running
 

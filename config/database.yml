@@ -9,8 +9,8 @@ development:
   database: desenvolvendo_me_development
   username: postgres
   password: postgres
-  host: db
-  port: 5432
+  host: localhost
+  port: 54330
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -29,7 +29,7 @@ test:
   database: desenvolvendo_me_test
   username: postgres
   password: postgres
-  host: db
+  host: localhost
   port: 5432
 
 

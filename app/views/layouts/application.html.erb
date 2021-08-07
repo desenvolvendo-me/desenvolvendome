@@ -88,7 +88,7 @@
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to user_github_omniauth_authorize_path, class: "nav-link" do %>
+              <%= link_to user_github_omniauth_authorize_path, method: :post, class: "nav-link" do %>
                 <i class="fas fa-sign-in-alt"> Entrar</i>
               <% end %>
             </li>
