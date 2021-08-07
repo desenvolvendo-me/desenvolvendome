@@ -1,5 +1,5 @@
-ApiControl.create(key: "494c19aa5faf6d3be85107189a05b21636a564a5", description: "Chave do usuário marcodotcastro, limite de 5000 requests por hora")
-ApiControl.create(key: "573e78d71516da517d8a4df224e1c7c7bed28538", description: "Chave do usuário desenvolvendome, limite de 5000 requests por hora")
+ApiControl.create(key: "GITHUB_ACCESS_TOKEN", description: "Chave do usuário marcodotcastro, limite de 5000 requests por hora")
+ApiControl.create(key: "GITHUB_ACCESS_TOKEN", description: "Chave do usuário desenvolvendome, limite de 5000 requests por hora")
 
 Contact.destroy_all
 FactoryBot.create(:contact, name: "Marco Castro", email: "marcodotcastro@gmail.com")
@@ -23,12 +23,12 @@ if true #true
   LoadRepositoriesJob.perform_later(FactoryBot.create(:user, login: "desenvolvendome", email: "desenvolvendo@gmail.com").login)
 
   puts "Eu e Amigos"
-  # LoadRepositoriesJob.perform_later(FactoryBot.create(:user, login: "marcodotcastro", email: "marcodotcastro@gmail.com").login)
-  # LoadRepositoriesJob.perform_later(FactoryBot.create(:user, login: "MoacirPetry", email: "MoacirPetry@gmail.com").login)
-  # LoadRepositoriesJob.perform_later(FactoryBot.create(:user, login: "NickolasDev", email: "NickolasDev@gmail.com").login)
-  # LoadRepositoriesJob.perform_later(FactoryBot.create(:user, login: "pvm", email: "pvm@gmail.com").login)
-  # LoadRepositoriesJob.perform_later(FactoryBot.create(:user, login: "phalmeida", email: "phalmeida@gmail.com").login)
-  # LoadRepositoriesJob.perform_later(FactoryBot.create(:user, login: "leonnleite", email: "leonnleite@gmail.com").login)
+  LoadRepositoriesJob.perform_later(FactoryBot.create(:user, login: "marcodotcastro", email: "marcodotcastro@gmail.com").login)
+  LoadRepositoriesJob.perform_later(FactoryBot.create(:user, login: "MoacirPetry", email: "MoacirPetry@gmail.com").login)
+  LoadRepositoriesJob.perform_later(FactoryBot.create(:user, login: "NickolasDev", email: "NickolasDev@gmail.com").login)
+  LoadRepositoriesJob.perform_later(FactoryBot.create(:user, login: "pvm", email: "pvm@gmail.com").login)
+  LoadRepositoriesJob.perform_later(FactoryBot.create(:user, login: "phalmeida", email: "phalmeida@gmail.com").login)
+  LoadRepositoriesJob.perform_later(FactoryBot.create(:user, login: "leonnleite", email: "leonnleite@gmail.com").login)
 
   # puts "Os Melhores por Linguagem"
   # puts "Javascript"
