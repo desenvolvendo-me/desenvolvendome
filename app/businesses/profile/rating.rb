@@ -14,4 +14,8 @@ class Profile::Rating
     Profile::Rating::Know.new(@user).run
   end
 
+  def calc_xp
+
+  end
+
 end
