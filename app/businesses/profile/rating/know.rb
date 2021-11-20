@@ -61,4 +61,8 @@ class Profile::Rating::Know
     commits / SETTINGS[:commits_level]
   end
 
+  def calc_xp
+
+  end
+
 end

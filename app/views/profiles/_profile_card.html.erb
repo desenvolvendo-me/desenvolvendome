@@ -43,6 +43,7 @@
         <div class="btn btn-dark" disabled="true">
           <i class="fas fa-info-circle" title="Comparação Não Permitida para Perfil Oculto"></i>
           <i class="fas fa-not-equal"> Comparar</i>
+          <i class="fas fa-not-equal"> XP</i>
         </div>
       <% else %>
         <%= link_to compare_show_path(user: current_user.login, compared: profile.user.login), class: "btn btn-outline-warning" do %>
