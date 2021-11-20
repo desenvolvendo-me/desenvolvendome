@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Github::Api" do
 
   before(:all) do
+    create(:api_control)
     @api_github = Github::Api.new
   end
 
