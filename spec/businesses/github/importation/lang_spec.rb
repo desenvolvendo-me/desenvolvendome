@@ -8,7 +8,7 @@ RSpec.describe "Github::Importation::Lang" do
     Github::Importation::Repo.new.run(@user)
   end
 
-  context "run" do
+  xcontext "run" do
 
     it "langs ruby-blog" do
       Github::Importation::Lang.new.run(@user)

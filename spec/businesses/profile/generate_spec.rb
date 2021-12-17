@@ -8,7 +8,7 @@ RSpec.describe "Profile::Generate" do
 
   context "user real" do
 
-    it "repositorio first and last" do
+    xit "repositorio first and last" do
       Github::Importation.new.author(@user)
       Github::Importation.new.reposities(@user)
       Github::Importation.new.contributions(@user.repositories.first)
@@ -27,7 +27,7 @@ RSpec.describe "Profile::Generate" do
       expect(@user.profile.evaluation.versions.last.changeset).to eq({"xp" => [40, 50]})
     end
 
-    it "repositorio last and first" do
+    xit "repositorio last and first" do
       Github::Importation.new.author(@user)
       Github::Importation.new.reposities(@user)
       Github::Importation.new.contributions(@user.repositories.last)

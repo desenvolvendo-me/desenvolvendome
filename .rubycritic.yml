@@ -1,0 +1,2 @@
+no_browser: true
+minimum_score: 95 # default is 0

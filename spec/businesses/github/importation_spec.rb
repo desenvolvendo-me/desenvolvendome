@@ -6,7 +6,7 @@ RSpec.describe "Github::Importation" do
     @user = create(:user, login: "desenvolvendome")
   end
 
-  it "author" do
+  xit "author" do
     Github::Importation.new.author(@user)
 
     expect(@user.name).to eq("Desenvolvendo Me")
@@ -15,7 +15,7 @@ RSpec.describe "Github::Importation" do
     expect(@user.following).to eq(1)
   end
 
-  it "reposities" do
+  xit "reposities" do
     Github::Importation.new.reposities(@user)
 
     repository = @user.repositories.last
@@ -33,7 +33,7 @@ RSpec.describe "Github::Importation" do
     expect(technology.language.description).to eq("CSS")
   end
 
-  it "contributions" do
+  xit "contributions" do
     Github::Importation.new.reposities(@user)
 
     repository = @user.repositories.last
@@ -44,7 +44,7 @@ RSpec.describe "Github::Importation" do
   end
 
   context "erros" do
-    it "desenvolvendome" do
+    xit "desenvolvendome" do
       user = create(:user, :with_profile, login: "desenvolvendome")
       repository = create(:repository, name: "ruby-blog", user: user)
 
@@ -55,7 +55,7 @@ RSpec.describe "Github::Importation" do
       expect(repository.commits_count).to eq(8)
     end
 
-    it "marcodotcastro" do
+    xit "marcodotcastro" do
       user = create(:user, :with_profile, login: "marcodotcastro")
       repository = create(:repository, name: "curriculum", user: user)
 

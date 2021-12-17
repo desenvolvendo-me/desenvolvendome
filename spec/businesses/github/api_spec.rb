@@ -7,7 +7,7 @@ RSpec.describe "Github::Api" do
     @api_github = Github::Api.new
   end
 
-  it "user" do
+  xit "user" do
     login = "desenvolvendome"
 
     user = @api_github.user(login)
@@ -16,7 +16,7 @@ RSpec.describe "Github::Api" do
   end
 
 
-  it "repositories" do
+  xit "repositories" do
     login = "desenvolvendome"
 
     repositories = @api_github.repos(login, 0)
@@ -24,7 +24,7 @@ RSpec.describe "Github::Api" do
     expect(repositories[1]['name']).to eq("ruby-blog")
   end
 
-  it "repository" do
+  xit "repository" do
     login = "desenvolvendome"
     repo = "ruby-blog"
 
@@ -34,7 +34,7 @@ RSpec.describe "Github::Api" do
   end
 
   context "commits" do
-    it "desenvolvendome/ruby-blog" do
+    xit "desenvolvendome/ruby-blog" do
       login = "desenvolvendome"
       repo = "ruby-blog"
 

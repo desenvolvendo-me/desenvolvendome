@@ -7,7 +7,7 @@ RSpec.describe "Github::Importation::Repo" do
     Github::Importation::Author.new.run(@user)
   end
 
-  context "run" do
+  xcontext "run" do
 
     it "ruby-blog create" do
       Github::Importation::Repo.new.run(@user)

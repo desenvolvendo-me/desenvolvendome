@@ -6,7 +6,7 @@ RSpec.describe "Github::Importation::Author" do
     @user = create(:user, login: "desenvolvendome")
   end
 
-  it "user" do
+  xit "user" do
     Github::Importation::Author.new.run(@user)
 
     expect(@user.name).to eq("Desenvolvendo Me")
