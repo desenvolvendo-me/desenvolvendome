@@ -44,4 +44,8 @@ class Profile::Evolution
     @knight.run
   end
 
+  def calc_xp
+
+  end
+
 end

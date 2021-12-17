@@ -32,7 +32,7 @@ RSpec.describe Compare, type: :model do
 
   end
 
-  it "compare" do
+  xit "compare" do
     languages_all_user = @user.profile.knowledges.pluck(:language_id)
     languages_all_compared = @compared.profile.knowledges.each.pluck(:language_id)
     languages_diff_user = languages_all_user - languages_all_compared

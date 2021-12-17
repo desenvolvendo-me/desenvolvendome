@@ -19,6 +19,22 @@
 
 require 'rails_helper'
 
+def check_rarity(percente)
+  case (percente)
+  when 90..100
+    rarity = :very_low
+  when 70..89
+    rarity = :low
+  when 30..69
+    rarity = :medium
+  when 10..29
+    rarity = :high
+  when 0..9
+    rarity = :very_high
+  end
+  rarity
+end
+
 RSpec.describe Knowledge, type: :model do
 
   before(:each) do
@@ -29,120 +45,48 @@ RSpec.describe Knowledge, type: :model do
 
     it 'rarity 91' do
       percente = 91
-      rarity = nil
 
-      case (percente)
-      when 90..100
-        rarity = :very_low
-      when 70..89
-        rarity = :low
-      when 30..69
-        rarity = :medium
-      when 10..29
-        rarity = :high
-      when 0..9
-        rarity = :very_high
-      end
+      rarity = check_rarity(percente)
 
       expect(rarity).to eq(:very_low)
     end
 
     it 'rarity 71' do
       percente = 71
-      rarity = nil
 
-      case (percente)
-      when 90..100
-        rarity = :very_low
-      when 70..89
-        rarity = :low
-      when 30..69
-        rarity = :medium
-      when 10..29
-        rarity = :high
-      when 0..9
-        rarity = :very_high
-      end
+      rarity = check_rarity(percente)
 
       expect(rarity).to eq(:low)
     end
 
     it 'rarity 45' do
       percente = 45
-      rarity = nil
 
-      case (percente)
-      when 90..100
-        rarity = :very_low
-      when 70..89
-        rarity = :low
-      when 30..69
-        rarity = :medium
-      when 10..29
-        rarity = :high
-      when 0..9
-        rarity = :very_high
-      end
+      rarity = check_rarity(percente)
 
       expect(rarity).to eq(:medium)
     end
 
     it 'rarity 45' do
       percente = 45
-      rarity = nil
 
-      case (percente)
-      when 90..100
-        rarity = :very_low
-      when 70..89
-        rarity = :low
-      when 30..69
-        rarity = :medium
-      when 10..29
-        rarity = :high
-      when 0..9
-        rarity = :very_high
-      end
+      rarity = check_rarity(percente)
 
       expect(rarity).to eq(:medium)
     end
 
     it 'rarity 12' do
       percente = 12
-      rarity = nil
 
-      case (percente)
-      when 90..100
-        rarity = :very_low
-      when 70..89
-        rarity = :low
-      when 30..69
-        rarity = :medium
-      when 10..29
-        rarity = :high
-      when 0..9
-        rarity = :very_high
-      end
+      rarity = check_rarity(percente)
 
       expect(rarity).to eq(:high)
     end
 
     it 'rarity 1' do
       percente = 1
-      rarity = nil
 
-      case (percente)
-      when 90..100
-        rarity = :very_low
-      when 70..89
-        rarity = :low
-      when 30..69
-        rarity = :medium
-      when 10..29
-        rarity = :high
-      when 0..9
-        rarity = :very_high
-      end
+      rarity = check_rarity(percente)
 
       expect(rarity).to eq(:very_high)
     end

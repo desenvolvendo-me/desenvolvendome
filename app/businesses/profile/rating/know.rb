@@ -1,14 +1,14 @@
 class Profile::Rating::Know
-  #TODO:Informação que devem ir para o modulo admin
+  # TODO:Informação que devem ir para o modulo admin
   @technologies = nil
   SETTINGS = {
-      commits_level: 25,
-      languages: {
-          basic: ["HTML", "CSS", "JavaScript", "Shell", "PowerShell"],
-          normal: ["Java", "Python", "Ruby", "PHP", "C#", "TypeScript"],
-          rare: ["C", "C++", "Groovy", "Dockerfile", "Vue"],
-          special: ["Swift", "Objective-C ", "Kotlin", "Go", "Elixir", "Erlang"]
-      }
+    commits_level: 25,
+    languages: {
+      basic: ['HTML', 'CSS', 'JavaScript', 'Shell', 'PowerShell'],
+      normal: ['Java', 'Python', 'Ruby', 'PHP', 'C#', 'TypeScript'],
+      rare: ['C', 'C++', 'Groovy', 'Dockerfile', 'Vue'],
+      special: ['Swift', 'Objective-C ', 'Kotlin', 'Go', 'Elixir', 'Erlang']
+    }
   }
 
   def initialize(user)
@@ -37,7 +37,7 @@ class Profile::Rating::Know
   end
 
   def knowledge_with_language(language)
-    @user.profile.knowledges.joins(:language).where("languages.id = ?", language.id).take
+    @user.profile.knowledges.joins(:language).where('languages.id = ?', language.id).take
   end
 
   def set_knowledge_type(language)
@@ -50,15 +50,17 @@ class Profile::Rating::Know
   end
 
   def get_technologies
-    Technology.joins(:language, repository: [:user]).where("users.id = ?", @user.id)
+    Technology.joins(:language, repository: [:user]).where('users.id = ?', @user.id)
   end
 
   def get_level(language)
     commits = 0
-    @technologies.where("languages.description = ?", language.description).each do |technology|
-      commits += technology.repository.commits_count.to_i #FIXME: Vindo nil
+    @technologies.where('languages.description = ?', language.description).each do |technology|
+      commits += technology.repository.commits_count.to_i # FIXME: Vindo nil
     end
     commits / SETTINGS[:commits_level]
   end
 
+  def calc_xp
+  end
 end

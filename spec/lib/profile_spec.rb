@@ -10,11 +10,11 @@ describe 'profile' do
     create(:user, :with_repositories, :with_profile, login: "marcodotcastro")
   end
 
-  it "update" do
+  xit "update" do
     Rake.application.invoke_task "profile:update[marcodotcastro]"
   end
 
-  it "update_all" do
+  xit "update_all" do
     Rake.application.invoke_task "profile:update_all"
   end
 

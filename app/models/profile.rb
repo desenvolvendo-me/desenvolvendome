@@ -55,5 +55,9 @@ class Profile < ApplicationRecord
     user.repositories.where(commits_count: instance_eval(evaluation.evaluation_type)).order(commits_count: :desc).first(3)
   end
 
+  def number_xp
+
+  end
+
 
 end
