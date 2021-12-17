@@ -20,6 +20,6 @@ SimpleCov.start 'rails' do
   add_group "Lib", "app/lib"
   add_group "Admin", "app/admin"
 
-  minimum_coverage 90
+  minimum_coverage 85
 
 end
